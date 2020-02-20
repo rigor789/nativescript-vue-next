@@ -43,12 +43,11 @@ $ tns run ios
 
 # Project Structure
 
-- `build`: Directory for the custom tooling for managing and building the project
-- `dist`: Directory for the bundled code
+- `apps`: Sample {N} applications for testing
 - `packages`: Contains `nativescript-vue` specific platform code
   - `compiler`: This is where template compilation logic will go (vue template -> render function)
   - `runtime`: {N} specific Vue backend
-- `apps`: Sample {N} applications for testing
+- `scripts`: Directory for the custom tooling for managing and building the project
 
 # Troubleshooting
 

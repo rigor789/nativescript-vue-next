@@ -533,7 +533,7 @@
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-alpha.5.tgz#3831c1b8b2fbdb6c3c4e46cc2024221a4d479d48"
   integrity sha512-UJ40HyWJWkQBT59KAhaXNy1ChZChy9jftMSxSXNkbYF2GklP4dcYPQaMBdg2V/jfWXZyDElspsrNB0YhmKEsZg==
 
-"@vue/runtime-core@^3.0.0-alpha.5":
+"@vue/runtime-core@3.0.0-alpha.5":
   version "3.0.0-alpha.5"
   resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.0-alpha.5.tgz#7cd3fc6529b9e902255e53ee591471ce9bc4cee4"
   integrity sha512-D/sGajvRMOwet4e8FliKKs3EqOgP0aeR2ne+5vAIcBJ0uT5Av9AF/CMDMGAMIypGkY96zJ6iiQ0CHsIfpKVP6Q==

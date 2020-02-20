@@ -1,0 +1,82 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.nativescript.test"
+4    android:versionCode="10000"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="17"
+8-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml
+10
+11    <supports-screens
+11-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:7:2-11:33
+12        android:largeScreens="true"
+12-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:10:3-30
+13        android:normalScreens="true"
+13-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:9:3-31
+14        android:smallScreens="true"
+14-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:8:3-30
+15        android:xlargeScreens="true" />
+15-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:11:3-31
+16
+17    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+17-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:13:2-76
+17-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:13:19-74
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:14:2-77
+18-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:14:19-75
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:15:2-63
+19-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:15:19-61
+20
+21    <application
+21-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:17:2-38:16
+22        android:name="com.tns.NativeScriptApplication"
+22-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:18:3-49
+23        android:allowBackup="true"
+23-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:19:3-29
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.0.1] /Users/rigor789/.gradle/caches/transforms-2/files-2.1/3d3d0b77ddd3e70ec0512eb77638feaf/core-1.0.1/AndroidManifest.xml:22:18-86
+25        android:debuggable="true"
+26        android:icon="@drawable/icon"
+26-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:20:3-32
+27        android:label="@string/app_name"
+27-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:21:3-35
+28        android:theme="@style/AppTheme" >
+28-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:22:3-34
+29        <activity
+29-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:24:3-36:14
+30            android:name="com.tns.NativeScriptActivity"
+30-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:25:4-47
+31            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|locale|uiMode"
+31-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:27:4-120
+32            android:label="@string/title_activity_kimera"
+32-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:26:4-49
+33            android:theme="@style/LaunchScreenTheme" >
+33-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:28:4-44
+34            <meta-data
+34-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:30:4-87
+35                android:name="SET_THEME_ON_LAUNCH"
+35-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:30:15-49
+36                android:resource="@style/AppTheme" />
+36-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:30:50-84
+37
+38            <intent-filter>
+38-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:32:4-35:20
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:33:5-57
+39-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:33:13-54
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:34:5-65
+41-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:34:15-62
+42            </intent-filter>
+43        </activity>
+44        <activity android:name="com.tns.ErrorReportActivity" />
+44-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:37:3-57
+44-->/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/AndroidManifest.xml:37:13-55
+45    </application>
+46
+47</manifest>

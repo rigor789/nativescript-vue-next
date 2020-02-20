@@ -1,0 +1,25 @@
+{
+  "name": "nativescript-vue",
+  "version": "3.0.0-alpha.4",
+  "description": "nativescript-vue",
+  "main": "index.js",
+  "module": "dist/nativescript-vue.esm-bundler.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "types": "dist/nativescript-vue.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nativescript-vue/nativescript-vue.git"
+  },
+  "keywords": [
+    "nativescript-vue"
+  ],
+  "author": "Randjelovic Igor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nativescript-vue/nativescript-vue/issues"
+  },
+  "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/nativescript-vue#readme"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@nativescript-vue/compiler",
+  "version": "3.0.0-alpha.4",
+  "description": "@nativescript-vue/compiler",
+  "main": "index.js",
+  "module": "dist/compiler.esm-bundler.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "types": "dist/compiler.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nativescript-vue/nativescript-vue.git"
+  },
+  "keywords": [
+    "nativescript-vue"
+  ],
+  "author": "Randjelovic Igor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nativescript-vue/nativescript-vue/issues"
+  },
+  "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/compiler#readme"
+}

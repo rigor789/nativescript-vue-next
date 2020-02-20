@@ -1,0 +1,1 @@
+/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/assets/metadata

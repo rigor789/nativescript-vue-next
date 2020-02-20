@@ -1,4 +1,0 @@
-/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/assets/app/runtime.js
-/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/assets/app/bundle.js
-/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/assets/app/vendor.js
-/Users/rigor789/Code/nativescript-vue-next/explorations/test/platforms/android/app/src/main/assets/app/tns-java-classes.js

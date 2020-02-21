@@ -2,14 +2,18 @@ import { isAndroid, isIOS } from '@nativescript/core/platform'
 import { logNodeOp, NodeOpTypes } from './nodeOps'
 // import { isOn } from '@vue/shared'
 import { NSVViewNode } from './nodes/NSVElement'
+import { isOn } from '@vue/shared'
+import set = Reflect.set
+import { patchEvent } from './modules/events'
+import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 // import set from 'set-value'
 
-const XML_ATTRIBUTES = Object.freeze([
-  'style',
-  'rows',
-  'columns',
-  'fontAttributes'
-])
+// const XML_ATTRIBUTES = Object.freeze([
+//     'style',
+//     'rows',
+//     'columns',
+//     'fontAttributes'
+// ])
 
 export function patchProp(
   el: NSVViewNode,
@@ -17,42 +21,33 @@ export function patchProp(
   nextValue: any,
   prevValue: any
 ) {
-  console.log('->patchProp')
+  // console.log('->patchProp')
 
-  // @ts-ignore
-  el._nativeView[key] = nextValue
-  // try {
-  //   if (XML_ATTRIBUTES.includes(key)) {
-  //     //nv[key] = value
-  //   } else {
-  //     // // detect expandable attrs for boolean values
-  //     // // See https://vuejs.org/v2/guide/components-props.html#Passing-a-Boolean
-  //     // if (
-  //     //     typeof nv[key] === 'boolean' &&
-  //     //     value === ''
-  //     // ) {
-  //     //   value = true
-  //     // }
-  //
-  //     if (isAndroid && key.startsWith('android:')) {
-  //       // set(nv, key.substr(8), value)
-  //     } else if (isIOS && key.startsWith('ios:')) {
-  //       // set(nv, key.substr(4), value)
-  //     } else if (key.endsWith('.decode')) {
-  //       // set(
-  //       //     nv,
-  //       //     key.slice(0, -7),
-  //       //     require('@nativescript/core/xml').XmlParser._dereferenceEntities(
-  //       //         value
-  //       //     )
-  //       // )
-  //     } else {
-  //       // set(nv, key, value)
-  //     }
-  //   }
-  // } catch (e) {
-  //   // ignore
-  // }
+  switch (key) {
+    // special
+    case 'class':
+      // todo
+      console.log('->patchProp+Class')
+      break
+    case 'style':
+      // todo
+      console.log('->patchProp+Style')
+      break
+    case 'modelValue':
+    case 'onUpdate:modelValue':
+      // handled by v-model directive
+      break
+    default:
+      if (isOn(key)) {
+        patchEvent(el, key.substr(2).toLowerCase(), prevValue, nextValue)
+      } else if (isAndroidKey(key) && isAndroid) {
+        set(el.nativeView, key.substr(8), nextValue)
+      } else if (isIOSKey(key) && isIOS) {
+        set(el.nativeView, key.substr(4), nextValue)
+      } else {
+        set(el.nativeView, key, nextValue)
+      }
+  }
 
   logNodeOp({
     type: NodeOpTypes.PATCH,
@@ -61,9 +56,4 @@ export function patchProp(
     propPrevValue: prevValue,
     propNextValue: nextValue
   })
-  // el.props[key] = nextValue
-  // if (isOn(key)) {
-  //   const event = key.slice(2).toLowerCase()
-  //   ;(el.eventListeners || (el.eventListeners = {}))[event] = nextValue
-  // }
 }

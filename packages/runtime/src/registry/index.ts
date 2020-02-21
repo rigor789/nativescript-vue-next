@@ -1,6 +1,7 @@
 import { Component } from '@nativescript-vue/runtime'
-console.log('REGISTRY??')
-export type NSVElementResolver = () => any
+import { ViewBase } from '@nativescript/core'
+
+export type NSVElementResolver = () => ViewBase
 
 export interface NSVViewMeta {
   skipAddToDom?: boolean

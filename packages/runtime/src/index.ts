@@ -9,7 +9,6 @@ import { run } from '@nativescript/core/application'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { NSVElement, NSVViewNode } from './nodes'
-import { Label } from '@nativescript/core'
 import './registry'
 
 const rendererOptions = {
@@ -27,15 +26,7 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   console.log('->runApp')
   run({
     create: () => {
-      // component.$el
-      return root.$el._nativeView
-      // console.log(root.$el)
-      //
-      // const label = new Label()
-      // label.text = 'Hello World'
-      // label.verticalAlignment = 'middle'
-      // label.textAlignment = 'center'
-      // return label
+      return root.$el.nativeView
     }
   })
 
@@ -51,7 +42,7 @@ export const createApp = ((...args) => {
   const { mount } = app
 
   app.mount = (): any => {
-    return runApp(mount(nodeOps.createElement('ContentView')))
+    return runApp(mount(nodeOps.createRoot()))
   }
 
   return app

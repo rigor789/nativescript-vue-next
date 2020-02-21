@@ -1,4 +1,23 @@
-import { createApp, h, ref, onUnmounted } from '@nativescript-vue/runtime'
+import {
+    createApp,
+    h,
+    ref,
+    onMounted,
+    onUnmounted,
+    dumpOps
+} from '@nativescript-vue/runtime'
+
+const dumpDebug = () =>
+    dumpOps().map(op => {
+        if (op.nodeType) {
+            console.log(
+                `  +++ ${op.type}${op.nodeType[0].toUpperCase() +
+                    op.nodeType.substr(1)}(${op.tag})`
+            )
+        } else {
+            console.log(`  +++ ${op.type}`)
+        }
+    })
 
 createApp({
     render() {
@@ -9,6 +28,8 @@ createApp({
         })
     },
     setup() {
+        onMounted(dumpDebug)
+
         const counter = ref(0)
 
         const interval = setInterval(() => counter.value++, 1000)

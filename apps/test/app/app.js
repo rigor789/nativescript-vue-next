@@ -1,14 +1,21 @@
-import { createApp, h, dumpOps } from '@nativescript-vue/runtime'
+import { createApp, h, ref, onUnmounted } from '@nativescript-vue/runtime'
 
 createApp({
     render() {
         return h('Label', {
-            text: 'Hello World!',
+            text: 'Hello World: ' + this.counter,
             textAlignment: 'center',
             verticalAlignment: 'middle'
         })
     },
-    mounted() {
-        // dumpOps().map(console.log)
+    setup() {
+        const counter = ref(0)
+
+        const interval = setInterval(() => counter.value++, 1000)
+        onUnmounted(() => clearInterval(interval))
+
+        return {
+            counter
+        }
     }
 }).mount()

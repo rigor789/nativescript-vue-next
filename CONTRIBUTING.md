@@ -7,6 +7,7 @@ If you feel like contributing to this project, that is awesome! This guide shoul
 - It's OK to submit PR against the `master` branch
 - It's OK to have multiple commits per PR (will be squashed during merge)
 - Please describe the changes in every PR, to make it easier to review. (No empty PR descriptions please)
+- Commit messages must follow the [commit message convention](./github/commit-convention.md) so that changelogs can be automatically generated. Commit messages are automatically validated before commit (by invoking [Git Hooks](https://git-scm.com/docs/githooks) via [yorkie](https://github.com/yyx990803/yorkie)).
 
 We will re-iterate these guidelines as the project matures.
 

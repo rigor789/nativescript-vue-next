@@ -1,12 +1,14 @@
 import { getViewClass, getViewMeta, normalizeElementName } from '../registry'
 import { insertChild, removeChild } from './index'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
+import { ViewBase } from '@nativescript/core'
 // import {ELEMENT_REF} from "@nativescript-vue/runtime";
 
 export const enum NSVNodeTypes {
   TEXT = 'text',
   ELEMENT = 'element',
-  COMMENT = 'comment'
+  COMMENT = 'comment',
+  ROOT = 'root'
 }
 
 export interface NSVViewNode {
@@ -18,7 +20,7 @@ export interface NSVViewNode {
   nextSibling: NSVViewNode | null
   firstChild: NSVViewNode | null
   lastChild: NSVViewNode | null
-  nativeView: any
+  nativeView: ViewBase
   getAttribute: Function
   text: string
 }
@@ -78,8 +80,6 @@ export class NSVElement implements NSVViewNode {
 
     if (nodeType === NSVNodeTypes.ELEMENT) {
       const viewClass = getViewClass(elementName)
-      console.log(`->construct ${elementName}`)
-      console.log(viewClass)
       this._nativeView = new viewClass()
       this._nativeView[ELEMENT_REF] = this
     }

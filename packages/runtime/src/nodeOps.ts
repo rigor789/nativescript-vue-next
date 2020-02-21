@@ -39,6 +39,21 @@ export function dumpOps(): NodeOp[] {
   return ops
 }
 
+function createRoot(tag: string = 'root') {
+  const node: NSVElement = new NSVElement(tag, NSVNodeTypes.ROOT)
+
+  logNodeOp({
+    type: NodeOpTypes.CREATE,
+    nodeType: NSVNodeTypes.ELEMENT,
+    targetNode: node,
+    tag
+  })
+  // avoid test nodes from being observed
+  markNonReactive(node)
+
+  return node
+}
+
 function createElement(tag: string): NSVViewNode {
   const node: NSVElement = new NSVElement(tag, NSVNodeTypes.ELEMENT)
 
@@ -193,6 +208,7 @@ function setScopeId(el: NSVElement, id: string) {
 export const nodeOps = {
   insert,
   remove,
+  createRoot,
   createElement,
   createText,
   createComment,

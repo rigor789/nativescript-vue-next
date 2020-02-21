@@ -1,10 +1,5 @@
 import { markNonReactive } from '@vue/reactivity'
-
-export const enum NodeTypes {
-  TEXT = 'text',
-  ELEMENT = 'element',
-  COMMENT = 'comment'
-}
+import { NSVElement, NSVNodeTypes, NSVViewNode } from './nodes'
 
 export const enum NodeOpTypes {
   CREATE = 'create',
@@ -15,46 +10,19 @@ export const enum NodeOpTypes {
   PATCH = 'patch'
 }
 
-export interface TestElement {
-  id: number
-  type: NodeTypes.ELEMENT
-  parentNode: TestElement | null
-  tag: string
-  children: TestNode[]
-  props: Record<string, any>
-  eventListeners: Record<string, Function | Function[]> | null
-}
-
-export interface TestText {
-  id: number
-  type: NodeTypes.TEXT
-  parentNode: TestElement | null
-  text: string
-}
-
-export interface TestComment {
-  id: number
-  type: NodeTypes.COMMENT
-  parentNode: TestElement | null
-  text: string
-}
-
-export type TestNode = TestElement | TestText | TestComment
-
 export interface NodeOp {
   type: NodeOpTypes
-  nodeType?: NodeTypes
+  nodeType?: NSVNodeTypes
   tag?: string
   text?: string
-  targetNode?: TestNode
-  parentNode?: TestElement
-  refNode?: TestNode | null
+  targetNode?: NSVViewNode
+  parentNode?: NSVViewNode
+  refNode?: NSVViewNode | null
   propKey?: string
   propPrevValue?: any
   propNextValue?: any
 }
 
-let nodeId: number = 0
 let recordedNodeOps: NodeOp[] = []
 
 export function logNodeOp(op: NodeOp) {
@@ -71,37 +39,27 @@ export function dumpOps(): NodeOp[] {
   return ops
 }
 
-function createElement(tag: string): TestElement {
-  const node: TestElement = {
-    id: nodeId++,
-    type: NodeTypes.ELEMENT,
-    tag,
-    children: [],
-    props: {},
-    parentNode: null,
-    eventListeners: null
-  }
+function createElement(tag: string): NSVViewNode {
+  const node: NSVElement = new NSVElement(tag, NSVNodeTypes.ELEMENT)
+
   logNodeOp({
     type: NodeOpTypes.CREATE,
-    nodeType: NodeTypes.ELEMENT,
+    nodeType: NSVNodeTypes.ELEMENT,
     targetNode: node,
     tag
   })
   // avoid test nodes from being observed
   markNonReactive(node)
+
   return node
 }
 
-function createText(text: string): TestText {
-  const node: TestText = {
-    id: nodeId++,
-    type: NodeTypes.TEXT,
-    text,
-    parentNode: null
-  }
+function createText(text: string): NSVViewNode {
+  const node = new NSVElement('text', NSVNodeTypes.TEXT)
+
   logNodeOp({
     type: NodeOpTypes.CREATE,
-    nodeType: NodeTypes.TEXT,
+    nodeType: NSVNodeTypes.TEXT,
     targetNode: node,
     text
   })
@@ -110,16 +68,12 @@ function createText(text: string): TestText {
   return node
 }
 
-function createComment(text: string): TestComment {
-  const node: TestComment = {
-    id: nodeId++,
-    type: NodeTypes.COMMENT,
-    text,
-    parentNode: null
-  }
+function createComment(text: string): NSVViewNode {
+  const node = new NSVElement('comment', NSVNodeTypes.COMMENT)
+
   logNodeOp({
     type: NodeOpTypes.CREATE,
-    nodeType: NodeTypes.COMMENT,
+    nodeType: NSVNodeTypes.COMMENT,
     targetNode: node,
     text
   })
@@ -128,7 +82,7 @@ function createComment(text: string): TestComment {
   return node
 }
 
-function setText(node: TestText, text: string) {
+function setText(node: NSVViewNode, text: string) {
   logNodeOp({
     type: NodeOpTypes.SET_TEXT,
     targetNode: node,
@@ -137,10 +91,14 @@ function setText(node: TestText, text: string) {
   node.text = text
 }
 
-function insert(child: TestNode, parent: TestElement, ref?: TestNode | null) {
+function insert(
+  child: NSVViewNode,
+  parent: NSVElement,
+  ref?: NSVViewNode | null
+) {
   let refIndex
   if (ref != null) {
-    refIndex = parent.children.indexOf(ref)
+    refIndex = parent.childNodes.indexOf(ref)
     if (refIndex === -1) {
       console.error('ref: ', ref)
       console.error('parent: ', parent)
@@ -156,17 +114,17 @@ function insert(child: TestNode, parent: TestElement, ref?: TestNode | null) {
   // remove the node first, but don't log it as a REMOVE op
   remove(child, false)
   // re-calculate the ref index because the child's removal may have affected it
-  refIndex = ref ? parent.children.indexOf(ref) : -1
+  refIndex = ref ? parent.childNodes.indexOf(ref) : -1
   if (refIndex === -1) {
-    parent.children.push(child)
+    parent.childNodes.push(child)
     child.parentNode = parent
   } else {
-    parent.children.splice(refIndex, 0, child)
+    parent.childNodes.splice(refIndex, 0, child)
     child.parentNode = parent
   }
 }
 
-function remove(child: TestNode, logOp: boolean = true) {
+function remove(child: NSVViewNode, logOp: boolean = true) {
   const parent = child.parentNode
   if (parent != null) {
     if (logOp) {
@@ -176,9 +134,9 @@ function remove(child: TestNode, logOp: boolean = true) {
         parentNode: parent
       })
     }
-    const i = parent.children.indexOf(child)
+    const i = parent.childNodes.indexOf(child)
     if (i > -1) {
-      parent.children.splice(i, 1)
+      parent.childNodes.splice(i, 1)
     } else {
       console.error('target: ', child)
       console.error('parent: ', parent)
@@ -188,48 +146,48 @@ function remove(child: TestNode, logOp: boolean = true) {
   }
 }
 
-function setElementText(el: TestElement, text: string) {
+function setElementText(el: NSVElement, text: string) {
   logNodeOp({
     type: NodeOpTypes.SET_ELEMENT_TEXT,
     targetNode: el,
     text
   })
-  el.children.forEach(c => {
+  el.childNodes.forEach(c => {
     c.parentNode = null
   })
   if (!text) {
-    el.children = []
+    el.childNodes = []
   } else {
-    el.children = [
-      {
-        id: nodeId++,
-        type: NodeTypes.TEXT,
-        text,
-        parentNode: el
-      }
+    el.childNodes = [
+      // {
+      //   id: nodeId++,
+      //   type: NSVNodeTypes.TEXT,
+      //   text,
+      //   parentNode: el
+      // }
     ]
   }
 }
 
-function parentNode(node: TestNode): TestElement | null {
+function parentNode(node: NSVViewNode): NSVViewNode | null {
   return node.parentNode
 }
 
-function nextSibling(node: TestNode): TestNode | null {
+function nextSibling(node: NSVViewNode): NSVViewNode | null {
   const parent = node.parentNode
   if (!parent) {
     return null
   }
-  const i = parent.children.indexOf(node)
-  return parent.children[i + 1] || null
+  const i = parent.childNodes.indexOf(node)
+  return parent.childNodes[i + 1] || null
 }
 
 function querySelector(): any {
   throw new Error('querySelector not supported in test renderer.')
 }
 
-function setScopeId(el: TestElement, id: string) {
-  el.props[id] = ''
+function setScopeId(el: NSVElement, id: string) {
+  // el.props[id] = ''
 }
 
 export const nodeOps = {

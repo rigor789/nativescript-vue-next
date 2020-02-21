@@ -12,7 +12,7 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "tns-core-modules": "6.3.0"
+    "@nativescript/core": "6.4.1"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

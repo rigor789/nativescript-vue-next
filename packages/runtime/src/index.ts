@@ -1,39 +1,62 @@
 import {
-    Renderer,
-    createRenderer,
-    RootRenderFunction,
-    CreateAppFunction
+  Renderer,
+  createRenderer,
+  RootRenderFunction,
+  CreateAppFunction,
+  ComponentPublicInstance
 } from '@vue/runtime-core'
-import {nodeOps, TestNode, TestElement} from './nodeOps'
-import {patchProp} from './patchProp'
+import { run } from '@nativescript/core/application'
+import { nodeOps } from './nodeOps'
+import { patchProp } from './patchProp'
+import { NSVElement, NSVViewNode } from './nodes'
+import { Label } from '@nativescript/core'
+import './registry'
 
 const rendererOptions = {
-    patchProp,
-    ...nodeOps
+  patchProp,
+  ...nodeOps
 }
 
 let renderer: Renderer
 
 function ensureRenderer() {
-    return renderer || (renderer = createRenderer(rendererOptions))
+  return renderer || (renderer = createRenderer(rendererOptions))
+}
+
+function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
+  console.log('->runApp')
+  run({
+    create: () => {
+      // component.$el
+      return root.$el._nativeView
+      // console.log(root.$el)
+      //
+      // const label = new Label()
+      // label.text = 'Hello World'
+      // label.verticalAlignment = 'middle'
+      // label.textAlignment = 'center'
+      // return label
+    }
+  })
+
+  return root
 }
 
 export const render = ((...args) => {
-    ensureRenderer().render(...args)
-}) as RootRenderFunction<TestNode, TestElement>
+  ensureRenderer().render(...args)
+}) as RootRenderFunction<NSVViewNode, NSVElement>
 
 export const createApp = ((...args) => {
-    const app = ensureRenderer().createApp(...args)
-    const {mount} = app
+  const app = ensureRenderer().createApp(...args)
+  const { mount } = app
 
-    app.mount = (): any => {
-        const root = nodeOps.createElement('nativescript-vue-root')
-        // todo: app.run from ns
-        return mount(root)
-    }
+  app.mount = (): any => {
+    return runApp(mount(nodeOps.createElement('ContentView')))
+  }
 
-    return app;
-}) as CreateAppFunction<TestElement>
+  return app
+}) as CreateAppFunction<NSVElement>
 
 export * from './nodeOps'
+export * from './runtimeHelpers'
 export * from '@vue/runtime-core'

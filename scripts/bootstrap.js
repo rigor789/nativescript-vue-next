@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const version = require('../package.json').version
 
-const packagesDir = path.resolve(__dirname, '../nativescript-vue')
+const packagesDir = path.resolve(__dirname, '../packages')
 const files = fs.readdirSync(packagesDir)
 
 files.forEach(shortName => {
@@ -13,7 +13,10 @@ files.forEach(shortName => {
     return
   }
 
-  const name = shortName === `nativescript-vue` ? shortName : `@nativescript-vue/${shortName}`
+  const name =
+    shortName === `nativescript-vue`
+      ? shortName
+      : `@nativescript-vue/${shortName}`
   const pkgPath = path.join(packagesDir, shortName, `package.json`)
   const pkgExists = fs.existsSync(pkgPath)
   if (pkgExists) {

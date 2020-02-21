@@ -1,12 +1,10 @@
 import { isAndroid, isIOS } from '@nativescript/core/platform'
 import { logNodeOp, NodeOpTypes } from './nodeOps'
-// import { isOn } from '@vue/shared'
 import { NSVViewNode } from './nodes/NSVElement'
 import { isOn } from '@vue/shared'
 import set = Reflect.set
 import { patchEvent } from './modules/events'
 import { isAndroidKey, isIOSKey } from './runtimeHelpers'
-// import set from 'set-value'
 
 // const XML_ATTRIBUTES = Object.freeze([
 //     'style',

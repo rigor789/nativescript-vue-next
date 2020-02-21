@@ -9,7 +9,6 @@ import { run } from '@nativescript/core/application'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { NSVElement, NSVViewNode } from './nodes'
-import { Label } from '@nativescript/core'
 import './registry'
 
 const rendererOptions = {

@@ -46,7 +46,7 @@ export function getViewClass(elementName: string): any {
   }
 
   try {
-    return entry.resolver()
+    return entry.resolver!()
   } catch (e) {
     throw new Error(`Could not load view for: ${elementName}. ${e}`)
   }

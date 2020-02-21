@@ -1,15 +1,15 @@
-import { isAndroid, isIOS } from '@nativescript/core/platform'
+// import { isAndroid, isIOS } from '@nativescript/core/platform'
 import { logNodeOp, NodeOpTypes } from './nodeOps'
 // import { isOn } from '@vue/shared'
 import { NSVViewNode } from './nodes/NSVElement'
 // import set from 'set-value'
 
-const XML_ATTRIBUTES = Object.freeze([
-  'style',
-  'rows',
-  'columns',
-  'fontAttributes'
-])
+// const XML_ATTRIBUTES = Object.freeze([
+//   'style',
+//   'rows',
+//   'columns',
+//   'fontAttributes'
+// ])
 
 export function patchProp(
   el: NSVViewNode,

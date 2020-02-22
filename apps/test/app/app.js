@@ -7,31 +7,25 @@ function useInterval(cb, ms) {
 
 createApp({
     render() {
-        const label = h('Label', {
-            text: 'Hello World: ' + this.counter,
-            textAlignment: 'center',
-            verticalAlignment: 'middle'
-        })
-        return h(
-            'StackLayout',
-            {
-                verticalAlignment: 'middle'
-            },
-            [
-                label,
-                label,
-                label,
-                h(
-                    'StackLayout',
-                    {
-                        horizontalAlignment: 'center',
-                        orientation: 'horizontal',
-                        marginTop: 20
-                    },
-                    [label, label]
-                )
-            ]
-        )
+        const label = (row, col) =>
+            h('Label', {
+                text: 'Hello World: ' + this.counter,
+                textAlignment: 'center',
+                verticalAlignment: 'middle',
+                row,
+                col
+            })
+
+        return h('Page', [
+            h(
+                'GridLayout',
+                {
+                    rows: '*, *',
+                    columns: '*, *'
+                },
+                [label(0, 0), label(0, 1), label(1, 0), label(1, 1)]
+            )
+        ])
     },
     setup() {
         const counter = ref(0)

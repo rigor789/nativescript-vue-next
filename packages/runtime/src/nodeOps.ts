@@ -1,6 +1,12 @@
 import { RendererOptions } from '@vue/runtime-core'
-import { isLayout, NSVElement, NSVNodeTypes, NSVViewNode } from './nodes'
-import { LayoutBase, View } from '@nativescript/core'
+import {
+  isContentView,
+  isLayout,
+  NSVElement,
+  NSVNodeTypes,
+  NSVViewNode
+} from './nodes'
+import { ContentView, LayoutBase, View } from '@nativescript/core'
 
 declare type HostElement = NSVElement
 declare type HostNode = NSVViewNode
@@ -41,6 +47,13 @@ export const nodeOps: NSVNodeOps = {
     console.log('insert!')
     if (isLayout(parent.nativeView)) {
       ;(parent.nativeView as LayoutBase).addChild(el.nativeView as View)
+    } else if (isContentView(parent.nativeView)) {
+      parent.nativeView.content = el.nativeView
+    } else if (parent.nativeView._addChildFromBuilder) {
+      parent.nativeView._addChildFromBuilder(
+        el.nativeView.constructor.name,
+        el.nativeView
+      )
     }
   },
   remove(el: HostNode): void {

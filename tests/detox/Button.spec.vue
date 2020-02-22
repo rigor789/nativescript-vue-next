@@ -1,25 +1,25 @@
 <!-- THIS IS NOT A WORKING TEST YET
  JUST AN IDEA FOR HOW WE MAY WRITE THEM IN THE FUTURE -->
 <template>
-    <Label text="label static text as prop"/>
-    <Label>label static text as child</Label>
-    <Label :text="dynamicLabelText('prop')"/>
-    <Label>{{ dynamicLabelText('child') }}</Label>
-    <Label>
+    <Button text="button static text as prop"/>
+    <Button>button static text as child</Button>
+    <Button :text="dynamicButtonText('prop')"/>
+    <Button>{{ dynamicButtonText('child') }}</Button>
+    <Button>
         <FormattedString>
             <Span text="span static text as prop"/>
             <Span>span static text as child</Span>
             <Span :text="dynamicSpanText('prop')"/>
             <Span>{{ dynamicSpanText('child') }}</Span>
         </FormattedString>
-    </Label>
+    </Button>
 </template>
 
 <script>
   export default {
     setup() {
       return {
-        dynamicLabelText: type => `label dynamic text as ${type}`
+        dynamicButtonText: type => `button dynamic text as ${type}`
         dynamicSpanText: type => `span dynamic text as ${type}`
       }
     }
@@ -27,7 +27,7 @@
 </script>
 
 <detox>
-  describe('Label', () => {
+  describe('Button', () => {
     it('accepts static text as a prop', () => {
       // todo: implement test
     })

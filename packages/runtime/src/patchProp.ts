@@ -1,6 +1,5 @@
 import { isAndroid, isIOS } from '@nativescript/core/platform'
-import { logNodeOp, NodeOpTypes } from './nodeOps'
-import { NSVViewNode } from './nodes/NSVElement'
+import { NSVViewNode } from './nodes'
 import { isOn } from '@vue/shared'
 import set = Reflect.set
 import { patchEvent } from './modules/events'
@@ -46,12 +45,4 @@ export function patchProp(
         set(el.nativeView, key, nextValue)
       }
   }
-
-  logNodeOp({
-    type: NodeOpTypes.PATCH,
-    targetNode: el,
-    propKey: key,
-    propPrevValue: prevValue,
-    propNextValue: nextValue
-  })
 }

@@ -1,39 +1,41 @@
-import {
-    createApp,
-    h,
-    ref,
-    onMounted,
-    onUnmounted,
-    dumpOps
-} from '@nativescript-vue/runtime'
+import { createApp, h, ref, onUnmounted } from '@nativescript-vue/runtime'
 
-const dumpDebug = () =>
-    dumpOps().map(op => {
-        if (op.nodeType) {
-            console.log(
-                `  +++ ${op.type}${op.nodeType[0].toUpperCase() +
-                    op.nodeType.substr(1)}(${op.tag})`
-            )
-        } else {
-            console.log(`  +++ ${op.type}`)
-        }
-    })
+function useInterval(cb, ms) {
+    const interval = setInterval(cb, ms)
+    onUnmounted(() => clearInterval(interval))
+}
 
 createApp({
     render() {
-        return h('Label', {
+        const label = h('Label', {
             text: 'Hello World: ' + this.counter,
             textAlignment: 'center',
             verticalAlignment: 'middle'
         })
+        return h(
+            'StackLayout',
+            {
+                verticalAlignment: 'middle'
+            },
+            [
+                label,
+                label,
+                label,
+                h(
+                    'StackLayout',
+                    {
+                        horizontalAlignment: 'center',
+                        orientation: 'horizontal',
+                        marginTop: 20
+                    },
+                    [label, label]
+                )
+            ]
+        )
     },
     setup() {
-        onMounted(dumpDebug)
-
         const counter = ref(0)
-
-        const interval = setInterval(() => counter.value++, 1000)
-        onUnmounted(() => clearInterval(interval))
+        useInterval(() => counter.value++, 1000)
 
         return {
             counter

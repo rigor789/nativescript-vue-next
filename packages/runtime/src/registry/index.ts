@@ -23,7 +23,7 @@ let defaultViewMeta: NSVViewMeta = {
 
 let elementMap: Record<string, NSVElementDescriptor> = {}
 
-export function getViewMeta(elementName: string): NSVViewMeta | null {
+export function getViewMeta(elementName: string): NSVViewMeta {
   console.log(`->getViewMeta(${elementName})`)
 
   const normalizedName = normalizeElementName(elementName)
@@ -31,7 +31,7 @@ export function getViewMeta(elementName: string): NSVViewMeta | null {
   const entry = elementMap[normalizedName]
 
   if (!entry) {
-    return null
+    throw new Error(`No known component for element ${elementName}.`)
   }
 
   return entry.meta
@@ -85,4 +85,8 @@ registerElement('Label', () => require('@nativescript/core/ui/label').Label)
 registerElement(
   'ContentView',
   () => require('@nativescript/core/ui/content-view').ContentView
+)
+registerElement(
+  'StackLayout',
+  () => require('@nativescript/core/ui/layouts/stack-layout').StackLayout
 )

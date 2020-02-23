@@ -23,7 +23,7 @@ let defaultViewMeta: NSVViewMeta = {
 
 let elementMap: Record<string, NSVElementDescriptor> = {}
 
-export function getViewMeta(elementName: string): NSVViewMeta | null {
+export function getViewMeta(elementName: string): NSVViewMeta {
   console.log(`->getViewMeta(${elementName})`)
 
   const normalizedName = normalizeElementName(elementName)
@@ -31,7 +31,7 @@ export function getViewMeta(elementName: string): NSVViewMeta | null {
   const entry = elementMap[normalizedName]
 
   if (!entry) {
-    return null
+    throw new Error(`No known component for element ${elementName}.`)
   }
 
   return entry.meta
@@ -81,8 +81,97 @@ export function registerElement(
 // }
 
 // register built in elements
-registerElement('Label', () => require('@nativescript/core/ui/label').Label)
-registerElement(
-  'ContentView',
-  () => require('@nativescript/core/ui/content-view').ContentView
-)
+// prettier-ignore
+{
+    // layouts
+    registerElement(
+        'AbsoluteLayout',
+        () => require('@nativescript/core/ui/layouts/absolute-layout').AbsoluteLayout
+    )
+    registerElement(
+        'DockLayout',
+        () => require('@nativescript/core/ui/layouts/dock-layout').DockLayout
+    )
+    registerElement(
+        'FlexboxLayout',
+        () => require('@nativescript/core/ui/layouts/flexbox-layout').FlexboxLayout
+    )
+    registerElement(
+        'GridLayout',
+        () => require('@nativescript/core/ui/layouts/grid-layout').GridLayout
+    )
+    registerElement(
+        'StackLayout',
+        () => require('@nativescript/core/ui/layouts/stack-layout').StackLayout
+    )
+    registerElement(
+        'WrapLayout',
+        () => require('@nativescript/core/ui/layouts/wrap-layout').WrapLayout
+    )
+
+    // ContentViews
+    registerElement(
+        'ContentView',
+        () => require('@nativescript/core/ui/content-view').ContentView
+    )
+    registerElement(
+        'ScrollView',
+        () => require('@nativescript/core/ui/scroll-view').ScrollView
+    )
+
+    // ActionBar
+    registerElement(
+        'ActionBar',
+        () => require('@nativescript/core/ui/action-bar').ActionBar
+    )
+    registerElement(
+        'ActionItem',
+        () => require('@nativescript/core/ui/action-bar').ActionItem
+    )
+    registerElement(
+        'NavigationButton',
+        () => require('@nativescript/core/ui/action-bar').NavigationButton
+    )
+
+    // navigation
+    registerElement(
+        'Frame',
+        () => require('@nativescript/core/ui/frame').Frame
+    )
+    registerElement(
+        'Page',
+        () => require('@nativescript/core/ui/page').Page
+    )
+
+    // html
+    registerElement(
+        'HtmlView',
+        () => require('@nativescript/core/ui/html-view').HtmlView
+    )
+    registerElement(
+        'WebView',
+        () => require('@nativescript/core/ui/web-view').WebView
+    )
+
+    // components
+    registerElement(
+        'ActivityIndicator',
+        () => require('@nativescript/core/ui/activity-indicator').ActivityIndicator
+    )
+    registerElement(
+        'Button',
+        () => require('@nativescript/core/ui/button').Button
+    )
+    registerElement(
+        'DatePicker',
+        () => require('@nativescript/core/ui/date-picker').DatePicker
+    )
+    registerElement(
+        'Image',
+        () => require('@nativescript/core/ui/image').Image)
+    registerElement(
+        'Label',
+        () => require('@nativescript/core/ui/label').Label
+    )
+}
+// todo: more

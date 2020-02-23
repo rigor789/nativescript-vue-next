@@ -1,5 +1,5 @@
-console.log('BUILTINS')
-import { registerElement } from './index'
+// console.log('BUILTINS')
+// import { registerElement } from './index'
 
 // registerElement(
 //     'ActionBar',

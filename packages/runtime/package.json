@@ -9,6 +9,13 @@
     "dist"
   ],
   "types": "dist/runtime.d.ts",
+  "sideEffects": false,
+  "buildOptions" : {
+    "name": "NSVRuntime",
+    "formats": [
+      "esm-bundler"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nativescript-vue/nativescript-vue.git"

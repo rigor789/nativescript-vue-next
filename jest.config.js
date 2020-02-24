@@ -23,8 +23,7 @@ module.exports = {
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
-    '^@vue/(.*?)$': '<rootDir>/packages/$1/src',
-    vue: '<rootDir>/packages/vue/src'
+    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src'
   },
   rootDir: __dirname,
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],
@@ -32,5 +31,6 @@ module.exports = {
     ? // ignore example tests on netlify builds since they don't contribute
       // to coverage and can cause netlify builds to fail
       ['/node_modules/', '/examples/__tests__']
-    : ['/node_modules/']
+    : ['/node_modules/'],
+  setupFiles: ['<rootDir>/tests/jest.setup.js']
 }

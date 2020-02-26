@@ -50,5 +50,5 @@ jobs:
           key: workspace-${{ github.sha }}
 
       - name: test
-        run: yarn test --ci --runInBand
+        run: yarn test:ci --ci --runInBand
     needs: setup

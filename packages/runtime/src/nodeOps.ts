@@ -1,52 +1,56 @@
 import { RendererOptions } from '@vue/runtime-core'
 import {
+  INSVElement,
   INSVNode,
   NSVComment,
   NSVElement,
-  NSVNode,
   NSVRoot,
   NSVText
 } from './nodes'
 
 declare interface NSVNodeOps
-  extends Omit<RendererOptions<INSVNode, NSVElement>, 'patchProp'> {
-  createRoot(): NSVNode
+  extends Omit<RendererOptions<INSVNode, INSVElement>, 'patchProp'> {
+  createRoot(): NSVRoot
 }
 
 export const nodeOps: NSVNodeOps = {
-  createRoot(): NSVNode {
+  createRoot() {
     return new NSVRoot()
   },
-  createComment(text: string): INSVNode {
+  createComment(text) {
     return new NSVComment(text)
   },
-  createElement(type: string, isSVG?: boolean): NSVElement {
+  createElement(type, isSVG) {
     return new NSVElement(type)
   },
-  createText(text: string): INSVNode {
+  createText(text) {
     return new NSVText(text)
   },
-  nextSibling(node: INSVNode): INSVNode | null {
+  nextSibling(node) {
     return node.nextSibling
   },
-  parentNode(node: INSVNode): NSVElement | null {
+  parentNode(node) {
     return node.parentNode
   },
-  insert(el: INSVNode, parent: NSVElement, anchor?: INSVNode | null): void {
-    parent.insert(el, anchor)
+  insert(child, parent, anchor) {
+    if (anchor !== null) {
+      parent.insertBefore(child, anchor)
+    } else {
+      parent.appendChild(child)
+    }
   },
-  remove(el: INSVNode): void {
+  remove(el) {
     if (el.parentNode != null) {
       el.parentNode.removeChild(el)
     }
   },
-  setElementText(node: NSVElement, text: string): void {
+  setElementText(node, text) {
     node.text = text
   },
-  setText(node: INSVNode, text: string): void {
+  setText(node, text) {
     node.text = text
   },
-  setScopeId(el: NSVElement, id: string): void {
-    el.nativeView.set(id, '')
+  setScopeId(el, id) {
+    el.setAttribute(id, '')
   }
 }

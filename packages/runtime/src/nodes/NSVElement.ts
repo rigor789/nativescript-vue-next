@@ -19,23 +19,31 @@ export const enum NSVNodeTypes {
 export interface INSVNode {
   nodeType: NSVNodeTypes
   text: string
-  parentNode: NSVElement | null
+
+  parentNode: INSVElement | null
+
   childNodes: INSVNode[]
-  prevSibling: INSVNode | null
-  nextSibling: INSVNode | null
   firstChild: INSVNode | null
   lastChild: INSVNode | null
-  insertBefore: Function
-  appendChild: Function
-  removeChild: Function
+  prevSibling: INSVNode | null
+  nextSibling: INSVNode | null
 }
 
-export interface INSVElement {
+export interface INSVElement extends INSVNode {
   tagName: string
   meta: NSVViewMeta
+
   addEventListener(event: string, handler: any): void
+
   removeEventListener(event: string, handler?: any): void
+
   nativeView: ViewBase & { [ELEMENT_REF]: INSVElement }
+
+  setAttribute(name: string, value: any): void
+
+  insertBefore(el: INSVNode, anchor?: INSVNode | null): void
+  appendChild(el: INSVNode): void
+  removeChild(el: INSVNode): void
 }
 
 export abstract class NSVNode implements INSVNode {
@@ -46,13 +54,8 @@ export abstract class NSVNode implements INSVNode {
   nodeType: NSVNodeTypes
   text: string
 
-  parentNode: NSVElement | null
+  parentNode: INSVElement | null
   childNodes: INSVNode[] = []
-
-  // todo: specify proper types
-  insertBefore: Function
-  appendChild: Function
-  removeChild: Function
 
   nextSibling: INSVNode | null
   prevSibling: INSVNode | null
@@ -118,18 +121,18 @@ export class NSVElement extends NSVNode implements INSVElement {
     this.nativeView.off(event)
   }
 
-  insert(el: INSVNode, anchor?: INSVNode | null) {
-    // if (isLayout(this.nativeView)) {
-    //   ;(this.nativeView as LayoutBase).addChild(el.nativeView as View)
-    // } else if (isContentView(this.nativeView)) {
-    //   this.nativeView.content = el.nativeView
-    // } else if (this.nativeView._addChildFromBuilder) {
-    //   this.nativeView._addChildFromBuilder(
-    //       el.nativeView.constructor.name,
-    //       el.nativeView
-    //   )
-    // }
+  setAttribute(name: string, value: any): void {
+    this.nativeView.set(name, value)
   }
+
+  insertBefore(el: INSVNode, anchor?: INSVNode | null) {}
+
+  appendChild(el: INSVNode) {
+    this.childNodes.push(el)
+    el.parentNode = this
+  }
+
+  removeChild(el: INSVNode) {}
 }
 
 export class NSVComment extends NSVNode {

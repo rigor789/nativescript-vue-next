@@ -168,7 +168,8 @@ export function registerElement(
     )
     registerElement(
         'Image',
-        () => require('@nativescript/core/ui/image').Image)
+        () => require('@nativescript/core/ui/image').Image
+    )
     registerElement(
         'Label',
         () => require('@nativescript/core/ui/label').Label

@@ -1,5 +1,5 @@
 import { isAndroid, isIOS } from '@nativescript/core/platform'
-import { NSVViewNode } from './nodes'
+import { NSVElement } from './nodes'
 import { isOn } from '@vue/shared'
 import set = Reflect.set
 import { patchEvent } from './modules/events'
@@ -13,7 +13,7 @@ import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 // ])
 
 export function patchProp(
-  el: NSVViewNode,
+  el: NSVElement,
   key: string,
   nextValue: any,
   prevValue: any

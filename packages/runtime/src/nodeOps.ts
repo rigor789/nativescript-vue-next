@@ -1,73 +1,52 @@
 import { RendererOptions } from '@vue/runtime-core'
 import {
-  isContentView,
-  isLayout,
+  INSVNode,
+  NSVComment,
   NSVElement,
-  NSVNodeTypes,
-  NSVViewNode
+  NSVNode,
+  NSVRoot,
+  NSVText
 } from './nodes'
-import { LayoutBase, View } from '@nativescript/core'
-
-declare type HostElement = NSVElement
-declare type HostNode = NSVViewNode
 
 declare interface NSVNodeOps
-  extends Omit<RendererOptions<HostNode, HostElement>, 'patchProp'> {
-  createRoot(): HostNode
+  extends Omit<RendererOptions<INSVNode, NSVElement>, 'patchProp'> {
+  createRoot(): NSVNode
 }
 
 export const nodeOps: NSVNodeOps = {
-  createRoot(): HostNode {
-    return new NSVElement('root', NSVNodeTypes.ROOT)
+  createRoot(): NSVNode {
+    return new NSVRoot()
   },
-  createComment(text: string): HostNode {
-    return new NSVElement(text, NSVNodeTypes.COMMENT)
+  createComment(text: string): INSVNode {
+    return new NSVComment(text)
   },
-  createElement(type: string, isSVG?: boolean): HostElement {
-    return new NSVElement(type, NSVNodeTypes.ELEMENT)
+  createElement(type: string, isSVG?: boolean): NSVElement {
+    return new NSVElement(type)
   },
-  createText(text: string): HostNode {
-    return new NSVElement(text, NSVNodeTypes.TEXT)
+  createText(text: string): INSVNode {
+    return new NSVText(text)
   },
-  nextSibling(node: HostNode): HostNode | null {
+  nextSibling(node: INSVNode): INSVNode | null {
     return node.nextSibling
   },
-  parentNode(node: HostNode): HostElement | null {
+  parentNode(node: INSVNode): NSVElement | null {
     return node.parentNode
   },
-  insert(el: HostNode, parent: HostElement, anchor?: HostNode | null): void {
-    if (el.meta.skipAddToDom) return
-
-    if (parent.nativeView == null) return
-
-    if (anchor != null) {
-      // todo
-    }
-
-    console.log('insert!')
-    if (isLayout(parent.nativeView)) {
-      ;(parent.nativeView as LayoutBase).addChild(el.nativeView as View)
-    } else if (isContentView(parent.nativeView)) {
-      parent.nativeView.content = el.nativeView
-    } else if (parent.nativeView._addChildFromBuilder) {
-      parent.nativeView._addChildFromBuilder(
-        el.nativeView.constructor.name,
-        el.nativeView
-      )
-    }
+  insert(el: INSVNode, parent: NSVElement, anchor?: INSVNode | null): void {
+    parent.insert(el, anchor)
   },
-  remove(el: HostNode): void {
+  remove(el: INSVNode): void {
     if (el.parentNode != null) {
       el.parentNode.removeChild(el)
     }
   },
-  setElementText(node: HostElement, text: string): void {
+  setElementText(node: NSVElement, text: string): void {
     node.text = text
   },
-  setText(node: HostNode, text: string): void {
+  setText(node: INSVNode, text: string): void {
     node.text = text
   },
-  setScopeId(el: HostElement, id: string): void {
-    el.nativeView[id] = ''
+  setScopeId(el: NSVElement, id: string): void {
+    el.nativeView.set(id, '')
   }
 }

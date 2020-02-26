@@ -8,7 +8,7 @@ import {
 import { run } from '@nativescript/core/application'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-import { NSVElement, NSVViewNode } from './nodes'
+import { NSVElement, NSVNode } from './nodes'
 import './registry'
 
 const rendererOptions = {
@@ -35,7 +35,7 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
 
 export const render = ((...args) => {
   ensureRenderer().render(...args)
-}) as RootRenderFunction<NSVViewNode, NSVElement>
+}) as RootRenderFunction<NSVNode, NSVElement>
 
 export const createApp = ((...args) => {
   const app = ensureRenderer().createApp(...args)

@@ -31,8 +31,11 @@ export interface INSVNode {
 }
 
 export interface INSVElement {
+  tagName: string
+  meta: NSVViewMeta
   addEventListener(event: string, handler: any): void
   removeEventListener(event: string, handler?: any): void
+  nativeView: ViewBase & { [ELEMENT_REF]: INSVElement }
 }
 
 export abstract class NSVNode implements INSVNode {
@@ -87,7 +90,7 @@ export class NSVElement extends NSVNode implements INSVElement {
     return this._tagName
   }
 
-  get nativeView(): ViewBase {
+  get nativeView() {
     return this._nativeView
   }
 
@@ -99,7 +102,7 @@ export class NSVElement extends NSVNode implements INSVElement {
     this._nativeView = view
   }
 
-  get meta(): NSVViewMeta {
+  get meta() {
     if (this._meta) {
       return this._meta
     }

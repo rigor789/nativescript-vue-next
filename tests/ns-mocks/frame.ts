@@ -1,6 +1,6 @@
-const NSComponent = require('./base')
+import { NSView } from './base'
 
-let frameStack = []
+let frameStack: Frame[] = []
 
 const topmostFrame = () => {
   if (frameStack.length > 0) {
@@ -9,6 +9,9 @@ const topmostFrame = () => {
 
   return undefined
 }
+
+/*
+// TODO: Complete
 
 const pushInFrameStack = frame => {
   if (frame._isInFrameStack && frameStack[frameStack.length - 1] === frame) {
@@ -22,18 +25,19 @@ const pushInFrameStack = frame => {
 
   frameStack.push(frame)
   frame._isInFrameStack = true
-}
+}*/
 
-const getFrameById = id => {
+const getFrameById = (id: string) => {
   // TODO: Implement
   return topmostFrame()
 }
 
-class Frame extends NSComponent {}
+export class Frame extends NSView {
+  topmost() {
+    return topmostFrame()
+  }
 
-Frame.topmost = () => topmostFrame()
-Frame.getFrameById = id => getFrameById(id)
-
-module.exports = {
-  Frame
+  getFrameById(id: string) {
+    return getFrameById(id)
+  }
 }

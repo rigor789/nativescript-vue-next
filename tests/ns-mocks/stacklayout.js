@@ -1,6 +1,6 @@
-const NSComponent = require('./base')
+const NSView = require('./base')
 
-class StackLayout extends NSComponent {}
+class StackLayout extends NSView {}
 
 module.exports = {
   StackLayout

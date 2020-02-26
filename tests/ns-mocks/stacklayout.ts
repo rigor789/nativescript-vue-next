@@ -1,5 +1,5 @@
 import { NSView } from './base'
 
-export class ProxyViewContainer extends NSView {
+export class StackLayout extends NSView {
   // TODO: Complete mocking signature
 }

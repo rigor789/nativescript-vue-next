@@ -42,6 +42,12 @@ $ tns run android  # or
 $ tns run ios
 ```
 
+# Executing unit tests
+
+```bash
+$ yarn test
+```
+
 # Project Structure
 
 - `apps`: Sample {N} applications for testing

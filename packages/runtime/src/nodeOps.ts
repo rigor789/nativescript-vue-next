@@ -6,7 +6,7 @@ import {
   NSVNodeTypes,
   NSVViewNode
 } from './nodes'
-import { ContentView, LayoutBase, View } from '@nativescript/core'
+import { LayoutBase, View } from '@nativescript/core'
 
 declare type HostElement = NSVElement
 declare type HostNode = NSVViewNode

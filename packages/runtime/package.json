@@ -13,7 +13,8 @@
   "buildOptions" : {
     "name": "NSVRuntime",
     "formats": [
-      "esm-bundler"
+      "esm-bundler",
+      "cjs"
     ]
   },
   "repository": {

@@ -13,7 +13,7 @@ module.exports = {
     __FEATURE_SUSPENSE__: true
   },
   coverageDirectory: 'coverage',
-  coverageReporters: ['html', 'lcov', 'text'],
+  coverageReporters: ['html', 'lcov', 'text', 'json-summary'],
   collectCoverageFrom: [
     'packages/*/src/**/*.ts',
     '!packages/runtime-test/src/utils/**',

@@ -50,5 +50,14 @@ jobs:
           key: workspace-${{ github.sha }}
 
       - name: test
-        run: yarn test:ci --ci --runInBand
+        run: yarn test:ci --ci --runInBand --coverage
+      
+      - name: coverage
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=coverage
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  
     needs: setup

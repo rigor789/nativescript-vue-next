@@ -1,8 +1,8 @@
-import { NSVViewNode } from '../nodes'
+import { INSVElement } from '../nodes'
 import { ComponentInternalInstance } from '@vue/runtime-core'
 
 export function patchEvent(
-  el: NSVViewNode,
+  el: INSVElement,
   name: string,
   prevValue: any,
   nextValue: any,

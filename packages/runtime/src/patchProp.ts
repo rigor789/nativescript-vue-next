@@ -1,10 +1,10 @@
 import { isAndroid, isIOS } from '@nativescript/core/platform'
-import { NSVViewNode } from './nodes'
+import { INSVElement } from './nodes'
 import { isOn } from '@vue/shared'
-import set = Reflect.set
 import { patchEvent } from './modules/events'
 import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 
+// import * as set from 'set-value'
 // const XML_ATTRIBUTES = Object.freeze([
 //     'style',
 //     'rows',
@@ -13,7 +13,7 @@ import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 // ])
 
 export function patchProp(
-  el: NSVViewNode,
+  el: INSVElement,
   key: string,
   nextValue: any,
   prevValue: any
@@ -38,11 +38,11 @@ export function patchProp(
       if (isOn(key)) {
         patchEvent(el, key.substr(2).toLowerCase(), prevValue, nextValue)
       } else if (isAndroidKey(key) && isAndroid) {
-        set(el.nativeView, key.substr(8), nextValue)
+        el.setAttribute(key.substr(8), nextValue)
       } else if (isIOSKey(key) && isIOS) {
-        set(el.nativeView, key.substr(4), nextValue)
+        el.setAttribute(key.substr(4), nextValue)
       } else {
-        set(el.nativeView, key, nextValue)
+        el.setAttribute(key, nextValue)
       }
   }
 }

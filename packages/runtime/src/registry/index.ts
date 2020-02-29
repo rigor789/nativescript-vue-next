@@ -84,44 +84,44 @@ export function registerElement(
   registerElement(
     'AbsoluteLayout',
     () => require('@nativescript/core/ui/layouts/absolute-layout').AbsoluteLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'DockLayout',
     () => require('@nativescript/core/ui/layouts/dock-layout').DockLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'FlexboxLayout',
     () => require('@nativescript/core/ui/layouts/flexbox-layout').FlexboxLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'GridLayout',
     () => require('@nativescript/core/ui/layouts/grid-layout').GridLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'StackLayout',
     () => require('@nativescript/core/ui/layouts/stack-layout').StackLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'WrapLayout',
     () => require('@nativescript/core/ui/layouts/wrap-layout').WrapLayout,
-    {viewFlags: NSVViewFlags.LAYOUT_VIEW}
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
 
   // ContentViews
   registerElement(
     'ContentView',
     () => require('@nativescript/core/ui/content-view').ContentView,
-    {viewFlags: NSVViewFlags.CONTENT_VIEW}
+    { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
   registerElement(
     'ScrollView',
     () => require('@nativescript/core/ui/scroll-view').ScrollView,
-    {viewFlags: NSVViewFlags.CONTENT_VIEW}
+    { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
 
   // ActionBar
@@ -146,7 +146,7 @@ export function registerElement(
   registerElement(
     'Page',
     () => require('@nativescript/core/ui/page').Page,
-    {viewFlags: NSVViewFlags.CONTENT_VIEW}
+    { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
 
   // html

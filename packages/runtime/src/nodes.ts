@@ -170,7 +170,7 @@ export class NSVElement extends NSVNode implements INSVElement {
       .findIndex(node => node.nodeId === el.nodeId)
 
     if (el.nodeType === NSVNodeTypes.ELEMENT) {
-      addChild(el, this, trueIndex)
+      addChild(el as NSVElement, this, trueIndex)
     }
   }
 
@@ -179,7 +179,7 @@ export class NSVElement extends NSVNode implements INSVElement {
     el.parentNode = this
 
     if (el.nodeType === NSVNodeTypes.ELEMENT) {
-      addChild(el, this)
+      addChild(el as NSVElement, this)
     }
   }
 
@@ -190,7 +190,7 @@ export class NSVElement extends NSVNode implements INSVElement {
       this.childNodes.splice(index, 1)
       el.parentNode = null
       if (el.nodeType === NSVNodeTypes.ELEMENT) {
-        removeChild(el, this)
+        removeChild(el as NSVElement, this)
       }
     }
   }

@@ -26,6 +26,11 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   console.log('->runApp')
   run({
     create: () => {
+      console.log({
+        id: root.$el.nodeId,
+        type: root.$el.nodeType,
+        tag: root.$el.tagName
+      })
       return root.$el.nativeView
     }
   })

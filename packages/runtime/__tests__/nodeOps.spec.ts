@@ -41,6 +41,15 @@ describe('createElement', () => {
     expect(root.firstChild).toBe(child)
     expect(root.lastChild).toBe(child)
   })
-
+  test('NSVElement - insertBefore', () => {
+    const root = nodeOps.createElement('ContentView')
+    const child = nodeOps.createElement('Label')
+    expect(root.childNodes.length).toBe(0)
+    root.insertBefore(child, null)
+    expect(root.childNodes.length).toBe(1)
+    expect(child.parentNode).toBe(root)
+    expect(root.firstChild).toBe(child)
+    expect(root.lastChild).toBe(child)
+  })
   // TODO: Complete
 })

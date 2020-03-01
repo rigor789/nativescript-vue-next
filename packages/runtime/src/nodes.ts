@@ -74,11 +74,11 @@ export abstract class NSVNode implements INSVNode {
   nodeType: NSVNodeTypes
   text: string
 
-  parentNode: INSVElement | null
+  parentNode: INSVElement | null = null
   childNodes: INSVNode[] = []
 
-  nextSibling: INSVNode | null
-  prevSibling: INSVNode | null
+  nextSibling: INSVNode | null = null
+  prevSibling: INSVNode | null = null
 
   get firstChild() {
     return this.childNodes.length ? this.childNodes[0] : null

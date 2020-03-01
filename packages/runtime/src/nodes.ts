@@ -92,21 +92,17 @@ export abstract class NSVNode implements INSVNode {
 }
 
 export class NSVElement extends NSVNode implements INSVElement {
-  private _tagName: string
-  private _nativeView: any
+  private readonly _tagName: string
+  private readonly _nativeView: any
   private _meta: NSVViewMeta
 
   constructor(tagName: string) {
     super(NSVNodeTypes.ELEMENT)
 
-    this._tagName = tagName
+    this._tagName = normalizeElementName(tagName)
     const viewClass = getViewClass(tagName)
     this._nativeView = new viewClass()
     this._nativeView[ELEMENT_REF] = this
-  }
-
-  set tagName(name) {
-    this._tagName = normalizeElementName(name)
   }
 
   get tagName(): string {
@@ -115,14 +111,6 @@ export class NSVElement extends NSVNode implements INSVElement {
 
   get nativeView() {
     return this._nativeView
-  }
-
-  set nativeView(view) {
-    if (this._nativeView) {
-      throw new Error(`Can't override native view.`)
-    }
-
-    this._nativeView = view
   }
 
   get meta() {

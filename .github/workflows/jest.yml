@@ -26,6 +26,9 @@ jobs:
       - name: install
         run: yarn --check-files --frozen-lockfile --non-interactive
 
+      - name: install-netlify
+        run: yarn global add netlify-cli --non-interactive
+
       - name: cache workspace
         uses: actions/cache@v1
         with:
@@ -53,7 +56,7 @@ jobs:
         run: yarn test:ci
 
       - name: coverage
-        run: yarn global add netlify-cli && netlify deploy --dir=coverage --prod
+        run: netlify deploy --dir=coverage --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

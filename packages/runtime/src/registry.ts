@@ -1,6 +1,6 @@
 import { Component } from '@nativescript-vue/runtime'
 import { ViewBase } from '@nativescript/core'
-import { NSVViewFlags } from '../nodes'
+import { NSVViewFlags } from './nodes'
 
 export type NSVElementResolver = () => ViewBase
 

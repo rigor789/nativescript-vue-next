@@ -25,7 +25,8 @@ export const enum NSVViewFlags {
   NONE = 0,
   SKIP_ADD_TO_DOM = 1 << 0,
   CONTENT_VIEW = 1 << 1,
-  LAYOUT_VIEW = 1 << 2
+  LAYOUT_VIEW = 1 << 2,
+  NO_CHILDREN = 1 << 3
 }
 
 export interface INSVNode {
@@ -164,7 +165,10 @@ export class NSVElement extends NSVNode implements INSVElement {
     this.childNodes.splice(refIndex, 0, el)
     el.parentNode = this
 
-    // find index to use for the native view, since non-visual nodes (comment/text don't exist in the native view hierarchy)
+    // find index to use for the native view, since non-visual nodes
+    // (comment/text don't exist in the native view hierarchy)
+    // todo: potentially refactor based on my benchmark:
+    // https://www.measurethat.net/Benchmarks/Show/7450/0/filter-findindex
     const trueIndex = this.childNodes
       .filter(node => node.nodeType === NSVNodeTypes.ELEMENT)
       .findIndex(node => node.nodeId === el.nodeId)
@@ -223,7 +227,12 @@ export class NSVRoot extends NSVNode {
 }
 
 function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
-  console.log(`...addChild(${child.tagName}, ${parent.tagName}, ${atIndex})`)
+  if (__TEST__) return
+  console.log(
+    `...addChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
+      parent.nodeId
+    }), ${atIndex}  )`
+  )
   if (child.meta.viewFlags & NSVViewFlags.SKIP_ADD_TO_DOM) {
     console.log('SKIP_ADD_TO_DOM')
     return
@@ -232,20 +241,41 @@ function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
   const parentView = parent.nativeView
   const childView = child.nativeView
 
+  if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
+    // todo: REMOVE this call
+    // @ts-ignore
+    parentView.navigate({ create: () => childView })
+    console.log('NO_CHILDREN')
+    return
+  }
+
   if (parent.meta.viewFlags & NSVViewFlags.LAYOUT_VIEW) {
     if (atIndex) {
       parentView.insertChild(childView, atIndex)
     } else {
       parentView.addChild(childView)
     }
+  } else if (parent.meta.viewFlags & NSVViewFlags.CONTENT_VIEW) {
+    parentView.content = childView
+  } else {
+    parentView._addChildFromBuilder(childView.constructor.name, childView)
   }
 }
 
 function removeChild(child: NSVElement, parent: NSVElement) {
-  console.log(`...removeChild(${child.tagName}, ${parent.tagName})`)
+  if (__TEST__) return
+  console.log(
+    `...removeChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
+      parent.nodeId
+    })  )`
+  )
 
   if (child.meta.viewFlags & NSVViewFlags.SKIP_ADD_TO_DOM) {
     console.log('SKIP_ADD_TO_DOM')
+    return
+  }
+  if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
+    console.log('NO_CHILDREN')
     return
   }
 
@@ -254,5 +284,9 @@ function removeChild(child: NSVElement, parent: NSVElement) {
 
   if (parent.meta.viewFlags & NSVViewFlags.LAYOUT_VIEW) {
     parentView.removeChild(childView)
+  } else if (parent.meta.viewFlags & NSVViewFlags.CONTENT_VIEW) {
+    parentView.content = null
+  } else {
+    parentView._removeView(childView)
   }
 }

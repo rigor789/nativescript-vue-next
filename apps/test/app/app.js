@@ -38,21 +38,36 @@ const app = createApp({
                 // ['Hello World: ' + this.counter]
             )
 
-        return h(
-            'GridLayout',
-            {
-                rows: '*, *',
-                columns: '*, *'
-            },
-            [
-                // label(0, 0),
-                this.p === 0 ? null : label(0, 0),
-                //'text node?',
-                this.p === 1 ? null : label(0, 1),
-                this.p === 2 ? null : label(1, 0),
-                this.p === 3 ? null : label(1, 1)
-            ]
-        )
+        const content = () =>
+            h(
+                'GridLayout',
+                {
+                    rows: '*, *',
+                    columns: '*, *'
+                },
+                [
+                    // label(0, 0),
+                    this.p === 0 ? null : label(0, 0),
+                    //'text node?',
+                    this.p === 1 ? null : label(0, 1),
+                    this.p === 2 ? null : label(1, 0),
+                    this.p === 3 ? null : label(1, 1)
+                ]
+            )
+        return h('Frame', [
+            h('Page', [
+                h(
+                    'GridLayout',
+                    {
+                        rows: '*, *'
+                    },
+                    [
+                        h('ContentView', [content()]),
+                        h('ContentView', { row: 1 }, [content()])
+                    ]
+                )
+            ])
+        ])
     },
     setup() {
         const counter = ref(0)
@@ -63,7 +78,7 @@ const app = createApp({
             if (p.value > 3) {
                 p.value = 0
             }
-        }, 200)
+        }, 1000)
 
         onMounted(() => {
             setTimeout(() => {

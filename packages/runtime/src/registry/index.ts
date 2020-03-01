@@ -44,6 +44,9 @@ export function getViewClass(elementName: string): any {
   }
 
   try {
+    if (__TEST__) {
+      // todo: perhaps return a mock here?
+    }
     return entry.resolver!()
   } catch (e) {
     throw new Error(`Could not load view for: ${elementName}. ${e}`)
@@ -141,7 +144,8 @@ export function registerElement(
   // navigation
   registerElement(
     'Frame',
-    () => require('@nativescript/core/ui/frame').Frame
+    () => require('@nativescript/core/ui/frame').Frame,
+    { viewFlags: NSVViewFlags.NO_CHILDREN }
   )
   registerElement(
     'Page',

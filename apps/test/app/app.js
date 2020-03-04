@@ -32,6 +32,7 @@ const app = createApp({
                     text: 'Hello World: ' + this.counter,
                     textAlignment: 'center',
                     verticalAlignment: 'middle',
+                    class: this.labelClass,
                     row,
                     col
                 }
@@ -55,26 +56,34 @@ const app = createApp({
                 ]
             )
         return h('Frame', [
-            h('Page', [
-                h(
-                    'GridLayout',
-                    {
-                        rows: '*, *'
-                    },
-                    [
-                        h('ContentView', [content()]),
-                        h('ContentView', { row: 1 }, [content()])
-                    ]
-                )
-            ])
+            h(
+                'Page',
+                {
+                    css: '.red { color: red }, .green { color: green }'
+                },
+                [
+                    h(
+                        'GridLayout',
+                        {
+                            rows: '*, *'
+                        },
+                        [
+                            h('ContentView', [content()]),
+                            h('ContentView', { row: 1 }, [content()])
+                        ]
+                    )
+                ]
+            )
         ])
     },
     setup() {
         const counter = ref(0)
         const p = ref(0)
+        const labelClass = ref('red')
         useInterval(() => {
             counter.value++
             p.value++
+            labelClass.value = labelClass.value === 'red' ? 'green' : 'red'
             if (p.value > 3) {
                 p.value = 0
             }
@@ -87,7 +96,8 @@ const app = createApp({
         })
         return {
             counter,
-            p
+            p,
+            labelClass
         }
     }
 }).mount()

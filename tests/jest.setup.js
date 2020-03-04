@@ -78,7 +78,7 @@ jest.mock(
 )
 
 jest.mock(
-  '@nativescript/core/ui/stacklayout',
+  '@nativescript/core/ui/layouts/stack-layout',
   () => require('./ns-mocks/stacklayout'),
   { virtual: true }
 )

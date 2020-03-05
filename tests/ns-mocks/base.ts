@@ -26,4 +26,8 @@ export class NSView {
   ) {
     delete this.eventListener[eventNames]
   }
+
+  public set(name: string, value: any) {
+    ;(this as any)[name] = value
+  }
 }

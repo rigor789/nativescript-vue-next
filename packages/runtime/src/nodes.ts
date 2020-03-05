@@ -53,6 +53,8 @@ export interface INSVElement extends INSVNode {
 
   nativeView: (ViewBase | LayoutBase) & { [ELEMENT_REF]: INSVElement }
 
+  getAttribute(name: string): string
+
   setAttribute(name: string, value: any): void
 
   insertBefore(el: INSVNode, anchor?: INSVNode | null): void
@@ -127,6 +129,10 @@ export class NSVElement extends NSVNode implements INSVElement {
 
   removeEventListener(event: string, handler?: any) {
     this.nativeView.removeEventListener(event, handler)
+  }
+
+  getAttribute(name: string): string {
+    return this.nativeView[name]
   }
 
   setAttribute(name: string, value: any) {

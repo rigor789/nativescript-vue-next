@@ -1,6 +1,7 @@
 import { isAndroid, isIOS } from '@nativescript/core/platform'
 import { INSVElement } from './nodes'
 import { isOn } from '@vue/shared'
+import { patchClass } from './modules/class'
 import { patchEvent } from './modules/events'
 import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 
@@ -23,11 +24,12 @@ export function patchProp(
   switch (key) {
     // special
     case 'class':
-      // todo
+      // TODO
       console.log('->patchProp+Class')
+      patchClass(el, nextValue)
       break
     case 'style':
-      // todo
+      // TODO
       console.log('->patchProp+Style')
       break
     case 'modelValue':

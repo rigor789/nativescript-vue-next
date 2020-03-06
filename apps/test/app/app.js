@@ -33,6 +33,7 @@ const app = createApp({
                     textAlignment: 'center',
                     verticalAlignment: 'middle',
                     class: this.labelClass,
+                    style: this.inlineStyle,
                     row,
                     col
                 }
@@ -80,10 +81,15 @@ const app = createApp({
         const counter = ref(0)
         const p = ref(0)
         const labelClass = ref('red')
+        const inlineStyle = ref('font-size: 10')
         useInterval(() => {
             counter.value++
             p.value++
             labelClass.value = labelClass.value === 'red' ? 'green' : 'red'
+            inlineStyle.value =
+                inlineStyle.value == 'font-size: 10'
+                    ? 'font-size: 20'
+                    : 'font-size: 10'
             if (p.value > 3) {
                 p.value = 0
             }
@@ -97,7 +103,8 @@ const app = createApp({
         return {
             counter,
             p,
-            labelClass
+            labelClass,
+            inlineStyle
         }
     }
 }).mount()

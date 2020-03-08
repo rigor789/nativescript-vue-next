@@ -1,25 +1,28 @@
-import { isString } from '@vue/shared'
+import { unsetValue } from '@nativescript/core/ui/core/view'
+import { fromAstNodes } from '@nativescript/core/ui/styling/css-selector'
+import { SyntaxTree } from '@nativescript/core/css'
+import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
 
 import { INSVElement } from '../nodes'
 
-// TODO: Check if we can get rid of the CSSStyleDeclaration part
-type Style = string | Partial<CSSStyleDeclaration> | null
+type Style = string | null
 
 export function patchStyle(el: INSVElement, prev: Style, next: Style) {
   if (!next) {
     el.removeAttribute('style')
-  } else if (isString(next)) {
-    el.style = next
   } else {
-    for (const key in next) {
-      el.setStyle(key, next[key] as string)
+    if (prev) {
+      // reset previous styles
+      let localStyle = `local { ${prev} }`
+      let ast: SyntaxTree = cssTreeParse(localStyle, undefined)
+      const rulesets = fromAstNodes(ast.stylesheet.rules)
+
+      rulesets[0].declarations.forEach(d => {
+        let property = d.property as string
+        ;(el.nativeView.style as any)[property] = unsetValue
+      })
     }
-    if (prev && !isString(prev)) {
-      for (const key in prev) {
-        if (!next[key]) {
-          el.setStyle(key, '')
-        }
-      }
-    }
+    // set new styles
+    el.style = next
   }
 }

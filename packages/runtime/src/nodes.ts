@@ -6,6 +6,7 @@ import {
 } from './registry'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
 import { ViewBase } from '@nativescript/core/ui'
+import { Style } from '@nativescript/core/ui/core/properties'
 import { LayoutBase } from '@nativescript/core/ui/layouts'
 
 // import {isContentView, isLayout} from "./index";
@@ -46,6 +47,7 @@ export interface INSVNode {
 export interface INSVElement extends INSVNode {
   tagName: string
   meta: NSVViewMeta
+  style: Style | string
 
   addEventListener(event: string, handler: any): void
 
@@ -56,6 +58,8 @@ export interface INSVElement extends INSVNode {
   getAttribute(name: string): unknown
 
   setAttribute(name: string, value: unknown): void
+
+  removeAttribute(name: string): void
 
   insertBefore(el: INSVNode, anchor?: INSVNode | null): void
 
@@ -115,6 +119,14 @@ export class NSVElement extends NSVNode implements INSVElement {
     return this._nativeView
   }
 
+  get style(): Style | string {
+    return this.nativeView.style
+  }
+
+  set style(inlineStyle: Style | string) {
+    this.nativeView.style = inlineStyle
+  }
+
   get meta() {
     if (this._meta) {
       return this._meta
@@ -137,6 +149,10 @@ export class NSVElement extends NSVNode implements INSVElement {
 
   setAttribute(name: string, value: unknown) {
     this.nativeView.set(name, value)
+  }
+
+  removeAttribute(name: string) {
+    delete this.nativeView[name]
   }
 
   insertBefore(el: INSVNode, anchor?: INSVNode | null) {

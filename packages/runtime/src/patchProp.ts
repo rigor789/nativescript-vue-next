@@ -3,6 +3,7 @@ import { INSVElement } from './nodes'
 import { isOn } from '@vue/shared'
 import { patchClass } from './modules/class'
 import { patchEvent } from './modules/events'
+import { patchStyle } from './modules/style'
 import { isAndroidKey, isIOSKey } from './runtimeHelpers'
 
 // import * as set from 'set-value'
@@ -24,13 +25,12 @@ export function patchProp(
   switch (key) {
     // special
     case 'class':
-      // TODO
       console.log('->patchProp+Class')
       patchClass(el, nextValue)
       break
     case 'style':
-      // TODO
       console.log('->patchProp+Style')
+      patchStyle(el, prevValue, nextValue)
       break
     case 'modelValue':
     case 'onUpdate:modelValue':

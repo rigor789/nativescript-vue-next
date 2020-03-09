@@ -33,6 +33,7 @@ const app = createApp({
                     textAlignment: 'center',
                     verticalAlignment: 'middle',
                     class: this.labelClass,
+                    style: this.inlineStyle,
                     row,
                     col
                 }
@@ -80,14 +81,18 @@ const app = createApp({
         const counter = ref(0)
         const p = ref(0)
         const labelClass = ref('red')
+        const style1 = 'font-size: 14'
+        const style2 = 'font-size: 20; text-decoration: underline'
+        const inlineStyle = ref(style1)
         useInterval(() => {
             counter.value++
             p.value++
             labelClass.value = labelClass.value === 'red' ? 'green' : 'red'
+            inlineStyle.value = inlineStyle.value == style1 ? style2 : style1
             if (p.value > 3) {
                 p.value = 0
             }
-        }, 1000)
+        }, 2000)
 
         onMounted(() => {
             setTimeout(() => {
@@ -97,7 +102,8 @@ const app = createApp({
         return {
             counter,
             p,
-            labelClass
+            labelClass,
+            inlineStyle
         }
     }
 }).mount()

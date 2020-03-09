@@ -1,7 +1,8 @@
 import { unsetValue } from '@nativescript/core/ui/core/view'
 import { fromAstNodes } from '@nativescript/core/ui/styling/css-selector'
 import { SyntaxTree } from '@nativescript/core/css'
-import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
+// import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
+const { cssTreeParse } = require('@nativescript/core/css/css-tree-parser')
 
 import { INSVElement } from '../nodes'
 

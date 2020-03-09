@@ -66,8 +66,6 @@ export interface INSVElement extends INSVNode {
   appendChild(el: INSVNode): void
 
   removeChild(el: INSVNode): void
-
-  setStyle(property: string, value: string): void
 }
 
 let nodeId = 0
@@ -209,18 +207,6 @@ export class NSVElement extends NSVNode implements INSVElement {
         removeChild(el as NSVElement, this)
       }
     }
-  }
-
-  setStyle(property: string, value: string) {
-    if (!(value = value.trim()).length) {
-      return
-    }
-
-    if (property.endsWith('Align')) {
-      // NativeScript uses Alignment instead of Align, this ensures that text-align works
-      property += 'ment'
-    }
-    this.nativeView.style[property] = value
   }
 }
 

@@ -60,7 +60,7 @@ const app = createApp({
             h(
                 'Page',
                 {
-                    css: '.red { color: red }, .green { color: green }'
+                    css: '.red { color: #E53E3E; }, .green { color: #38A169; }'
                 },
                 [
                     h(

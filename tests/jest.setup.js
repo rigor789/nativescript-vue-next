@@ -82,3 +82,11 @@ jest.mock(
   () => require('./ns-mocks/stacklayout'),
   { virtual: true }
 )
+
+jest.mock(
+  '@nativescript/core/ui/styling/css-selector',
+  () => {
+    return {}
+  },
+  { virtual: true }
+)

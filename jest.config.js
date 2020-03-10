@@ -31,8 +31,8 @@ module.exports = {
   testPathIgnorePatterns: process.env.SKIP_E2E
     ? // ignore example tests on netlify builds since they don't contribute
       // to coverage and can cause netlify builds to fail
-      ['/node_modules/', '/examples/__tests__']
-    : ['/node_modules/'],
+      ['/node_modules/', '/packages/shared/__tests__', '/examples/__tests__']
+    : ['/node_modules/', '/packages/shared/__tests__'],
   setupFiles: ['<rootDir>/tests/jest.setup.js'],
   silent: true
 }

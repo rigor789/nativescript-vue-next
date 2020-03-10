@@ -55,4 +55,8 @@ export const createApp = ((...args) => {
 
 export * from './nodeOps'
 export * from './runtimeHelpers'
+
+// Runtime components
+export { ActionBar } from './components/ActionBar'
+
 export * from '@vue/runtime-core'

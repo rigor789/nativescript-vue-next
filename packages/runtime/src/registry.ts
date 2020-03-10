@@ -129,8 +129,9 @@ export function registerElement(
 
   // ActionBar
   registerElement(
-    'ActionBar',
-    () => require('@nativescript/core/ui/action-bar').ActionBar
+    'InternalActionBar',
+    () => require('@nativescript/core/ui/action-bar').ActionBar,
+    { viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM }
   )
   registerElement(
     'ActionItem',

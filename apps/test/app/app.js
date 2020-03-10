@@ -3,7 +3,8 @@ import {
     h,
     ref,
     onUnmounted,
-    onMounted
+    onMounted,
+    ActionBar
 } from '@nativescript-vue/runtime'
 
 function dumpViewTree(root) {
@@ -56,6 +57,7 @@ const app = createApp({
                     this.p === 3 ? null : label(1, 1)
                 ]
             )
+
         return h('Frame', [
             h(
                 'Page',
@@ -64,6 +66,20 @@ const app = createApp({
                 },
                 [
                     h(
+                        ActionBar,
+                        { title: 'ActionBar Text' },
+                        {
+                            default: () => [
+                                // this.toggler && h('ActionItem', {text: 'test1'}),
+                                h('ActionItem', { text: 'test2' })
+                                // h('ActionItem', {text: 'test3'}),
+                                // h('ActionItem', {text: 'test4'}),
+                                // h('ActionItem', {text: 'test5'}),
+                            ]
+                        }
+                    ),
+
+                    h(
                         'GridLayout',
                         {
                             rows: '*, *, auto'
@@ -71,15 +87,23 @@ const app = createApp({
                         [
                             h('ContentView', [content()]),
                             h('ContentView', { row: 1 }, [content()]),
-                            h('Label', { row: 2, style: 'font-size: 14;' }, [
-                                'Text nodes: ',
-                                this.counter,
-                                this.toggler ? ' ON' : ' OFF',
-                                ' | ',
-                                this.toggler.toString(),
-                                ' | ',
-                                this.toggler ? null : 'FALSE'
-                            ])
+                            h(
+                                'Label',
+                                {
+                                    row: 2,
+                                    style: 'font-size: 14;',
+                                    textWrap: true
+                                },
+                                [
+                                    'Text nodes: ',
+                                    this.counter,
+                                    this.toggler ? ' ON' : ' OFF',
+                                    ' | ',
+                                    this.toggler.toString(),
+                                    ' | ',
+                                    this.toggler ? null : '\nFALSE'
+                                ]
+                            )
                         ]
                     )
                 ]
@@ -93,7 +117,7 @@ const app = createApp({
         const style1 = 'font-size: 16; transform: rotate(45deg);'
         const style2 = 'font-size: 20; text-decoration: underline;'
         const inlineStyle = ref(style1)
-        const toggler = ref(false)
+        const toggler = ref(true)
         useInterval(() => {
             counter.value++
             p.value++

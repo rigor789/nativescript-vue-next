@@ -3,6 +3,7 @@ import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
 import json from '@rollup/plugin-json'
+import commonjs from '@rollup/plugin-commonjs'
 
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
@@ -136,6 +137,9 @@ function createConfig(format, output, plugins = []) {
         isGlobalBuild,
         isNodeBuild
       ),
+      commonjs({
+        include: ['node_modules/set-value/**', 'node_modules/unset-value/**']
+      }),
       ...plugins
     ],
     output,

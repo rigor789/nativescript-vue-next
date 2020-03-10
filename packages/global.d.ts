@@ -9,14 +9,13 @@ declare module '@nativescript/core/css/css-tree-parser' {
 }
 
 declare module 'set-value' {
-  export default function set(
-    target: any,
-    path: any,
-    value: any,
-    options?: any
-  ): void
+  function set(target: any, path: any, value: any, options?: any): void
+
+  export = set
 }
 
 declare module 'unset-value' {
-  export default function unset(target: any, path: any): void
+  function unset(target: any, path: any): void
+
+  export = unset
 }

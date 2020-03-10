@@ -2,23 +2,23 @@
   "nativescript": {
     "id": "org.nativescript.test",
     "tns-android": {
-      "version": "6.3.1"
+      "version": "6.4.1"
     },
     "tns-ios": {
-      "version": "6.3.0"
+      "version": "6.4.2"
     }
   },
   "description": "NativeScript Application",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "@nativescript/core": "6.4.1"
+    "@nativescript/core": "6.4.2"
   },
   "devDependencies": {
-    "@babel/core": "~7.1.0",
-    "@babel/preset-env": "~7.1.0",
-    "babel-loader": "~8.0.0",
-    "nativescript-dev-webpack": "~1.4.0"
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "babel-loader": "8.0.6",
+    "nativescript-dev-webpack": "1.5.1"
   },
   "gitHead": "fa98f785df3fba482e5e2a0c76f4be1fa6dc7a14",
   "readme": "NativeScript Application"

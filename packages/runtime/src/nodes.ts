@@ -183,18 +183,14 @@ export class NSVElement extends NSVNode implements INSVElement {
       .filter(node => node.nodeType === NSVNodeTypes.ELEMENT)
       .findIndex(node => node.nodeId === el.nodeId)
 
-    if (el.nodeType === NSVNodeTypes.ELEMENT) {
-      addChild(el as NSVElement, this, trueIndex)
-    }
+    this.addChild(el, trueIndex)
   }
 
   appendChild(el: INSVNode) {
     this.childNodes.push(el)
     el.parentNode = this
 
-    if (el.nodeType === NSVNodeTypes.ELEMENT) {
-      addChild(el as NSVElement, this)
-    }
+    this.addChild(el)
   }
 
   removeChild(el: INSVNode) {
@@ -205,8 +201,30 @@ export class NSVElement extends NSVNode implements INSVElement {
       el.parentNode = null
       if (el.nodeType === NSVNodeTypes.ELEMENT) {
         removeChild(el as NSVElement, this)
+      } else if (el.nodeType === NSVNodeTypes.TEXT) {
+        this.updateText()
       }
     }
+  }
+
+  // abstracted from appendChild, and insertBefore to avoid code duplication
+  private addChild(el: INSVNode, atIndex?: number): void {
+    if (el.nodeType === NSVNodeTypes.ELEMENT) {
+      addChild(el as NSVElement, this, atIndex)
+    } else if (el.nodeType === NSVNodeTypes.TEXT) {
+      this.updateText()
+    }
+  }
+
+  updateText() {
+    this.setAttribute(
+      'text',
+      this.childNodes
+        .filter(node => node.nodeType === NSVNodeTypes.TEXT)
+        .reduce((text: string, currentNode) => {
+          return text + currentNode.text
+        }, '')
+    )
   }
 }
 

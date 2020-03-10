@@ -66,11 +66,20 @@ const app = createApp({
                     h(
                         'GridLayout',
                         {
-                            rows: '*, *'
+                            rows: '*, *, auto'
                         },
                         [
                             h('ContentView', [content()]),
-                            h('ContentView', { row: 1 }, [content()])
+                            h('ContentView', { row: 1 }, [content()]),
+                            h('Label', { row: 2, style: 'font-size: 14;' }, [
+                                'Text nodes: ',
+                                this.counter,
+                                this.toggler ? ' ON' : ' OFF',
+                                ' | ',
+                                this.toggler.toString(),
+                                ' | ',
+                                this.toggler ? null : 'FALSE'
+                            ])
                         ]
                     )
                 ]
@@ -81,17 +90,20 @@ const app = createApp({
         const counter = ref(0)
         const p = ref(0)
         const labelClass = ref('red')
-        const style1 = 'font-size: 14'
-        const style2 = 'font-size: 20; text-decoration: underline'
+        const style1 = 'font-size: 16; transform: rotate(45deg);'
+        const style2 = 'font-size: 20; text-decoration: underline;'
         const inlineStyle = ref(style1)
+        const toggler = ref(false)
         useInterval(() => {
             counter.value++
             p.value++
             labelClass.value = labelClass.value === 'red' ? 'green' : 'red'
-            inlineStyle.value = inlineStyle.value == style1 ? style2 : style1
+            inlineStyle.value = inlineStyle.value === style1 ? style2 : style1
             if (p.value > 3) {
                 p.value = 0
             }
+
+            toggler.value = !toggler.value
         }, 2000)
 
         onMounted(() => {
@@ -103,7 +115,8 @@ const app = createApp({
             counter,
             p,
             labelClass,
-            inlineStyle
+            inlineStyle,
+            toggler
         }
     }
 }).mount()

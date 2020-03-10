@@ -8,6 +8,8 @@ import { ELEMENT_REF } from '@nativescript-vue/runtime'
 import { ViewBase } from '@nativescript/core/ui'
 import { Style } from '@nativescript/core/ui/core/properties'
 import { LayoutBase } from '@nativescript/core/ui/layouts'
+import set from 'set-value'
+import unset from 'unset-value'
 
 // import {isContentView, isLayout} from "./index";
 
@@ -148,11 +150,11 @@ export class NSVElement extends NSVNode implements INSVElement {
   }
 
   setAttribute(name: string, value: unknown) {
-    this.nativeView.set(name, value)
+    set(this.nativeView, name, value)
   }
 
   removeAttribute(name: string) {
-    delete this.nativeView[name]
+    unset(this.nativeView, name)
   }
 
   insertBefore(el: INSVNode, anchor?: INSVNode | null) {

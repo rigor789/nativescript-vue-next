@@ -33,7 +33,8 @@
   "dependencies": {
     "@vue/reactivity": "3.0.0-alpha.8",
     "@vue/runtime-core": "3.0.0-alpha.8",
-    "set-value": "3.0.1"
+    "set-value": "3.0.1",
+    "unset-value": "1.0.0"
   },
   "devDependencies": {
     "@nativescript/core": "^6.4.2"

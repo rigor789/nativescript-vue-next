@@ -7,3 +7,16 @@ declare var __TEST__: boolean
 declare module '@nativescript/core/css/css-tree-parser' {
   export function cssTreeParse(css: any, source: any): any
 }
+
+declare module 'set-value' {
+  export default function set(
+    target: any,
+    path: any,
+    value: any,
+    options?: any
+  ): void
+}
+
+declare module 'unset-value' {
+  export default function unset(target: any, path: any): void
+}

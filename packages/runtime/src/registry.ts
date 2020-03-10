@@ -1,12 +1,14 @@
-import { Component } from '@nativescript-vue/runtime'
 import { ViewBase } from '@nativescript/core'
-import { NSVViewFlags } from './nodes'
+import { NSVElement, NSVViewFlags } from './nodes'
 
 export type NSVElementResolver = () => ViewBase
 
 export interface NSVViewMeta {
-  component?: Component
   viewFlags: NSVViewFlags
+  nodeOps?: {
+    insert(child: NSVElement, parent: NSVElement, atIndex?: number): void
+    remove(child: NSVElement, parent: NSVElement): void
+  }
 }
 
 export interface NSVElementDescriptor {

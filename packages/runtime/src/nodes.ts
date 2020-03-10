@@ -276,6 +276,9 @@ function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
     console.log('NO_CHILDREN')
     return
   }
+  if (parent.meta.nodeOps) {
+    return parent.meta.nodeOps.insert(child, parent, atIndex)
+  }
 
   if (parent.meta.viewFlags & NSVViewFlags.LAYOUT_VIEW) {
     if (atIndex) {
@@ -305,6 +308,9 @@ function removeChild(child: NSVElement, parent: NSVElement) {
   if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
     console.log('NO_CHILDREN')
     return
+  }
+  if (parent.meta.nodeOps) {
+    return parent.meta.nodeOps.remove(child, parent)
   }
 
   const parentView = parent.nativeView

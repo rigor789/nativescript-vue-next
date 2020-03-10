@@ -1,5 +1,6 @@
 import { ViewBase } from '@nativescript/core'
 import { NSVElement, NSVViewFlags } from './nodes'
+import { actionBarNodeOps } from './components/ActionBar'
 
 export type NSVElementResolver = () => ViewBase
 
@@ -133,7 +134,10 @@ export function registerElement(
   registerElement(
     'InternalActionBar',
     () => require('@nativescript/core/ui/action-bar').ActionBar,
-    { viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM }
+    {
+      viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM,
+      nodeOps: actionBarNodeOps
+    }
   )
   registerElement(
     'ActionItem',

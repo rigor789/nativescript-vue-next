@@ -67,14 +67,29 @@ const app = createApp({
                 [
                     h(
                         ActionBar,
-                        { title: 'ActionBar Text' },
+                        { title: 'Custom' },
                         {
                             default: () => [
-                                // this.toggler && h('ActionItem', {text: 'test1'}),
-                                h('ActionItem', { text: 'test2' })
-                                // h('ActionItem', {text: 'test3'}),
-                                // h('ActionItem', {text: 'test4'}),
-                                // h('ActionItem', {text: 'test5'}),
+                                this.toggler
+                                    ? h('NavigationButton', {
+                                          text: 'NB1',
+                                          'android.systemIcon': 'ic_menu_back'
+                                      })
+                                    : h('NavigationButton', {
+                                          text: 'NB2',
+                                          'android.systemIcon':
+                                              'ic_media_previous'
+                                      }),
+
+                                h('ActionItem', { text: 'test1' }),
+                                this.toggler &&
+                                    h('ActionItem', { text: 'test2' }),
+                                h('ActionItem', { text: 'test3' }),
+                                this.toggler
+                                    ? h('ActionItem', { text: 'ON' })
+                                    : h('ActionItem', { text: 'OFF' }),
+
+                                !this.toggler && h('Label', { text: 'Custom' })
                             ]
                         }
                     ),

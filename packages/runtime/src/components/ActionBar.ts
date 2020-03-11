@@ -1,4 +1,4 @@
-import { FunctionalComponent, h } from '@vue/runtime-core'
+import { FunctionalComponent, h, warn } from '@vue/runtime-core'
 import { NSVElement } from '../nodes'
 import {
   ActionBar as TNSActionBar,
@@ -59,7 +59,12 @@ export const ActionBar: FunctionalComponent = (props, ctx) => {
         if (parent.nativeView instanceof TNSPage) {
           parent.nativeView.actionBar = actionBar
         } else {
-          // todo: warn ActionBar must be a direct child of <Page>
+          if (__DEV__) {
+            warn(
+              `<ActionBar> must be a direct child of a <Page> element - ` +
+                `got <${parent.nativeView.constructor.name}> instead.`
+            )
+          }
         }
       }
     },

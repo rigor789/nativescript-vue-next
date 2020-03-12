@@ -6,10 +6,10 @@ import {
 } from './registry'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
 import { ViewBase } from '@nativescript/core/ui'
-import { Style } from '@nativescript/core/ui/core/properties'
+import { Style, unsetValue } from '@nativescript/core/ui/core/properties'
 import { LayoutBase } from '@nativescript/core/ui/layouts'
 import set from 'set-value'
-import unset from 'unset-value'
+// import unset from 'unset-value'
 
 // import {isContentView, isLayout} from "./index";
 
@@ -154,7 +154,14 @@ export class NSVElement extends NSVNode implements INSVElement {
   }
 
   removeAttribute(name: string) {
-    unset(this.nativeView, name)
+    // potential issue: unsetValue is an empty object
+    // not all properties/attributes may know/check for this
+    set(this.nativeView, name, unsetValue)
+    // originally we deleted the property, but in case of built-in properties
+    // this would break them. For example, deleting the padding property
+    // will prevent us from changing the padding once we deleted it
+    // that's not the expected behaviour.
+    // unset(this.nativeView, name)
   }
 
   insertBefore(el: INSVNode, anchor?: INSVNode | null) {

@@ -26,6 +26,24 @@ function useInterval(cb, ms) {
 
 const app = createApp({
     render() {
+        const toggleAttr = condition =>
+            h('Label', {
+                text: 'Hello World',
+                ref: 'test',
+                row: 3,
+                ...(condition
+                    ? {
+                          textWrap: true,
+                          fontSize: 60,
+                          padding: 60,
+                          borderWidth: 2,
+                          customProperty: 'TESTING',
+                          'android:borderColor': 'red',
+                          'ios:borderColor': 'blue'
+                      }
+                    : {})
+            })
+
         const label = (row, col) =>
             h(
                 'Label',
@@ -65,43 +83,43 @@ const app = createApp({
                     css: '.red { color: #E53E3E; }, .green { color: #38A169; }'
                 },
                 [
-                    h(
-                        ActionBar,
-                        { title: 'Custom' },
-                        {
-                            default: () => [
-                                this.toggler
-                                    ? h('NavigationButton', {
-                                          text: 'NB1',
-                                          'android.systemIcon': 'ic_menu_back'
-                                      })
-                                    : h('NavigationButton', {
-                                          text: 'NB2',
-                                          'android.systemIcon':
-                                              'ic_media_previous'
-                                      }),
-
-                                h('ActionItem', { text: 'test1' }),
-                                this.toggler &&
-                                    h('ActionItem', { text: 'test2' }),
-                                h('ActionItem', { text: 'test3' }),
-                                this.toggler
-                                    ? h('ActionItem', { text: 'ON' })
-                                    : h('ActionItem', { text: 'OFF' }),
-
-                                !this.toggler && h('Label', { text: 'Custom' })
-                            ]
-                        }
-                    ),
+                    // h(
+                    //     ActionBar,
+                    //     { title: 'Custom' },
+                    //     {
+                    //         default: () => [
+                    //             this.toggler
+                    //                 ? h('NavigationButton', {
+                    //                       text: 'NB1',
+                    //                       'android.systemIcon': 'ic_menu_back'
+                    //                   })
+                    //                 : h('NavigationButton', {
+                    //                       text: 'NB2',
+                    //                       'android.systemIcon':
+                    //                           'ic_media_previous'
+                    //                   }),
+                    //
+                    //             h('ActionItem', { text: 'test1' }),
+                    //             this.toggler &&
+                    //                 h('ActionItem', { text: 'test2' }),
+                    //             h('ActionItem', { text: 'test3' }),
+                    //             this.toggler
+                    //                 ? h('ActionItem', { text: 'ON' })
+                    //                 : h('ActionItem', { text: 'OFF' }),
+                    //
+                    //             !this.toggler && h('Label', { text: 'Custom' })
+                    //         ]
+                    //     }
+                    // ),
 
                     h(
                         'GridLayout',
                         {
-                            rows: '*, *, auto'
+                            rows: '*, *, auto, auto'
                         },
                         [
-                            h('ContentView', [content()]),
-                            h('ContentView', { row: 1 }, [content()]),
+                            // h('ContentView', [content()]),
+                            // h('ContentView', { row: 1 }, [content()]),
                             h(
                                 'Label',
                                 {
@@ -118,7 +136,8 @@ const app = createApp({
                                     ' | ',
                                     this.toggler ? null : '\nFALSE'
                                 ]
-                            )
+                            ),
+                            toggleAttr(this.toggler)
                         ]
                     )
                 ]

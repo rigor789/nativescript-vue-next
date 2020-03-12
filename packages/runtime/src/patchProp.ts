@@ -1,10 +1,9 @@
-import { isAndroid, isIOS } from '@nativescript/core/platform'
-import { INSVElement } from './nodes'
 import { isOn } from '@vue/shared'
-import { patchClass } from './modules/class'
 import { patchEvent } from './modules/events'
+import { INSVElement } from './nodes'
+import { patchClass } from './modules/class'
 import { patchStyle } from './modules/style'
-import { isAndroidKey, isIOSKey } from './runtimeHelpers'
+import { patchAttr } from './modules/attrs'
 
 // import * as set from 'set-value'
 // const XML_ATTRIBUTES = Object.freeze([
@@ -25,11 +24,11 @@ export function patchProp(
   switch (key) {
     // special
     case 'class':
-      console.log('->patchProp+Class')
+      // console.log('->patchProp+Class')
       patchClass(el, nextValue)
       break
     case 'style':
-      console.log('->patchProp+Style')
+      // console.log('->patchProp+Style')
       patchStyle(el, prevValue, nextValue)
       break
     case 'modelValue':
@@ -39,12 +38,8 @@ export function patchProp(
     default:
       if (isOn(key)) {
         patchEvent(el, key.substr(2).toLowerCase(), prevValue, nextValue)
-      } else if (isAndroidKey(key) && isAndroid) {
-        el.setAttribute(key.substr(8), nextValue)
-      } else if (isIOSKey(key) && isIOS) {
-        el.setAttribute(key.substr(4), nextValue)
       } else {
-        el.setAttribute(key, nextValue)
+        patchAttr(el, key, prevValue, nextValue)
       }
   }
 }

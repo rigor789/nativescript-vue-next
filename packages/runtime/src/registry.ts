@@ -1,8 +1,13 @@
-import { ViewBase } from '@nativescript/core'
+import {
+  Frame as TNSFrame,
+  Page as TNSPage,
+  ViewBase as TNSViewBase
+} from '@nativescript/core'
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
+import { warn } from '@vue/runtime-core'
 
-export type NSVElementResolver = () => ViewBase
+export type NSVElementResolver = () => TNSViewBase
 
 export interface NSVViewMeta {
   viewFlags: NSVViewFlags
@@ -63,17 +68,17 @@ export function normalizeElementName(elementName: string): string {
 export function registerElement(
   elementName: string,
   resolver?: NSVElementResolver,
-  meta?: NSVViewMeta
+  meta?: Partial<NSVViewMeta>
 ) {
   const normalizedName = normalizeElementName(elementName)
-  meta = Object.assign({}, defaultViewMeta, meta)
+  const mergedMeta = Object.assign({}, defaultViewMeta, meta)
 
   if (elementMap[normalizedName]) {
     throw new Error(`Element for ${elementName} already registered.`)
   }
 
   elementMap[normalizedName] = {
-    meta,
+    meta: mergedMeta,
     resolver
   }
   console.log(`->registerElement(${elementName})`)
@@ -152,7 +157,31 @@ export function registerElement(
   registerElement(
     'Frame',
     () => require('@nativescript/core/ui/frame').Frame,
-    { viewFlags: NSVViewFlags.NO_CHILDREN }
+    {
+      // todo: move into Frame.ts when we end up creating a component for Frame
+      nodeOps: {
+        insert(child: NSVElement, parent: NSVElement, atIndex?: number): void {
+          const frame = parent.nativeView as TNSFrame
+          if (child.nativeView instanceof TNSPage) {
+            frame.navigate({
+              create() {
+                return child.nativeView
+              }
+            })
+          } else {
+            if (__DEV__) {
+              warn(
+                `<Frame> must only contain <Page> elements - ` +
+                `got <${child.nativeView.constructor.name}> instead.`
+              )
+            }
+          }
+        },
+        remove(child: NSVElement, parent: NSVElement): void {
+          // ignore? warn? throw? navigate back?
+        }
+      }
+    }
   )
   registerElement(
     'Page',

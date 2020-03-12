@@ -272,9 +272,6 @@ function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
   const childView = child.nativeView
 
   if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
-    // todo: REMOVE this call
-    // @ts-ignore
-    parentView.navigate({ create: () => childView })
     console.log('NO_CHILDREN')
     return
   }

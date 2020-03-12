@@ -33,6 +33,6 @@ module.exports = {
       // to coverage and can cause netlify builds to fail
       ['/node_modules/', '/packages/shared/__tests__', '/examples/__tests__']
     : ['/node_modules/', '/packages/shared/__tests__'],
-  setupFiles: ['<rootDir>/tests/jest.setup.js'],
+  setupFiles: ['<rootDir>/tests/jest.setup.ts'],
   silent: true
 }

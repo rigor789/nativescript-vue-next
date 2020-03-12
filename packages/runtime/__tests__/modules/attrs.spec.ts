@@ -49,7 +49,6 @@ describe('attrs', () => {
     resetPlatform()
   })
 
-  // todo: allow switching platform in tests
   test('set android: attribute (isAndroid=false)', () => {
     const { el } = testElement()
     setPlatform('iOS')

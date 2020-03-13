@@ -28,7 +28,6 @@ export function patchAttr(
     nextValue = true
   }
 
-  console.log(`patchAttr => else => (${key}, ${nextValue})`)
   if (nextValue === null) {
     // if the nextValue is null, we are removing the attribute
     el.removeAttribute(key)

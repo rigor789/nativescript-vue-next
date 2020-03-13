@@ -1,8 +1,24 @@
 import { unsetValue } from '@nativescript/core/ui/core/properties'
-import { fromAstNodes } from '@nativescript/core/ui/styling/css-selector'
-import { SyntaxTree } from '@nativescript/core/css'
 // import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
 const { cssTreeParse } = require('@nativescript/core/css/css-tree-parser')
+
+function isRule(node: any): boolean {
+  return node.type === 'rule'
+}
+
+function isDeclaration(node: any): boolean {
+  return node.type === 'declaration'
+}
+
+function createDeclaration(decl: any): any {
+  return { property: decl.property.toLowerCase(), value: decl.value }
+}
+
+export function declarationsFromAstNodes(astRules: any[]): any[] {
+  return astRules.filter(isRule).map(rule => {
+    return rule.declarations.filter(isDeclaration).map(createDeclaration)
+  })
+}
 
 import { INSVElement } from '../nodes'
 
@@ -12,10 +28,10 @@ export function patchStyle(el: INSVElement, prev: Style, next: Style) {
   if (prev) {
     // reset previous styles
     const localStyle = `local { ${prev} }`
-    const ast: SyntaxTree = cssTreeParse(localStyle, undefined)
-    const [ruleset] = fromAstNodes(ast.stylesheet.rules)
+    const ast: any = cssTreeParse(localStyle, undefined)
+    const [declarations] = declarationsFromAstNodes(ast.stylesheet.rules)
 
-    ruleset.declarations.forEach(d => {
+    declarations.forEach((d: any) => {
       ;(el.nativeView.style as any)[d.property] = unsetValue
     })
   }

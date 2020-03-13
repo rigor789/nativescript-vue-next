@@ -24,7 +24,11 @@ module.exports = {
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
-    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src'
+    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src',
+    './file-system-access': '<rootDir>/tests/ns-mocks/file-system-access',
+    './mainthread-helper': '<rootDir>/tests/ns-mocks/mainthread-helper',
+    './layout-helper':
+      '@nativescript/core/utils/layout-helper/layout-helper-common'
   },
   rootDir: __dirname,
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],

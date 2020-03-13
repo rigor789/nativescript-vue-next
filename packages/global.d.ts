@@ -8,6 +8,11 @@ declare module '@nativescript/core/css/css-tree-parser' {
   export function cssTreeParse(css: any, source: any): any
 }
 
+declare module '@nativescript/core/ui/styling/style-scope' {
+  import { ViewBase } from '@nativescript/core/ui/core/view-base'
+  export function applyInlineStyle(view: ViewBase, style: string): void
+}
+
 declare module 'set-value' {
   function set(target: any, path: any, value: any, options?: any): void
 

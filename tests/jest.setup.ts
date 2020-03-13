@@ -10,6 +10,7 @@ jest.mock(
       {},
       {
         get(target, p) {
+          console.log(`getting ${String(p)}...`)
           switch (p) {
             case 'isAndroid':
               return currentPlatform === 'Android'
@@ -41,31 +42,3 @@ jest.mock(
   },
   { virtual: true }
 )
-
-// For fixing `__extends is not defined` error in
-// @nativescript/core/data/observable/observable.js
-global.__extends = (d: any, b: any): void => {}
-
-// For fixing `__decorate is not defined` error in
-// @nativescript/core/ui/styling/css-selector/css-selector.js
-;(global as any).__decorate = (f: any): any => {
-  return f
-}
-
-class WeakRef<T> {
-  private ref: T
-
-  constructor(obj: T) {
-    this.ref = obj
-  }
-
-  public get(): T {
-    return this.ref
-  }
-
-  public clear(): void {}
-}
-
-// For fixing `WeakRef is not defined` error in
-// @nativescript/core/ui/styling/style/style.js
-;(global as any).WeakRef = WeakRef

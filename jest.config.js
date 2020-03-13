@@ -19,11 +19,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^@nativescript-vue/(.*?)$': '<rootDir>/packages/$1/src',
-    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src',
-    './file-system-access': '<rootDir>/tests/ns-mocks/file-system-access',
-    './mainthread-helper': '<rootDir>/tests/ns-mocks/mainthread-helper',
-    './layout-helper':
-      '@nativescript/core/utils/layout-helper/layout-helper-common'
+    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src'
   },
   rootDir: __dirname,
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],

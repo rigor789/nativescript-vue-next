@@ -5,9 +5,8 @@ import {
   NSVViewMeta
 } from './registry'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
-import { ViewBase } from '@nativescript/core/ui'
-import { Style, unsetValue } from '@nativescript/core/ui/core/properties'
-import { LayoutBase } from '@nativescript/core/ui/layouts'
+import { ViewBase, LayoutBase, Style } from '@nativescript/core'
+import { unsetValue } from '@nativescript/core/ui/core/properties'
 import set from 'set-value'
 // import unset from 'unset-value'
 

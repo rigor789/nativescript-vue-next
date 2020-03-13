@@ -1,4 +1,4 @@
-import { unsetValue } from '@nativescript/core/ui/core/view'
+import { unsetValue } from '@nativescript/core/ui/core/properties'
 import { fromAstNodes } from '@nativescript/core/ui/styling/css-selector'
 import { SyntaxTree } from '@nativescript/core/css'
 // import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'

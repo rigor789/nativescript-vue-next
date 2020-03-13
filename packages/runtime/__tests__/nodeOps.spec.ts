@@ -1,13 +1,11 @@
 import { h, render, nodeOps } from '../src'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
-import { Frame } from '@nativescript/core/ui/frame'
 import { NSVNodeTypes } from '../src/nodes'
 
 describe('createElement', () => {
   test('NSVElement node has the right data', () => {
     const root = nodeOps.createElement('frame')
     expect(root.tagName).toBe('frame')
-    expect(root.nativeView instanceof Frame).toBe(true)
     expect(root.nativeView[ELEMENT_REF]).toBe(root)
     expect(root.childNodes.length).toBe(0)
     // TODO: Complete

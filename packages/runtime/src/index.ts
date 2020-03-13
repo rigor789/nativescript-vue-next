@@ -5,7 +5,7 @@ import {
   CreateAppFunction,
   ComponentPublicInstance
 } from '@vue/runtime-core'
-import { run } from '@nativescript/core/application'
+import { Application } from '@nativescript/core'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { INSVElement, INSVNode } from './nodes'
@@ -24,7 +24,7 @@ function ensureRenderer() {
 
 function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   console.log('->runApp')
-  run({
+  Application.run({
     create: () => {
       console.log({
         id: root.$el.nodeId,

@@ -1,30 +1,10 @@
-let currentPlatform: 'Android' | 'iOS' = 'Android'
-export const setPlatform = (platform: 'Android' | 'iOS') =>
-  (currentPlatform = platform)
+type Platform = 'Android' | 'iOS'
+let currentPlatform: Platform = 'Android'
+export const setPlatform = (platform: Platform) => (currentPlatform = platform)
 export const resetPlatform = () => (currentPlatform = 'Android')
 
 jest.mock(
-  '@nativescript/core/application',
-  () => {
-    return {
-      Application() {}
-    }
-  },
-  { virtual: true }
-)
-
-jest.mock(
   '@nativescript/core',
-  () => {
-    return {
-      ContentView: require('./ns-mocks/contentview').ContentView
-    }
-  },
-  { virtual: true }
-)
-
-jest.mock(
-  '@nativescript/core/platform',
   () => {
     return new Proxy(
       {},
@@ -44,60 +24,6 @@ jest.mock(
 )
 
 jest.mock(
-  '@nativescript/core/utils/utils',
-  () => {
-    return {
-      ios: {}
-    }
-  },
-  { virtual: true }
-)
-
-jest.mock('@nativescript/core/ui/core/view', () => require('./ns-mocks/view'), {
-  virtual: true
-})
-
-jest.mock(
-  '@nativescript/core/ui/content-view',
-  () => require('./ns-mocks/contentview'),
-  { virtual: true }
-)
-
-jest.mock(
-  '@nativescript/core/ui/layouts/layout-base',
-  () => require('./ns-mocks/layoutbase'),
-  { virtual: true }
-)
-
-jest.mock('@nativescript/core/ui/button', () => require('./ns-mocks/button'), {
-  virtual: true
-})
-
-jest.mock('@nativescript/core/ui/label', () => require('./ns-mocks/label'), {
-  virtual: true
-})
-
-jest.mock('@nativescript/core/ui/frame', () => require('./ns-mocks/frame'), {
-  virtual: true
-})
-
-jest.mock('@nativescript/core/ui/page', () => require('./ns-mocks/page'), {
-  virtual: true
-})
-
-jest.mock(
-  '@nativescript/core/ui/proxyviewcontainer',
-  () => require('./ns-mocks/proxyviewcontainer'),
-  { virtual: true }
-)
-
-jest.mock(
-  '@nativescript/core/ui/layouts/stack-layout',
-  () => require('./ns-mocks/stacklayout'),
-  { virtual: true }
-)
-
-jest.mock(
   '@nativescript/core/ui/styling/css-selector',
   () => {
     return {}
@@ -105,12 +31,12 @@ jest.mock(
   { virtual: true }
 )
 
+export const unsetValue = Symbol('unsetValue')
 jest.mock(
   '@nativescript/core/ui/core/properties',
   () => {
     return {
-      Style: {},
-      unsetValue: Symbol('unset')
+      unsetValue
     }
   },
   { virtual: true }

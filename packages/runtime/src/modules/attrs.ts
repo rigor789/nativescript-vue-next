@@ -1,7 +1,6 @@
 import { INSVElement } from '../nodes'
-import { isAndroidKey, isIOSKey } from '@nativescript-vue/runtime'
-import { isAndroid, isIOS } from '@nativescript/core/platform'
-import { isBoolean } from '@nativescript/core/utils/types'
+import { isBoolean, isAndroidKey, isIOSKey } from '@nativescript-vue/runtime'
+import { isAndroid, isIOS } from '@nativescript/core'
 
 export function patchAttr(
   el: INSVElement,

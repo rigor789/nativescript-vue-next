@@ -6,6 +6,7 @@ import {
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
 import { warn } from '@vue/runtime-core'
+import { TestView } from '../__tests__/__mocks__/TestView'
 
 export type NSVElementResolver = () => TNSViewBase
 
@@ -53,7 +54,12 @@ export function getViewClass(elementName: string): any {
 
   try {
     if (__TEST__) {
-      // todo: perhaps return a mock here?
+      // if we passed a custom test view return that
+      if (entry.meta.viewFlags & NSVViewFlags.TEST_VIEW) {
+        return entry.resolver!()
+      }
+      // otherwise return a generic TestView
+      return TestView
     }
     return entry.resolver!()
   } catch (e) {
@@ -84,6 +90,24 @@ export function registerElement(
   console.log(`->registerElement(${elementName})`)
 }
 
+// istanbul ignore next
+export function registerTestElement(
+  elementName: string,
+  resolver?: () => any,
+  meta?: Partial<NSVViewMeta>
+) {
+  if (__TEST__) {
+    const normalizedName = normalizeElementName(elementName)
+    const mergedMeta = Object.assign({}, defaultViewMeta, meta)
+    mergedMeta.viewFlags |= NSVViewFlags.TEST_VIEW
+
+    elementMap[normalizedName] = {
+      meta: mergedMeta,
+      resolver
+    }
+  }
+}
+
 // export function isKnownView(elementName: string) {
 //     return elementMap.hasOwnProperty(normalizeElementName(elementName))
 // }
@@ -94,51 +118,51 @@ export function registerElement(
   // layouts
   registerElement(
     'AbsoluteLayout',
-    () => require('@nativescript/core/ui/layouts/absolute-layout').AbsoluteLayout,
+    () => require('@nativescript/core').AbsoluteLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'DockLayout',
-    () => require('@nativescript/core/ui/layouts/dock-layout').DockLayout,
+    () => require('@nativescript/core').DockLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'FlexboxLayout',
-    () => require('@nativescript/core/ui/layouts/flexbox-layout').FlexboxLayout,
+    () => require('@nativescript/core').FlexboxLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'GridLayout',
-    () => require('@nativescript/core/ui/layouts/grid-layout').GridLayout,
+    () => require('@nativescript/core').GridLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'StackLayout',
-    () => require('@nativescript/core/ui/layouts/stack-layout').StackLayout,
+    () => require('@nativescript/core').StackLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
   registerElement(
     'WrapLayout',
-    () => require('@nativescript/core/ui/layouts/wrap-layout').WrapLayout,
+    () => require('@nativescript/core').WrapLayout,
     { viewFlags: NSVViewFlags.LAYOUT_VIEW }
   )
 
   // ContentViews
   registerElement(
     'ContentView',
-    () => require('@nativescript/core/ui/content-view').ContentView,
+    () => require('@nativescript/core').ContentView,
     { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
   registerElement(
     'ScrollView',
-    () => require('@nativescript/core/ui/scroll-view').ScrollView,
+    () => require('@nativescript/core').ScrollView,
     { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
 
   // ActionBar
   registerElement(
     'InternalActionBar',
-    () => require('@nativescript/core/ui/action-bar').ActionBar,
+    () => require('@nativescript/core').ActionBar,
     {
       viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM,
       nodeOps: actionBarNodeOps
@@ -146,17 +170,17 @@ export function registerElement(
   )
   registerElement(
     'ActionItem',
-    () => require('@nativescript/core/ui/action-bar').ActionItem
+    () => require('@nativescript/core').ActionItem
   )
   registerElement(
     'NavigationButton',
-    () => require('@nativescript/core/ui/action-bar').NavigationButton
+    () => require('@nativescript/core').NavigationButton
   )
 
   // navigation
   registerElement(
     'Frame',
-    () => require('@nativescript/core/ui/frame').Frame,
+    () => require('@nativescript/core').Frame,
     {
       // todo: move into Frame.ts when we end up creating a component for Frame
       nodeOps: {
@@ -185,40 +209,40 @@ export function registerElement(
   )
   registerElement(
     'Page',
-    () => require('@nativescript/core/ui/page').Page,
+    () => require('@nativescript/core').Page,
     { viewFlags: NSVViewFlags.CONTENT_VIEW }
   )
 
   // html
   registerElement(
     'HtmlView',
-    () => require('@nativescript/core/ui/html-view').HtmlView
+    () => require('@nativescript/core').HtmlView
   )
   registerElement(
     'WebView',
-    () => require('@nativescript/core/ui/web-view').WebView
+    () => require('@nativescript/core').WebView
   )
 
   // components
   registerElement(
     'ActivityIndicator',
-    () => require('@nativescript/core/ui/activity-indicator').ActivityIndicator
+    () => require('@nativescript/core').ActivityIndicator
   )
   registerElement(
     'Button',
-    () => require('@nativescript/core/ui/button').Button
+    () => require('@nativescript/core').Button
   )
   registerElement(
     'DatePicker',
-    () => require('@nativescript/core/ui/date-picker').DatePicker
+    () => require('@nativescript/core').DatePicker
   )
   registerElement(
     'Image',
-    () => require('@nativescript/core/ui/image').Image
+    () => require('@nativescript/core').Image
   )
   registerElement(
     'Label',
-    () => require('@nativescript/core/ui/label').Label
+    () => require('@nativescript/core').Label
   )
 }
 // todo: more

@@ -14,16 +14,11 @@ module.exports = {
   },
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text', 'json-summary'],
-  collectCoverageFrom: [
-    'packages/*/src/**/*.ts',
-    '!packages/runtime-test/src/utils/**',
-    '!packages/template-explorer/**',
-    '!packages/size-check/**',
-    '!packages/shared/**'
-  ],
+  collectCoverageFrom: ['packages/*/src/**/*.ts', '!packages/shared/**'],
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
+    '^@nativescript-vue/(.*?)$': '<rootDir>/packages/$1/src',
     '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src',
     './file-system-access': '<rootDir>/tests/ns-mocks/file-system-access',
     './mainthread-helper': '<rootDir>/tests/ns-mocks/mainthread-helper',

@@ -5,9 +5,8 @@ import {
   NSVViewMeta
 } from './registry'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
-import { ViewBase } from '@nativescript/core/ui'
-import { Style, unsetValue } from '@nativescript/core/ui/core/properties'
-import { LayoutBase } from '@nativescript/core/ui/layouts'
+import { ViewBase, LayoutBase, Style } from '@nativescript/core'
+import { unsetValue } from '@nativescript/core/ui/core/properties'
 import set from 'set-value'
 // import unset from 'unset-value'
 
@@ -29,7 +28,9 @@ export const enum NSVViewFlags {
   SKIP_ADD_TO_DOM = 1 << 0,
   CONTENT_VIEW = 1 << 1,
   LAYOUT_VIEW = 1 << 2,
-  NO_CHILDREN = 1 << 3
+  NO_CHILDREN = 1 << 3,
+
+  TEST_VIEW = 1 << 4
 }
 
 export interface INSVNode {

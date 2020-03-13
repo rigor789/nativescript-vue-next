@@ -12,3 +12,7 @@ export const isAndroidKey = (key: string) =>
 
 export const isIOSKey = (key: string) =>
   key[0] === 'i' && key[1] === 'o' && key[2] === 's' && key[3] === ':'
+
+export const isBoolean = (value: unknown): boolean => {
+  return typeof value === 'boolean' || value instanceof Boolean
+}

@@ -19,7 +19,8 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^@nativescript-vue/(.*?)$': '<rootDir>/packages/$1/src',
-    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src'
+    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src',
+    '^tests/(.*?)$': '<rootDir>/tests/$1'
   },
   rootDir: __dirname,
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],

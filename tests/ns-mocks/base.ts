@@ -1,43 +1,26 @@
-import { ViewBase } from '@nativescript/core/ui/core/view-base'
-import { Style } from '@nativescript/core/ui/styling/style'
-import * as ssm from '@nativescript/core/ui/styling/style-scope'
+import { unsetValue } from '@nativescript/core/ui/core/properties'
 
-let styleScopeModule: typeof ssm
-
-function ensureStyleScopeModule() {
-  if (!styleScopeModule) {
-    styleScopeModule = require('@nativescript/core/ui/styling/style-scope')
-  }
-}
+type Style = any | string
 
 export class NSView {
-  private _style: Style
+  public resettedCSSProps: Array<string> = []
+  public style: Style
 
   private eventListener: Record<string, Function>
 
   constructor() {
     this.eventListener = {}
-    this._style = new Style((this as unknown) as ViewBase)
-  }
 
-  get style(): Style {
-    return this._style
-  }
-  set style(inlineStyle: Style /* | string */) {
-    if (typeof inlineStyle === 'string') {
-      this.setInlineStyle(inlineStyle)
-    } else {
-      throw new Error('View.style property is read-only.')
-    }
-  }
-
-  public setInlineStyle(style: string): void {
-    if (typeof style !== 'string') {
-      throw new Error('Parameter should be valid CSS string!')
-    }
-
-    ensureStyleScopeModule()
-    styleScopeModule.applyInlineStyle((this as unknown) as ViewBase, style)
+    let self = this // self reference
+    // Proxy that tracks the resetted CSS props for testing purposes
+    this.style = new Proxy(new Map(), {
+      set(target, prop: string, value: string): boolean {
+        if (value === unsetValue) {
+          self.resettedCSSProps.push(prop)
+        }
+        return true
+      }
+    })
   }
 
   public addChild() {}

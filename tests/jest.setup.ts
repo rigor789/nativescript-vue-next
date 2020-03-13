@@ -1,3 +1,6 @@
+import { registerTestElement } from '@nativescript-vue/runtime'
+import { NSVViewFlags } from '../packages/runtime/src/nodes'
+
 type Platform = 'Android' | 'iOS'
 let currentPlatform: Platform = 'Android'
 export const setPlatform = (platform: Platform) => (currentPlatform = platform)
@@ -44,4 +47,12 @@ jest.mock(
     }
   },
   { virtual: true }
+)
+
+// Test registry
+
+registerTestElement(
+  'StackLayout',
+  () => require('tests/ns-mocks/stacklayout').StackLayout,
+  { viewFlags: NSVViewFlags.LAYOUT_VIEW }
 )

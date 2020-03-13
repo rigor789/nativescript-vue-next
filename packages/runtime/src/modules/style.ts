@@ -2,6 +2,10 @@ import { unsetValue } from '@nativescript/core/ui/core/properties'
 // import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
 const { cssTreeParse } = require('@nativescript/core/css/css-tree-parser')
 
+import { INSVElement } from '../nodes'
+
+type Style = string | null
+
 function isRule(node: any): boolean {
   return node.type === 'rule'
 }
@@ -14,15 +18,11 @@ function createDeclaration(decl: any): any {
   return { property: decl.property.toLowerCase(), value: decl.value }
 }
 
-export function declarationsFromAstNodes(astRules: any[]): any[] {
+function declarationsFromAstNodes(astRules: any[]): any[] {
   return astRules.filter(isRule).map(rule => {
     return rule.declarations.filter(isDeclaration).map(createDeclaration)
   })
 }
-
-import { INSVElement } from '../nodes'
-
-type Style = string | null
 
 export function patchStyle(el: INSVElement, prev: Style, next: Style) {
   if (prev) {

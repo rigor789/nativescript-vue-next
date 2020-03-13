@@ -24,14 +24,6 @@ jest.mock(
   { virtual: true }
 )
 
-jest.mock(
-  '@nativescript/core/ui/styling/css-selector',
-  () => {
-    return {}
-  },
-  { virtual: true }
-)
-
 export const unsetValue = Symbol('unsetValue')
 jest.mock(
   '@nativescript/core/ui/core/properties',

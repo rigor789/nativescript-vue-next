@@ -11,13 +11,12 @@ type Style = string | null
 export function patchStyle(el: INSVElement, prev: Style, next: Style) {
   if (prev) {
     // reset previous styles
-    let localStyle = `local { ${prev} }`
-    let ast: SyntaxTree = cssTreeParse(localStyle, undefined)
-    const rulesets = fromAstNodes(ast.stylesheet.rules)
+    const localStyle = `local { ${prev} }`
+    const ast: SyntaxTree = cssTreeParse(localStyle, undefined)
+    const [ruleset] = fromAstNodes(ast.stylesheet.rules)
 
-    rulesets[0].declarations.forEach(d => {
-      let property = d.property as string
-      ;(el.nativeView.style as any)[property] = unsetValue
+    ruleset.declarations.forEach(d => {
+      ;(el.nativeView.style as any)[d.property] = unsetValue
     })
   }
 

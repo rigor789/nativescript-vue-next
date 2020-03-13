@@ -6,7 +6,6 @@ import {
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
 import { warn } from '@vue/runtime-core'
-import { TestView } from '../__tests__/__mocks__/TestView'
 
 export type NSVElementResolver = () => TNSViewBase
 
@@ -23,7 +22,7 @@ export interface NSVElementDescriptor {
   resolver?: NSVElementResolver
 }
 
-let defaultViewMeta: NSVViewMeta = {
+export let defaultViewMeta: NSVViewMeta = {
   viewFlags: NSVViewFlags.NONE
 }
 
@@ -53,14 +52,6 @@ export function getViewClass(elementName: string): any {
   }
 
   try {
-    if (__TEST__) {
-      // if we passed a custom test view return that
-      if (entry.meta.viewFlags & NSVViewFlags.TEST_VIEW) {
-        return entry.resolver!()
-      }
-      // otherwise return a generic TestView
-      return TestView
-    }
     return entry.resolver!()
   } catch (e) {
     throw new Error(`Could not load view for: ${elementName}. ${e}`)
@@ -90,31 +81,13 @@ export function registerElement(
   console.log(`->registerElement(${elementName})`)
 }
 
-// istanbul ignore next
-export function registerTestElement(
-  elementName: string,
-  resolver?: () => any,
-  meta?: Partial<NSVViewMeta>
-) {
-  if (__TEST__) {
-    const normalizedName = normalizeElementName(elementName)
-    const mergedMeta = Object.assign({}, defaultViewMeta, meta)
-    mergedMeta.viewFlags |= NSVViewFlags.TEST_VIEW
-
-    elementMap[normalizedName] = {
-      meta: mergedMeta,
-      resolver
-    }
-  }
-}
-
 // export function isKnownView(elementName: string) {
 //     return elementMap.hasOwnProperty(normalizeElementName(elementName))
 // }
 
 // register built in elements
 // prettier-ignore
-{
+if(!__TEST__) {
   // layouts
   registerElement(
     'AbsoluteLayout',

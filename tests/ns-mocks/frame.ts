@@ -1,4 +1,4 @@
-import { NSView } from './base'
+import { TNSViewBase } from './base'
 
 let frameStack: Frame[] = []
 

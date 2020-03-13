@@ -1,6 +1,11 @@
 import { h, render, nodeOps } from '../src'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
+import { registerTestElement, registerTestLayout } from 'tests/registry'
 import { NSVNodeTypes } from '../src/nodes'
+
+registerTestElement('Frame')
+registerTestElement('Label')
+registerTestLayout('StackLayout')
 
 describe('createElement', () => {
   test('NSVElement node has the right data', () => {

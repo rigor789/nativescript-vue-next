@@ -1,5 +1,10 @@
+import { registerTestLayout } from 'tests/registry'
+
 import { NSVElement, NSVRoot, NSVViewFlags } from '../src/nodes'
 import { NSVViewMeta } from '../src/registry'
+
+registerTestLayout('StackLayout')
+registerTestLayout('Label')
 
 describe('NSVElement', () => {
   it('normalizes tagName when set', () => {

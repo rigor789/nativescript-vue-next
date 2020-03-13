@@ -1,7 +1,10 @@
+import { registerTestElement } from 'tests/registry'
 import { patchAttr } from '../../src/modules/attrs'
 import { NSVElement } from '../../src/nodes'
 import { resetPlatform, setPlatform } from '../../../../tests/jest.setup'
 import { isAndroid } from '@nativescript/core'
+
+registerTestElement('Label')
 
 const testElement = () => {
   const el = new NSVElement('Label')

@@ -1,5 +1,10 @@
+import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { registerTestLayout } from 'tests/registry'
+
 import { NSVElement } from '../../src/nodes'
 import { patchStyle } from '../../src/modules/style'
+
+registerTestLayout('StackLayout')
 
 describe('module style', () => {
   it('string', () => {
@@ -40,7 +45,7 @@ describe('module style', () => {
   it('object style is resetted', () => {
     const el = new NSVElement('StackLayout')
     patchStyle(el, 'color: yellow', '')
-    expect(el.style).toBe(undefined)
+    expect(el.style).toBe(unsetValue)
     expect(el.nativeView.resettedCSSProps).toEqual(['color'])
   })
 })

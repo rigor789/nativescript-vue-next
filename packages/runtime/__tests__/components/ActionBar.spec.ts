@@ -1,5 +1,5 @@
-import { registerCoreMock } from '../../../../tests/jest.setup'
-import { registerTestElement } from '@nativescript-vue/runtime'
+import { registerTestElement } from 'tests/registry'
+import { registerCoreMock } from 'tests/jest.setup'
 
 class TestPage {
   private _ab: any = undefined
@@ -14,6 +14,9 @@ class TestPage {
 }
 
 registerCoreMock('Page', TestPage)
+registerTestElement('Frame')
+registerTestElement('InternalActionBar')
+registerTestElement('Label')
 registerTestElement('Page', () => TestPage)
 
 import { h, ActionBar, render } from '@nativescript-vue/runtime'

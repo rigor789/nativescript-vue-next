@@ -53,6 +53,11 @@ export function getViewClass(elementName: string): any {
 
   try {
     if (__TEST__) {
+      // if we passed a custom test view return that
+      if (entry.meta.viewFlags & NSVViewFlags.TEST_VIEW) {
+        return entry.resolver!()
+      }
+      // otherwise
       // todo: perhaps return a mock here?
     }
     return entry.resolver!()
@@ -82,6 +87,24 @@ export function registerElement(
     resolver
   }
   console.log(`->registerElement(${elementName})`)
+}
+
+// istanbul ignore next
+export function registerTestElement(
+  elementName: string,
+  resolver?: () => any,
+  meta?: Partial<NSVViewMeta>
+) {
+  if (__TEST__) {
+    const normalizedName = normalizeElementName(elementName)
+    const mergedMeta = Object.assign({}, defaultViewMeta, meta)
+    mergedMeta.viewFlags |= NSVViewFlags.TEST_VIEW
+
+    elementMap[normalizedName] = {
+      meta: mergedMeta,
+      resolver
+    }
+  }
 }
 
 // export function isKnownView(elementName: string) {

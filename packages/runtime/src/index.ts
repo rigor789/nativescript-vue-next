@@ -55,6 +55,7 @@ export const createApp = ((...args) => {
 
 export * from './nodeOps'
 export * from './runtimeHelpers'
+export * from './registry'
 
 // Runtime components
 export { ActionBar } from './components/ActionBar'

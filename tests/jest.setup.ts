@@ -39,10 +39,6 @@ jest.mock(
         }
       }
     )
-    // return {
-    //   isAndroid: currentPlatform === 'Android',
-    //   isIOS: currentPlatform === 'iOS'
-    // }
   },
   { virtual: true }
 )

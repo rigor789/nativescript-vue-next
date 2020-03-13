@@ -10,6 +10,7 @@ jest.mock(
       {},
       {
         get(target, p) {
+          console.log(`getting ${String(p)}...`)
           switch (p) {
             case 'isAndroid':
               return currentPlatform === 'Android'

@@ -26,7 +26,18 @@ function useInterval(cb, ms) {
 
 const app = createApp({
     render() {
-        const toggleAttr = condition =>
+        const labelAt = (row, col) =>
+            h('Label', {
+                text: 'Hello World: ' + this.counter,
+                textAlignment: 'center',
+                verticalAlignment: 'middle',
+                class: this.labelClass,
+                style: this.inlineStyle,
+                row,
+                col
+            })
+
+        const toggleAttrTest = condition =>
             h('Label', {
                 text: 'Hello World',
                 ref: 'test',
@@ -44,22 +55,7 @@ const app = createApp({
                     : {})
             })
 
-        const label = (row, col) =>
-            h(
-                'Label',
-                {
-                    text: 'Hello World: ' + this.counter,
-                    textAlignment: 'center',
-                    verticalAlignment: 'middle',
-                    class: this.labelClass,
-                    style: this.inlineStyle,
-                    row,
-                    col
-                }
-                // ['Hello World: ' + this.counter]
-            )
-
-        const content = () =>
+        const labelsTest = () =>
             h(
                 'GridLayout',
                 {
@@ -68,11 +64,30 @@ const app = createApp({
                 },
                 [
                     // label(0, 0),
-                    this.p === 0 ? null : label(0, 0),
+                    this.p === 0 ? null : labelAt(0, 0),
                     //'text node?',
-                    this.p === 1 ? null : label(0, 1),
-                    this.p === 2 ? null : label(1, 0),
-                    this.p === 3 ? null : label(1, 1)
+                    this.p === 1 ? null : labelAt(0, 1),
+                    this.p === 2 ? null : labelAt(1, 0),
+                    this.p === 3 ? null : labelAt(1, 1)
+                ]
+            )
+
+        const textNodesTest = () =>
+            h(
+                'Label',
+                {
+                    row: 2,
+                    style: 'font-size: 14;',
+                    textWrap: true
+                },
+                [
+                    'Text nodes: ',
+                    this.counter,
+                    this.toggler ? ' ON' : ' OFF',
+                    ' | ',
+                    this.toggler.toString(),
+                    ' | ',
+                    this.toggler ? null : '\nFALSE'
                 ]
             )
 
@@ -118,26 +133,9 @@ const app = createApp({
                             rows: '*, *, auto, auto'
                         },
                         [
-                            // h('ContentView', [content()]),
-                            // h('ContentView', { row: 1 }, [content()]),
-                            h(
-                                'Label',
-                                {
-                                    row: 2,
-                                    style: 'font-size: 14;',
-                                    textWrap: true
-                                },
-                                [
-                                    'Text nodes: ',
-                                    this.counter,
-                                    this.toggler ? ' ON' : ' OFF',
-                                    ' | ',
-                                    this.toggler.toString(),
-                                    ' | ',
-                                    this.toggler ? null : '\nFALSE'
-                                ]
-                            ),
-                            toggleAttr(this.toggler)
+                            h('ContentView', [labelsTest()]),
+                            textNodesTest(),
+                            toggleAttrTest(this.toggler)
                         ]
                     )
                 ]
@@ -145,6 +143,7 @@ const app = createApp({
         ])
     },
     setup() {
+        // reactive data
         const counter = ref(0)
         const p = ref(0)
         const labelClass = ref('red')
@@ -152,6 +151,9 @@ const app = createApp({
         const style2 = 'font-size: 20; text-decoration: underline;'
         const inlineStyle = ref(style1)
         const toggler = ref(true)
+
+        // polling task that changes the reactive data to
+        // test how the app respond to these changes
         useInterval(() => {
             counter.value++
             p.value++
@@ -160,15 +162,16 @@ const app = createApp({
             if (p.value > 3) {
                 p.value = 0
             }
-
             toggler.value = !toggler.value
         }, 2000)
 
         onMounted(() => {
+            // dump the Node tree
             setTimeout(() => {
                 console.log(JSON.stringify(dumpViewTree(app.$el), null, 2))
             }, 1000)
         })
+
         return {
             counter,
             p,

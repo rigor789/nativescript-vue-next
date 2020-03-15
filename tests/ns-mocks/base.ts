@@ -45,6 +45,10 @@ export class TNSViewBase {
     delete this.eventListener[eventNames]
   }
 
+  public notify(event: any) {
+    this.eventListener[event.eventName](event.object)
+  }
+
   public set(name: string, value: any) {
     ;(this as any)[name] = value
   }

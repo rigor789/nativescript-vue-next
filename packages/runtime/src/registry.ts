@@ -81,9 +81,9 @@ export function registerElement(
   console.log(`->registerElement(${elementName})`)
 }
 
-// export function isKnownView(elementName: string) {
-//     return elementMap.hasOwnProperty(normalizeElementName(elementName))
-// }
+export function isKnownView(elementName: string) {
+  return elementMap.hasOwnProperty(normalizeElementName(elementName))
+}
 
 // register built in elements
 // prettier-ignore

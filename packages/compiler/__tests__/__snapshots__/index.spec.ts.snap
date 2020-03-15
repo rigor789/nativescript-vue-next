@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compile works 1`] = `
+"const _Vue = Vue
+
+return function render(_ctx, _cache) {
+  with (_ctx) {
+    const { createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock } = _Vue
+
+    return (_openBlock(), _createBlock(\\"Frame\\"))
+  }
+}"
+`;

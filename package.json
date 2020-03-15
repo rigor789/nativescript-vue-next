@@ -10,7 +10,7 @@
     "build": "node scripts/build.js",
     "size": "node scripts/build.js nativescript-vue runtime size-check -p -f global",
     "lint": "prettier --write --parser typescript \"packages/**/*.ts?(x)\"",
-    "test": "node scripts/build.js nativescript-vue -f global -d && jest",
+    "test": "jest",
     "test:ci": "jest --ci --runInBand --coverage && make-coverage-badge",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "dev:ns": "node scripts/dev.js runtime --formats esm-bundler"

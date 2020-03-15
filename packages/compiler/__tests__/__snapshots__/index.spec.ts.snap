@@ -5,9 +5,35 @@ exports[`compile works 1`] = `
 
 return function render(_ctx, _cache) {
   with (_ctx) {
-    const { createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock } = _Vue
+    const { resolveComponent: _resolveComponent, createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock, createCommentVNode: _createCommentVNode, renderList: _renderList, Fragment: _Fragment } = _Vue
 
-    return (_openBlock(), _createBlock(\\"Frame\\"))
+    const _component_ActionItem = _resolveComponent(\\"ActionItem\\")
+
+    return (_openBlock(), _createBlock(\\"Frame\\", null, [
+      _createVNode(\\"Page\\", null, [
+        _createVNode(\\"ActionBar\\", null, [
+          foo
+            ? (_openBlock(), _createBlock(_component_ActionItem, {
+                key: 0,
+                text: \\"Test Item\\"
+              }))
+            : (_openBlock(), _createBlock(_component_ActionItem, {
+                key: 1,
+                text: \\"Test Item\\"
+              }))
+        ]),
+        _createVNode(\\"StackLayout\\", null, [
+          (_openBlock(true), _createBlock(_Fragment, null, _renderList(10, (i) => {
+            return (_openBlock(), _createBlock(\\"Label\\", {
+              key: i,
+              onTap: onTap,
+              text: msg,
+              ref: [_ctx, [_ctx, \\"test\\"]]
+            }, null, 40 /* PROPS, HYDRATE_EVENTS */, [\\"onTap\\", \\"text\\"]))
+          }), 128 /* KEYED_FRAGMENT */))
+        ])
+      ])
+    ]))
   }
 }"
 `;

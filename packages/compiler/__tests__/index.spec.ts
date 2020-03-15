@@ -2,10 +2,26 @@ import { compile } from '../src'
 import { registerTestElement } from 'tests/registry'
 
 registerTestElement('Frame')
+registerTestElement('Page')
+registerTestElement('ActionBar')
+registerTestElement('StackLayout')
+registerTestElement('Label')
 
 describe('compile', () => {
+  // This is just a temporary test to see that the compiler actually compiles the template
+  // to the correct blocks/render calls.
   it('works', () => {
-    const { code } = compile(`<Frame></Frame>`)
+    const { code } = compile(`<Frame>
+    <Page>
+        <ActionBar>
+            <ActionItem v-if="foo" text="Test Item" />
+            <ActionItem v-else text="Test Item" />
+        </ActionBar>
+        <StackLayout>
+            <Label v-for="i in 10" :key="i" @tap="onTap" :text="msg" ref="test" />
+        </StackLayout>
+    </Page>
+</Frame>`)
 
     expect(code).toMatchSnapshot()
   })

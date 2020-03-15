@@ -1,3 +1,5 @@
+import { registerTestLayout } from 'tests/registry'
+
 // https://github.com/vuejs/vue/blob/dev/test/unit/features/directives/class.spec.js
 
 import { h, render, defineComponent } from '../../src'
@@ -24,6 +26,8 @@ function assertClass(assertions: Array<Array<any>>) {
     expect(element.getAttribute('class')).toBe(expected)
   }
 }
+
+registerTestLayout('StackLayout')
 
 describe('class', () => {
   test('plain string', () => {

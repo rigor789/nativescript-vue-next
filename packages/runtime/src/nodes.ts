@@ -28,9 +28,7 @@ export const enum NSVViewFlags {
   SKIP_ADD_TO_DOM = 1 << 0,
   CONTENT_VIEW = 1 << 1,
   LAYOUT_VIEW = 1 << 2,
-  NO_CHILDREN = 1 << 3,
-
-  TEST_VIEW = 1 << 4
+  NO_CHILDREN = 1 << 3
 }
 
 export interface INSVNode {

@@ -2,7 +2,7 @@ import { unsetValue } from '@nativescript/core/ui/core/properties'
 
 type Style = any | string
 
-export class NSView {
+export class TNSViewBase {
   public resettedCSSProps: Array<string> = []
   public style: Style
 
@@ -27,7 +27,7 @@ export class NSView {
 
   public removeChild() {}
 
-  public _removeView(view: NSView) {}
+  public _removeView(view: TNSViewBase) {}
 
   public addEventListener(
     eventNames: string,

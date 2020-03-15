@@ -37,24 +37,6 @@ const app = createApp({
                 col
             })
 
-        const toggleAttrTest = condition =>
-            h('Label', {
-                text: 'Hello World',
-                ref: 'test',
-                row: 3,
-                ...(condition
-                    ? {
-                          textWrap: true,
-                          fontSize: 60,
-                          padding: 60,
-                          borderWidth: 2,
-                          customProperty: 'TESTING',
-                          'android:borderColor': 'red',
-                          'ios:borderColor': 'blue'
-                      }
-                    : {})
-            })
-
         const labelsTest = () =>
             h(
                 'GridLayout',
@@ -89,6 +71,36 @@ const app = createApp({
                     ' | ',
                     this.toggler ? null : '\nFALSE'
                 ]
+            )
+
+        const toggleAttrTest = condition =>
+            h('Label', {
+                text: 'Hello World',
+                ref: 'test',
+                row: 3,
+                ...(condition
+                    ? {
+                          textWrap: true,
+                          fontSize: 60,
+                          padding: 60,
+                          borderWidth: 2,
+                          customProperty: 'TESTING',
+                          'android:borderColor': 'red',
+                          'ios:borderColor': 'blue'
+                      }
+                    : {})
+            })
+
+        const buttonsTest = () =>
+            h(
+                'Button',
+                {
+                    row: 4,
+                    onTap: () => {
+                        console.log('Clicked')
+                    }
+                },
+                ['Click me']
             )
 
         return h('Frame', [
@@ -130,12 +142,13 @@ const app = createApp({
                     h(
                         'GridLayout',
                         {
-                            rows: '*, *, auto, auto'
+                            rows: '*, *, *, auto, auto'
                         },
                         [
                             h('ContentView', [labelsTest()]),
                             textNodesTest(),
-                            toggleAttrTest(this.toggler)
+                            toggleAttrTest(this.toggler),
+                            buttonsTest()
                         ]
                     )
                 ]

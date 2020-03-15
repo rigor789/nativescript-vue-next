@@ -37,6 +37,7 @@ export function patchProp(
       break
     default:
       if (isOn(key)) {
+        // console.log('->patchProp+Event')
         patchEvent(el, key.substr(2).toLowerCase(), prevValue, nextValue)
       } else {
         patchAttr(el, key, prevValue, nextValue)

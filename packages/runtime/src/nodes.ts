@@ -54,6 +54,8 @@ export interface INSVElement extends INSVNode {
 
   removeEventListener(event: string, handler?: any): void
 
+  dispatchEvent(event: string): void
+
   nativeView: (ViewBase | LayoutBase) & { [ELEMENT_REF]: INSVElement }
 
   getAttribute(name: string): unknown
@@ -142,6 +144,10 @@ export class NSVElement extends NSVNode implements INSVElement {
 
   removeEventListener(event: string, handler?: any) {
     this.nativeView.removeEventListener(event, handler)
+  }
+
+  dispatchEvent(event: string) {
+    this.nativeView.notify({ eventName: event, object: this.nativeView })
   }
 
   getAttribute(name: string): unknown {

@@ -3,7 +3,7 @@ import { unsetValue } from '@nativescript/core/ui/core/properties'
 type Style = any | string
 
 export class TNSViewBase {
-  public resettedCSSProps: Array<string> = []
+  public resetCSSProps: Array<string> = []
   public style: Style
 
   private eventListener: Record<string, Function>
@@ -16,7 +16,7 @@ export class TNSViewBase {
     this.style = new Proxy(new Map(), {
       set(target, prop: string, value: string): boolean {
         if (value === unsetValue) {
-          self.resettedCSSProps.push(prop)
+          self.resetCSSProps.push(prop)
         }
         return true
       }

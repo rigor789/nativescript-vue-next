@@ -9,8 +9,8 @@ export const registerCoreMock = (name: string, mock: any) => {
 }
 jest.mock(
   '@nativescript/core',
-  () => {
-    return new Proxy(
+  () =>
+    new Proxy(
       {},
       {
         get(target, p) {
@@ -29,8 +29,7 @@ jest.mock(
           }
         }
       }
-    )
-  },
+    ),
   { virtual: true }
 )
 
@@ -38,10 +37,8 @@ export const unsetValue = Symbol('unsetValue')
 
 jest.mock(
   '@nativescript/core/ui/core/properties',
-  () => {
-    return {
-      unsetValue
-    }
-  },
+  () => ({
+    unsetValue
+  }),
   { virtual: true }
 )

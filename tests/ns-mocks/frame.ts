@@ -32,7 +32,7 @@ const getFrameById = (id: string) => {
   return topmostFrame()
 }
 
-export class Frame extends NSView {
+export class Frame extends TNSViewBase {
   topmost() {
     return topmostFrame()
   }

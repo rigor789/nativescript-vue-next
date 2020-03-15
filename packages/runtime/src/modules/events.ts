@@ -1,11 +1,26 @@
 import { EMPTY_OBJ } from '@vue/shared'
 import { INSVElement } from '../nodes'
+import { callWithAsyncErrorHandling } from '@vue/runtime-core'
+
+interface Invoker extends EventListener {
+  value: EventValue
+}
+
+type EventValue = (Function | Function[]) & {
+  invoker?: Invoker | null
+}
+
+type EventValueWithOptions = {
+  handler: EventValue
+  options: AddEventListenerOptions
+  invoker?: Invoker | null
+}
 
 export function patchEvent(
   el: INSVElement,
   name: string,
-  prevValue: any,
-  nextValue: any
+  prevValue: EventValueWithOptions | EventValue | null,
+  nextValue: EventValueWithOptions | EventValue | null
 ) {
   const prevOptions = prevValue && 'options' in prevValue && prevValue.options
   const nextOptions = nextValue && 'options' in nextValue && nextValue.options
@@ -25,13 +40,14 @@ export function patchEvent(
         el.removeEventListener(name, invoker)
       }
       if (nextValue && value) {
-        const invoker = value
+        const invoker = createInvoker(value)
         nextValue.invoker = invoker
         // TODO: use nextOptions here for supporting event options
         el.addEventListener(name, invoker)
       }
       return
     }
+    return
   }
 
   if (nextValue && value) {
@@ -40,9 +56,18 @@ export function patchEvent(
       invoker.value = value
       nextValue.invoker = invoker
     } else {
-      el.addEventListener(name, value)
+      el.addEventListener(name, createInvoker(value))
     }
   } else if (invoker) {
     el.removeEventListener(name, invoker)
   }
+}
+
+function createInvoker(initialValue: EventValue) {
+  const invoker: Invoker = e => {
+    callWithAsyncErrorHandling(invoker.value, null, 5, [e])
+  }
+  invoker.value = initialValue
+  initialValue.invoker = invoker
+  return invoker
 }

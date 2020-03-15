@@ -54,11 +54,11 @@ const app = createApp({
                 ]
             )
 
-        const textNodesTest = () =>
+        const textNodesTest = attrs =>
             h(
                 'Label',
                 {
-                    row: 2,
+                    ...attrs,
                     style: 'font-size: 14;',
                     textWrap: true
                 },
@@ -73,11 +73,11 @@ const app = createApp({
                 ]
             )
 
-        const toggleAttrTest = condition =>
+        const toggleAttrTest = (attrs, condition) =>
             h('Label', {
                 text: 'Hello World',
                 ref: 'test',
-                row: 3,
+                ...attrs,
                 ...(condition
                     ? {
                           textWrap: true,
@@ -91,13 +91,13 @@ const app = createApp({
                     : {})
             })
 
-        const buttonsTest = () =>
+        const buttonsTest = attrs =>
             h(
                 'Button',
                 {
-                    row: 4,
-                    onTap: () => {
-                        console.log('Clicked')
+                    ...attrs,
+                    onTap() {
+                        alert('Tapped')
                     }
                 },
                 ['Click me']
@@ -142,13 +142,23 @@ const app = createApp({
                     h(
                         'GridLayout',
                         {
-                            rows: '*, *, *, auto, auto'
+                            rows: '*, auto, *, auto, auto'
                         },
                         [
-                            h('ContentView', [labelsTest()]),
-                            textNodesTest(),
-                            toggleAttrTest(this.toggler),
-                            buttonsTest()
+                            h('ContentView', { row: 0 }, [labelsTest()]),
+                            textNodesTest({ row: 1 }),
+                            toggleAttrTest({ row: 2 }, this.toggler),
+                            buttonsTest({ row: 3 }),
+                            h(
+                                'Button',
+                                {
+                                    row: 4,
+                                    onTap() {
+                                        console.log('TAPPED')
+                                    }
+                                },
+                                ['Click me']
+                            )
                         ]
                     )
                 ]

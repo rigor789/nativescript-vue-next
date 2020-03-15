@@ -34,6 +34,7 @@ export class TNSViewBase {
     callback: Function,
     thisArg?: any
   ) {
+    console.log('addEventListeners: ', eventNames)
     this.eventListener[eventNames] = callback
   }
 
@@ -46,7 +47,8 @@ export class TNSViewBase {
   }
 
   public notify(event: any) {
-    this.eventListener[event.eventName](event.object)
+    const callback = this.eventListener[event.eventName]
+    callback && this.eventListener[event.eventName](event.object)
   }
 
   public set(name: string, value: any) {

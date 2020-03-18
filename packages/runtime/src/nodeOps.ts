@@ -8,7 +8,7 @@ import {
   NSVText
 } from './nodes'
 
-declare interface NSVNodeOps
+export interface NSVNodeOps
   extends Omit<RendererOptions<INSVNode, INSVElement>, 'patchProp'> {
   createRoot(): NSVRoot
 }

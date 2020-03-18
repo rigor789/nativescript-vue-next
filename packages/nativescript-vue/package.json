@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/nativescript-vue#readme",
   "dependencies": {
-    "@vue/shared": "3.0.0-alpha.9"
+    "@vue/shared": "3.0.0-alpha.9",
+    "@nativescript-vue/compiler": "3.0.0-dev",
+    "@nativescript-vue/runtime": "3.0.0-dev"
   }
 }

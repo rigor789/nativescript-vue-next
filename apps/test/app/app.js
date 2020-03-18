@@ -4,8 +4,16 @@ import {
     ref,
     onUnmounted,
     onMounted,
-    ActionBar
-} from '@nativescript-vue/runtime'
+    ActionBar,
+    defineComponent
+} from 'nativescript-vue'
+
+const testComp = defineComponent({
+    template: `<StackLayout v-bind="$attrs">
+    <Label text="Compiled label from template" />
+    <Label text="Another Compiled label from template" />
+</StackLayout>`
+})
 
 function dumpViewTree(root) {
     const mapNode = node => {
@@ -142,7 +150,7 @@ const app = createApp({
                     h(
                         'GridLayout',
                         {
-                            rows: '*, auto, *, auto, auto'
+                            rows: '*, auto, *, auto, auto, auto'
                         },
                         [
                             h('ContentView', { row: 0 }, [labelsTest()]),
@@ -158,7 +166,8 @@ const app = createApp({
                                     }
                                 },
                                 ['Click me']
-                            )
+                            ),
+                            h(testComp, { row: 5 })
                         ]
                     )
                 ]

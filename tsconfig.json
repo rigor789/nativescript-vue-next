@@ -20,7 +20,6 @@
     "types": ["jest", "puppeteer", "node"],
     "rootDir": ".",
     "paths": {
-      "@vue/shared": ["packages/shared/src"],
       "@nativescript-vue/*": ["packages/*/src"],
       "nativescript-vue": ["packages/nativescript-vue/src"]
     }

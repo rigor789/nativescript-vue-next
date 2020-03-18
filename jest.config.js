@@ -19,7 +19,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^@nativescript-vue/(.*?)$': '<rootDir>/packages/$1/src',
-    '^@vue/shared(.*?)$': '<rootDir>/packages/shared/src',
     '^tests/(.*?)$': '<rootDir>/tests/$1'
   },
   rootDir: __dirname,
@@ -27,8 +26,8 @@ module.exports = {
   testPathIgnorePatterns: process.env.SKIP_E2E
     ? // ignore example tests on netlify builds since they don't contribute
       // to coverage and can cause netlify builds to fail
-      ['/node_modules/', '/packages/shared/__tests__', '/examples/__tests__']
-    : ['/node_modules/', '/packages/shared/__tests__'],
+      ['/node_modules/', '/examples/__tests__']
+    : ['/node_modules/'],
   setupFiles: ['<rootDir>/tests/jest.setup.ts'],
   silent: true
 }

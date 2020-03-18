@@ -28,7 +28,7 @@ return function render(_ctx, _cache) {
               key: i,
               onTap: onTap,
               text: msg,
-              ref: [_ctx, [_ctx, \\"test\\"]]
+              ref: \\"test\\"
             }, null, 40 /* PROPS, HYDRATE_EVENTS */, [\\"onTap\\", \\"text\\"]))
           }), 128 /* KEYED_FRAGMENT */))
         ])

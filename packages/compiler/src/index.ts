@@ -10,7 +10,7 @@ import {
   DirectiveTransform
 } from '@vue/compiler-core'
 // import { parserOptionsMinimal } from './parserOptionsMinimal'
-import { parserOptionsStandard } from './parserOptionsStandard'
+import { parserOptions } from './parserOptions'
 // import { transformStyle } from './transforms/transformStyle'
 // import { transformVHtml } from './transforms/vHtml'
 // import { transformVText } from './transforms/vText'
@@ -20,7 +20,7 @@ import { parserOptionsStandard } from './parserOptionsStandard'
 // import { warnTransitionChildren } from './transforms/warnTransitionChildren'
 // import { stringifyStatic } from './transforms/stringifyStatic'
 
-export const parserOptions = /*__BROWSER__ ? parserOptionsMinimal : */ parserOptionsStandard
+export { parserOptions }
 
 export const DOMNodeTransforms: NodeTransform[] = [
   // transformStyle,

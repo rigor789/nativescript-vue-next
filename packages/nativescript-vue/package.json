@@ -1,6 +1,6 @@
 {
   "name": "nativescript-vue",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-dev",
   "description": "nativescript-vue",
   "main": "index.js",
   "module": "dist/nativescript-vue.esm-bundler.js",

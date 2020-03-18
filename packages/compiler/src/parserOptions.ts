@@ -8,6 +8,7 @@ import {
 } from '@vue/compiler-core'
 import { makeMap } from '@vue/shared'
 import { isKnownView } from '@nativescript-vue/runtime'
+import namedCharacterReferences from './namedChars.json'
 // import { TRANSITION, TRANSITION_GROUP } from './runtimeHelpers'
 
 const isRawTextContainer = /*#__PURE__*/ makeMap('style,script', true)
@@ -16,7 +17,7 @@ export const enum DOMNamespaces {
   HTML = Namespaces.HTML
 }
 
-export const parserOptionsMinimal: ParserOptions = {
+export const parserOptions: ParserOptions = {
   // return true for all?
   isVoidTag: makeMap(''),
   isNativeTag: isKnownView,
@@ -51,5 +52,12 @@ export const parserOptionsMinimal: ParserOptions = {
       }
     }
     return TextModes.DATA
-  }
+  },
+
+  // https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
+  namedCharacterReferences,
+  maxCRNameLength: /*#__PURE__*/ Object.keys(namedCharacterReferences).reduce(
+    (max, name) => Math.max(max, name.length),
+    0
+  )
 }

@@ -16,8 +16,8 @@ import { patchAttr } from './modules/attrs'
 export function patchProp(
   el: INSVElement,
   key: string,
-  nextValue: any,
-  prevValue: any
+  prevValue: any,
+  nextValue: any
 ) {
   // console.log('->patchProp')
 

@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/runtime#readme",
   "dependencies": {
-    "@vue/reactivity": "3.0.0-alpha.8",
-    "@vue/runtime-core": "3.0.0-alpha.8",
+    "@vue/reactivity": "3.0.0-alpha.9",
+    "@vue/runtime-core": "3.0.0-alpha.9",
     "set-value": "3.0.1",
     "unset-value": "1.0.0"
   },

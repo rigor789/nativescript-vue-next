@@ -1,7 +1,5 @@
 import { unsetValue } from '@nativescript/core/ui/core/properties'
-// import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
-const { cssTreeParse } = require('@nativescript/core/css/css-tree-parser')
-
+import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
 import { INSVElement } from '../nodes'
 
 type Style = string | null

@@ -2,17 +2,17 @@
   "nativescript": {
     "id": "org.nativescript.test",
     "tns-android": {
-      "version": "6.4.1"
+      "version": "6.5.0"
     },
     "tns-ios": {
-      "version": "6.4.2"
+      "version": "6.5.0"
     }
   },
   "description": "NativeScript Application",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "@nativescript/core": "6.4.2"
+    "@nativescript/core": "6.5.0"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",

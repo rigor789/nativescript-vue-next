@@ -23,7 +23,6 @@ function ensureRenderer() {
 }
 
 function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
-  console.log('->runApp')
   Application.run({
     create: () => {
       console.log({

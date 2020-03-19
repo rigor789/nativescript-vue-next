@@ -270,13 +270,13 @@ export class NSVRoot extends NSVNode {
 
 function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
   if (__TEST__) return
-  console.log(
-    `...addChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
-      parent.nodeId
-    }), ${atIndex}  )`
-  )
+  // console.log(
+  //   `...addChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
+  //     parent.nodeId
+  //   }), ${atIndex}  )`
+  // )
   if (child.meta.viewFlags & NSVViewFlags.SKIP_ADD_TO_DOM) {
-    console.log('SKIP_ADD_TO_DOM')
+    // console.log('SKIP_ADD_TO_DOM')
     return
   }
 
@@ -284,7 +284,7 @@ function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
   const childView = child.nativeView
 
   if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
-    console.log('NO_CHILDREN')
+    // console.log('NO_CHILDREN')
     return
   }
   if (parent.meta.nodeOps) {
@@ -306,18 +306,18 @@ function addChild(child: NSVElement, parent: NSVElement, atIndex?: number) {
 
 function removeChild(child: NSVElement, parent: NSVElement) {
   if (__TEST__) return
-  console.log(
-    `...removeChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
-      parent.nodeId
-    })  )`
-  )
+  // console.log(
+  //   `...removeChild(  ${child.tagName}(${child.nodeId}), ${parent.tagName}(${
+  //     parent.nodeId
+  //   })  )`
+  // )
 
   if (child.meta.viewFlags & NSVViewFlags.SKIP_ADD_TO_DOM) {
-    console.log('SKIP_ADD_TO_DOM')
+    // console.log('SKIP_ADD_TO_DOM')
     return
   }
   if (parent.meta.viewFlags & NSVViewFlags.NO_CHILDREN) {
-    console.log('NO_CHILDREN')
+    // console.log('NO_CHILDREN')
     return
   }
   if (parent.meta.nodeOps) {

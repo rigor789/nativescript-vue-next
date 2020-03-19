@@ -29,7 +29,7 @@ export let defaultViewMeta: NSVViewMeta = {
 let elementMap: Record<string, NSVElementDescriptor> = {}
 
 export function getViewMeta(elementName: string): NSVViewMeta {
-  console.log(`->getViewMeta(${elementName})`)
+  // console.log(`->getViewMeta(${elementName})`)
 
   const normalizedName = normalizeElementName(elementName)
 
@@ -43,7 +43,7 @@ export function getViewMeta(elementName: string): NSVViewMeta {
 }
 
 export function getViewClass(elementName: string): any {
-  console.log(`->getViewClass(${elementName})`)
+  // console.log(`->getViewClass(${elementName})`)
   const normalizedName = normalizeElementName(elementName)
   const entry = elementMap[normalizedName]
 
@@ -78,7 +78,7 @@ export function registerElement(
     meta: mergedMeta,
     resolver
   }
-  console.log(`->registerElement(${elementName})`)
+  // console.log(`->registerElement(${elementName})`)
 }
 
 export function isKnownView(elementName: string) {

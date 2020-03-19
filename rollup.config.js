@@ -107,8 +107,10 @@ function createConfig(format, output, plugins = []) {
   const entryFile =
     format === 'esm-bundler-runtime' ? `src/runtime.ts` : `src/index.ts`
 
-  const external =
-    isGlobalBuild || isRawESMBuild ? [] : Object.keys(pkg.dependencies || [])
+  const external = (isGlobalBuild || isRawESMBuild
+    ? []
+    : Object.keys(pkg.dependencies || [])
+  ).concat(pkg.knownExternals || [])
 
   return {
     input: resolve(entryFile),

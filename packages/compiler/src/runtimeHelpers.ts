@@ -14,6 +14,8 @@ export const V_SHOW = Symbol(__DEV__ ? `vShow` : ``)
 export const TRANSITION = Symbol(__DEV__ ? `Transition` : ``)
 export const TRANSITION_GROUP = Symbol(__DEV__ ? `TransitionGroup` : ``)
 
+export const ACTION_BAR = Symbol(__DEV__ ? `ActionBar` : ``)
+
 registerRuntimeHelpers({
   [V_MODEL_RADIO]: `vModelRadio`,
   [V_MODEL_CHECKBOX]: `vModelCheckbox`,
@@ -24,5 +26,6 @@ registerRuntimeHelpers({
   [V_ON_WITH_KEYS]: `withKeys`,
   [V_SHOW]: `vShow`,
   [TRANSITION]: `Transition`,
-  [TRANSITION_GROUP]: `TransitionGroup`
+  [TRANSITION_GROUP]: `TransitionGroup`,
+  [ACTION_BAR]: `ActionBar`
 })

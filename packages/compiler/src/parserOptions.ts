@@ -2,14 +2,15 @@ import {
   TextModes,
   ParserOptions,
   ElementNode,
-  Namespaces
+  Namespaces,
+  isBuiltInType
   // NodeTypes,
   // isBuiltInType
 } from '@vue/compiler-core'
 import { makeMap } from '@vue/shared'
-import { isKnownView } from '@nativescript-vue/runtime'
+// import { isKnownView } from '@nativescript-vue/runtime'
 import namedCharacterReferences from './namedChars.json'
-// import { TRANSITION, TRANSITION_GROUP } from './runtimeHelpers'
+import { ACTION_BAR, TRANSITION, TRANSITION_GROUP } from './runtimeHelpers'
 
 const isRawTextContainer = /*#__PURE__*/ makeMap('style,script', true)
 
@@ -17,22 +18,29 @@ export const enum DOMNamespaces {
   HTML = Namespaces.HTML
 }
 
+const isBuiltInComponent = (tag: string): symbol | undefined => {
+  if (isBuiltInType(tag, `ActionBar`)) {
+    return ACTION_BAR
+  } else if (isBuiltInType(tag, `Transition`)) {
+    return TRANSITION
+  } else if (isBuiltInType(tag, `TransitionGroup`)) {
+    return TRANSITION_GROUP
+  }
+}
+
 export const parserOptions: ParserOptions = {
-  // return true for all?
-  isVoidTag: makeMap(''),
-  isNativeTag: isKnownView,
-  // todo: return false?
-  isPreTag: tag => tag === 'pre',
-
-  isBuiltInComponent: (tag: string): symbol | undefined => {
-    return undefined
-    // if (isBuiltInType(tag, `Transition`)) {
-    //   return TRANSITION
-    // } else if (isBuiltInType(tag, `TransitionGroup`)) {
-    //   return TRANSITION_GROUP
-    // }
+  // We don't have void tags in NativeScript (<br>, <hr> etc.)
+  isVoidTag: tag => false,
+  isNativeTag: tag => {
+    if (isBuiltInComponent(tag)) {
+      return false
+    }
+    // in case we encounter an element that is not a built-in component
+    // we will assume it's a plugin provided element
+    return true
   },
-
+  isPreTag: tag => tag === 'pre',
+  isBuiltInComponent,
   // todo: we might add support for different namespaces in the future
   // for example - it would be neat to be able to write inline svg
   // with the svg plugin?

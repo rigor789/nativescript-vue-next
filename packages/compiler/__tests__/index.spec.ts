@@ -4,6 +4,7 @@ import { registerTestElement } from 'tests/registry'
 registerTestElement('Frame')
 registerTestElement('Page')
 registerTestElement('ActionBar')
+registerTestElement('ActionItem')
 registerTestElement('StackLayout')
 registerTestElement('Label')
 
@@ -18,7 +19,9 @@ describe('compile', () => {
             <ActionItem v-else text="Test Item" />
         </ActionBar>
         <StackLayout>
+            <!-- Comment -->
             <Label v-for="i in 10" :key="i" @tap="onTap" :text="msg" ref="test" />
+            <UnknownElement/>
         </StackLayout>
     </Page>
 </Frame>`)

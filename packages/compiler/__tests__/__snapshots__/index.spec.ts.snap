@@ -5,24 +5,26 @@ exports[`compile works 1`] = `
 
 return function render(_ctx, _cache) {
   with (_ctx) {
-    const { resolveComponent: _resolveComponent, createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock, createCommentVNode: _createCommentVNode, renderList: _renderList, Fragment: _Fragment } = _Vue
-
-    const _component_ActionItem = _resolveComponent(\\"ActionItem\\")
+    const { createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock, createCommentVNode: _createCommentVNode, ActionBar: _ActionBar, withCtx: _withCtx, renderList: _renderList, Fragment: _Fragment } = _Vue
 
     return (_openBlock(), _createBlock(\\"Frame\\", null, [
       _createVNode(\\"Page\\", null, [
-        _createVNode(\\"ActionBar\\", null, [
-          foo
-            ? (_openBlock(), _createBlock(_component_ActionItem, {
-                key: 0,
-                text: \\"Test Item\\"
-              }))
-            : (_openBlock(), _createBlock(_component_ActionItem, {
-                key: 1,
-                text: \\"Test Item\\"
-              }))
-        ]),
+        _createVNode(_ActionBar, null, {
+          default: _withCtx(() => [
+            foo
+              ? (_openBlock(), _createBlock(\\"ActionItem\\", {
+                  key: 0,
+                  text: \\"Test Item\\"
+                }))
+              : (_openBlock(), _createBlock(\\"ActionItem\\", {
+                  key: 1,
+                  text: \\"Test Item\\"
+                }))
+          ]),
+          _: 1
+        }),
         _createVNode(\\"StackLayout\\", null, [
+          _createCommentVNode(\\" Comment \\"),
           (_openBlock(true), _createBlock(_Fragment, null, _renderList(10, (i) => {
             return (_openBlock(), _createBlock(\\"Label\\", {
               key: i,
@@ -30,7 +32,8 @@ return function render(_ctx, _cache) {
               text: msg,
               ref: \\"test\\"
             }, null, 40 /* PROPS, HYDRATE_EVENTS */, [\\"onTap\\", \\"text\\"]))
-          }), 128 /* KEYED_FRAGMENT */))
+          }), 128 /* KEYED_FRAGMENT */)),
+          _createVNode(\\"UnknownElement\\")
         ])
       ])
     ]))

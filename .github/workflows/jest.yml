@@ -68,7 +68,6 @@ jobs:
         id: coverage_pr
         if: github.event_name == 'pull_request'
         run: |
-          npm install netlify-cli -g
           npx netlify-cli deploy --dir=coverage | tee result
           echo "::set-output name=coverageURL::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL: //")"
         env:

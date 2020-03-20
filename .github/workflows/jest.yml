@@ -68,25 +68,17 @@ jobs:
         run: |
           npm install netlify-cli -g
           npx netlify-cli deploy --dir=coverage | tee result
-          echo "::set-output name=result::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL:/Coverage report:/")"
+          echo "::set-output name=coverageURL::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL://")"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: coverage-comment
-        if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.result != ''
+        if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.coverageURL != ''
+        uses: rigor789/action-comment-test-coverage@0.1
+        with:
+          coverageURL: ${{ steps.coverage_pr.outputs.coverageURL }}
         env:
-          URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RESULT: ${{ steps.coverage_pr.outputs.result }}
-        run: |
-          echo "Commenting on PR:"
-          echo $RESULT
-          curl \
-            -X POST \
-            $URL \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            --data '{ "body": "'$RESULT'" }':  
 
     needs: setup

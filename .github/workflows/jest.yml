@@ -73,9 +73,9 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: coverage-comment
+      - name: coverage-pr-comment
         if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.coverageURL != ''
-        uses: rigor789/action-comment-test-coverage@0.6
+        uses: rigor789/action-comment-test-coverage@0.7.0
         with:
           coverageURL: ${{ steps.coverage_pr.outputs.coverageURL }}
         env:

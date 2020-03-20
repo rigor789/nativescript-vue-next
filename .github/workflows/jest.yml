@@ -80,11 +80,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.coverage_pr.outputs.result }}
         run: |
+          BODY=$(echo $RESULT | grep grep "^Live Draft URL:" | sed "s/Live Draft URL:/Coverage report:/")
+          echo "Commenting on PR:"
+          echo $BODY
           curl \
             -X POST \
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data '{ "body": "$RESULT" }':  
+            --data '{ "body": "$BODY" }':  
 
     needs: setup

@@ -56,7 +56,7 @@ jobs:
         run: yarn test:ci
 
       - name: coverage-master
-        if: github.ref == 'ref/head/master'
+        if: github.ref == 'refs/heads/master'
         run: npx netlify-cli deploy --dir=coverage --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

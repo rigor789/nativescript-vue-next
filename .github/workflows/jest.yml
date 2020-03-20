@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   setup:
@@ -52,10 +55,36 @@ jobs:
       - name: test
         run: yarn test:ci
 
-      - name: coverage
+      - name: coverage-master
+        if: github.ref == 'ref/head/master'
         run: npx netlify-cli deploy --dir=coverage --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          
+      - name: coverage-pr
+        id: coverage_pr
+        if: github.event_name == 'pull_request'
+        run: |
+          npm install netlify-cli -g
+          npx netlify-cli deploy --dir=coverage | tee result
+          echo "::set-output name=result::$(cat result)"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: coverage-comment
+        if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.result != ''
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ steps.coverage_pr.outputs.result }}
+        run: |
+          curl \
+            -X POST \
+            $URL \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            --data '{ "body": "$RESULT" }':  
 
     needs: setup

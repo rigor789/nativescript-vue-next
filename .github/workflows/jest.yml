@@ -27,7 +27,9 @@ jobs:
           key: deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
 
       - name: install
-        run: yarn --check-files --frozen-lockfile --non-interactive
+        run: |
+          yarn --check-files --frozen-lockfile --non-interactive
+          yarn add netlify-cli --check-files --non-interactive
 
       - name: cache workspace
         uses: actions/cache@v1

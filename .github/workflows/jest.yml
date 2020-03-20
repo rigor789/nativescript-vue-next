@@ -75,7 +75,7 @@ jobs:
 
       - name: coverage-pr-comment
         if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.coverageURL != ''
-        uses: rigor789/action-comment-test-coverage@0.7.1
+        uses: rigor789/action-comment-test-coverage@0.7.2
         with:
           coverageURL: ${{ steps.coverage_pr.outputs.coverageURL }}
         env:

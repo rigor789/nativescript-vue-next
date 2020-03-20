@@ -68,14 +68,14 @@ jobs:
         run: |
           npm install netlify-cli -g
           npx netlify-cli deploy --dir=coverage | tee result
-          echo "::set-output name=coverageURL::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL://")"
+          echo "::set-output name=coverageURL::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL: //")"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: coverage-comment
         if: github.event_name == 'pull_request' && steps.coverage_pr.outputs.coverageURL != ''
-        uses: rigor789/action-comment-test-coverage@0.1
+        uses: rigor789/action-comment-test-coverage@0.2
         with:
           coverageURL: ${{ steps.coverage_pr.outputs.coverageURL }}
         env:

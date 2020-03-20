@@ -29,7 +29,7 @@ jobs:
       - name: install
         run: |
           yarn --check-files --frozen-lockfile --non-interactive
-          yarn add netlify-cli --check-files --non-interactive
+          yarn add netlify-cli --ignore-workspace-root-check --check-files --non-interactive
 
       - name: cache workspace
         uses: actions/cache@v1

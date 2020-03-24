@@ -8,9 +8,9 @@ registerTestElement('Button')
 describe(`events`, () => {
   it('should assign event handler', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const fn = jest.fn()
-    patchEvent(el, 'click', null, fn)
+    patchEvent(el, 'tap', null, fn)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -22,12 +22,12 @@ describe(`events`, () => {
 
   it('should update event handler', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const prevFn = jest.fn()
     const nextFn = jest.fn()
-    patchEvent(el, 'click', null, prevFn)
+    patchEvent(el, 'tap', null, prevFn)
     el.dispatchEvent(event)
-    patchEvent(el, 'click', prevFn, nextFn)
+    patchEvent(el, 'tap', prevFn, nextFn)
     await nextTick()
     el.dispatchEvent(event)
     await nextTick()
@@ -39,10 +39,10 @@ describe(`events`, () => {
 
   it('should support multiple event handlers', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const fn1 = jest.fn()
     const fn2 = jest.fn()
-    patchEvent(el, 'click', null, [fn1, fn2])
+    patchEvent(el, 'tap', null, [fn1, fn2])
     el.dispatchEvent(event)
     await nextTick()
     expect(fn1).toHaveBeenCalledTimes(1)
@@ -51,10 +51,10 @@ describe(`events`, () => {
 
   it('should unassign event handler', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const fn = jest.fn()
-    patchEvent(el, 'click', null, fn)
-    patchEvent(el, 'click', fn, null)
+    patchEvent(el, 'tap', null, fn)
+    patchEvent(el, 'tap', fn, null)
     el.dispatchEvent(event)
     await nextTick()
     expect(fn).not.toHaveBeenCalled()
@@ -62,7 +62,7 @@ describe(`events`, () => {
 
   it('should support event options', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const fn = jest.fn()
     const nextValue = {
       handler: fn,
@@ -70,7 +70,7 @@ describe(`events`, () => {
         once: true
       }
     }
-    patchEvent(el, 'click', null, nextValue)
+    patchEvent(el, 'tap', null, nextValue)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -80,7 +80,7 @@ describe(`events`, () => {
 
   it('should support varying event options', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const prevFn = jest.fn()
     const nextFn = jest.fn()
     const nextValue = {
@@ -89,8 +89,8 @@ describe(`events`, () => {
         once: true
       }
     }
-    patchEvent(el, 'click', null, prevFn)
-    patchEvent(el, 'click', prevFn, nextValue)
+    patchEvent(el, 'tap', null, prevFn)
+    patchEvent(el, 'tap', prevFn, nextValue)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -101,7 +101,7 @@ describe(`events`, () => {
 
   it('should unassign event handler with options', async () => {
     const el = new NSVElement('Button')
-    const event = 'click'
+    const event = 'tap'
     const fn = jest.fn()
     const nextValue = {
       handler: fn,
@@ -109,8 +109,8 @@ describe(`events`, () => {
         once: true
       }
     }
-    patchEvent(el, 'click', null, nextValue)
-    patchEvent(el, 'click', nextValue, null)
+    patchEvent(el, 'tap', null, nextValue)
+    patchEvent(el, 'tap', nextValue, null)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)

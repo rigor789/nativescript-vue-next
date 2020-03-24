@@ -34,7 +34,7 @@ export const enum NSVViewFlags {
 export interface INSVNode {
   nodeId: number
   nodeType: NSVNodeTypes
-  text: string
+  text: string | null
 
   parentNode: INSVElement | null
 
@@ -85,7 +85,7 @@ export abstract class NSVNode implements INSVNode {
 
   nodeId: number
   nodeType: NSVNodeTypes
-  text: string
+  text: string | null = null
 
   parentNode: INSVElement | null = null
   childNodes: INSVNode[] = []
@@ -107,7 +107,7 @@ export abstract class NSVNode implements INSVNode {
 export class NSVElement extends NSVNode implements INSVElement {
   private readonly _tagName: string
   private readonly _nativeView: any
-  private _meta: NSVViewMeta
+  private _meta: NSVViewMeta | undefined
 
   constructor(tagName: string) {
     super(NSVNodeTypes.ELEMENT)

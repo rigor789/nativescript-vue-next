@@ -31,14 +31,7 @@ const isBuiltInComponent = (tag: string): symbol | undefined => {
 export const parserOptions: ParserOptions = {
   // We don't have void tags in NativeScript (<br>, <hr> etc.)
   isVoidTag: tag => false,
-  isNativeTag: tag => {
-    if (isBuiltInComponent(tag)) {
-      return false
-    }
-    // in case we encounter an element that is not a built-in component
-    // we will assume it's a plugin provided element
-    return true
-  },
+  isNativeTag: tag => false,
   isPreTag: tag => tag === 'pre',
   isBuiltInComponent,
   // todo: we might add support for different namespaces in the future

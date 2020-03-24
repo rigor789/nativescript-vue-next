@@ -8,7 +8,7 @@ import {
 import { Application } from '@nativescript/core'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-import { INSVElement, INSVNode } from './nodes'
+import { INSVElement } from './nodes'
 import './registry'
 
 const rendererOptions = {
@@ -39,7 +39,7 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
 
 export const render = ((...args) => {
   ensureRenderer().render(...args)
-}) as RootRenderFunction<INSVNode, INSVElement>
+}) as RootRenderFunction<INSVElement>
 
 export const createApp = ((...args) => {
   const app = ensureRenderer().createApp(...args)
@@ -55,6 +55,7 @@ export const createApp = ((...args) => {
 export * from './nodeOps'
 export * from './runtimeHelpers'
 export * from './registry'
+export { resolveComponent } from './resolveAssets'
 
 // Runtime components
 export { ActionBar } from './components/ActionBar'

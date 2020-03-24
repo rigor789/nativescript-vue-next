@@ -5,6 +5,7 @@ import {
   CompilerError
 } from '@nativescript-vue/compiler'
 import {
+  isKnownView,
   registerRuntimeCompiler,
   RenderFunction,
   warn
@@ -31,6 +32,9 @@ function compileToFunction(
   }
 
   const { code } = compile(template, {
+    // at runtime - the registry should know about all elements, so we override the
+    // isNativeTag function from our standalone compiler
+    isNativeTag: tag => isKnownView(tag),
     hoistStatic: true,
     onError(err: CompilerError) {
       // todo

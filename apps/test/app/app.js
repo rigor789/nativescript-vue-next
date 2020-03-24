@@ -5,15 +5,19 @@ import {
     onUnmounted,
     onMounted,
     ActionBar,
-    defineComponent
+    defineComponent,
+    compile
 } from 'nativescript-vue'
 
 const testComp = defineComponent({
     template: `<StackLayout v-bind="$attrs">
+    <Button text="Hello Button" />
     <Label text="Compiled label from template" />
     <Label text="Another Compiled label from template" />
 </StackLayout>`
 })
+
+console.log(compile('<StackLayout/>').toString())
 
 function dumpViewTree(root) {
     const mapNode = node => {

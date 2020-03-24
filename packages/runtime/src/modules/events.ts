@@ -20,7 +20,7 @@ function addEventListener(
   el: INSVElement,
   event: string,
   handler: EventListener,
-  options?: EventListenerOptions
+  options: EventListenerOptions = {}
 ) {
   el.addEventListener(event, handler, options)
 }

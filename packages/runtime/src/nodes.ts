@@ -50,7 +50,11 @@ export interface INSVElement extends INSVNode {
   meta: NSVViewMeta
   style: Style | string
 
-  addEventListener(event: string, handler: any, options?: any): void
+  addEventListener(
+    event: string,
+    handler: any,
+    options: AddEventListenerOptions
+  ): void
 
   removeEventListener(event: string, handler?: any): void
 
@@ -138,7 +142,11 @@ export class NSVElement extends NSVNode implements INSVElement {
     return (this._meta = getViewMeta(this.tagName))
   }
 
-  addEventListener(event: string, handler: any, options: any = {}) {
+  addEventListener(
+    event: string,
+    handler: any,
+    options: AddEventListenerOptions = {}
+  ) {
     const { capture, once } = options
     if (capture) {
       console.log('Bubble propagation is not supported')

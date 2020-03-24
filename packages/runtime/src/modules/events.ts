@@ -16,6 +16,15 @@ type EventValueWithOptions = {
   invoker?: Invoker | null
 }
 
+function addEventListener(
+  el: INSVElement,
+  event: string,
+  handler: EventListener,
+  options?: EventListenerOptions
+) {
+  el.addEventListener(event, handler, options)
+}
+
 export function patchEvent(
   el: INSVElement,
   name: string,
@@ -42,8 +51,7 @@ export function patchEvent(
       if (nextValue && value) {
         const invoker = createInvoker(value)
         nextValue.invoker = invoker
-        // TODO: use nextOptions here for supporting event options
-        el.addEventListener(name, invoker)
+        addEventListener(el, name, invoker, next)
       }
       return
     }
@@ -56,7 +64,7 @@ export function patchEvent(
       invoker.value = value
       nextValue.invoker = invoker
     } else {
-      el.addEventListener(name, createInvoker(value))
+      addEventListener(el, name, createInvoker(value))
     }
   } else if (invoker) {
     el.removeEventListener(name, invoker)

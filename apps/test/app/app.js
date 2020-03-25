@@ -105,14 +105,40 @@ const app = createApp({
 
         const buttonsTest = attrs =>
             h(
-                'Button',
+                'StackLayout',
                 {
-                    ...attrs,
-                    onTap() {
-                        alert('Tapped')
-                    }
+                    orientation: 'horizontal',
+                    ...attrs
                 },
-                ['Click me']
+                [
+                    h(
+                        'Button',
+                        {
+                            ...attrs,
+                            onTap() {
+                                alert('Tapped')
+                            }
+                        },
+                        ['Tap me']
+                    ),
+                    h(
+                        'Button',
+                        {
+                            ...attrs,
+                            onTap: {
+                                handler: () => {
+                                    alert(
+                                        'Tapped. In next tap this dialog will not appear'
+                                    )
+                                },
+                                options: {
+                                    once: true
+                                }
+                            }
+                        },
+                        ['Tap me once']
+                    )
+                ]
             )
 
         return h('Frame', [
@@ -154,24 +180,14 @@ const app = createApp({
                     h(
                         'GridLayout',
                         {
-                            rows: '*, auto, *, auto, auto, auto'
+                            rows: '*, auto, *, auto, auto'
                         },
                         [
                             h('ContentView', { row: 0 }, [labelsTest()]),
                             textNodesTest({ row: 1 }),
                             toggleAttrTest({ row: 2 }, this.toggler),
                             buttonsTest({ row: 3 }),
-                            h(
-                                'Button',
-                                {
-                                    row: 4,
-                                    onTap() {
-                                        console.log('TAPPED')
-                                    }
-                                },
-                                ['Click me']
-                            ),
-                            h(testComp, { row: 5 })
+                            h(testComp, { row: 4 })
                         ]
                     )
                 ]

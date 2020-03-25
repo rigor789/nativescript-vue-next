@@ -158,7 +158,7 @@ export class NSVElement extends NSVNode implements INSVElement {
       handler = (...args: any) => {
         const res = oldHandler.call(null, ...args)
         if (res !== null) {
-          self.removeEventListener(event, this)
+          self.removeEventListener(event, handler)
         }
       }
     }

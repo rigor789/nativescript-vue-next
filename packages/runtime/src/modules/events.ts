@@ -40,11 +40,7 @@ export function patchEvent(
   if (prevOptions || nextOptions) {
     const prev = prevOptions || EMPTY_OBJ
     const next = nextOptions || EMPTY_OBJ
-    if (
-      prev.capture !== next.capture ||
-      prev.passive !== next.passive ||
-      prev.once !== next.once
-    ) {
+    if (prev.once !== next.once) {
       if (invoker) {
         el.removeEventListener(name, invoker)
       }

@@ -3,7 +3,8 @@ import {
   createRenderer,
   RootRenderFunction,
   CreateAppFunction,
-  ComponentPublicInstance
+  ComponentPublicInstance,
+  VNode
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
 import { nodeOps } from './nodeOps'
@@ -37,8 +38,8 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   return root
 }
 
-export const render = ((...args) => {
-  ensureRenderer().render(...args)
+export const render = ((vnode: VNode | null, container: INSVElement) => {
+  ensureRenderer().render(vnode, container)
 }) as RootRenderFunction<INSVElement>
 
 export const createApp = ((...args) => {
@@ -53,6 +54,7 @@ export const createApp = ((...args) => {
 }) as CreateAppFunction<INSVElement>
 
 export * from './nodeOps'
+export * from './nodes'
 export * from './runtimeHelpers'
 export * from './registry'
 export { resolveComponent } from './resolveAssets'

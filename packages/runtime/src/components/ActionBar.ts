@@ -53,8 +53,9 @@ export const ActionBar: FunctionalComponent = (props, ctx) => {
     {
       ...ctx.attrs,
       onVnodeMounted(vnode) {
-        const actionBar = vnode.el.nativeView as TNSActionBar
-        const parent = vnode.el.parentNode as NSVElement
+        const el = vnode.el as NSVElement // TODO: vue-next should export ElementRender
+        const actionBar = el.nativeView as TNSActionBar
+        const parent = el.parentNode as NSVElement
 
         if (parent.nativeView instanceof TNSPage) {
           parent.nativeView.actionBar = actionBar

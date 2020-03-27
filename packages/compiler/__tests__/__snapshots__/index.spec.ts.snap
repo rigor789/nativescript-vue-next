@@ -5,38 +5,54 @@ exports[`compile works 1`] = `
 
 return function render(_ctx, _cache) {
   with (_ctx) {
-    const { createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock, createCommentVNode: _createCommentVNode, ActionBar: _ActionBar, withCtx: _withCtx, renderList: _renderList, Fragment: _Fragment } = _Vue
+    const { resolveComponent: _resolveComponent, createVNode: _createVNode, createCommentVNode: _createCommentVNode, ActionBar: _ActionBar, withCtx: _withCtx, renderList: _renderList, Fragment: _Fragment, openBlock: _openBlock, createBlock: _createBlock } = _Vue
 
-    return (_openBlock(), _createBlock(\\"Frame\\", null, [
-      _createVNode(\\"Page\\", null, [
-        _createVNode(_ActionBar, null, {
+    const _component_ActionItem = _resolveComponent(\\"ActionItem\\")
+    const _component_Label = _resolveComponent(\\"Label\\")
+    const _component_UnknownElement = _resolveComponent(\\"UnknownElement\\")
+    const _component_StackLayout = _resolveComponent(\\"StackLayout\\")
+    const _component_Page = _resolveComponent(\\"Page\\")
+    const _component_Frame = _resolveComponent(\\"Frame\\")
+
+    return (_openBlock(), _createBlock(_component_Frame, null, {
+      default: _withCtx(() => [
+        _createVNode(_component_Page, null, {
           default: _withCtx(() => [
-            foo
-              ? (_openBlock(), _createBlock(\\"ActionItem\\", {
-                  key: 0,
-                  text: \\"Test Item\\"
-                }))
-              : (_openBlock(), _createBlock(\\"ActionItem\\", {
-                  key: 1,
-                  text: \\"Test Item\\"
-                }))
+            _createVNode(_ActionBar, null, {
+              default: _withCtx(() => [
+                foo
+                  ? _createVNode(_component_ActionItem, {
+                      key: 0,
+                      text: \\"Test Item\\"
+                    })
+                  : _createVNode(_component_ActionItem, {
+                      key: 1,
+                      text: \\"Test Item\\"
+                    })
+              ]),
+              _: 1
+            }),
+            _createVNode(_component_StackLayout, null, {
+              default: _withCtx(() => [
+                _createCommentVNode(\\" Comment \\"),
+                (_openBlock(true), _createBlock(_Fragment, null, _renderList(10, (i) => {
+                  return (_openBlock(), _createBlock(_component_Label, {
+                    key: i,
+                    onTap: onTap,
+                    text: msg,
+                    ref: \\"test\\"
+                  }, null, 8 /* PROPS */, [\\"onTap\\", \\"text\\"]))
+                }), 128 /* KEYED_FRAGMENT */)),
+                _createVNode(_component_UnknownElement)
+              ]),
+              _: 1
+            })
           ]),
           _: 1
-        }),
-        _createVNode(\\"StackLayout\\", null, [
-          _createCommentVNode(\\" Comment \\"),
-          (_openBlock(true), _createBlock(_Fragment, null, _renderList(10, (i) => {
-            return (_openBlock(), _createBlock(\\"Label\\", {
-              key: i,
-              onTap: onTap,
-              text: msg,
-              ref: \\"test\\"
-            }, null, 40 /* PROPS, HYDRATE_EVENTS */, [\\"onTap\\", \\"text\\"]))
-          }), 128 /* KEYED_FRAGMENT */)),
-          _createVNode(\\"UnknownElement\\")
-        ])
-      ])
-    ]))
+        })
+      ]),
+      _: 1
+    }))
   }
 }"
 `;

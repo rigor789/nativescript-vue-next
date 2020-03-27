@@ -1,18 +1,16 @@
 import {
-  TextModes,
-  ParserOptions,
   ElementNode,
+  isBuiltInType,
   Namespaces,
-  isBuiltInType
-  // NodeTypes,
-  // isBuiltInType
+  ParserOptions,
+  TextModes
 } from '@vue/compiler-core'
-import { makeMap } from '@vue/shared'
+// import { makeMap } from '@vue/shared'
 // import { isKnownView } from '@nativescript-vue/runtime'
 import namedCharacterReferences from './namedChars.json'
 import { ACTION_BAR, TRANSITION, TRANSITION_GROUP } from './runtimeHelpers'
 
-const isRawTextContainer = /*#__PURE__*/ makeMap('style,script', true)
+// const isRawTextContainer = /*#__PURE__*/ makeMap('style,script', true)
 
 export const enum DOMNamespaces {
   HTML = Namespaces.HTML
@@ -43,16 +41,17 @@ export const parserOptions: ParserOptions = {
 
   // https://html.spec.whatwg.org/multipage/parsing.html#parsing-html-fragments
   getTextMode(tag: string, ns: DOMNamespaces): TextModes {
-    // todo: look into if any of this would be useful in ns
-    if (ns === DOMNamespaces.HTML) {
-      if (tag === 'textarea' || tag === 'title') {
-        return TextModes.RCDATA
-      }
-      if (isRawTextContainer(tag)) {
-        return TextModes.RAWTEXT
-      }
-    }
     return TextModes.DATA
+    // // todo: look into if any of this would be useful in ns
+    // if (ns === DOMNamespaces.HTML) {
+    //   if (tag === 'textarea' || tag === 'title') {
+    //     return TextModes.RCDATA
+    //   }
+    //   if (isRawTextContainer(tag)) {
+    //     return TextModes.RAWTEXT
+    //   }
+    // }
+    // return TextModes.DATA
   },
 
   // https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references

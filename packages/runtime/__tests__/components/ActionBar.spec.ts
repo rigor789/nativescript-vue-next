@@ -1,5 +1,3 @@
-import { VNode } from '@vue/runtime-core'
-import { INSVElement } from '@nativescript-vue/runtime'
 import { registerTestElement } from 'tests/registry'
 import { registerCoreMock } from 'tests/jest.setup'
 
@@ -21,7 +19,7 @@ registerTestElement('InternalActionBar')
 registerTestElement('Label')
 registerTestElement('Page', () => TestPage)
 
-import { h, ActionBar, render } from '@nativescript-vue/runtime'
+import { h, ActionBar, render, INSVElement } from '@nativescript-vue/runtime'
 import { NSVElement } from '../../src/nodes'
 import { mockWarn } from '@vue/shared'
 
@@ -34,14 +32,14 @@ describe('ActionBar', () => {
 
   it('sets the actionBar property of the parent Page', () => {
     const actionBar = h(ActionBar)
-    const vnode = h('Page', [actionBar]) as VNode
-    const el = vnode.el as INSVElement
-    const actionBarEl = actionBar.el as INSVElement
+    const vnode = h('Page', [actionBar])
     render(vnode, root)
 
-    expect(el.tagName).toBe('page')
+    const vnodeEl = vnode.el as INSVElement
+    const actionBarEl = actionBar.el as INSVElement
+    expect(vnodeEl.tagName).toBe('page')
     expect(actionBarEl.tagName).toBe('internalactionbar')
-    expect((el.nativeView as any).actionBar).toBe(actionBarEl.nativeView)
+    expect((vnodeEl.nativeView as any).actionBar).toBe(actionBarEl.nativeView)
   })
   it('warns if the parent is not a Page', () => {
     const actionBar = h(ActionBar)

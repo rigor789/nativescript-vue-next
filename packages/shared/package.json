@@ -1,0 +1,28 @@
+{
+  "name": "@nativescript-vue/shared",
+  "version": "3.0.0-dev",
+  "description": "@nativescript-vue/shared",
+  "main": "index.js",
+  "module": "dist/shared.esm-bundler.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "types": "dist/shared.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nativescript-vue/nativescript-vue.git"
+  },
+  "keywords": [
+    "nativescript-vue"
+  ],
+  "author": "Randjelovic Igor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nativescript-vue/nativescript-vue/issues"
+  },
+  "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/shared#readme",
+  "dependencies": {
+    "@nativescript/core": "6.5.0"
+  }
+}

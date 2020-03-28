@@ -32,6 +32,7 @@
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/runtime#readme",
   "dependencies": {
     "@nativescript/core": "6.5.0",
+    "@nativescript-vue/shared": "3.0.0-dev",
     "@vue/shared": "3.0.0-alpha.10",
     "@vue/reactivity": "3.0.0-alpha.10",
     "@vue/runtime-core": "3.0.0-alpha.10",

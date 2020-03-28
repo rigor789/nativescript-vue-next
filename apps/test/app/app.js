@@ -1,3 +1,5 @@
+import * as trace from '@nativescript/core/trace'
+
 import {
     createApp,
     h,
@@ -17,7 +19,12 @@ const testComp = defineComponent({
 </StackLayout>`
 })
 
-console.log(compile('<StackLayout/>').toString())
+trace.setCategories(trace.categories.Debug)
+trace.enable()
+
+const testTemplate = '<StackLayout />'
+console.log(`Compilation of ${testTemplate}`)
+console.log(compile(testTemplate).toString())
 
 function dumpViewTree(root) {
     const mapNode = node => {

@@ -7,6 +7,7 @@ import {
   VNode
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
+import { debug } from '@nativescript-vue/shared'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { INSVElement } from './nodes'
@@ -26,11 +27,13 @@ function ensureRenderer() {
 function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   Application.run({
     create: () => {
-      console.log({
-        id: root.$el.nodeId,
-        type: root.$el.nodeType,
-        tag: root.$el.tagName
-      })
+      debug(
+        `Root Node: ${JSON.stringify({
+          id: root.$el.nodeId,
+          type: root.$el.nodeType,
+          tag: root.$el.tagName
+        })}`
+      )
       return root.$el.nativeView
     }
   })

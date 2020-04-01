@@ -14,6 +14,7 @@ const testComp = defineComponent({
     <Button text="Hello Button" />
     <Label text="Compiled label from template" />
     <Label text="Another Compiled label from template" />
+    <Label v-text="'Label with v-text...!?!?!?'" />
 </StackLayout>`
 })
 

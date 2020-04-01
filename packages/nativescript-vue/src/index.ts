@@ -42,6 +42,8 @@ function compileToFunction(
     ...options
   })
 
+  // console.log(code)
+  // const render = () => {}
   const render = new Function('Vue', code)(runtime) as RenderFunction
   return (compileCache[key] = render)
 }

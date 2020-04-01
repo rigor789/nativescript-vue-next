@@ -11,11 +11,20 @@ import {
 
 const testComp = defineComponent({
     template: `<StackLayout v-bind="$attrs">
-    <Button text="Hello Button" />
+    <Button text="Hello Button" @tap="tapHandler(true)"/>
     <Label text="Compiled label from template" />
     <Label text="Another Compiled label from template" />
-    <Label v-text="'Label with v-text...!?!?!?'" />
-</StackLayout>`
+    <Label v-text="'Label with v-text...!?!?!?'" v-on:tap="tapHandler(false)" />
+</StackLayout>`,
+    methods: {
+        tapHandler(isButton = false) {
+            if (isButton) {
+                console.log('tap handler has fired for button!')
+            } else {
+                console.log('tap handler has fired!')
+            }
+        }
+    }
 })
 
 console.log(compile('<StackLayout/>').toString())

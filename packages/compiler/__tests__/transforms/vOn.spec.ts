@@ -3,18 +3,19 @@ test.todo('uncomment when vue-next#907 is released')
 // import {
 //   baseParse as parse,
 //   transform,
-//   ElementNode,
 //   CompilerOptions,
-//   NodeTypes,
+//   ElementNode,
+//   ObjectExpression,
 //   VNodeCall,
-//   transformElement
-// } from '../../src'
+//   transformElement,
+//   transformExpression
+// } from '@vue/compiler-core'
 // import { transformOn } from '../../src/transforms/vOn'
 //
 // function parseWithVOn(template: string, options: CompilerOptions = {}) {
 //   const ast = parse(template)
 //   transform(ast, {
-//     nodeTransforms: [transformElement],
+//     nodeTransforms: [transformExpression, transformElement],
 //     directiveTransforms: {
 //       on: transformOn
 //     },
@@ -22,65 +23,18 @@ test.todo('uncomment when vue-next#907 is released')
 //   })
 //   return {
 //     root: ast,
-//     node: ast.children[0] as ElementNode
+//     props: (((ast.children[0] as ElementNode).codegenNode as VNodeCall)
+//       .props as ObjectExpression).properties
 //   }
 // }
 //
 // describe('compiler: transform v-on', () => {
-//   test('basic', () => {
-//     const { node } = parseWithVOn(`<Label v-on:click="onClick"/>`)
-//     expect((node.codegenNode as VNodeCall).props).toMatchObject({
-//       properties: [
-//         {
-//           key: {
-//             content: `onClick`,
-//             isStatic: true,
-//             loc: {
-//               start: {
-//                 line: 1,
-//                 column: 13
-//               },
-//               end: {
-//                 line: 1,
-//                 column: 18
-//               }
-//             }
-//           },
-//           value: {
-//             content: `onClick`,
-//             isStatic: false,
-//             loc: {
-//               start: {
-//                 line: 1,
-//                 column: 20
-//               },
-//               end: {
-//                 line: 1,
-//                 column: 27
-//               }
-//             }
-//           }
-//         }
-//       ]
+//   it('should work w/ prefixIdentifiers: true', () => {
+//     const {
+//       props: [prop]
+//     } = parseWithVOn(`<Label @tap.once="test"/>`, {
+//       prefixIdentifiers: true
 //     })
-//   })
-//
-//   test('dynamic arg', () => {
-//     const { node } = parseWithVOn(`<Label v-on:[event]="handler"/>`)
-//     expect((node.codegenNode as VNodeCall).props).toMatchObject({
-//       properties: [
-//         {
-//           key: {
-//             type: NodeTypes.COMPOUND_EXPRESSION,
-//             children: [`"on" + (`, { content: `event` }, `)`]
-//           },
-//           value: {
-//             type: NodeTypes.SIMPLE_EXPRESSION,
-//             content: `handler`,
-//             isStatic: false
-//           }
-//         }
-//       ]
-//     })
+//     expect(prop).toMatchSnapshot()
 //   })
 // })

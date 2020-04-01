@@ -13,8 +13,8 @@ import { parserOptions } from './parserOptions'
 import { transformStyle } from './transforms/transformStyle'
 // import { transformVHtml } from './transforms/vHtml'
 import { transformVText } from './transforms/vText'
-// import { transformModel } from './transforms/vModel'
-// import { transformOn } from './transforms/vOn'
+import { transformModel } from './transforms/vModel'
+import { transformOn } from './transforms/vOn'
 // import { transformShow } from './transforms/vShow'
 // import { warnTransitionChildren } from './transforms/warnTransitionChildren'
 // import { stringifyStatic } from './transforms/stringifyStatic'
@@ -28,10 +28,9 @@ export const DOMNodeTransforms: NodeTransform[] = [
 
 export const DOMDirectiveTransforms: Record<string, DirectiveTransform> = {
   cloak: noopDirectiveTransform,
-  // html: transformVHtml,
-  text: transformVText
-  // model: transformModel, // override compiler-core
-  // on: transformOn, // override compiler-core
+  text: transformVText,
+  model: transformModel, // override compiler-core todo: remove if not needed
+  on: transformOn // override compiler-core todo: remove if not needed
   // show: transformShow
 }
 

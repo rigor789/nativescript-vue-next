@@ -15,7 +15,7 @@ import { transformStyle } from './transforms/transformStyle'
 import { transformVText } from './transforms/vText'
 import { transformModel } from './transforms/vModel'
 import { transformOn } from './transforms/vOn'
-// import { transformShow } from './transforms/vShow'
+import { transformShow } from './transforms/vShow'
 // import { warnTransitionChildren } from './transforms/warnTransitionChildren'
 // import { stringifyStatic } from './transforms/stringifyStatic'
 
@@ -30,8 +30,8 @@ export const DOMDirectiveTransforms: Record<string, DirectiveTransform> = {
   cloak: noopDirectiveTransform,
   text: transformVText,
   model: transformModel, // override compiler-core todo: remove if not needed
-  on: transformOn // override compiler-core todo: remove if not needed
-  // show: transformShow
+  on: transformOn, // override compiler-core todo: remove if not needed
+  show: transformShow
 }
 
 export function compile(

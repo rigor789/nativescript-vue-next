@@ -59,6 +59,9 @@ export * from './runtimeHelpers'
 export * from './registry'
 export { resolveComponent } from './resolveAssets'
 
+// runtime directive helpers
+export { vShow } from './directives/vShow'
+
 // Runtime components
 export { ActionBar } from './components/ActionBar'
 

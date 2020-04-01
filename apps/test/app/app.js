@@ -10,14 +10,20 @@ import {
 } from 'nativescript-vue'
 
 const testComp = defineComponent({
+    data() {
+        return {
+            toggle: true
+        }
+    },
     template: `<StackLayout v-bind="$attrs">
     <Button text="Hello Button" @tap="tapHandler(true)"/>
-    <Label text="Compiled label from template" />
+    <Label text="Compiled label from template" v-show="toggle" />
     <Label text="Another Compiled label from template" />
     <Label v-text="'Label with v-text...!?!?!?'" v-on:tap="tapHandler(false)" />
 </StackLayout>`,
     methods: {
         tapHandler(isButton = false) {
+            this.toggle = !this.toggle
             if (isButton) {
                 console.log('tap handler has fired for button!')
             } else {

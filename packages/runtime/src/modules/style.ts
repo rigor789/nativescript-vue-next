@@ -24,6 +24,7 @@ function declarationsFromAstNodes(astRules: any[]): any[] {
 
 export function patchStyle(el: INSVElement, prev: Style, next: Style) {
   if (prev) {
+    // todo: check if we can substitute cssTreeParse with parseInlineCSS from compiler/transforms/transformStyle (by extracting it to shared)
     // reset previous styles
     const localStyle = `local { ${prev} }`
     const ast: any = cssTreeParse(localStyle, undefined)

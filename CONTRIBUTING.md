@@ -26,18 +26,13 @@ After cloning the repo, run:
 ```bash
 $ cd nativescript-vue-next
 $ yarn
-$ yarn build runtime
-$ cd packages/compiler
-$ yarn link
-$ cd ../../packages/runtime
-$ yarn link
+$ yarn build
 ```
 
 # Testing with the sample application
 
 ```bash
 $ cd apps/test
-$ yarn link @nativescript-vue/compiler
 $ tns run android  # or
 $ tns run ios
 ```

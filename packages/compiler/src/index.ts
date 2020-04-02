@@ -9,31 +9,29 @@ import {
   NodeTransform,
   DirectiveTransform
 } from '@vue/compiler-core'
-// import { parserOptionsMinimal } from './parserOptionsMinimal'
 import { parserOptions } from './parserOptions'
-// import { transformStyle } from './transforms/transformStyle'
+import { transformStyle } from './transforms/transformStyle'
 // import { transformVHtml } from './transforms/vHtml'
-// import { transformVText } from './transforms/vText'
-// import { transformModel } from './transforms/vModel'
-// import { transformOn } from './transforms/vOn'
-// import { transformShow } from './transforms/vShow'
+import { transformVText } from './transforms/vText'
+import { transformModel } from './transforms/vModel'
+import { transformOn } from './transforms/vOn'
+import { transformShow } from './transforms/vShow'
 // import { warnTransitionChildren } from './transforms/warnTransitionChildren'
 // import { stringifyStatic } from './transforms/stringifyStatic'
 
 export { parserOptions }
 
 export const DOMNodeTransforms: NodeTransform[] = [
-  // transformStyle,
+  transformStyle
   // ...(__DEV__ ? [warnTransitionChildren] : [])
 ]
 
 export const DOMDirectiveTransforms: Record<string, DirectiveTransform> = {
-  cloak: noopDirectiveTransform
-  // html: transformVHtml,
-  // text: transformVText,
-  // model: transformModel, // override compiler-core
-  // on: transformOn, // override compiler-core
-  // show: transformShow
+  cloak: noopDirectiveTransform,
+  text: transformVText,
+  model: transformModel, // override compiler-core todo: remove if not needed
+  on: transformOn, // override compiler-core todo: remove if not needed
+  show: transformShow
 }
 
 export function compile(
@@ -48,7 +46,7 @@ export function compile(
       ...DOMDirectiveTransforms,
       ...(options.directiveTransforms || {})
     }
-    // transformHoist: __BROWSER__ ? null : stringifyStatic
+    // transformHoist: stringifyStatic
   })
 }
 
@@ -60,6 +58,6 @@ export function parse(template: string, options: ParserOptions = {}): RootNode {
 }
 
 export * from './runtimeHelpers'
-// export { transformStyle } from './transforms/transformStyle'
+export { transformStyle } from './transforms/transformStyle'
 export { createDOMCompilerError, DOMErrorCodes } from './errors'
 export * from '@vue/compiler-core'

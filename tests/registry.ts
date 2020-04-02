@@ -1,10 +1,10 @@
 import {
   NSVViewMeta,
   registerElement,
-  defaultViewMeta
+  defaultViewMeta,
+  NSVViewFlags
 } from '@nativescript-vue/runtime'
 import { TNSViewBase } from 'tests/ns-mocks/base'
-import { NSVViewFlags } from '../packages/runtime/src/nodes'
 
 export function registerTestElement(
   elementName: string,

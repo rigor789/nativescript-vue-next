@@ -1,4 +1,5 @@
 import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { debug } from '@nativescript-vue/shared'
 
 type Style = any | string
 
@@ -34,7 +35,7 @@ export class TNSViewBase {
     callback: Function,
     thisArg?: any
   ) {
-    console.log('addEventListeners: ', eventNames)
+    debug(`addEventListeners: ${JSON.stringify(eventNames)}`)
     this.eventListener[eventNames] = callback
   }
 

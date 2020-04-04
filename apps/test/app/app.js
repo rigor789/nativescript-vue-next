@@ -10,7 +10,8 @@ import {
     defineComponent,
     compile
 } from 'nativescript-vue'
-
+// todo: figure out why isOn is undefined in Vue - causes a crash...
+global.isOn = name => name.startsWith('on')
 const testComp = defineComponent({
     data() {
         return {

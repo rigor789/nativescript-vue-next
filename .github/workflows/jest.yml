@@ -59,15 +59,18 @@ jobs:
 
       - name: coverage-master
         if: github.ref == 'refs/heads/master'
-        run: npx netlify-cli deploy --dir=coverage --prod
+        run: |
+          cp .netlify_headers coverage/_headers
+          npx netlify-cli deploy --dir=coverage --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          
+
       - name: coverage-pr
         id: coverage_pr
         if: github.event_name == 'pull_request'
         run: |
+          cp .netlify_headers coverage/_headers
           npx netlify-cli deploy --dir=coverage | tee result
           echo "::set-output name=coverageURL::$(cat result | grep "^Live Draft URL:" | sed "s/Live Draft URL: //")"
         env:

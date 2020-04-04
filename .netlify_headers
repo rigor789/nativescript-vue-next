@@ -1,0 +1,3 @@
+# disable caching of the badge
+/badge.svg
+  cache-control: no-store

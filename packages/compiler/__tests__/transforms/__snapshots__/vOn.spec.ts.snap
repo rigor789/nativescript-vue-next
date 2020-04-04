@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compiler: transform v-on should work w/ prefixIdentifiers: true 1`] = `
+Object {
+  "key": Object {
+    "content": "onTap",
+    "isConstant": false,
+    "isStatic": true,
+    "loc": Object {
+      "end": Object {
+        "column": 12,
+        "line": 1,
+        "offset": 11,
+      },
+      "source": "tap",
+      "start": Object {
+        "column": 9,
+        "line": 1,
+        "offset": 8,
+      },
+    },
+    "type": 4,
+  },
+  "loc": Object {
+    "end": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "source": "",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "type": 16,
+  "value": Object {
+    "loc": Object {
+      "end": Object {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+      "source": "",
+      "start": Object {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "properties": Array [
+      Object {
+        "key": Object {
+          "content": "handler",
+          "isConstant": false,
+          "isStatic": true,
+          "loc": Object {
+            "end": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+            "source": "",
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": 4,
+        },
+        "loc": Object {
+          "end": Object {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+          "source": "",
+          "start": Object {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": 16,
+        "value": Object {
+          "content": "_ctx.test",
+          "isConstant": false,
+          "isStatic": false,
+          "loc": Object {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "source": "test",
+            "start": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+          },
+          "type": 4,
+        },
+      },
+      Object {
+        "key": Object {
+          "content": "options",
+          "isConstant": false,
+          "isStatic": true,
+          "loc": Object {
+            "end": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+            "source": "",
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "type": 4,
+        },
+        "loc": Object {
+          "end": Object {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+          "source": "",
+          "start": Object {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": 16,
+        "value": Object {
+          "loc": Object {
+            "end": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+            "source": "",
+            "start": Object {
+              "column": 1,
+              "line": 1,
+              "offset": 0,
+            },
+          },
+          "properties": Array [
+            Object {
+              "key": Object {
+                "content": "once",
+                "isConstant": false,
+                "isStatic": true,
+                "loc": Object {
+                  "end": Object {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                  "source": "",
+                  "start": Object {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "type": 4,
+              },
+              "loc": Object {
+                "end": Object {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+                "source": "",
+                "start": Object {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+              },
+              "type": 16,
+              "value": Object {
+                "content": "true",
+                "isConstant": false,
+                "isStatic": false,
+                "loc": Object {
+                  "end": Object {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                  "source": "",
+                  "start": Object {
+                    "column": 1,
+                    "line": 1,
+                    "offset": 0,
+                  },
+                },
+                "type": 4,
+              },
+            },
+          ],
+          "type": 15,
+        },
+      },
+    ],
+    "type": 15,
+  },
+}
+`;

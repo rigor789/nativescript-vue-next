@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/compiler#readme",
   "dependencies": {
-    "@vue/shared": "3.0.0-alpha.10",
-    "@vue/compiler-core": "3.0.0-alpha.10"
+    "@vue/shared": "3.0.0-alpha.11",
+    "@vue/compiler-core": "3.0.0-alpha.11"
   }
 }

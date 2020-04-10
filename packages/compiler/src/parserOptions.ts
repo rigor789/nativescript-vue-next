@@ -7,7 +7,7 @@ import {
 } from '@vue/compiler-core'
 // import { makeMap } from '@vue/shared'
 // import { isKnownView } from '@nativescript-vue/runtime'
-import namedCharacterReferences from './namedChars.json'
+import { decodeHtml } from './decodeHtml'
 import { ACTION_BAR, TRANSITION, TRANSITION_GROUP } from './runtimeHelpers'
 
 // const isRawTextContainer = /*#__PURE__*/ makeMap('style,script', true)
@@ -32,6 +32,7 @@ export const parserOptions: ParserOptions = {
   isNativeTag: tag => false,
   isPreTag: tag => tag === 'pre',
   isBuiltInComponent,
+  decodeEntities: decodeHtml,
   // todo: we might add support for different namespaces in the future
   // for example - it would be neat to be able to write inline svg
   // with the svg plugin?
@@ -52,12 +53,5 @@ export const parserOptions: ParserOptions = {
     //   }
     // }
     // return TextModes.DATA
-  },
-
-  // https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
-  namedCharacterReferences,
-  maxCRNameLength: /*#__PURE__*/ Object.keys(namedCharacterReferences).reduce(
-    (max, name) => Math.max(max, name.length),
-    0
-  )
+  }
 }

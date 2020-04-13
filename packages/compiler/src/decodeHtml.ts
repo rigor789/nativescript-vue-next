@@ -1,3 +1,6 @@
+// istanbul ignore file
+// code taken from vue-next/packages/compiler-dom/src/decodeHtml.ts
+
 import { ParserOptions } from '@vue/compiler-core'
 import namedCharacterReferences from './namedChars.json'
 

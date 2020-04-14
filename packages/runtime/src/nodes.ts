@@ -135,6 +135,14 @@ export class NSVElement extends NSVNode implements INSVElement {
     this.nativeView.style = inlineStyle
   }
 
+  get text(): string | undefined {
+    return this.nativeView.text
+  }
+
+  set text(t: string | undefined) {
+    this.nativeView.text = t
+  }
+
   get meta() {
     if (this._meta) {
       return this._meta

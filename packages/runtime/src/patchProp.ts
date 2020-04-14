@@ -5,14 +5,6 @@ import { patchClass } from './modules/class'
 import { patchStyle } from './modules/style'
 import { patchAttr } from './modules/attrs'
 
-// import * as set from 'set-value'
-// const XML_ATTRIBUTES = Object.freeze([
-//     'style',
-//     'rows',
-//     'columns',
-//     'fontAttributes'
-// ])
-
 export function patchProp(
   el: INSVElement,
   key: string,

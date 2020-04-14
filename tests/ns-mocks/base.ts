@@ -4,24 +4,33 @@ import { debug } from '@nativescript-vue/shared'
 type Style = any | string
 
 export class TNSViewBase {
-  public resetCSSProps: Array<string> = []
-  public style: Style
+  private _resetCSSProps: Array<string> = []
+  public _style: Style
 
-  private eventListener: Record<string, Function>
+  private _eventListener: Record<string, Function>
 
   constructor() {
-    this.eventListener = {}
+    this._eventListener = {}
 
     let self = this // self reference
+
     // Proxy that tracks the resetted CSS props for testing purposes
-    this.style = new Proxy(new Map(), {
+    this._style = new Proxy(new Map(), {
       set(target, prop: string, value: string): boolean {
         if (value === unsetValue) {
-          self.resetCSSProps.push(prop)
+          self._resetCSSProps.push(prop)
         }
         return true
       }
     })
+  }
+
+  get style(): any {
+    return this._style
+  }
+
+  set style(s: any) {
+    this._style = s
   }
 
   public addChild() {}
@@ -36,7 +45,7 @@ export class TNSViewBase {
     thisArg?: any
   ) {
     debug(`addEventListeners: ${JSON.stringify(eventNames)}`)
-    this.eventListener[eventNames] = callback
+    this._eventListener[eventNames] = callback
   }
 
   public removeEventListener(
@@ -44,15 +53,18 @@ export class TNSViewBase {
     callback: Function,
     thisArg?: any
   ) {
-    delete this.eventListener[eventNames]
+    delete this._eventListener[eventNames]
   }
 
   public notify(event: any) {
-    const callback = this.eventListener[event.eventName]
-    callback && this.eventListener[event.eventName](event.object)
+    const callback = this._eventListener[event.eventName]
+    callback && this._eventListener[event.eventName](event.object)
   }
 
   public set(name: string, value: any) {
+    if (name === 'style') {
+      name = '_style'
+    }
     ;(this as any)[name] = value
   }
 }

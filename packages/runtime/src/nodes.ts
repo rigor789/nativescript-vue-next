@@ -50,6 +50,7 @@ export interface INSVElement extends INSVNode {
   tagName: string
   meta: NSVViewMeta
   style: Style | string
+  propNames: string[]
 
   addEventListener(
     event: string,
@@ -125,6 +126,12 @@ export class NSVElement extends NSVNode implements INSVElement {
 
   get nativeView() {
     return this._nativeView
+  }
+
+  get propNames(): string[] {
+    return Object.keys(this.nativeView).filter(
+      key => !(typeof key === 'string' && key.charAt(0) === '_')
+    )
   }
 
   get style(): Style | string {

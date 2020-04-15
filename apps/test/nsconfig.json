@@ -1,0 +1,5 @@
+{
+  "//packageManager": "this should be supported by the cli.",
+  "packageManager": "yarn",
+  "appResourcesPath": "app_resources"
+}

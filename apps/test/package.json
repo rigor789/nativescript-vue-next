@@ -1,6 +1,14 @@
 {
+  "name": "@nativescript-vue/apps-test",
+  "version": "3.0.0-dev",
+  "private": true,
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
+  },
   "nativescript": {
-    "id": "org.nativescript.test",
+    "id": "org.nativescript.vue.test",
     "tns-android": {
       "version": "6.5.0"
     },
@@ -8,19 +16,16 @@
       "version": "6.5.0"
     }
   },
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/core": "6.5.1",
-    "@vue/shared": "^3.0.0-alpha.12"
+    "@vue/shared": "^3.0.0-alpha.12",
+    "nativescript-vue": "3.0.0-dev"
   },
   "devDependencies": {
-    "@babel/core": "7.8.7",
-    "@babel/preset-env": "7.8.7",
-    "babel-loader": "8.0.6",
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "@nativescript-vue/compiler": "3.0.0-dev",
+    "babel-loader": "8.1.0",
     "nativescript-dev-webpack": "1.5.1"
-  },
-  "gitHead": "fa98f785df3fba482e5e2a0c76f4be1fa6dc7a14",
-  "readme": "NativeScript Application"
+  }
 }

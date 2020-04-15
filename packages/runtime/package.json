@@ -10,7 +10,7 @@
   ],
   "types": "dist/runtime.d.ts",
   "sideEffects": false,
-  "buildOptions" : {
+  "buildOptions": {
     "name": "NSVRuntime",
     "formats": [
       "esm-bundler",
@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/runtime#readme",
   "dependencies": {
-    "@nativescript/core": "6.5.0",
     "@nativescript-vue/shared": "3.0.0-dev",
-    "@vue/shared": "3.0.0-alpha.12",
+    "@nativescript/core": "6.5.1",
     "@vue/reactivity": "3.0.0-alpha.12",
     "@vue/runtime-core": "3.0.0-alpha.12",
-    "set-value": "3.0.1",
+    "@vue/shared": "3.0.0-alpha.12",
+    "set-value": "3.0.2",
     "unset-value": "1.0.0"
   },
   "knownExternals": [

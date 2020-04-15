@@ -7,6 +7,16 @@ registerTestElement('Frame')
 registerTestElement('Label')
 registerTestLayout('StackLayout')
 
+const EMPTY_TEXT_NODE = {
+  nodeType: NSVNodeTypes.TEXT,
+  text: ''
+}
+
+const LABEL_ELEMENT_NODE = {
+  nodeType: NSVNodeTypes.ELEMENT,
+  tagName: 'label'
+}
+
 describe('renderer: fragment', () => {
   it('should create an element', () => {
     const root = nodeOps.createElement('Frame') as NSVElement
@@ -22,7 +32,7 @@ describe('renderer: fragment', () => {
     )
   })
 
-  it('should create an element with text', () => {
+  it('should merge multiple text children', () => {
     const root = nodeOps.createElement('Frame') as NSVElement
     render(h('StackLayout', ['foo', ' ', 'bar']), root)
     expect(serializeInner(root)).toBe(
@@ -41,31 +51,20 @@ describe('renderer: fragment', () => {
   it('should allow returning multiple component root nodes', () => {
     const App = {
       render() {
-        return [h('Label', 'one'), 'two']
+        return [h('Label', 'one'), h('Label', 'two')]
       }
     }
 
     const root = nodeOps.createElement('Frame') as NSVElement
     render(h(App), root)
 
-    expect(serializeInner(root)).toBe(`<label text="one"></label>two`)
+    expect(serializeInner(root)).toBe(
+      `<label text="one"></label><label text="two"></label>`
+    )
     expect(root.childNodes.length).toBe(4)
-    expect(root.childNodes[0]).toMatchObject({
-      nodeType: NSVNodeTypes.TEXT,
-      text: ''
-    })
-    debugger
-    expect(root.childNodes[1]).toMatchObject({
-      nodeType: NSVNodeTypes.ELEMENT,
-      _tagName: 'label'
-    })
-    expect(root.childNodes[2]).toMatchObject({
-      nodeType: NSVNodeTypes.TEXT,
-      text: 'two'
-    })
-    expect(root.childNodes[3]).toMatchObject({
-      nodeType: NSVNodeTypes.TEXT,
-      text: ''
-    })
+    expect(root.childNodes[0]).toMatchObject(EMPTY_TEXT_NODE)
+    expect(root.childNodes[1]).toMatchObject(LABEL_ELEMENT_NODE)
+    expect(root.childNodes[2]).toMatchObject(LABEL_ELEMENT_NODE)
+    expect(root.childNodes[3]).toMatchObject(EMPTY_TEXT_NODE)
   })
 })

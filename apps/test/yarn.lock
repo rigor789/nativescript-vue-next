@@ -728,10 +728,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@nativescript/core@6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.0.tgz#acf00cedaa5834d10b2afa7eb7b2eb5353a55a54"
-  integrity sha512-97cj74yKvyiJQ5iHXN/7LkOhL3y9bTJtfC3CSPa2lW1/up1EixF1n3Z4C0gqxSFbmDZTyvKvFrvNRD1jnc5llw==
+"@nativescript/core@6.5.1":
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.1.tgz#dfa03a11f92953513ae5651534bcf92f9fcae388"
+  integrity sha512-+kxCLIKSw8mTMVnBf2oBy9Q0DR0ptbyUICyL744AVmOdOsvoQmngmBZZpgnbrZO6wwbeC6yixtK6Hq9KHx1YkA==
   dependencies:
     css-tree "^1.0.0-alpha.37"
     nativescript-hook "0.2.5"
@@ -740,10 +740,10 @@
     tns-core-modules-widgets "6.5.0"
     tslib "1.10.0"
 
-"@vue/shared@^3.0.0-alpha.10":
-  version "3.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-alpha.10.tgz#7026d9a81fa5f03ea03e9434be6286ed167684b8"
-  integrity sha512-b6VYQrhsp/N0QpuXdxs1xIDrBiqVzFNyAvyQgPk2ssQgWD6H2StoySDj99DWrum2+pJUDO2/2dLfGH8l180R6g==
+"@vue/shared@^3.0.0-alpha.12":
+  version "3.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-alpha.12.tgz#36855f95e2855f0099980aebf63edf51e0bad471"
+  integrity sha512-SVXQd0fJ7Fod7J8WBFDPLp0rNobnixo11E+OevC9cBs5Y0fZklAr+8i5XaJJ/fdPr9qDWFHweXDwIvVzpoZMOA==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"

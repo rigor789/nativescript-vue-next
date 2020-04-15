@@ -17,7 +17,7 @@ COMPLETE
 
 # Development setup
 
-You will need Node.js and Yarn installed, as well as NativeScript.
+You will need Node.js (>=10.13.0) and Yarn installed, as well as NativeScript.
 
 Please make sure you are using Nativescript 6.x
 
@@ -31,6 +31,14 @@ $ yarn build
 
 # Testing with the sample application
 
+Before testing the sample apps, please change the package manager that NativeScript uses to yarn:
+
+```bash
+$ tns package-manager set yarn
+```
+
+Finally, run the sample app with:
+
 ```bash
 $ cd apps/test
 $ tns run android  # or
@@ -41,6 +49,12 @@ $ tns run ios
 
 ```bash
 $ yarn test
+```
+
+# Upgrading dependencies
+
+```bash
+$ yarn upgrade-interactive --latest
 ```
 
 # Project Structure

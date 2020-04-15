@@ -7,6 +7,10 @@ import {
 } from '../src/nodes'
 import { isOn } from '@vue/shared'
 
+export function propNames(el: NSVElement): string[] {
+  return Object.keys(el.nativeView).filter(key => key.charAt(0) !== '_')
+}
+
 export function serialize(
   node: NSVNode,
   indent: number = 0,
@@ -39,7 +43,7 @@ function serializeElement(
   indent: number,
   depth: number
 ): string {
-  const props = node.propNames
+  const props = propNames(node)
     .map(key => {
       const value = node.getAttribute(key)
       return isOn(key) || value == null

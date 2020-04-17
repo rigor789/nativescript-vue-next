@@ -26,6 +26,6 @@
     "@nativescript-vue/compiler": "3.0.0-dev",
     "@nativescript-vue/runtime": "3.0.0-dev",
     "@nativescript-vue/shared": "3.0.0-dev",
-    "@vue/shared": "3.0.0-alpha.13"
+    "@vue/shared": "3.0.0-beta.1"
   }
 }

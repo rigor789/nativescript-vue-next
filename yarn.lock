@@ -1343,10 +1343,15 @@
     "@vue/reactivity" "3.0.0-alpha.13"
     "@vue/shared" "3.0.0-alpha.13"
 
-"@vue/shared@3.0.0-alpha.13", "@vue/shared@^3.0.0-alpha.13":
+"@vue/shared@3.0.0-alpha.13":
   version "3.0.0-alpha.13"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-alpha.13.tgz#7d9bcf763c77bd9e10bbb6a27577af7f0ad853c4"
   integrity sha512-j3co+5x0DNZXQzS3drvWaRwQVFltkY4fQHdegfVIofhXZc/PrHP4E+PE3U8GxeqrU6DSjO+4YpY4aVGRUjbgpw==
+
+"@vue/shared@3.0.0-beta.1", "@vue/shared@^3.0.0-beta.1":
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-beta.1.tgz#234185d345cde7e05db569e653feae87912bf218"
+  integrity sha512-LehYUPtykdL3ZEUto2W1n26k+opBT1gtFdESPtp4lGo9oIreLl3pJVoUPIkY/Kk/mOZGmBOsYXiLZGJvfmGEQw==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"

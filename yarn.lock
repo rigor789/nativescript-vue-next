@@ -805,16 +805,7 @@
     globals "^11.1.0"
     lodash "^4.17.13"
 
-"@babel/types@^7.0.0", "@babel/types@^7.3.0", "@babel/types@^7.8.3", "@babel/types@^7.8.6", "@babel/types@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.0.tgz#00b064c3df83ad32b2dbf5ff07312b15c7f1efb5"
-  integrity sha512-BS9JKfXkzzJl8RluW4JGknzpiUV7ZrvTayM6yfqLTVBEnFtyowVIOu6rqxRd5cVO6yGoWf4T8u8dgK9oB+GCng==
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.9.0"
-    lodash "^4.17.13"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.4.4", "@babel/types@^7.9.5":
+"@babel/types@^7.0.0", "@babel/types@^7.3.0", "@babel/types@^7.4.4", "@babel/types@^7.8.3", "@babel/types@^7.8.6", "@babel/types@^7.9.0", "@babel/types@^7.9.5":
   version "7.9.5"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.5.tgz#89231f82915a8a566a703b3b20133f73da6b9444"
   integrity sha512-XjnvNqenk818r5zMaba+sLQjnbda31UfUURv3ei0qPQw4u+j2jMyJ5b11y8ZHYTRSI3NnInQkkkRT4fLqqPdHg==
@@ -1299,6 +1290,17 @@
     "@babel/parser" "^7.8.6"
     "@babel/types" "^7.8.6"
     "@vue/shared" "3.0.0-alpha.13"
+    estree-walker "^0.8.1"
+    source-map "^0.6.1"
+
+"@vue/compiler-core@3.0.0-beta.1":
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.0.0-beta.1.tgz#77017e0a98b808da3834327bcf8857e4b89363ef"
+  integrity sha512-mlHfX/+3qH+GAuMbGFvye0Jn2/H9IwbmX6oqbpLErM241xAVbpqniFDiJCywrfjeUDKMfDuNs1i6lGnDBH715g==
+  dependencies:
+    "@babel/parser" "^7.8.6"
+    "@babel/types" "^7.8.6"
+    "@vue/shared" "3.0.0-beta.1"
     estree-walker "^0.8.1"
     source-map "^0.6.1"
 

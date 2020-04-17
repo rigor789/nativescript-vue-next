@@ -1342,6 +1342,13 @@
   dependencies:
     "@vue/shared" "3.0.0-alpha.13"
 
+"@vue/reactivity@3.0.0-beta.1":
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-beta.1.tgz#b4899fe95efbc8ed15343f9d67950f2a33e219dc"
+  integrity sha512-XbitRfUKIAgPO0IXEbi9/mq93xOL5CGRjaTPH2DvvTU0hXlAeW8aMPQe3+R+vvXppBiFERY3yjZjQc5SYkZVsg==
+  dependencies:
+    "@vue/shared" "3.0.0-beta.1"
+
 "@vue/runtime-core@3.0.0-alpha.13":
   version "3.0.0-alpha.13"
   resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.0-alpha.13.tgz#2430fc835399924c206d113e6f6acaa921707a3f"

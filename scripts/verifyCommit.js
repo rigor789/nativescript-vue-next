@@ -2,9 +2,7 @@
 
 const chalk = require('chalk')
 const msgPath = process.env.GIT_PARAMS
-const msg = require('fs')
-  .readFileSync(msgPath, 'utf-8')
-  .trim()
+const msg = require('fs').readFileSync(msgPath, 'utf-8').trim()
 
 const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
 const mergeRE = /^Merge .+ branch '.+'/
@@ -22,7 +20,9 @@ if (!commitRE.test(msg) && !mergeRE.test(msg)) {
       `    ${chalk.green(
         `fix(v-model): handle events on blur (close #28)`
       )}\n\n` +
-      chalk.red(`  See .github/commit-convention.md for more details.\n`)
+      chalk.red(
+        `  See https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716 for more details.\n`
+      )
   )
   process.exit(1)
 }

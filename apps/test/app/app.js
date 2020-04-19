@@ -124,8 +124,8 @@ const app = createApp({
         ...(condition
           ? {
               textWrap: true,
-              fontSize: 60,
-              padding: 60,
+              fontSize: 40,
+              padding: 30,
               borderWidth: 2,
               customProperty: 'TESTING',
               'android:borderColor': 'red',
@@ -228,7 +228,7 @@ const app = createApp({
           h(
             'GridLayout',
             {
-              rows: '*, auto, *, auto, auto',
+              rows: '*, auto, *, auto, auto, auto',
             },
             [
               h('ContentView', { row: 0 }, [labelsTest()]),
@@ -236,7 +236,7 @@ const app = createApp({
               toggleAttrTest({ row: 2 }, this.toggler),
               buttonsTest({ row: 3 }),
               vModelTest({ row: 4 }),
-              // h(testComp, { row: 5 }),
+              h(testComp, { row: 5 }),
             ]
           ),
         ]

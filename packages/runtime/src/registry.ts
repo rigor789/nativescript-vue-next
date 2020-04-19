@@ -223,5 +223,15 @@ if(!__TEST__) {
     'Label',
     () => require('@nativescript/core').Label
   )
+  registerElement(
+    'TextField',
+    () => require('@nativescript/core').TextField,
+    {
+      model: {
+        prop: 'text',
+        event: 'textChange',
+      }
+    }
+  )
 }
 // todo: more

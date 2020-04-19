@@ -9,10 +9,15 @@ import {
   ActionBar,
   defineComponent,
   compile,
+  withDirectives,
+  vModel,
 } from 'nativescript-vue'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
 global.isOn = (name) => name.startsWith('on')
+
+const withVModel = (node, arg, mods) =>
+  withDirectives(node, [[vModel, arg, '', mods]])
 
 const testComp = defineComponent({
   data() {
@@ -165,6 +170,25 @@ const app = createApp({
         ]
       )
 
+    const vModelTest = (attrs) =>
+      h(
+        'StackLayout',
+        {
+          ...attrs,
+        },
+        [
+          h('Label', { text: this.inputText }),
+          withVModel(
+            h('TextField', {
+              'onUpdate:modelValue': (v) => {
+                this.inputText = v
+              },
+            }),
+            this.inputText
+          ),
+        ]
+      )
+
     return h('Frame', [
       h(
         'Page',
@@ -211,7 +235,8 @@ const app = createApp({
               textNodesTest({ row: 1 }),
               toggleAttrTest({ row: 2 }, this.toggler),
               buttonsTest({ row: 3 }),
-              h(testComp, { row: 4 }),
+              vModelTest({ row: 4 }),
+              // h(testComp, { row: 5 }),
             ]
           ),
         ]
@@ -248,12 +273,15 @@ const app = createApp({
       }, 1000)
     })
 
+    let inputText = ref('Text to change')
+
     return {
       counter,
       p,
       labelClass,
       inlineStyle,
       toggler,
+      inputText,
     }
   },
 }).mount()

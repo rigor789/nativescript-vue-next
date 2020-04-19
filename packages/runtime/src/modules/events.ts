@@ -16,7 +16,7 @@ type EventValueWithOptions = {
   invoker?: Invoker | null
 }
 
-function addEventListener(
+export function addEventListener(
   el: INSVElement,
   event: string,
   handler: EventListener,
@@ -68,7 +68,7 @@ export function patchEvent(
 }
 
 function createInvoker(initialValue: EventValue) {
-  const invoker: Invoker = e => {
+  const invoker: Invoker = (e) => {
     callWithAsyncErrorHandling(invoker.value, null, 5, [e])
   }
   invoker.value = initialValue

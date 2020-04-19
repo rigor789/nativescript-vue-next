@@ -1,7 +1,7 @@
 import {
   Frame as TNSFrame,
   Page as TNSPage,
-  ViewBase as TNSViewBase
+  ViewBase as TNSViewBase,
 } from '@nativescript/core'
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
@@ -9,12 +9,18 @@ import { warn } from '@vue/runtime-core'
 
 export type NSVElementResolver = () => TNSViewBase
 
+export type NSModel = {
+  prop: string
+  event: string
+}
+
 export interface NSVViewMeta {
   viewFlags: NSVViewFlags
   nodeOps?: {
     insert(child: NSVElement, parent: NSVElement, atIndex?: number): void
     remove(child: NSVElement, parent: NSVElement): void
   }
+  model?: NSModel
 }
 
 export interface NSVElementDescriptor {
@@ -23,7 +29,7 @@ export interface NSVElementDescriptor {
 }
 
 export let defaultViewMeta: NSVViewMeta = {
-  viewFlags: NSVViewFlags.NONE
+  viewFlags: NSVViewFlags.NONE,
 }
 
 let elementMap: Record<string, NSVElementDescriptor> = {}
@@ -76,7 +82,7 @@ export function registerElement(
 
   elementMap[normalizedName] = {
     meta: mergedMeta,
-    resolver
+    resolver,
   }
   // console.log(`->registerElement(${elementName})`)
 }

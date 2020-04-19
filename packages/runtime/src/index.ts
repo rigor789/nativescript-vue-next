@@ -4,7 +4,7 @@ import {
   RootRenderFunction,
   CreateAppFunction,
   ComponentPublicInstance,
-  VNode
+  VNode,
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
@@ -15,7 +15,7 @@ import './registry'
 
 const rendererOptions = {
   patchProp,
-  ...nodeOps
+  ...nodeOps,
 }
 
 let renderer: Renderer
@@ -31,11 +31,11 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
         `Root Node: ${JSON.stringify({
           id: root.$el.nodeId,
           type: root.$el.nodeType,
-          tag: root.$el.tagName
+          tag: root.$el.tagName,
         })}`
       )
       return root.$el.nativeView
-    }
+    },
   })
 
   return root
@@ -63,6 +63,7 @@ export * from './registry'
 export { resolveComponent } from './resolveAssets'
 
 // runtime directive helpers
+export { vModel } from './directives/vModel'
 export { vShow } from './directives/vShow'
 
 // Runtime components

@@ -21,7 +21,7 @@ export class TNSViewBase {
           self._resetCSSProps.push(prop)
         }
         return true
-      }
+      },
     })
   }
 
@@ -58,7 +58,7 @@ export class TNSViewBase {
 
   public notify(event: any) {
     const callback = this._eventListener[event.eventName]
-    callback && this._eventListener[event.eventName](event.object)
+    callback && callback(event.object)
   }
 
   public set(name: string, value: any) {

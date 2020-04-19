@@ -17,7 +17,7 @@ COMPLETE
 
 # Development setup
 
-You will need Node.js (>=10.13.0) and Yarn installed, as well as NativeScript.
+You will need Node.js (>=10.18.1) and Yarn installed, as well as NativeScript.
 
 Please make sure you are using Nativescript 6.x
 

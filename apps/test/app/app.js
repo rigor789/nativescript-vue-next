@@ -13,6 +13,8 @@ import {
   vModel,
 } from 'nativescript-vue'
 
+import Comp from './Comp'
+
 // todo: figure out why isOn is undefined in Vue - causes a crash...
 global.isOn = (name) => name.startsWith('on')
 
@@ -71,6 +73,8 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h(Comp)
+
     const labelAt = (row, col) =>
       h('Label', {
         text: 'Hello World: ' + this.counter,

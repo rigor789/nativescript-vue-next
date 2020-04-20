@@ -93,7 +93,7 @@ export function isKnownView(elementName: string) {
 
 // register built in elements
 // prettier-ignore
-if(!__TEST__) {
+if (!__TEST__) {
   // layouts
   registerElement(
     'AbsoluteLayout',
@@ -224,6 +224,44 @@ if(!__TEST__) {
     () => require('@nativescript/core').Label
   )
   registerElement(
+    'ListPicker',
+    () => require('@nativescript/core').ListPicker,
+    {
+      model: {
+        prop: 'selectedIndex',
+        event: 'selectedIndexChange'
+      }
+    }
+  )
+  registerElement(
+    'Placeholder',
+    () => require('@nativescript/core').Placeholder,
+  )
+  registerElement(
+    'Progress',
+    () => require('@nativescript/core').Progress
+  )
+  registerElement(
+    'Slider',
+    () => require('@nativescript/core').Slider,
+    {
+      model: {
+        prop: 'value',
+        event: 'valueChange',
+      }
+    }
+  )
+  registerElement(
+    'Switch',
+    () => require('@nativescript/core').Switch,
+    {
+      model: {
+        prop: 'checked',
+        event: 'checkedChange',
+      }
+    }
+  )
+  registerElement(
     'TextField',
     () => require('@nativescript/core').TextField,
     {
@@ -231,6 +269,26 @@ if(!__TEST__) {
         prop: 'text',
         event: 'textChange',
       }
+    }
+  )
+  registerElement(
+    'TextView',
+    () => require('@nativescript/core').TextView,
+    {
+      model: {
+        prop: 'text',
+        event: 'textChange',
+      },
+    }
+  )
+  registerElement(
+    'TimePicker',
+    () => require('@nativescript/core').TimePicker,
+    {
+      model: {
+        prop: 'time',
+        event: 'timeChange',
+      },
     }
   )
 }

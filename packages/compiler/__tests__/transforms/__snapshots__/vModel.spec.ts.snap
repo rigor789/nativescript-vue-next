@@ -5,14 +5,15 @@ exports[`compiler: transform v-model simple expression 1`] = `
 
 return function render(_ctx, _cache) {
   with (_ctx) {
-    const { resolveComponent: _resolveComponent, createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock } = _Vue
+    const { resolveComponent: _resolveComponent, vModel: _vModel, createVNode: _createVNode, withDirectives: _withDirectives, openBlock: _openBlock, createBlock: _createBlock } = _Vue
 
     const _component_TextField = _resolveComponent(\\"TextField\\")
 
-    return (_openBlock(), _createBlock(_component_TextField, {
-      modelValue: model,
+    return _withDirectives((_openBlock(), _createBlock(_component_TextField, {
       \\"onUpdate:modelValue\\": $event => (model = $event)
-    }, null, 8 /* PROPS */, [\\"modelValue\\", \\"onUpdate:modelValue\\"]))
+    }, null, 8 /* PROPS */, [\\"onUpdate:modelValue\\"])), [
+      [_vModel, model]
+    ])
   }
 }"
 `;

@@ -7,7 +7,7 @@ import {
   RootNode,
   noopDirectiveTransform,
   NodeTransform,
-  DirectiveTransform
+  DirectiveTransform,
 } from '@vue/compiler-core'
 import { parserOptions } from './parserOptions'
 import { transformStyle } from './transforms/transformStyle'
@@ -22,16 +22,16 @@ import { transformShow } from './transforms/vShow'
 export { parserOptions }
 
 export const DOMNodeTransforms: NodeTransform[] = [
-  transformStyle
+  transformStyle,
   // ...(__DEV__ ? [warnTransitionChildren] : [])
 ]
 
 export const DOMDirectiveTransforms: Record<string, DirectiveTransform> = {
   cloak: noopDirectiveTransform,
   text: transformVText,
-  model: transformModel, // override compiler-core todo: remove if not needed
+  model: transformModel, // override compiler-core
   on: transformOn, // override compiler-core todo: remove if not needed
-  show: transformShow
+  show: transformShow,
 }
 
 export function compile(
@@ -44,8 +44,8 @@ export function compile(
     nodeTransforms: [...DOMNodeTransforms, ...(options.nodeTransforms || [])],
     directiveTransforms: {
       ...DOMDirectiveTransforms,
-      ...(options.directiveTransforms || {})
-    }
+      ...(options.directiveTransforms || {}),
+    },
     // transformHoist: stringifyStatic
   })
 }
@@ -53,7 +53,7 @@ export function compile(
 export function parse(template: string, options: ParserOptions = {}): RootNode {
   return baseParse(template, {
     ...parserOptions,
-    ...options
+    ...options,
   })
 }
 

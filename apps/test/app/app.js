@@ -23,12 +23,14 @@ const testComp = defineComponent({
   data() {
     return {
       toggle: true,
+      msg: 'Hello World!',
     }
   },
   template: `<StackLayout v-bind="$attrs">
     <Button text="Hello Button" @tap="tapHandler(true)"/>
     <Label text="Compiled label from template" v-show="toggle" />
-    <Label text="Another Compiled label from template" />
+    <TextField v-model="msg"/>
+    <Label :text="msg" />
     <Label v-text="'Label with v-text...!?!?!?'" v-on:tap="tapHandler(false)" />
 </StackLayout>`,
   methods: {

@@ -10,6 +10,9 @@ export const V_SHOW = Symbol(__DEV__ ? `vShow` : ``)
 export const TRANSITION = Symbol(__DEV__ ? `Transition` : ``)
 export const TRANSITION_GROUP = Symbol(__DEV__ ? `TransitionGroup` : ``)
 
+// todo: we might want to move built-in components into 'resolveAssets'
+// as we are already treating all elements as "components" and resolving them
+// to components/actual elements at runtime
 export const ACTION_BAR = Symbol(__DEV__ ? `ActionBar` : ``)
 
 registerRuntimeHelpers({

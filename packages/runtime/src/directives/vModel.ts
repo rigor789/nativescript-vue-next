@@ -1,5 +1,5 @@
 import { ObjectDirective, VNode } from '@vue/runtime-core'
-import { getViewMeta, NSModel } from '../registry'
+import { getViewMeta, NSVModelDescriptor } from '../registry'
 import { addEventListener } from '../modules/events'
 import { INSVElement } from '../nodes'
 import { isArray, invokeArrayFns } from '@vue/shared'
@@ -22,7 +22,7 @@ export const vModel: ModelDirective<INSVElement> = {
   beforeMount(el, { value, modifiers: { trim, number } }, vnode) {
     el._assign = getModelAssigner(vnode)
     const castToNumber = number
-    const { prop, event } = getViewMeta(el.tagName).model as NSModel
+    const { prop, event } = getViewMeta(el.tagName).model as NSVModelDescriptor
     el._assign(value)
     el.setAttribute(prop, value)
 
@@ -38,7 +38,7 @@ export const vModel: ModelDirective<INSVElement> = {
   },
 
   beforeUpdate(el, { value, oldValue }, vnode) {
-    const { prop } = getViewMeta(el.tagName).model as NSModel
+    const { prop } = getViewMeta(el.tagName).model as NSVModelDescriptor
     el._assign = getModelAssigner(vnode)
     if (value === oldValue) {
       return

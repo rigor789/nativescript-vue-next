@@ -9,7 +9,7 @@ import { warn } from '@vue/runtime-core'
 
 export type NSVElementResolver = () => TNSViewBase
 
-export type NSModel = {
+export type NSVModelDescriptor = {
   prop: string
   event: string
 }
@@ -20,7 +20,7 @@ export interface NSVViewMeta {
     insert(child: NSVElement, parent: NSVElement, atIndex?: number): void
     remove(child: NSVElement, parent: NSVElement): void
   }
-  model?: NSModel
+  model?: NSVModelDescriptor
 }
 
 export interface NSVElementDescriptor {

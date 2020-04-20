@@ -21,6 +21,7 @@ export interface NSVViewMeta {
     remove(child: NSVElement, parent: NSVElement): void
   }
   model?: NSVModelDescriptor
+  overwriteExisting?: boolean
 }
 
 export interface NSVElementDescriptor {
@@ -76,7 +77,7 @@ export function registerElement(
   const normalizedName = normalizeElementName(elementName)
   const mergedMeta = Object.assign({}, defaultViewMeta, meta)
 
-  if (elementMap[normalizedName]) {
+  if (elementMap[normalizedName] && !mergedMeta.overwriteExisting) {
     throw new Error(`Element for ${elementName} already registered.`)
   }
 

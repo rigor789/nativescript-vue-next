@@ -78,7 +78,10 @@ export function registerElement(
   const mergedMeta = Object.assign({}, defaultViewMeta, meta)
 
   if (elementMap[normalizedName] && !mergedMeta.overwriteExisting) {
-    throw new Error(`Element for ${elementName} already registered.`)
+    throw new Error(
+      `Element for ${elementName} already registered.\n` +
+        `If this is intentional set 'overwriteExisting: true' in 'meta'`
+    )
   }
 
   elementMap[normalizedName] = {

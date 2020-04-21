@@ -1371,7 +1371,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-beta.2.tgz#6659413868b0ba0b96260cbf3c9ed99f2d0f90ef"
   integrity sha512-ED5oa+ZOcjAJkWEzL0zFZ4QG89L23DrW9LBBGT6YBUhBmOsf9BKii2JIBfdxWYwRkjAhbHffQH0mc6rI2famug==
 
-"@vue/shared@3.0.0-beta.3", "@vue/shared@^3.0.0-beta.1":
+"@vue/shared@3.0.0-beta.3", "@vue/shared@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-beta.3.tgz#783e98475757c9e2c58cb804cce2cd9dd328f4b8"
   integrity sha512-NSiCty9fUjn+JuGtBCnlxqB+9jq4S/W6lGREMz/2cQZchIETu16fBxvQukljVmtbChAjrw/JTOb8HzTrDAhLlQ==

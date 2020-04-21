@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@nativescript/core": "6.5.1",
-    "@vue/shared": "^3.0.0-beta.1",
+    "@vue/shared": "^3.0.0-beta.3",
     "nativescript-vue": "3.0.0-dev"
   },
   "devDependencies": {

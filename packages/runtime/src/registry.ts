@@ -217,7 +217,13 @@ if (!__TEST__) {
   )
   registerElement(
     'DatePicker',
-    () => require('@nativescript/core').DatePicker
+    () => require('@nativescript/core').DatePicker,
+    {
+      model: {
+        prop: 'date',
+        event: 'dateChange'
+      }
+    }
   )
   registerElement(
     'Image',

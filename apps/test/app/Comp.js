@@ -6,6 +6,8 @@ export default {
     <Label text="Elements with v-model:" @tap="counter++"/>
     <Label :text="model.toUpperCase()" />
     <TextField v-model="model"/>
+    <TextView v-model="model"/>
+    <DatePicker v-model="time"/>
     <TimePicker v-model="time"/>
     <ListPicker :items="['a', 'b', 'c']" v-model="counter"/>
     <Progress :value="progress"/>

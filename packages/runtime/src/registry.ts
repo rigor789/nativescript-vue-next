@@ -252,6 +252,30 @@ if (!__TEST__) {
     () => require('@nativescript/core').Progress
   )
   registerElement(
+    'SearchBar',
+    () => require('@nativescript/core').SearchBar,
+    {
+      model: {
+        prop: 'text',
+        event: 'textChange',
+      }
+    }
+  )
+  registerElement(
+    'SegmentedBar',
+    () => require('@nativescript/core').SegmentedBar,
+    {
+      model: {
+        prop: 'selectedIndex',
+        event: 'selectedIndexChange',
+      }
+    }
+  )
+  registerElement(
+    'SegmentedBarItem',
+    () => require('@nativescript/core').SegmentedBarItem,
+  )
+  registerElement(
     'Slider',
     () => require('@nativescript/core').Slider,
     {

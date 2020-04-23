@@ -1,5 +1,6 @@
 export default {
-  template: `<StackLayout>
+  template: `<ScrollView><StackLayout>
+    <SearchBar v-model="model" />
     <Label :text="counter + ' ' + progress" />
     <Label :text="time" />
     <Label :text="toggle" />
@@ -9,11 +10,16 @@ export default {
     <TextView v-model="model"/>
     <DatePicker v-model="time"/>
     <TimePicker v-model="time"/>
+    <SegmentedBar v-model="counter">
+        <SegmentedBarItem title="a"/>
+        <SegmentedBarItem title="b"/>
+        <SegmentedBarItem title="c"/>
+    </SegmentedBar>
     <ListPicker :items="['a', 'b', 'c']" v-model="counter"/>
     <Progress :value="progress"/>
     <Slider v-model="progress"/>
     <Switch v-model="toggle"/>
-</StackLayout>`,
+</StackLayout></ScrollView>`,
   data() {
     return {
       key: 1,

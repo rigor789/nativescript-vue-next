@@ -226,6 +226,10 @@ if (!__TEST__) {
     }
   )
   registerElement(
+    'FormattedString',
+    () => require('@nativescript/core').FormattedString
+  )
+  registerElement(
     'Image',
     () => require('@nativescript/core').Image
   )
@@ -291,6 +295,10 @@ if (!__TEST__) {
         event: 'valueChange',
       }
     }
+  )
+  registerElement(
+    'Span',
+    () => require('@nativescript/core').Span,
   )
   registerElement(
     'Switch',

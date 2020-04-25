@@ -107,11 +107,12 @@ describe('NSVElement', () => {
 })
 
 describe('NSVRoot', () => {
-  it('appendChild is a noOp', () => {
+  it('appendChild sets el', () => {
     const root = new NSVRoot()
+    const child = new NSVElement('Label')
 
     expect(root.childNodes.length).toBe(0)
-    root.appendChild()
-    expect(root.childNodes.length).toBe(0)
+    root.appendChild(child)
+    expect(root.el).toBe(child)
   })
 })

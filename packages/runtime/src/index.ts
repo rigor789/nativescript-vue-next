@@ -10,7 +10,7 @@ import { Application } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-import { INSVElement } from './nodes'
+import { INSVElement, NSVRoot } from './nodes'
 import './registry'
 
 const rendererOptions = {
@@ -41,9 +41,12 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   return root
 }
 
-export const render = ((vnode: VNode | null, container: INSVElement) => {
+export const render = ((
+  vnode: VNode | null,
+  container: INSVElement | NSVRoot
+) => {
   ensureRenderer().render(vnode, container)
-}) as RootRenderFunction<INSVElement>
+}) as RootRenderFunction<INSVElement | NSVRoot>
 
 export const createApp = ((...args) => {
   const app = ensureRenderer().createApp(...args)

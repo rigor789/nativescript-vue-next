@@ -68,6 +68,7 @@ export { resolveComponent } from './resolveAssets'
 // runtime directive helpers
 export { vModel } from './directives/vModel'
 export { vShow } from './directives/vShow'
+export { ListView } from './components/ListView'
 
 // Runtime components
 export { ActionBar } from './components/ActionBar'

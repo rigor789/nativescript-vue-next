@@ -244,6 +244,13 @@ if (!__TEST__) {
     }
   )
   registerElement(
+    'InternalListView',
+    () => require('@nativescript/core').ListView,
+    {
+      viewFlags: NSVViewFlags.NO_CHILDREN
+    }
+  )
+  registerElement(
     'Placeholder',
     () => require('@nativescript/core').Placeholder,
   )

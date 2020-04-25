@@ -14,6 +14,7 @@ import {
 } from 'nativescript-vue'
 
 import Comp from './Comp'
+import ListViewComp from './ListViewComp'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
 global.isOn = (name) => name.startsWith('on')
@@ -47,12 +48,9 @@ const testComp = defineComponent({
   },
 })
 
-trace.setCategories(trace.categories.Debug)
+// trace.setCategories(trace.categories.Debug)
+trace.setCategories('ListView')
 trace.enable()
-
-const testTemplate = '<StackLayout />'
-console.log(`Compilation of ${testTemplate}`)
-console.log(compile(testTemplate).toString())
 
 function dumpViewTree(root) {
   const mapNode = (node) => {
@@ -73,6 +71,7 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('GridLayout', h(ListViewComp))
     return h(Comp)
 
     const labelAt = (row, col) =>
@@ -274,9 +273,9 @@ const app = createApp({
 
     onMounted(() => {
       // dump the Node tree
-      setTimeout(() => {
-        console.log(JSON.stringify(dumpViewTree(app.$el), null, 2))
-      }, 1000)
+      // setTimeout(() => {
+      //   console.log(JSON.stringify(dumpViewTree(app.$el), null, 2))
+      // }, 1000)
     })
 
     let inputText = ref('Text to change')

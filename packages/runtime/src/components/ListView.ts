@@ -9,12 +9,19 @@ type ListViewProps = {
 const NSV_LVR_REF = Symbol('NSV_LVR_REF')
 const isListViewThingSymbol = Symbol()
 
+export type ItemTapEvent<T> = ItemEventData & { item: T }
+
 interface ListViewRealized {
   [isListViewThingSymbol]: true
   container: NSVRoot | null
 }
 
-export const ListView: FunctionalComponent<ListViewProps> = (props, ctx) => {
+export const ListView: FunctionalComponent<
+  ListViewProps,
+  {
+    itemTap: (e: ItemTapEvent<any>) => any
+  }
+> = (props, ctx) => {
   const defaultKeyedTemplate = {
     key: 'test',
     createView(): ListViewRealized {
@@ -28,6 +35,12 @@ export const ListView: FunctionalComponent<ListViewProps> = (props, ctx) => {
 
   return h('InternalListView', {
     items: props.items,
+    onitemTap: (args: ItemEventData) => {
+      ctx.emit('itemTap', {
+        ...args,
+        item: props.items[args.index],
+      })
+    },
     itemTemplates: [defaultKeyedTemplate],
     itemTemplateSelector: (item: any, index: any) => {
       // debug('itemTemplateSelector', item, index)
@@ -53,6 +66,10 @@ export const ListView: FunctionalComponent<ListViewProps> = (props, ctx) => {
         const lvr = (args.view as unknown) as ListViewRealized
         // lets create an initial root
         lvr.container = nodeOps.createRoot()
+
+        // @ts-ignore
+        // console.log(getSlotVnode('default').children[0].children)
+
         render(getSlotVnode('default'), lvr.container)
 
         if (lvr.container.el) {
@@ -62,6 +79,9 @@ export const ListView: FunctionalComponent<ListViewProps> = (props, ctx) => {
       } else {
         debug('LVR UPDATING' + args.index, 'ListView')
         const lvr = (args.view as any)[NSV_LVR_REF] as ListViewRealized
+        // @ts-ignore
+        // console.log(getSlotVnode('default').children[0].children)
+
         render(getSlotVnode('default'), lvr.container!)
         view = lvr.container!.el!.nativeView
       }

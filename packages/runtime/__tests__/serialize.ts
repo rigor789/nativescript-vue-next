@@ -3,12 +3,12 @@ import {
   NSVElement,
   NSVNode,
   NSVNodeTypes,
-  NSVText
+  NSVText,
 } from '../src/nodes'
-import { isOn } from '@vue/shared'
+import { isOn } from '@nativescript-vue/shared'
 
 export function propNames(el: NSVElement): string[] {
-  return Object.keys(el.nativeView).filter(key => key.charAt(0) !== '_')
+  return Object.keys(el.nativeView).filter((key) => key.charAt(0) !== '_')
 }
 
 export function serialize(
@@ -32,7 +32,7 @@ export function serializeInner(
   return node.childNodes.length
     ? newLine +
         node.childNodes
-          .map(c => serialize(c, indent, depth + 1))
+          .map((c) => serialize(c, indent, depth + 1))
           .join(newLine) +
         newLine
     : ``
@@ -44,13 +44,13 @@ function serializeElement(
   depth: number
 ): string {
   const props = propNames(node)
-    .map(key => {
+    .map((key) => {
       const value = node.getAttribute(key)
       return isOn(key) || value == null
         ? ``
         : value === ``
-          ? key
-          : `${key}=${JSON.stringify(value)}`
+        ? key
+        : `${key}=${JSON.stringify(value)}`
     })
     .filter(Boolean)
     .join(' ')

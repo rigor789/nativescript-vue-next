@@ -1,4 +1,4 @@
-import { isOn } from '@vue/shared'
+import { isOn } from '@nativescript-vue/shared'
 import { patchEvent } from './modules/events'
 import { INSVElement } from './nodes'
 import { patchClass } from './modules/class'
@@ -29,8 +29,7 @@ export function patchProp(
       break
     default:
       if (isOn(key)) {
-        // console.log('->patchProp+Event')
-        patchEvent(el, key.slice(2).toLowerCase(), prevValue, nextValue)
+        patchEvent(el, key.slice(2), prevValue, nextValue)
       } else {
         patchAttr(el, key, prevValue, nextValue)
       }

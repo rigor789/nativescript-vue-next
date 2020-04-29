@@ -35,6 +35,11 @@
       "git add"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 80
+  },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.7.13",
     "@rollup/plugin-commonjs": "11.1.0",

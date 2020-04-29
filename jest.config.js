@@ -14,7 +14,11 @@ module.exports = {
   },
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text', 'json-summary'],
-  collectCoverageFrom: ['packages/*/src/**/*.ts', '!packages/shared/**'],
+  collectCoverageFrom: [
+    'packages/*/src/**/*.ts',
+    '!packages/shared/**',
+    '!packages/test-utils/**',
+  ],
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {

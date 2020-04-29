@@ -10,7 +10,7 @@ module.exports = {
     __GLOBAL__: false,
     __NODE_JS__: true,
     __FEATURE_OPTIONS__: true,
-    __FEATURE_SUSPENSE__: true
+    __FEATURE_SUSPENSE__: true,
   },
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text', 'json-summary'],
@@ -19,7 +19,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^@nativescript-vue/(.*?)$': '<rootDir>/packages/$1/src',
-    '^tests/(.*?)$': '<rootDir>/tests/$1'
   },
   rootDir: __dirname,
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],
@@ -28,6 +27,6 @@ module.exports = {
       // to coverage and can cause netlify builds to fail
       ['/node_modules/', '/examples/__tests__']
     : ['/node_modules/'],
-  setupFiles: ['<rootDir>/tests/jest.setup.ts'],
-  silent: true
+  setupFiles: ['<rootDir>/jest.setup.ts'],
+  silent: true,
 }

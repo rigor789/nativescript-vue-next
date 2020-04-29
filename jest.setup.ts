@@ -6,21 +6,24 @@ declare global {
   namespace jest {
     interface Matchers<R, T> {
       toHaveBeenWarned(): R
+
       toHaveBeenWarnedLast(): R
+
       toHaveBeenWarnedTimes(n: number): R
     }
   }
 }
 
-type Platform = 'Android' | 'iOS'
-let currentPlatform: Platform = 'Android'
-export const setPlatform = (platform: Platform) => (currentPlatform = platform)
-export const resetPlatform = () => (currentPlatform = 'Android')
+import { getCurrentPlatform } from '@nativescript-vue/test-utils'
 
 const coreMocks = new Map<string, any>()
+
 export const registerCoreMock = (name: string, mock: any) => {
   coreMocks.set(name, mock)
 }
+
+export const unsetValue = Symbol('unsetValue')
+
 jest.mock(
   '@nativescript/core',
   () =>
@@ -30,9 +33,9 @@ jest.mock(
         get(target, p) {
           switch (p) {
             case 'isAndroid':
-              return currentPlatform === 'Android'
+              return getCurrentPlatform() === 'Android'
             case 'isIOS':
-              return currentPlatform === 'iOS'
+              return getCurrentPlatform() === 'iOS'
             default:
               if (coreMocks.has(p as string)) {
                 return coreMocks.get(p as string)
@@ -41,18 +44,16 @@ jest.mock(
                 `Requested mock has not been specified ${p.toString()}`
               )
           }
-        }
+        },
       }
     ),
   { virtual: true }
 )
 
-export const unsetValue = Symbol('unsetValue')
-
 jest.mock(
   '@nativescript/core/ui/core/properties',
   () => ({
-    unsetValue
+    unsetValue,
   }),
   { virtual: true }
 )

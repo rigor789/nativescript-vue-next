@@ -1,4 +1,4 @@
-import { TNSViewBase } from './base'
+import { TNSViewBase } from './ViewBase.mock'
 
 let frameStack: Frame[] = []
 

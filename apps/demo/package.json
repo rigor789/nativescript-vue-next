@@ -1,5 +1,5 @@
 {
-  "name": "@nativescript-vue/apps-test",
+  "name": "@nativescript-vue/apps-demo",
   "version": "3.0.0-dev",
   "private": true,
   "workspaces": {
@@ -8,7 +8,7 @@
     ]
   },
   "nativescript": {
-    "id": "org.nativescript.vue.test",
+    "id": "org.nativescript.vue.demo",
     "tns-android": {
       "version": "6.5.0"
     },

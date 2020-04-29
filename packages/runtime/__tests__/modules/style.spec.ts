@@ -1,5 +1,5 @@
 import { unsetValue } from '@nativescript/core/ui/core/properties'
-import { registerTestLayout } from 'tests/registry'
+import { registerTestLayout } from '@nativescript-vue/test-utils'
 
 import { NSVElement } from '../../src/nodes'
 import { patchStyle } from '../../src/modules/style'

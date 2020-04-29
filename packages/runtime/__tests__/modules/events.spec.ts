@@ -1,6 +1,6 @@
 import { patchEvent } from '../../src/modules/events'
 import { nextTick } from '@vue/runtime-core'
-import { registerTestElement } from 'tests/registry'
+import { registerTestElement } from '@nativescript-vue/test-utils'
 import { NSVElement } from '../../src/nodes'
 
 registerTestElement('Button')
@@ -67,8 +67,8 @@ describe(`events`, () => {
     const nextValue = {
       handler: fn,
       options: {
-        once: true
-      }
+        once: true,
+      },
     }
     patchEvent(el, 'tap', null, nextValue)
     el.dispatchEvent(event)
@@ -86,8 +86,8 @@ describe(`events`, () => {
     const nextValue = {
       handler: nextFn,
       options: {
-        once: true
-      }
+        once: true,
+      },
     }
     patchEvent(el, 'tap', null, prevFn)
     patchEvent(el, 'tap', prevFn, nextValue)
@@ -106,8 +106,8 @@ describe(`events`, () => {
     const nextValue = {
       handler: fn,
       options: {
-        once: true
-      }
+        once: true,
+      },
     }
     patchEvent(el, 'tap', null, nextValue)
     patchEvent(el, 'tap', nextValue, null)

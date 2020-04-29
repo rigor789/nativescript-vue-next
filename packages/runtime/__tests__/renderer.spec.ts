@@ -1,7 +1,10 @@
 import { h, render, nodeOps } from '@nativescript-vue/runtime'
 import { NSVElement, NSVNodeTypes } from '../src/nodes'
 import { serializeInner } from './serialize'
-import { registerTestElement, registerTestLayout } from 'tests/registry'
+import {
+  registerTestElement,
+  registerTestLayout,
+} from '@nativescript-vue/test-utils'
 
 registerTestElement('Frame')
 registerTestElement('Label')
@@ -9,12 +12,12 @@ registerTestLayout('StackLayout')
 
 const EMPTY_TEXT_NODE = {
   nodeType: NSVNodeTypes.TEXT,
-  text: ''
+  text: '',
 }
 
 const LABEL_ELEMENT_NODE = {
   nodeType: NSVNodeTypes.ELEMENT,
-  tagName: 'label'
+  tagName: 'label',
 }
 
 describe('renderer: fragment', () => {
@@ -52,7 +55,7 @@ describe('renderer: fragment', () => {
     const App = {
       render() {
         return [h('Label', 'one'), h('Label', 'two')]
-      }
+      },
     }
 
     const root = nodeOps.createElement('Frame') as NSVElement

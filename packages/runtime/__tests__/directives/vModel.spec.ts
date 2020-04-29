@@ -11,8 +11,11 @@ import {
 } from '../../src/index'
 
 import { NSVElement } from '../../src/nodes'
-import { registerTestElement, registerTestLayout } from 'tests/registry'
-import { TNSViewBase } from 'tests/ns-mocks/base'
+import {
+  registerTestElement,
+  registerTestLayout,
+  TNSViewBase,
+} from '@nativescript-vue/test-utils'
 
 registerTestElement('Frame')
 registerTestElement('TextField', () => TNSViewBase, {

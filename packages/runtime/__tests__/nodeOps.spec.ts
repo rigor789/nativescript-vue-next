@@ -1,6 +1,9 @@
 import { h, render, nodeOps } from '../src'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
-import { registerTestElement, registerTestLayout } from 'tests/registry'
+import {
+  registerTestElement,
+  registerTestLayout,
+} from '@nativescript-vue/test-utils'
 import { NSVNodeTypes } from '../src/nodes'
 
 registerTestElement('Frame')

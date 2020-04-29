@@ -1,7 +1,10 @@
-import { registerTestElement } from 'tests/registry'
+import {
+  resetPlatform,
+  setPlatform,
+  registerTestElement,
+} from '@nativescript-vue/test-utils'
 import { patchAttr } from '../../src/modules/attrs'
 import { NSVElement } from '../../src/nodes'
-import { resetPlatform, setPlatform } from '../../../../tests/jest.setup'
 import { isAndroid } from '@nativescript/core'
 
 registerTestElement('Label')
@@ -10,8 +13,8 @@ const testElement = () => {
   const el = new NSVElement('Label')
   const attrs = new Map()
   el.setAttribute = jest.fn((key, value) => attrs.set(key, value))
-  el.removeAttribute = jest.fn(key => attrs.delete(key))
-  el.getAttribute = jest.fn(key => attrs.get(key))
+  el.removeAttribute = jest.fn((key) => attrs.delete(key))
+  el.getAttribute = jest.fn((key) => attrs.get(key))
 
   return { el, attrs }
 }

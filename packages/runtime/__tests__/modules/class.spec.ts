@@ -1,4 +1,4 @@
-import { registerTestLayout } from 'tests/registry'
+import { registerTestLayout } from '@nativescript-vue/test-utils'
 
 // https://github.com/vuejs/vue/blob/dev/test/unit/features/directives/class.spec.js
 
@@ -35,7 +35,7 @@ describe('class', () => {
       ['bar', 'foo bar'],
       ['baz qux', 'foo baz qux'],
       ['qux', 'foo qux'],
-      [undefined, 'foo']
+      [undefined, 'foo'],
     ])
   })
 
@@ -45,7 +45,7 @@ describe('class', () => {
       [{ baz: true }, 'foo baz'],
       [null, 'foo'],
       [{ 'bar baz': true, qux: false }, 'foo bar baz'],
-      [{ qux: true }, 'foo qux']
+      [{ qux: true }, 'foo qux'],
     ])
   })
 
@@ -56,7 +56,7 @@ describe('class', () => {
       [['w', 'x y z'], 'foo w x y z'],
       [undefined, 'foo'],
       [['bar'], 'foo bar'],
-      [(val: Array<any>) => val.push('baz'), 'foo bar baz']
+      [(val: Array<any>) => val.push('baz'), 'foo bar baz'],
     ])
   })
 
@@ -67,7 +67,7 @@ describe('class', () => {
       [['f', { z: true }], 'foo f z'],
       [['l', 'f', { n: true, z: true }], 'foo l f n z'],
       [['x', {}], 'foo x'],
-      [undefined, 'foo']
+      [undefined, 'foo'],
     ])
   })
 
@@ -77,13 +77,13 @@ describe('class', () => {
     const childClass: ClassItem = { value: 'd' }
     const child = {
       props: {},
-      render: () => h('StackLayout', { class: ['c', childClass.value] })
+      render: () => h('StackLayout', { class: ['c', childClass.value] }),
     }
 
     const parentClass: ClassItem = { value: 'b' }
     const parent = {
       props: {},
-      render: () => h(child, { class: ['a', parentClass.value] })
+      render: () => h(child, { class: ['a', parentClass.value] }),
     }
 
     render(h(parent), root)
@@ -112,14 +112,14 @@ describe('class', () => {
       props: {},
       render() {
         return this.$slots.default!()[0]
-      }
+      },
     })
 
     const component2 = defineComponent({
       props: {},
       render() {
         return this.$slots.default!()[0]
-      }
+      },
     })
 
     const component3 = defineComponent({
@@ -128,11 +128,11 @@ describe('class', () => {
         return h(
           'StackLayout',
           {
-            class: 'staticClass'
+            class: 'staticClass',
           },
           [this.$slots.default!()]
         )
-      }
+      },
     })
 
     const root = new NSVElement('StackLayout')
@@ -143,8 +143,8 @@ describe('class', () => {
     const wrapper = () =>
       h(component1, { class: componentClass1.value }, () => [
         h(component2, { class: componentClass2.value }, () => [
-          h(component3, { class: componentClass3.value }, () => ['some text'])
-        ])
+          h(component3, { class: componentClass3.value }, () => ['some text']),
+        ]),
       ])
 
     render(wrapper(), root)
@@ -175,7 +175,7 @@ describe('class', () => {
     const root = new NSVElement('StackLayout')
     const test = {
       a: true,
-      b: false
+      b: false,
     }
 
     const wrapper = () => h('StackLayout', { class: test })
@@ -194,7 +194,7 @@ describe('class', () => {
     const ok = { value: true }
     const wrapper = () =>
       h('StackLayout', [
-        ok.value ? h('StackLayout', { class: 'a' }) : h('StackLayout')
+        ok.value ? h('StackLayout', { class: 'a' }) : h('StackLayout'),
       ])
 
     render(wrapper(), root)

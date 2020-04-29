@@ -1,4 +1,4 @@
-import { registerTestLayout } from 'tests/registry'
+import { registerTestLayout } from '@nativescript-vue/test-utils'
 
 import { NSVElement, NSVRoot, NSVViewFlags } from '../src/nodes'
 import { NSVViewMeta } from '../src/registry'

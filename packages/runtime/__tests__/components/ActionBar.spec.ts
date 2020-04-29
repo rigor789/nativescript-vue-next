@@ -1,5 +1,5 @@
-import { registerTestElement } from 'tests/registry'
-import { registerCoreMock } from 'tests/jest.setup'
+import { registerTestElement } from '@nativescript-vue/test-utils'
+import { registerCoreMock } from '../../../../jest.setup'
 
 class TestPage {
   private _ab: any = undefined
@@ -53,7 +53,7 @@ describe('ActionBar', () => {
   it('accepts children in the default slot', () => {
     const titleView = h('Label')
     const actionBar = h(ActionBar, null, {
-      default: () => titleView
+      default: () => titleView,
     })
     const vnode = h('Page', [actionBar])
     render(vnode, root)

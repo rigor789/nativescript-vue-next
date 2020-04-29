@@ -1,5 +1,5 @@
 import { compile } from '../src'
-import { registerTestElement } from 'tests/registry'
+import { registerTestElement } from '@nativescript-vue/test-utils'
 
 registerTestElement('Frame')
 registerTestElement('Page')

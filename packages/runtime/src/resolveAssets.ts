@@ -1,5 +1,8 @@
 import {
   Component,
+  // TODO: remove the @ts-ignore directive when
+  // https://github.com/vuejs/vue-next/issues/1109 was fixed
+  // @ts-ignore
   resolveComponent as _resolveComponent,
 } from '@vue/runtime-core'
 import { ActionBar, isKnownView } from '.'

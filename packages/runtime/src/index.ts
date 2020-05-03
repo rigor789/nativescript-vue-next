@@ -74,3 +74,10 @@ export { ListView } from './components/ListView'
 export { ActionBar } from './components/ActionBar'
 
 export * from '@vue/runtime-core'
+
+// TODO: remove the following export sentence when
+// https://github.com/vuejs/vue-next/issues/1109 was fixed
+export {
+  // @ts-ignore
+  registerRuntimeCompiler,
+} from '@vue/runtime-core'

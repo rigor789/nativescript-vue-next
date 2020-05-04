@@ -1,5 +1,11 @@
+import PageComp from '~/PageComp'
+import { ref } from 'nativescript-vue'
 export default {
   template: `<ScrollView><StackLayout>
+    <ContentView borderWidth="2" borderColor="red">
+        <Frame id="testFrame" ref="testFrame" height="200">
+        </Frame>
+    </ContentView>
     <SearchBar v-model="model" />
     <Label :text="counter + ' ' + progress" />
     <Label :text="time" />
@@ -33,9 +39,19 @@ export default {
   watch: {
     model(value) {
       console.log('model change...!', value)
+      if (this.foo) {
+        this.foo.value = value
+      }
     },
   },
-  created() {
+  mounted() {
+    this.foo = ref(this.model)
+    this.$navigateTo(PageComp, {
+      frame: this.$refs.testFrame,
+      props: {
+        foo: this.foo,
+      },
+    })
     // setInterval(() => this.counter++, 1000)
   },
 }

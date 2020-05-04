@@ -11,6 +11,7 @@ import { debug } from '@nativescript-vue/shared'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { INSVElement, NSVRoot } from './nodes'
+import { install as NavigationPlugin } from './plugins/navigation'
 import './registry'
 
 const rendererOptions = {
@@ -56,6 +57,9 @@ export const createApp = ((...args) => {
     return runApp(mount(nodeOps.createRoot()))
   }
 
+  // Built-in plugins
+  app.use(NavigationPlugin)
+
   return app
 }) as CreateAppFunction<INSVElement>
 
@@ -64,6 +68,9 @@ export * from './nodes'
 export * from './runtimeHelpers'
 export * from './registry'
 export { resolveComponent } from './resolveAssets'
+
+// Plugins
+export { $navigateTo } from './plugins/navigation'
 
 // runtime directive helpers
 export { vModel } from './directives/vModel'

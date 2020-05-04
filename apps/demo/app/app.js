@@ -71,6 +71,7 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('frame', h('page', h(Comp)))
     return h({
       template: `<Label verticalAlignment="middle" textAlignment="center"><FormattedString>
 <Span text="Cool" />
@@ -79,7 +80,6 @@ const app = createApp({
 </FormattedString></Label>`,
     })
     return h('GridLayout', h(ListViewComp))
-    return h(Comp)
 
     const labelAt = (row, col) =>
       h('Label', {

@@ -1288,17 +1288,6 @@
     estree-walker "^0.8.1"
     source-map "^0.6.1"
 
-"@vue/compiler-core@3.0.0-beta.9":
-  version "3.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.0.0-beta.9.tgz#4ecf5012d9fc5757337ad7bffcc9758e133c16a2"
-  integrity sha512-9wSyjY4n4+XySezEt8j+fe+UCht+HyqIT98lafqcZ/c7GVNNz87zej0VNR/tO1agwSdPZjApRv/kes7lcKs88w==
-  dependencies:
-    "@babel/parser" "^7.8.6"
-    "@babel/types" "^7.8.6"
-    "@vue/shared" "3.0.0-beta.9"
-    estree-walker "^0.8.1"
-    source-map "^0.6.1"
-
 "@vue/compiler-dom@3.0.0-beta.10":
   version "3.0.0-beta.10"
   resolved "https://registry.yarnpkg.com/@vue/compiler-dom/-/compiler-dom-3.0.0-beta.10.tgz#5b35df447eb96cb7faed37b76a8a9aca71a87c67"

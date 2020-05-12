@@ -1338,6 +1338,13 @@
     "@vue/compiler-dom" "3.0.0-beta.12"
     "@vue/shared" "3.0.0-beta.12"
 
+"@vue/reactivity@3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-beta.12.tgz#33e8c3845dc663967c85217316f831a0153c40dc"
+  integrity sha512-ZgqLVADzwgFvm+Jf12bfzesvV3wcZXfM6JmryZ2BrWvkGS+Xo0A4oOcnsB4Tmqw5lemdYYkoleup02ChzvRlMg==
+  dependencies:
+    "@vue/shared" "3.0.0-beta.12"
+
 "@vue/reactivity@3.0.0-beta.9":
   version "3.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-beta.9.tgz#3a81a6a0dff47ee4713aceb5c77302620de471fe"

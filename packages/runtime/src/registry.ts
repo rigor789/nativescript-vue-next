@@ -311,6 +311,34 @@ if (!__TEST__) {
     }
   )
   registerElement(
+    'Tabs',
+    () => require('@nativescript/core').Tabs,
+    {
+      model: {
+        prop: 'selectedIndex',
+        event: 'selectedIndexChange'
+      }
+    }
+  )
+  registerElement(
+    'TabStrip',
+    () => require('@nativescript/core').TabStrip,
+    {
+    }
+  )
+  registerElement(
+    'TabStripItem',
+    () => require('@nativescript/core').TabStripItem,
+    {
+    }
+  )
+  registerElement(
+    'TabContentItem',
+    () => require('@nativescript/core').TabContentItem,
+    {
+    }
+  )
+  registerElement(
     'TextField',
     () => require('@nativescript/core').TextField,
     {

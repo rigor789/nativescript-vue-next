@@ -14,6 +14,7 @@ import {
 } from 'nativescript-vue'
 
 import Comp from './Comp'
+import Tabs from './Tabs'
 import ListViewComp from './ListViewComp'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
@@ -71,6 +72,7 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('frame', h('page', h(Tabs)))
     return h('frame', h('page', h(Comp)))
     return h({
       template: `<Label verticalAlignment="middle" textAlignment="center"><FormattedString>

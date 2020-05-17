@@ -311,7 +311,7 @@ if (!__TEST__) {
     }
   )
   registerElement(
-    'Tabs',
+    'InternalTabs',
     () => require('@nativescript/core').Tabs,
     {
       model: {

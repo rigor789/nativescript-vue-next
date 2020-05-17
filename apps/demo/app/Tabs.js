@@ -1,39 +1,41 @@
-import PageComp from '~/PageComp'
-import { ref } from 'nativescript-vue'
+import { Tabs } from 'nativescript-vue'
+
 export default {
-  template: `<Tabs selectedIndex="1">
-  <TabStrip>
-    <TabStripItem>
-      <Label text="Home"></Label>
-    </TabStripItem>
-    <TabStripItem>
-      <Label text="Account"></Label>
-    </TabStripItem>
-    <TabStripItem>
-      <Label text="Search"></Label>
-    </TabStripItem>
-  </TabStrip>
-  <TabContentItem>
-    <GridLayout>
-      <Label text="Home Page"></Label>
-    </GridLayout>
-  </TabContentItem>
-  <TabContentItem>
-    <GridLayout>
-      <Label text="Account Page"></Label>
-    </GridLayout>
-  </TabContentItem>
-  <TabContentItem>
-    <GridLayout>
-      <Label text="Search Page"></Label>
-    </GridLayout>
-  </TabContentItem>
-</Tabs>`,
-  data() {
-    return {}
+  components: {
+    Tabs,
   },
-  watch: {
-    model(value) {},
+  template: `
+<StackLayout>
+  <Label :text="activeTab" />
+  <Button text="Add tab" @tap="tabs.push({title: 'new', text: 'new tab'})" />
+  <Button text="Go last" @tap="activeTab = tabs.length - 1" />
+
+  <Tabs v-model="activeTab">
+    <TabStrip>
+      <TabStripItem
+        v-for="(tab, i) in tabs"
+        :key="i + tab.title"
+        :title="tab.title">
+      </TabStripItem>
+    </TabStrip>
+    <TabContentItem
+      v-for="(tab, i) in tabs"
+      :key="i + tab.title">
+      <GridLayout>
+        <Label :text="tab.text" />
+      </GridLayout>
+    </TabContentItem>
+  </Tabs>
+</StackLayout>`,
+  data() {
+    return {
+      activeTab: 1,
+      tabs: [
+        { title: 'First Tab', text: 'im the first tab' },
+        { title: 'Second Tab', text: 'im the second tab' },
+        { title: 'Third Tab', text: 'im the third tab' },
+      ],
+    }
   },
   mounted() {},
 }

@@ -79,5 +79,6 @@ export { vShow } from './directives/vShow'
 // Runtime components
 export { ActionBar } from './components/ActionBar'
 export { ListView } from './components/ListView'
+export { Tabs } from './components/Tabs'
 
 export * from '@vue/runtime-core'

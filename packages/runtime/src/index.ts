@@ -75,9 +75,9 @@ export { $navigateTo } from './plugins/navigation'
 // runtime directive helpers
 export { vModel } from './directives/vModel'
 export { vShow } from './directives/vShow'
-export { ListView } from './components/ListView'
 
 // Runtime components
 export { ActionBar } from './components/ActionBar'
+export { ListView } from './components/ListView'
 
 export * from '@vue/runtime-core'

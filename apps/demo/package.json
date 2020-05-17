@@ -25,7 +25,7 @@
     "@babel/preset-env": "7.9.6",
     "@nativescript-vue/compiler": "3.0.0-dev",
     "babel-loader": "8.1.0",
-    "vue-loader": "16.0.0-alpha.3",
+    "vue-loader": "16.0.0-beta.2",
     "nativescript-dev-webpack": "1.5.1"
   }
 }

@@ -6,8 +6,7 @@ export default {
   },
   template: `
 <StackLayout>
-  <Label :text="activeTab" />
-  <Button text="Add tab" @tap="tabs.push({title: 'new', text: 'new tab'})" />
+  <Label :text="tabText" />
   <Button text="Go last" @tap="activeTab = tabs.length - 1" />
 
   <Tabs v-model="activeTab">
@@ -36,6 +35,11 @@ export default {
         { title: 'Third Tab', text: 'im the third tab' },
       ],
     }
+  },
+  computed: {
+    tabText() {
+      return `Tab: ${this.activeTab}`
+    },
   },
   mounted() {},
 }

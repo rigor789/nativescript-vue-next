@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
-    "@babel/preset-env": "7.9.6",
+    "@babel/preset-env": "7.10.1",
     "@nativescript-vue/compiler": "3.0.0-dev",
     "babel-loader": "8.1.0",
     "vue-loader": "16.0.0-alpha.3",

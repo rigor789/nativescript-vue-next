@@ -47,7 +47,7 @@ describe('renderer: fragment', () => {
     const root = nodeOps.createElement('Frame') as NSVElement
     render(h('StackLayout', { id: 'foo' }, ['bar']), root)
     expect(serializeInner(root)).toBe(
-      '<stacklayout id="foo" text="bar">bar</stacklayout>'
+      '<stacklayout text="bar" id="foo">bar</stacklayout>'
     )
   })
 

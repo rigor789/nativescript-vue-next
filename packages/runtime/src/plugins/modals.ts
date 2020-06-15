@@ -7,9 +7,8 @@ import {
   Ref,
   warn,
 } from '@vue/runtime-core'
-import { ShowModalOptions, View } from '@nativescript/core'
+import { ShowModalOptions, View, Application } from '@nativescript/core'
 import { nodeOps, NSVElement, render } from '@nativescript-vue/runtime'
-import { getRootView } from '@nativescript/core/application'
 import { isObject } from '@vue/shared'
 import { isDefined } from '@nativescript/core/utils/types'
 
@@ -65,7 +64,7 @@ export async function $showModal<T = any>(
 ): Promise<T | false | undefined> {
   options = Object.assign(
     {
-      target: getRootView(),
+      target: Application.getRootView(),
     },
     options
   )

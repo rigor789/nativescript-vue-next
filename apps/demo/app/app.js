@@ -1,16 +1,15 @@
 import * as trace from '@nativescript/core/trace'
 
 import {
+  $showModal,
   createApp,
-  h,
-  ref,
-  onUnmounted,
-  onMounted,
-  ActionBar,
   defineComponent,
-  compile,
-  withDirectives,
+  h,
+  onMounted,
+  onUnmounted,
+  ref,
   vModel,
+  withDirectives,
 } from 'nativescript-vue'
 
 import Comp from './Comp'
@@ -73,6 +72,21 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('Button', {
+      text: 'Open Modal',
+      onTap() {
+        $showModal({
+          unmounted() {
+            console.log('unmounted!')
+          },
+          render: () =>
+            h('Label', {
+              text: 'Im a modal!',
+              onTap() {},
+            }),
+        })
+      },
+    })
     return h('frame', h('page', h(BottomNavigation)))
     return h(
       'label',

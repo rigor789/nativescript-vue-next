@@ -12,6 +12,7 @@ import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
 import { INSVElement, NSVRoot } from './nodes'
 import { install as NavigationPlugin } from './plugins/navigation'
+import { install as ModalPlugin } from './plugins/modals'
 import './registry'
 
 const rendererOptions = {
@@ -59,6 +60,7 @@ export const createApp = ((...args) => {
 
   // Built-in plugins
   app.use(NavigationPlugin)
+  app.use(ModalPlugin)
 
   return app
 }) as CreateAppFunction<INSVElement>
@@ -71,6 +73,7 @@ export { resolveComponent } from './resolveAssets'
 
 // Plugins
 export { $navigateTo } from './plugins/navigation'
+export { $showModal } from './plugins/modals'
 
 // runtime directive helpers
 export { vModel } from './directives/vModel'

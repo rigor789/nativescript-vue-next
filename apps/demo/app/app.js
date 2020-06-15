@@ -72,6 +72,14 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h(
+      'label',
+      h('formattedString', [
+        h('span', { text: 'Hello' }),
+        h('span', { text: 'World' }),
+        this.toggler ? h('Span', { text: 'Yay' }) : null,
+      ])
+    )
     return h('frame', h('page', h(Tabs)))
     return h('frame', h('page', h(Comp)))
     return h({

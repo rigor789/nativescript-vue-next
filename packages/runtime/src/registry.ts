@@ -227,7 +227,25 @@ if (!__TEST__) {
   )
   registerElement(
     'FormattedString',
-    () => require('@nativescript/core').FormattedString
+    () => require('@nativescript/core').FormattedString,
+    {
+      nodeOps: {
+        insert(child, parent, atIndex) {
+          if (atIndex) {
+            parent.nativeView.spans.splice(atIndex, 0, child.nativeView)
+            return
+          }
+          parent.nativeView.spans.push(child.nativeView)
+        },
+        remove(child, parent) {
+          const index = parent.nativeView.spans.indexOf(child.nativeView)
+
+          if (index > -1) {
+            parent.nativeView.spans.splice(index, 1)
+          }
+        }
+      }
+    }
   )
   registerElement(
     'Image',
@@ -323,20 +341,17 @@ if (!__TEST__) {
   registerElement(
     'TabStrip',
     () => require('@nativescript/core').TabStrip,
-    {
-    }
+    {}
   )
   registerElement(
     'TabStripItem',
     () => require('@nativescript/core').TabStripItem,
-    {
-    }
+    {}
   )
   registerElement(
     'TabContentItem',
     () => require('@nativescript/core').TabContentItem,
-    {
-    }
+    {}
   )
   registerElement(
     'TextField',

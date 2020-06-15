@@ -80,5 +80,6 @@ export { vShow } from './directives/vShow'
 export { ActionBar } from './components/ActionBar'
 export { ListView } from './components/ListView'
 export { Tabs } from './components/Tabs'
+export { BottomNavigation } from './components/BottomNavigation'
 
 export * from '@vue/runtime-core'

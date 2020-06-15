@@ -15,6 +15,7 @@ import {
 
 import Comp from './Comp'
 import Tabs from './Tabs'
+import BottomNavigation from './BottomNavigation'
 import ListViewComp from './ListViewComp'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
@@ -72,6 +73,7 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('frame', h('page', h(BottomNavigation)))
     return h(
       'label',
       h('formattedString', [

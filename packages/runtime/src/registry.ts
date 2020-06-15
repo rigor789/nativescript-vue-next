@@ -329,31 +329,6 @@ if (!__TEST__) {
     }
   )
   registerElement(
-    'InternalTabs',
-    () => require('@nativescript/core').Tabs,
-    {
-      model: {
-        prop: 'selectedIndex',
-        event: 'selectedIndexChange'
-      }
-    }
-  )
-  registerElement(
-    'TabStrip',
-    () => require('@nativescript/core').TabStrip,
-    {}
-  )
-  registerElement(
-    'TabStripItem',
-    () => require('@nativescript/core').TabStripItem,
-    {}
-  )
-  registerElement(
-    'TabContentItem',
-    () => require('@nativescript/core').TabContentItem,
-    {}
-  )
-  registerElement(
     'TextField',
     () => require('@nativescript/core').TextField,
     {
@@ -382,6 +357,43 @@ if (!__TEST__) {
         event: 'timeChange',
       },
     }
+  )
+
+  // Tabs & BottomNavigation
+  registerElement(
+    'InternalBottomNavigation',
+    () => require('@nativescript/core').BottomNavigation,
+    {
+      model: {
+        prop: 'selectedIndex',
+        event: 'selectedIndexChange'
+      }
+    }
+  )
+  registerElement(
+    'InternalTabs',
+    () => require('@nativescript/core').Tabs,
+    {
+      model: {
+        prop: 'selectedIndex',
+        event: 'selectedIndexChange'
+      }
+    }
+  )
+  registerElement(
+    'TabStrip',
+    () => require('@nativescript/core').TabStrip,
+    {}
+  )
+  registerElement(
+    'TabStripItem',
+    () => require('@nativescript/core').TabStripItem,
+    {}
+  )
+  registerElement(
+    'TabContentItem',
+    () => require('@nativescript/core').TabContentItem,
+    {}
   )
 }
 // todo: more

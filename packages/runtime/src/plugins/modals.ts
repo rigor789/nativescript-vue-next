@@ -97,6 +97,7 @@ export async function $showModal<T = any>(
 
     modalTarget.showModal(modalContent, {
       ...options,
+      context: null,
       closeCallback,
     })
   })

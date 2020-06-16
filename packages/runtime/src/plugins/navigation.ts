@@ -113,8 +113,8 @@ export async function $navigateTo(
   }
 }
 
-export async function $navigateBack(options: NavigationOptions) {
-  const frame = await waitForFrame(options?.frame)
+export async function $navigateBack(options?: NavigationOptions) {
+  const frame = await waitForFrame(options ? options.frame : undefined)
 
   if (!frame) {
     throw new Error('Failed to resolve frame. Make sure your frame exists.')

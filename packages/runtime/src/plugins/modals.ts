@@ -73,7 +73,7 @@ export async function $showModal<T = any>(
   }
 
   return new Promise((resolve) => {
-    const modalApp = createApp(component, options?.props)
+    const modalApp = createApp(component, options ? options.props : null)
     let isResolved = false
     const closeCallback = (data?: T) => {
       if (isResolved) return

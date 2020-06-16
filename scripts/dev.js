@@ -17,28 +17,47 @@ __DEV__=false yarn dev
 */
 
 const execa = require('execa')
-const { fuzzyMatchTarget } = require('./utils')
+const { targets: allTargets, fuzzyMatchTarget } = require('./utils')
 const args = require('minimist')(process.argv.slice(2))
-const target = args._.length ? fuzzyMatchTarget(args._)[0] : 'nativescript-vue'
+const targets = args._
 const formats = args.formats || args.f
 const sourceMap = args.sourcemap || args.s
 const commit = execa.sync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 7)
 
-execa(
-  'rollup',
-  [
-    '-wc',
-    '--environment',
-    [
-      `COMMIT:${commit}`,
-      `TARGET:${target}`,
-      `FORMATS:${formats || 'global'}`,
-      sourceMap ? `SOURCE_MAP:true` : ``
-    ]
-      .filter(Boolean)
-      .join(',')
-  ],
-  {
-    stdio: 'inherit'
+run()
+
+async function run() {
+  if (!targets.length) {
+    await buildAll(allTargets)
+  } else {
+    await buildAll(fuzzyMatchTarget(targets, buildAllMatching))
   }
-)
+}
+
+async function buildAll(targets) {
+  const processes = []
+  for (const target of targets) {
+    processes.push(
+      execa(
+        'rollup',
+        [
+          '-wc',
+          '--environment',
+          [
+            `COMMIT:${commit}`,
+            `TARGET:${target}`,
+            `FORMATS:${formats || 'global'}`,
+            sourceMap ? `SOURCE_MAP:true` : ``,
+          ]
+            .filter(Boolean)
+            .join(','),
+        ],
+        {
+          stdio: 'inherit',
+        }
+      )
+    )
+  }
+
+  await Promise.all(processes)
+}

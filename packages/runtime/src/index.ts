@@ -1,9 +1,10 @@
 import {
-  Renderer,
-  createRenderer,
-  RootRenderFunction,
-  CreateAppFunction,
+  App,
   ComponentPublicInstance,
+  CreateAppFunction,
+  createRenderer,
+  Renderer,
+  RootRenderFunction,
   VNode,
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
@@ -14,6 +15,12 @@ import { INSVElement, NSVRoot } from './nodes'
 import { install as NavigationPlugin } from './plugins/navigation'
 import { install as ModalPlugin } from './plugins/modals'
 import './registry'
+
+export declare type NSVApp = App & {
+  mount: () => ComponentPublicInstance
+  unmount: () => void
+  start: () => ComponentPublicInstance
+}
 
 const rendererOptions = {
   patchProp,
@@ -51,11 +58,20 @@ export const render = ((
 }) as RootRenderFunction<INSVElement | NSVRoot>
 
 export const createApp = ((...args) => {
-  const app = ensureRenderer().createApp(...args)
-  const { mount } = app
+  const app = ensureRenderer().createApp(...args) as NSVApp
+  const { mount, unmount } = app
+  const root = nodeOps.createRoot()
 
-  app.mount = (): any => {
-    return runApp(mount(nodeOps.createRoot()))
+  app.mount = () => {
+    return mount(root)
+  }
+
+  app.unmount = () => {
+    return unmount(root)
+  }
+
+  app.start = () => {
+    return runApp(app.mount())
   }
 
   // Built-in plugins
@@ -63,7 +79,7 @@ export const createApp = ((...args) => {
   app.use(ModalPlugin)
 
   return app
-}) as CreateAppFunction<INSVElement>
+}) as (...params: Parameters<CreateAppFunction<INSVElement>>) => NSVApp
 
 export * from './nodeOps'
 export * from './nodes'

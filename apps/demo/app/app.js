@@ -10,6 +10,7 @@ import {
   ref,
   vModel,
   withDirectives,
+  getCurrentInstance,
 } from 'nativescript-vue'
 
 import Comp from './Comp'
@@ -76,17 +77,18 @@ const app = createApp({
       text: 'Open Modal',
       onTap() {
         $showModal({
-          unmounted() {
-            console.log('unmounted!')
-          },
-          render: () =>
-            h('Label', {
+          render() {
+            return h('Label', {
               text: 'Im a modal!',
-              onTap() {},
-            }),
+              onTap: () => this.$modal.close('yay'),
+            })
+          },
+        }).then((data) => {
+          console.log('closed modal with data', data)
         })
       },
     })
+
     return h('frame', h('page', h(BottomNavigation)))
     return h(
       'label',
@@ -322,4 +324,4 @@ const app = createApp({
       inputText,
     }
   },
-}).mount()
+}).start()

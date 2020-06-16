@@ -3,14 +3,12 @@ import {
   Component,
   ComponentInternalInstance,
   ComponentPublicInstance,
-  h,
   Ref,
   warn,
 } from '@vue/runtime-core'
-import { ShowModalOptions, View, Application } from '@nativescript/core'
-import { nodeOps, NSVElement, render } from '@nativescript-vue/runtime'
+import { Application, ShowModalOptions, View } from '@nativescript/core'
+import { createApp, NSVElement } from '@nativescript-vue/runtime'
 import { isObject } from '@vue/shared'
-import { isDefined } from '@nativescript/core/utils/types'
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
@@ -19,7 +17,7 @@ declare module '@vue/runtime-core' {
      */
     $showModal: <T = any>(
       component: Component,
-      options: ModalOptions
+      options?: ModalOptions
     ) => Promise<T | false | undefined>
   }
 }
@@ -40,14 +38,10 @@ export interface ModalOptions extends ShowModalOptions {
  */
 export function install(app: App) {
   app.config.globalProperties.$showModal = $showModal
-  // Object.defineProperty(app.config.globalProperties, '$modal', {
-  //   get() {
-  //   }
-  // })
 }
 
 function resolveModalTarget(target: ModalOptions['target']): View | false {
-  if (isObject(target) && isDefined(target.$el)) {
+  if (isObject(target) && isObject(target.$el)) {
     return target.$el.nativeView
   } else if (target instanceof NSVElement) {
     return target.nativeView
@@ -60,7 +54,7 @@ function resolveModalTarget(target: ModalOptions['target']): View | false {
 
 export async function $showModal<T = any>(
   component: Component,
-  options: ModalOptions
+  options?: ModalOptions
 ): Promise<T | false | undefined> {
   options = Object.assign(
     {
@@ -79,8 +73,7 @@ export async function $showModal<T = any>(
   }
 
   return new Promise((resolve) => {
-    const root = nodeOps.createRoot()
-
+    const modalApp = createApp(component, options?.props)
     let isResolved = false
     const closeCallback = (data?: T) => {
       if (isResolved) return
@@ -92,16 +85,15 @@ export async function $showModal<T = any>(
         // ignore?
       }
 
-      // unmount modal by rendering null
-      render(null, root)
-
+      modalApp.unmount()
       resolve(data)
     }
 
-    // render modal contents
-    render(h(component, options.props), root)
+    modalApp.config.globalProperties.$modal = {
+      close: closeCallback,
+    }
 
-    const modalContent = root.el!.nativeView
+    const modalContent = modalApp.mount().$el.nativeView
 
     modalTarget.showModal(modalContent, {
       ...options,

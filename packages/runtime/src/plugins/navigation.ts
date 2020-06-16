@@ -1,6 +1,7 @@
-import { App, Component, h, isRef, nextTick, Ref } from '@vue/runtime-core'
+import { App, Component, isRef, nextTick, Ref } from '@vue/runtime-core'
 import { Frame, NavigationEntry, Page } from '@nativescript/core'
-import { nodeOps, NSVElement, render } from '@nativescript-vue/runtime'
+import { createApp, NSVElement } from '@nativescript-vue/runtime'
+import { NavigatedData } from '@nativescript/core/ui/page'
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
@@ -12,11 +13,15 @@ declare module '@vue/runtime-core' {
      * @param target
      * @param options
      */
-    $navigateTo: (target: Component, options: any) => Promise<any>
+    $navigateTo: (
+      target: Component,
+      options?: NavigationOptions
+    ) => Promise<any>
+    $navigateBack: (options?: NavigationOptions) => void
   }
 }
 
-export interface NavigateToOptions extends NavigationEntry {
+export interface NavigationOptions extends NavigationEntry {
   props?: Record<string, any>
   frame?: string | Ref | NSVElement | Frame
 }
@@ -26,9 +31,10 @@ export interface NavigateToOptions extends NavigationEntry {
  */
 export function install(app: App) {
   app.config.globalProperties.$navigateTo = $navigateTo
+  app.config.globalProperties.$navigateBack = $navigateBack
 }
 
-function resolveFrame(frame: NavigateToOptions['frame']): Frame {
+function resolveFrame(frame: NavigationOptions['frame']): Frame {
   if (!frame) {
     return Frame.topmost()
   }
@@ -53,7 +59,7 @@ function resolveFrame(frame: NavigateToOptions['frame']): Frame {
 }
 
 async function waitForFrame(
-  frame: NavigateToOptions['frame'],
+  frame: NavigationOptions['frame'],
   retries: number = 5
 ) {
   let _frame = resolveFrame(frame)
@@ -66,7 +72,7 @@ async function waitForFrame(
 
 export async function $navigateTo(
   target: Component,
-  options: NavigateToOptions
+  options?: NavigationOptions
 ): Promise<Page> {
   options = Object.assign({}, options)
   console.log('$navigateTo')
@@ -78,19 +84,45 @@ export async function $navigateTo(
       throw new Error('Failed to resolve frame. Make sure your frame exists.')
     }
 
-    const root = nodeOps.createRoot()
-    render(h(target, options.props), root)
+    const navigationApp = createApp(target, options.props)
+    const targetPage = (navigationApp.mount().$el.nativeView as unknown) as Page
+
+    const handler = (args: NavigatedData) => {
+      if (args.isBackNavigation) {
+        targetPage.off('navigatedFrom', handler as any)
+        navigationApp.unmount()
+      }
+    }
+    targetPage.on('navigatedFrom', handler)
+
+    const dispose = targetPage.disposeNativeView
+    targetPage.disposeNativeView = () => {
+      navigationApp.unmount()
+      dispose.call(targetPage)
+    }
 
     frame.navigate({
       ...options,
-      create() {
-        return (root.el!.nativeView as unknown) as Page
-      },
+      create: () => targetPage,
     })
-    return (root.el!.nativeView as unknown) as Page
+    return targetPage
   } catch (e) {
     console.log('[$navigateTo] Failed to navigate:\n\n')
     console.log(e)
     throw e
   }
+}
+
+export async function $navigateBack(options: NavigationOptions) {
+  const frame = await waitForFrame(options?.frame)
+
+  if (!frame) {
+    throw new Error('Failed to resolve frame. Make sure your frame exists.')
+  }
+
+  if (!frame.canGoBack()) {
+    return
+  }
+
+  frame.goBack()
 }

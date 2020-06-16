@@ -17,6 +17,7 @@ import Comp from './Comp'
 import Tabs from './Tabs'
 import BottomNavigation from './BottomNavigation'
 import ListViewComp from './ListViewComp'
+import Test from './Test'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
 global.isOn = (name) => name.startsWith('on')
@@ -73,6 +74,7 @@ function useInterval(cb, ms) {
 
 const app = createApp({
   render() {
+    return h('StackLayout', h(Test))
     return h('Button', {
       text: 'Open Modal',
       onTap() {

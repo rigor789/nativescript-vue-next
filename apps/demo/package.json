@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "@nativescript/core": "6.5.6",
+    "@nativescript/core": "6.5.7",
     "nativescript-vue": "3.0.0-dev"
   },
   "devDependencies": {

@@ -1292,10 +1292,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nativescript/core@6.5.6":
-  version "6.5.6"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.6.tgz#c23004ed95853fb6d671de88eb953a336b962cb1"
-  integrity sha512-y18ot1iowH2oumgGxPD3pEzKKBhy7FQL6mMe9L/WcCiplcsQujY0tOPEjtFTFn8LtHhBHBrzFFFFYNr40onyVQ==
+"@nativescript/core@6.5.8":
+  version "6.5.8"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.8.tgz#24ec6981fa86c04524b024ede4870879dd5fdbb8"
+  integrity sha512-zxghkuVIXuWCtrPCnlq4eKbM2xNUPMxl+3NHu3gIE7eIcUVVZyoIbUdIEWfIYtt+Q7plHZ93xT/haJHWvsVMWg==
   dependencies:
     css-tree "^1.0.0-alpha.37"
     nativescript-hook "0.2.5"

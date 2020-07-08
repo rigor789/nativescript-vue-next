@@ -1293,16 +1293,16 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nativescript/core@6.5.6":
-  version "6.5.6"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.6.tgz#c23004ed95853fb6d671de88eb953a336b962cb1"
-  integrity sha512-y18ot1iowH2oumgGxPD3pEzKKBhy7FQL6mMe9L/WcCiplcsQujY0tOPEjtFTFn8LtHhBHBrzFFFFYNr40onyVQ==
+"@nativescript/core@6.5.9":
+  version "6.5.9"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-6.5.9.tgz#d0390eb80449dbf58fb39c06297c6b68c87369fb"
+  integrity sha512-ZspJaLE4mErILNs0QknHetV2x01Y9gap8gKw9juVAlSqQjXYaoYl90UlPcLH9AHGSDOBTL362FdJhcev63uCvg==
   dependencies:
     css-tree "^1.0.0-alpha.37"
     nativescript-hook "0.2.5"
     reduce-css-calc "^2.1.6"
     semver "6.3.0"
-    tns-core-modules-widgets next
+    tns-core-modules-widgets "6.5.9"
     tslib "1.10.0"
 
 "@nodelib/fs.stat@^1.1.2":
@@ -8986,10 +8986,10 @@ tmpl@1.0.x:
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
   integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
 
-tns-core-modules-widgets@next:
-  version "6.6.0-next-2020-05-08-112112-01"
-  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-6.6.0-next-2020-05-08-112112-01.tgz#0a7cc30d223ebb64589828175cfb23d9c6503e6e"
-  integrity sha512-aW30j6gKiXP48XOs6qdO2SiPx61pUYOlMmQVovQbG6vBB8WbUR9k9UviY1cY/DExNUBOSh3cMe8uLOpDWiR49A==
+tns-core-modules-widgets@6.5.9:
+  version "6.5.9"
+  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-6.5.9.tgz#8285eeecf5abf69ea782e93f66e662bab63c82fc"
+  integrity sha512-XREH+ELkEYWD5qbO7TlJuyHhSrwKmgNrGXjt9D0HHdHjhs+5q0ns4HRoKszaK45JD6byVr13SEWYM033qENUPA==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

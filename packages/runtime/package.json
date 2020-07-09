@@ -33,7 +33,7 @@
   "dependencies": {
     "@nativescript-vue/shared": "3.0.0-dev",
     "@nativescript/core": "6.5.6",
-    "@vue/reactivity": "3.0.0-beta.15",
+    "@vue/reactivity": "3.0.0-beta.20",
     "@vue/runtime-core": "3.0.0-beta.15",
     "@vue/shared": "3.0.0-beta.15",
     "set-value": "3.0.2",

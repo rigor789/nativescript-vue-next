@@ -22,15 +22,17 @@ declare module '@vue/runtime-core' {
   }
 }
 
+type ResolvableModalTarget =
+  | Ref
+  | ComponentInternalInstance
+  | ComponentPublicInstance
+  | NSVElement
+  | View
+  | any
+
 export interface ModalOptions extends ShowModalOptions {
   props?: Record<string, any>
-  target?:
-    | Ref
-    | ComponentInternalInstance
-    | ComponentPublicInstance
-    | NSVElement
-    | View
-    | any
+  target?: ResolvableModalTarget
 }
 
 /**
@@ -40,7 +42,7 @@ export function install(app: App) {
   app.config.globalProperties.$showModal = $showModal
 }
 
-function resolveModalTarget(target: ModalOptions['target']): View | false {
+function resolveModalTarget(target: ResolvableModalTarget): View | false {
   if (isObject(target) && isObject(target.$el)) {
     return target.$el.nativeView
   } else if (target instanceof NSVElement) {

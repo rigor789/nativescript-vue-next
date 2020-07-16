@@ -1,4 +1,4 @@
-import { App, Component, isRef, nextTick, Ref } from '@vue/runtime-core'
+import { App, Component, isRef, Ref } from '@vue/runtime-core'
 import { Frame, NavigationEntry, Page } from '@nativescript/core'
 import { createApp, NSVElement } from '@nativescript-vue/runtime'
 import { NavigatedData } from '@nativescript/core/ui/page'
@@ -21,9 +21,15 @@ declare module '@vue/runtime-core' {
   }
 }
 
+type ResolvableFrame = string | Ref | NSVElement | Frame | undefined
+
 export interface NavigationOptions extends NavigationEntry {
   props?: Record<string, any>
-  frame?: string | Ref | NSVElement | Frame
+  frame?: ResolvableFrame
+}
+
+export interface BackNavigationOptions {
+  frame?: ResolvableFrame
 }
 
 /**
@@ -34,7 +40,7 @@ export function install(app: App) {
   app.config.globalProperties.$navigateBack = $navigateBack
 }
 
-function resolveFrame(frame: NavigationOptions['frame']): Frame {
+function resolveFrame(frame: ResolvableFrame): Frame {
   if (!frame) {
     return Frame.topmost()
   }
@@ -58,18 +64,6 @@ function resolveFrame(frame: NavigationOptions['frame']): Frame {
   return Frame.getFrameById(frame)
 }
 
-async function waitForFrame(
-  frame: NavigationOptions['frame'],
-  retries: number = 5
-) {
-  let _frame = resolveFrame(frame)
-  while (!_frame && --retries > 0) {
-    await nextTick()
-    _frame = resolveFrame(frame)
-  }
-  return _frame
-}
-
 export async function $navigateTo(
   target: Component,
   options?: NavigationOptions
@@ -78,7 +72,7 @@ export async function $navigateTo(
   console.log('$navigateTo')
 
   try {
-    const frame = await waitForFrame(options.frame)
+    const frame = resolveFrame(options.frame)
 
     if (!frame) {
       throw new Error('Failed to resolve frame. Make sure your frame exists.')
@@ -113,8 +107,8 @@ export async function $navigateTo(
   }
 }
 
-export async function $navigateBack(options?: NavigationOptions) {
-  const frame = await waitForFrame(options ? options.frame : undefined)
+export async function $navigateBack(options?: BackNavigationOptions) {
+  const frame = resolveFrame(options ? options.frame : undefined)
 
   if (!frame) {
     throw new Error('Failed to resolve frame. Make sure your frame exists.')

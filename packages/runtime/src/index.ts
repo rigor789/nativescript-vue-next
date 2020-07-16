@@ -5,13 +5,12 @@ import {
   createRenderer,
   Renderer,
   RootRenderFunction,
-  VNode,
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
 import { nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-import { INSVElement, NSVRoot } from './nodes'
+import { INSVElement, INSVNode, NSVRoot } from './nodes'
 import { install as NavigationPlugin } from './plugins/navigation'
 import { install as ModalPlugin } from './plugins/modals'
 import './registry'
@@ -22,15 +21,20 @@ export declare type NSVApp = App & {
   start: () => ComponentPublicInstance
 }
 
+type NSVRendererElement = INSVElement | NSVRoot
+
 const rendererOptions = {
   patchProp,
   ...nodeOps,
 }
 
-let renderer: Renderer
+let renderer: Renderer<NSVRendererElement>
 
 function ensureRenderer() {
-  return renderer || (renderer = createRenderer(rendererOptions))
+  return (
+    renderer ||
+    (renderer = createRenderer<INSVNode, NSVRendererElement>(rendererOptions))
+  )
 }
 
 function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
@@ -50,12 +54,9 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
   return root
 }
 
-export const render = ((
-  vnode: VNode | null,
-  container: INSVElement | NSVRoot
-) => {
-  ensureRenderer().render(vnode, container)
-}) as RootRenderFunction<INSVElement | NSVRoot>
+export const render = ((...args) => {
+  ensureRenderer().render(...args)
+}) as RootRenderFunction<NSVRendererElement>
 
 export const createApp = ((...args) => {
   const app = ensureRenderer().createApp(...args) as NSVApp

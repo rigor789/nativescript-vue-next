@@ -4,7 +4,7 @@ import {
   locStub,
   Namespaces,
   ElementTypes,
-  VNodeCall
+  VNodeCall,
 } from '../src'
 import { isString, PatchFlags, PatchFlagNames, isArray } from '@vue/shared'
 
@@ -19,21 +19,21 @@ const bracketsRE = /^\[|\]$/g
 export function createObjectMatcher(obj: Record<string, any>) {
   return {
     type: NodeTypes.JS_OBJECT_EXPRESSION,
-    properties: Object.keys(obj).map(key => ({
+    properties: Object.keys(obj).map((key) => ({
       type: NodeTypes.JS_PROPERTY,
       key: {
         type: NodeTypes.SIMPLE_EXPRESSION,
         content: key.replace(bracketsRE, ''),
-        isStatic: !leadingBracketRE.test(key)
+        isStatic: !leadingBracketRE.test(key),
       },
       value: isString(obj[key])
         ? {
             type: NodeTypes.SIMPLE_EXPRESSION,
             content: obj[key].replace(bracketsRE, ''),
-            isStatic: !leadingBracketRE.test(obj[key])
+            isStatic: !leadingBracketRE.test(obj[key]),
           }
-        : obj[key]
-    }))
+        : obj[key],
+    })),
   }
 }
 
@@ -62,19 +62,19 @@ export function createElementWithCodegen(
       dynamicProps,
       directives: undefined,
       isBlock: false,
-      isForBlock: false,
-      loc: locStub
-    }
+      disableTracking: false,
+      loc: locStub,
+    },
   }
 }
 
 export function genFlagText(flag: PatchFlags | PatchFlags[]) {
   if (isArray(flag)) {
     let f = 0
-    flag.forEach(ff => {
+    flag.forEach((ff) => {
       f |= ff
     })
-    return `${f} /* ${flag.map(f => PatchFlagNames[f]).join(', ')} */`
+    return `${f} /* ${flag.map((f) => PatchFlagNames[f]).join(', ')} */`
   } else {
     return `${flag} /* ${PatchFlagNames[flag]} */`
   }

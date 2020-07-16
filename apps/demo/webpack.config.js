@@ -290,6 +290,13 @@ module.exports = (env) => {
           loader: 'babel-loader',
         },
         {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            compiler: NsVueTemplateCompiler,
+          },
+        },
+        {
           test: /\.ts$/,
           loader: 'ts-loader',
           options: {
@@ -298,13 +305,6 @@ module.exports = (env) => {
             compilerOptions: {
               declaration: false,
             },
-          },
-        },
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-          options: {
-            compiler: NsVueTemplateCompiler,
           },
         },
       ],

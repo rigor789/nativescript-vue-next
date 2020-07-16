@@ -15,7 +15,7 @@ interface ListViewRealized {
   [isListViewThingSymbol]: true
   container: NSVRoot | null
 }
-
+// TODO: rewrite without the keyedTemplate hack, as it will not work for recycler views
 export const ListView: FunctionalComponent<
   ListViewProps,
   {

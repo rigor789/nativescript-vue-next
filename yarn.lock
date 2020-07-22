@@ -1686,13 +1686,20 @@
   dependencies:
     "@vue/shared" "3.0.0-beta.22"
 
-"@vue/runtime-core@3.0.0-beta.22":
-  version "3.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.0-beta.22.tgz#0b4342899f27d67e1d55dc48e40b90e61dddd45c"
-  integrity sha512-uTz8iAgp0UexmxlVS0NCZWS/7n4tuXiHkT2fiJLUQq1/fdNOt3yM1UEtlIZ2lM6wDxX9ukNeddS3NUXanrOGnA==
+"@vue/reactivity@3.0.0-rc.4":
+  version "3.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-rc.4.tgz#0a917d9809967c78c32436fb0113dac6d157b87a"
+  integrity sha512-Qer7HKYS70imlxPTiIEeSoxXcGLRL96ZoTzDfAOdEd4kjRcztz9tPhiu/70jEuNoHWmQWSWbn09WLusgMB4Eqw==
   dependencies:
-    "@vue/reactivity" "3.0.0-beta.22"
-    "@vue/shared" "3.0.0-beta.22"
+    "@vue/shared" "3.0.0-rc.4"
+
+"@vue/runtime-core@3.0.0-rc.4":
+  version "3.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.0-rc.4.tgz#87b5a4022aa86eb717d38751b8b4be4cede0f323"
+  integrity sha512-wxyB2PwMRF5iPB4JGQ4xbrdYve/oYeh3Gem2JUDGTlSpU6M5HsxyvEL8aUp3uVy+XLgtABoMZZJnYClnWwwzLQ==
+  dependencies:
+    "@vue/reactivity" "3.0.0-rc.4"
+    "@vue/shared" "3.0.0-rc.4"
 
 "@vue/shared@3.0.0-beta.22":
   version "3.0.0-beta.22"
@@ -1703,6 +1710,11 @@
   version "3.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.2.tgz#bffe0a53eb2f6ce50def4613a6963e948c29ed83"
   integrity sha512-lJ1jb5PEDoSTosKdOyFh9/GpSFY/d9HXkG126aJXM4WgvJaf+OVKUWKZSgqolKLLIOJHG9ZcQt4OQyoktMenBg==
+
+"@vue/shared@3.0.0-rc.4":
+  version "3.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.4.tgz#fac45cd6fec76a1e284b41f1b49c2cb13c914598"
+  integrity sha512-cN1YTH/LUPsufLrDQR/n/DxdTu7GjsmLWcZ249mQc+fcYeUdjAFDiOHL2xWE/s3g6jwwOMjS7jelpxYUctD7Gw==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"

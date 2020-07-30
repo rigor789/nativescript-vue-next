@@ -3449,10 +3449,10 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.6.11:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.11.tgz#452f4d024149ecf260a852b025e36562a253ffc5"
-  integrity sha512-l8YyEC9NBkSm783PFTvh0FmJy7s5pFKrDp49ZL7zBGX3fWkO+N4EEyan1qqp8cwPLDcD0OSdyY6hAMoxp34JFw==
+csstype@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.1.tgz#50a573509b8333e0e071e65d806270c2abaccd32"
+  integrity sha512-+uybtDModq7O4V02fzooARGQfreSnxf5P7t9rs4wfWVY4MQ1E4r8xDhEY4/XidOFDTU1C3GWSMso9JRmpRW4XA==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

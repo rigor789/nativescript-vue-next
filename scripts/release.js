@@ -13,9 +13,9 @@ const skipTests = args.skipTests
 const skipBuild = args.skipBuild
 const packages = fs
   .readdirSync(path.resolve(__dirname, '../packages'))
-  .filter(p => !p.endsWith('.ts') && !p.startsWith('.'))
+  .filter((p) => !p.endsWith('.ts') && !p.startsWith('.'))
 
-const skippedPackages = ['server-renderer', 'compiler-ssr']
+const skippedPackages = []
 
 const versionIncrements = [
   'patch',
@@ -24,18 +24,18 @@ const versionIncrements = [
   'prepatch',
   'preminor',
   'premajor',
-  'prerelease'
+  'prerelease',
 ]
 
-const inc = i => semver.inc(currentVersion, i, preId)
-const bin = name => path.resolve(__dirname, '../node_modules/.bin/' + name)
+const inc = (i) => semver.inc(currentVersion, i, preId)
+const bin = (name) => path.resolve(__dirname, '../node_modules/.bin/' + name)
 const run = (bin, args, opts = {}) =>
   execa(bin, args, { stdio: 'inherit', ...opts })
 const dryRun = (bin, args, opts = {}) =>
   console.log(chalk.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts)
 const runIfNotDry = isDryRun ? dryRun : run
-const getPkgRoot = pkg => path.resolve(__dirname, '../packages/' + pkg)
-const step = msg => console.log(chalk.cyan(msg))
+const getPkgRoot = (pkg) => path.resolve(__dirname, '../packages/' + pkg)
+const step = (msg) => console.log(chalk.cyan(msg))
 
 async function main() {
   let targetVersion = args._[0]
@@ -46,16 +46,20 @@ async function main() {
       type: 'select',
       name: 'release',
       message: 'Select release type',
-      choices: versionIncrements.map(i => `${i} (${inc(i)})`).concat(['custom'])
+      choices: versionIncrements
+        .map((i) => `${i} (${inc(i)})`)
+        .concat(['custom']),
     })
 
     if (release === 'custom') {
-      targetVersion = (await prompt({
-        type: 'input',
-        name: 'version',
-        message: 'Input custom version',
-        initial: currentVersion
-      })).version
+      targetVersion = (
+        await prompt({
+          type: 'input',
+          name: 'version',
+          message: 'Input custom version',
+          initial: currentVersion,
+        })
+      ).version
     } else {
       targetVersion = release.match(/\((.*)\)/)[1]
     }
@@ -68,7 +72,7 @@ async function main() {
   const { yes } = await prompt({
     type: 'confirm',
     name: 'yes',
-    message: `Releasing v${targetVersion}. Confirm?`
+    message: `Releasing v${targetVersion}. Confirm?`,
   })
 
   if (!yes) {
@@ -143,7 +147,7 @@ function updateVersions(version) {
   // 1. update root package.json
   updatePackage(path.resolve(__dirname, '..'), version)
   // 2. update all packages
-  packages.forEach(p => updatePackage(getPkgRoot(p), version))
+  packages.forEach((p) => updatePackage(getPkgRoot(p), version))
 }
 
 function updatePackage(pkgRoot, version) {
@@ -158,7 +162,7 @@ function updatePackage(pkgRoot, version) {
 function updateDeps(pkg, depType, version) {
   const deps = pkg[depType]
   if (!deps) return
-  Object.keys(deps).forEach(dep => {
+  Object.keys(deps).forEach((dep) => {
     if (
       dep === 'vue' ||
       (dep.startsWith('@vue') && packages.includes(dep.replace(/^@vue\//, '')))
@@ -199,11 +203,11 @@ async function publishPackage(pkgName, version, runIfNotDry) {
         version,
         ...(releaseTag ? ['--tag', releaseTag] : []),
         '--access',
-        'public'
+        'public',
       ],
       {
         cwd: pkgRoot,
-        stdio: 'pipe'
+        stdio: 'pipe',
       }
     )
     console.log(chalk.green(`Successfully published ${pkgName}@${version}`))
@@ -216,6 +220,6 @@ async function publishPackage(pkgName, version, runIfNotDry) {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err)
 })

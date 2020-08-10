@@ -9,7 +9,7 @@ module.exports = {
     __RUNTIME_COMPILE__: true,
     __GLOBAL__: false,
     __NODE_JS__: true,
-    __FEATURE_OPTIONS__: true,
+    __FEATURE_OPTIONS_API__: true,
     __FEATURE_SUSPENSE__: true,
   },
   coverageDirectory: 'coverage',

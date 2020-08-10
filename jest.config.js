@@ -32,5 +32,6 @@ module.exports = {
       ['/node_modules/', '/examples/__tests__']
     : ['/node_modules/'],
   setupFiles: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.afterEnv.ts'],
   silent: true,
 }

@@ -21,10 +21,8 @@ registerTestElement('Page', () => TestPage)
 
 import { h, ActionBar, render, INSVElement } from '@nativescript-vue/runtime'
 import { NSVElement } from '../../src/nodes'
-import { mockWarn } from '@vue/shared'
 
 describe('ActionBar', () => {
-  mockWarn()
   let root: NSVElement
   beforeEach(() => {
     root = new NSVElement('Frame')

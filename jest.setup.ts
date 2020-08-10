@@ -1,7 +1,3 @@
-// @vue/shared provides a mockWarn function that adds the following matchers
-// we have to declare them here, as otherwise jest fails to compile
-// could be a problem with the @vue/shared package not including this
-// in the generated .d.ts rollup.
 declare global {
   namespace jest {
     interface Matchers<R, T> {

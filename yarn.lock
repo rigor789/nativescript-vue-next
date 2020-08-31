@@ -1793,6 +1793,11 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.7.tgz#62054a314105019efab590f767db528c8c603954"
   integrity sha512-wRqe6DvR9UIH4Il4bxMIbuGupWFtJW+PZKqgclYjuO+zWNQEC7hC5OxONgXeGcv1h4KtfJsc8wSU31hxok9XAQ==
 
+"@vue/shared@3.0.0-rc.9":
+  version "3.0.0-rc.9"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.9.tgz#81e71c2c40dbbfc4f05b3b4a3f92cb2842864aa3"
+  integrity sha512-SHD7qwziiG6208nKrs0qqbWbYckvBiCBCLwlRjUb6NEDUMN0TOVyzyaTvdnHND9ion/ZMdwEKMtWWtgJJkHDdw==
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"

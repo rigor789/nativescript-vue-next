@@ -1708,17 +1708,6 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vue/compiler-core@3.0.0-rc.5":
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.0.0-rc.5.tgz#dd4f1816fcae34a81bc60e584f97993cad284d54"
-  integrity sha512-dNz5AObEYg0Oglw3emIsBhTAOVfObrfxDaAzR0UTRDDq+Ohfr6KTSaVQAH88Ym+oa08ZlLZBFc6ARe9doAOIxg==
-  dependencies:
-    "@babel/parser" "^7.10.4"
-    "@babel/types" "^7.10.4"
-    "@vue/shared" "3.0.0-rc.5"
-    estree-walker "^2.0.1"
-    source-map "^0.6.1"
-
 "@vue/compiler-core@3.0.0-rc.9":
   version "3.0.0-rc.9"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.0.0-rc.9.tgz#f2baef360dec3630a230a056dde1e76c9c7bb5f5"

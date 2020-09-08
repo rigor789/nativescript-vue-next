@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@vue/runtime-core'
 import { nodeOps, NSVRoot, render } from '@nativescript-vue/runtime'
-import { ItemEventData } from '@nativescript/core/ui/list-view'
+import { ItemEventData } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
 
 type ListViewProps = {

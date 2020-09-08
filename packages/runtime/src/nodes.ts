@@ -7,7 +7,7 @@ import {
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
 import { debug } from '@nativescript-vue/shared'
 import { ViewBase, LayoutBase, Style } from '@nativescript/core'
-import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { unsetValue } from '@nativescript/core'
 import set from 'set-value'
 // import unset from 'unset-value'
 

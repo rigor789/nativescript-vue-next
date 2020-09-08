@@ -27,6 +27,8 @@ jest.mock(
       {},
       {
         get(target, p) {
+          // todo: refactor to be able to use registerCoreMock for everything
+          // by checking the type and if it's a factory function, call it
           switch (p) {
             case 'isAndroid':
               return getCurrentPlatform() === 'Android'
@@ -46,10 +48,13 @@ jest.mock(
   { virtual: true }
 )
 
-jest.mock(
-  '@nativescript/core/ui/core/properties',
-  () => ({
-    unsetValue,
-  }),
-  { virtual: true }
-)
+registerCoreMock('unsetValue', unsetValue)
+registerCoreMock('Trace', {
+  write() {},
+  categories: {
+    Debug: 'debug',
+  },
+  messageType: {
+    log: 'log',
+  },
+})

@@ -1,4 +1,4 @@
-import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { unsetValue } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
 
 type Style = any | string

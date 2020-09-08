@@ -1,4 +1,4 @@
-import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { unsetValue } from '@nativescript/core'
 import { cssTreeParse } from '@nativescript/core/css/css-tree-parser'
 import { INSVElement } from '../nodes'
 
@@ -17,7 +17,7 @@ function createDeclaration(decl: any): any {
 }
 
 function declarationsFromAstNodes(astRules: any[]): any[] {
-  return astRules.filter(isRule).map(rule => {
+  return astRules.filter(isRule).map((rule) => {
     return rule.declarations.filter(isDeclaration).map(createDeclaration)
   })
 }

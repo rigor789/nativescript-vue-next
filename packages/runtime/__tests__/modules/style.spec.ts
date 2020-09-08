@@ -1,4 +1,4 @@
-import { unsetValue } from '@nativescript/core/ui/core/properties'
+import { unsetValue } from '@nativescript/core'
 import { registerTestLayout } from '@nativescript-vue/test-utils'
 
 import { NSVElement } from '../../src/nodes'

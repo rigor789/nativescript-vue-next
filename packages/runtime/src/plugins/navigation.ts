@@ -1,7 +1,7 @@
 import { App, Component, isRef, Ref } from '@vue/runtime-core'
 import { Frame, NavigationEntry, Page } from '@nativescript/core'
 import { createApp, NSVElement } from '@nativescript-vue/runtime'
-import { NavigatedData } from '@nativescript/core/ui/page'
+import { NavigatedData } from '@nativescript/core'
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {

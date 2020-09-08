@@ -1,4 +1,4 @@
-import * as trace from '@nativescript/core/trace'
+import { Trace } from '@nativescript/core'
 
 import {
   $showModal,
@@ -52,8 +52,8 @@ const testComp = defineComponent({
 })
 
 // trace.setCategories(trace.categories.Debug)
-trace.setCategories('ListView')
-trace.enable()
+Trace.setCategories('ListView')
+Trace.enable()
 
 function dumpViewTree(root) {
   const mapNode = (node) => {

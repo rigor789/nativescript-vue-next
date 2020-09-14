@@ -1372,10 +1372,10 @@
   resolved "https://registry.yarnpkg.com/@nativescript/android/-/android-7.0.0.tgz#d599ac7e93bf67e3b8cf38e8fb566a52ac241bff"
   integrity sha512-RplCS/0nteROpatMYZHXlyA1xp+9c0+sBBm5QxUy7MYaoY+iHdfboAv+J62XTI8aEmbNHDkBm7/eYFxgCbrdEA==
 
-"@nativescript/core@7.0.0", "@nativescript/core@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.0.tgz#2ff7e60cd3fd587c5ae955308350cbb1cac21b06"
-  integrity sha512-/DXCesjCXiCKbPOAX7bVoAIkGwjhw92wtq6M7RUS3aJOAP51/Ttm+1A7KSXJx3fCRHMD00duI7n3po2/I3a3bw==
+"@nativescript/core@7.0.3", "@nativescript/core@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.3.tgz#935fac1e15807fb4c9b3ce448a4ceeaea362ecbe"
+  integrity sha512-CBlcdhSAG4hkpW6pH23MZNWdhBuMX86DN3jaF7mZCKMVtSPNbBm5sbYqsdR3VHqWqSsXvdELAvb/4lb1lgIG0g==
   dependencies:
     "@nativescript/hook" "~2.0.0"
     css-tree "^1.0.0-alpha.39"

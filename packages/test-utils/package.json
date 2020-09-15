@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-vue/test-utils",
-  "version": "3.0.0-dev.2",
+  "version": "3.0.0-dev.3",
   "private": true,
   "description": "@nativescript-vue/test-utils",
   "main": "index.js",

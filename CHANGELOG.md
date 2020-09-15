@@ -1,3 +1,7 @@
+# [3.0.0-dev.3](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.2...v3.0.0-dev.3) (2020-09-15)
+
+
+
 # [3.0.0-dev.2](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.1...v3.0.0-dev.2) (2020-09-15)
 
 

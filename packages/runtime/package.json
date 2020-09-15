@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-vue/runtime",
-  "version": "3.0.0-dev.2",
+  "version": "3.0.0-dev.3",
   "description": "@nativescript-vue/runtime",
   "main": "index.js",
   "module": "dist/runtime.esm-bundler.js",
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/runtime#readme",
   "dependencies": {
-    "@nativescript-vue/shared": "3.0.0-dev.2",
+    "@nativescript-vue/shared": "3.0.0-dev.3",
     "@nativescript/core": "^7.0.0",
     "@vue/reactivity": "^3.0.0-rc.11",
     "@vue/runtime-core": "^3.0.0-rc.11",

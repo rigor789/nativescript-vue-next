@@ -34,6 +34,7 @@
     "@babel/preset-env": "^7.11.5",
     "@nativescript-vue/compiler": "3.0.0-dev.3",
     "@nativescript/webpack": "^3.0.4",
+    "sass": "^1.26.10",
     "babel-loader": "^8.1.0",
     "vue-loader": "^16.0.0-beta.7"
   }

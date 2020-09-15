@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "dev": "node scripts/dev.js",
+    "clean": "del-cli 'node_modules' 'temp' 'packages/*/{dist,node_modules}' 'apps/*/{node_modules,hooks,platforms,yarn.lock}'",
     "build": "node scripts/build.js",
     "size": "node scripts/build.js nativescript-vue runtime size-check -p -f global",
     "lint": "prettier --write --parser typescript \"packages/**/*.ts?(x)\"",
@@ -14,7 +15,6 @@
     "test": "jest",
     "test:ci": "jest --ci --runInBand --coverage && make-coverage-badge",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "dev:ns": "node scripts/dev.js runtime --formats esm-bundler",
     "postinstall": "node scripts/postinstall.js"
   },
   "types": "test-dts/index.d.ts",
@@ -50,6 +50,7 @@
     "chalk": "^4.1.0",
     "conventional-changelog-cli": "^2.1.0",
     "csstype": "^3.0.3",
+    "del-cli": "^3.0.1",
     "enquirer": "^2.3.6",
     "execa": "^4.0.3",
     "fs-extra": "^9.0.1",
@@ -65,7 +66,7 @@
     "semver": "^7.3.2",
     "ts-jest": "^26.3.0",
     "tsd": "^0.13.1",
-    "typescript": "^3.9.7",
+    "typescript": "^4.0.2",
     "yorkie": "^2.0.0"
   }
 }

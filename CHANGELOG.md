@@ -1,3 +1,12 @@
+# [3.0.0-dev.4](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.3...v3.0.0-dev.4) (2020-09-15)
+
+
+### Bug Fixes
+
+* **template-blank:** add sass ([ba2d78e](https://github.com/rigor789/nativescript-vue-next/commit/ba2d78e3a22d16d51c7edfb728bbfe9a2ac67161))
+
+
+
 # [3.0.0-dev.3](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.2...v3.0.0-dev.3) (2020-09-15)
 
 

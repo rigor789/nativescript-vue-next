@@ -14,6 +14,9 @@ const skipBuild = args.skipBuild
 const packages = fs
   .readdirSync(path.resolve(__dirname, '../packages'))
   .filter((p) => !p.endsWith('.ts') && !p.startsWith('.'))
+const apps = fs
+  .readdirSync(path.resolve(__dirname, '../apps'))
+  .filter((p) => !p.endsWith('.ts') && !p.startsWith('.'))
 
 const skippedPackages = []
 
@@ -35,6 +38,7 @@ const dryRun = (bin, args, opts = {}) =>
   console.log(chalk.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts)
 const runIfNotDry = isDryRun ? dryRun : run
 const getPkgRoot = (pkg) => path.resolve(__dirname, '../packages/' + pkg)
+const getAppRoot = (app) => path.resolve(__dirname, '../apps/' + app)
 const step = (msg) => console.log(chalk.cyan(msg))
 
 async function main() {
@@ -149,6 +153,8 @@ function updateVersions(version) {
   updatePackage(path.resolve(__dirname, '..'), version)
   // 2. update all packages
   packages.forEach((p) => updatePackage(getPkgRoot(p), version))
+  // 3. update app packages
+  apps.forEach((a) => updatePackage(getAppRoot(a), version))
 }
 
 function updatePackage(pkgRoot, version) {

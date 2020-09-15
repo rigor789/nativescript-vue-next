@@ -86,7 +86,14 @@ export abstract class NSVNode implements INSVNode {
 
   nodeId: number
   nodeType: NSVNodeTypes
-  text: string | undefined
+
+  private _text?: string | undefined
+  public get text(): string | undefined {
+    return this._text
+  }
+  public set text(value: string | undefined) {
+    this._text = value
+  }
 
   parentNode: INSVElement | null = null
   childNodes: INSVNode[] = []

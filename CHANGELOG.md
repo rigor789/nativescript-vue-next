@@ -1,3 +1,12 @@
+# [3.0.0-dev.2](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.1...v3.0.0-dev.2) (2020-09-15)
+
+
+### Bug Fixes
+
+* **template-blnak:** add template files to package ([3338efa](https://github.com/rigor789/nativescript-vue-next/commit/3338efafa48e524f2f7afcdef603ce5e786a538a))
+
+
+
 # [3.0.0-dev.1](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.0...v3.0.0-dev.1) (2020-09-15)
 
 

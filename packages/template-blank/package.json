@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-vue/template-blank",
-  "version": "3.0.0-dev.1",
+  "version": "3.0.0-dev.2",
   "description": "@nativescript-vue/template-blank",
   "main": "app.js",
   "module": "dist/template-blank.esm-bundler.js",
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/template-blank#readme",
   "dependencies": {
     "@nativescript/core": "^7.0.3",
-    "nativescript-vue": "3.0.0-dev.1"
+    "nativescript-vue": "3.0.0-dev.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

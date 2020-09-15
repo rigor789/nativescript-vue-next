@@ -5,8 +5,12 @@
   "main": "app.js",
   "module": "dist/template-blank.esm-bundler.js",
   "files": [
-    "index.js",
-    "dist"
+    "app",
+    "App_Resources",
+    "hooks",
+    "tools",
+    "jsconfig.json",
+    "webpack.config.js"
   ],
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ exports[`compile works 1`] = `
 
 return function render(_ctx, _cache) {
   with (_ctx) {
-    const { resolveComponent: _resolveComponent, createVNode: _createVNode, createCommentVNode: _createCommentVNode, ActionBar: _ActionBar, withCtx: _withCtx, renderList: _renderList, Fragment: _Fragment, openBlock: _openBlock, createBlock: _createBlock } = _Vue
+    const { resolveComponent: _resolveComponent, createVNode: _createVNode, openBlock: _openBlock, createBlock: _createBlock, createCommentVNode: _createCommentVNode, ActionBar: _ActionBar, withCtx: _withCtx, renderList: _renderList, Fragment: _Fragment } = _Vue
 
     const _component_ActionItem = _resolveComponent(\\"ActionItem\\")
     const _component_Label = _resolveComponent(\\"Label\\")
@@ -21,14 +21,14 @@ return function render(_ctx, _cache) {
             _createVNode(_ActionBar, null, {
               default: _withCtx(() => [
                 foo
-                  ? _createVNode(_component_ActionItem, {
+                  ? (_openBlock(), _createBlock(_component_ActionItem, {
                       key: 0,
                       text: \\"Test Item\\"
-                    })
-                  : _createVNode(_component_ActionItem, {
+                    }))
+                  : (_openBlock(), _createBlock(_component_ActionItem, {
                       key: 1,
                       text: \\"Test Item\\"
-                    })
+                    }))
               ]),
               _: 1
             }),

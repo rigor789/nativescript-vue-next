@@ -12,7 +12,7 @@ const masterVersion = require('./package.json').version
 const packagesDir = path.resolve(__dirname, 'packages')
 const packageDir = path.resolve(packagesDir, process.env.TARGET)
 const name = path.basename(packageDir)
-const resolve = p => path.resolve(packageDir, p)
+const resolve = (p) => path.resolve(packageDir, p)
 const pkg = require(resolve(`package.json`))
 const packageOptions = pkg.buildOptions || {}
 
@@ -22,36 +22,36 @@ let hasTSChecked = false
 const outputConfigs = {
   'esm-bundler': {
     file: resolve(`dist/${name}.esm-bundler.js`),
-    format: `es`
+    format: `es`,
   },
   // main "vue" package only
   'esm-bundler-runtime': {
     file: resolve(`dist/${name}.runtime.esm-bundler.js`),
-    format: `es`
+    format: `es`,
   },
   cjs: {
     file: resolve(`dist/${name}.cjs.js`),
-    format: `cjs`
+    format: `cjs`,
   },
   global: {
     file: resolve(`dist/${name}.global.js`),
-    format: `iife`
+    format: `iife`,
   },
   esm: {
     file: resolve(`dist/${name}.esm.js`),
-    format: `es`
-  }
+    format: `es`,
+  },
 }
 
 const defaultFormats = ['esm-bundler', 'cjs']
-const inlineFormats = process.env.FORMATS && process.env.FORMATS.split(',')
+const inlineFormats = process.env.FORMATS && process.env.FORMATS.split(';')
 const packageFormats = inlineFormats || packageOptions.formats || defaultFormats
 const packageConfigs = process.env.PROD_ONLY
   ? []
-  : packageFormats.map(format => createConfig(format, outputConfigs[format]))
+  : packageFormats.map((format) => createConfig(format, outputConfigs[format]))
 
 if (process.env.NODE_ENV === 'production') {
-  packageFormats.forEach(format => {
+  packageFormats.forEach((format) => {
     if (format === 'cjs' && packageOptions.prod !== false) {
       packageConfigs.push(createProductionConfig(format))
     }
@@ -94,10 +94,10 @@ function createConfig(format, output, plugins = []) {
       compilerOptions: {
         sourceMap: output.sourcemap,
         declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations
+        declarationMap: shouldEmitDeclarations,
       },
-      exclude: ['**/__tests__', 'test-dts']
-    }
+      exclude: ['**/__tests__', 'test-dts'],
+    },
   })
   // we only need to check TS and generate declarations once for each build.
   // it also seems to run into weird issues when checking multiple times
@@ -119,7 +119,7 @@ function createConfig(format, output, plugins = []) {
     external,
     plugins: [
       json({
-        namedExports: false
+        namedExports: false,
       }),
       tsPlugin,
       createReplacePlugin(
@@ -133,16 +133,16 @@ function createConfig(format, output, plugins = []) {
         isNodeBuild
       ),
       commonjs({
-        include: ['node_modules/set-value/**', 'node_modules/unset-value/**']
+        include: ['node_modules/set-value/**', 'node_modules/unset-value/**'],
       }),
-      ...plugins
+      ...plugins,
     ],
     output,
     onwarn: (msg, warn) => {
       if (!/Circular/.test(msg)) {
         warn(msg)
       }
-    }
+    },
   }
 }
 
@@ -182,13 +182,13 @@ function createReplacePlugin(
           'context.onError(': `/*#__PURE__*/ context.onError(`,
           'emitError(': `/*#__PURE__*/ emitError(`,
           'createCompilerError(': `/*#__PURE__*/ createCompilerError(`,
-          'createDOMCompilerError(': `/*#__PURE__*/ createDOMCompilerError(`
+          'createDOMCompilerError(': `/*#__PURE__*/ createDOMCompilerError(`,
         }
-      : {})
+      : {}),
   }
   // allow inline overrides like
   //__RUNTIME_COMPILE__=true yarn build runtime-core
-  Object.keys(replacements).forEach(key => {
+  Object.keys(replacements).forEach((key) => {
     if (key in process.env) {
       replacements[key] = process.env[key]
     }
@@ -199,7 +199,7 @@ function createReplacePlugin(
 function createProductionConfig(format) {
   return createConfig(format, {
     file: resolve(`dist/${name}.${format}.prod.js`),
-    format: outputConfigs[format].format
+    format: outputConfigs[format].format,
   })
 }
 
@@ -209,16 +209,16 @@ function createMinifiedConfig(format) {
     format,
     {
       file: resolve(`dist/${name}.${format}.prod.js`),
-      format: outputConfigs[format].format
+      format: outputConfigs[format].format,
     },
     [
       terser({
         module: /^esm/.test(format),
         compress: {
           ecma: 2015,
-          pure_getters: true
-        }
-      })
+          pure_getters: true,
+        },
+      }),
     ]
   )
 }

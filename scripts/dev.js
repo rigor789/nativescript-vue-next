@@ -47,7 +47,7 @@ async function buildAll(targets) {
           [
             `COMMIT:${commit}`,
             `TARGET:${target}`,
-            `FORMATS:${formats || 'esm-bundler'}`,
+            formats ? `FORMATS:${formats}` : ``,
             sourceMap ? `SOURCE_MAP:true` : ``,
           ]
             .filter(Boolean)

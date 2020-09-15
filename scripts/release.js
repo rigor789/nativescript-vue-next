@@ -164,8 +164,9 @@ function updateDeps(pkg, depType, version) {
   if (!deps) return
   Object.keys(deps).forEach((dep) => {
     if (
-      dep === 'vue' ||
-      (dep.startsWith('@vue') && packages.includes(dep.replace(/^@vue\//, '')))
+      dep === 'nativescript-vue' ||
+      (dep.startsWith('@nativescript-vue') &&
+        packages.includes(dep.replace(/^@nativescript-vue\//, '')))
     ) {
       console.log(
         chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${version}`)

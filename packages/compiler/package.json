@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-vue/compiler",
-  "version": "3.0.0-dev.0",
+  "version": "3.0.0-dev.1",
   "description": "@nativescript-vue/compiler",
   "main": "index.js",
   "module": "dist/compiler.esm-bundler.js",

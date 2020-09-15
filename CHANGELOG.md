@@ -1,3 +1,12 @@
+# [3.0.0-dev.1](https://github.com/rigor789/nativescript-vue-next/compare/v3.0.0-dev.0...v3.0.0-dev.1) (2020-09-15)
+
+
+### Features
+
+* add blank template ([8789e8a](https://github.com/rigor789/nativescript-vue-next/commit/8789e8ac24bc57ef83862926e2e891c2688223bf))
+
+
+
 # 3.0.0-dev.0 (2020-09-15)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "nativescript-vue",
-  "version": "3.0.0-dev",
+  "version": "3.0.0-dev.0",
   "description": "nativescript-vue",
   "main": "index.js",
   "module": "dist/nativescript-vue.esm-bundler.js",
@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/nativescript-vue#readme",
   "dependencies": {
-    "@nativescript-vue/compiler": "3.0.0-dev",
-    "@nativescript-vue/runtime": "3.0.0-dev",
-    "@nativescript-vue/shared": "3.0.0-dev",
+    "@nativescript-vue/compiler": "3.0.0-dev.0",
+    "@nativescript-vue/runtime": "3.0.0-dev.0",
+    "@nativescript-vue/shared": "3.0.0-dev.0",
     "@vue/shared": "^3.0.0-rc.10"
   }
 }

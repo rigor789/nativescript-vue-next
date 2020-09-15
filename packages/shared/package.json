@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-vue/shared",
-  "version": "3.0.0-dev",
+  "version": "3.0.0-dev.0",
   "description": "@nativescript-vue/shared",
   "main": "index.js",
   "module": "dist/shared.esm-bundler.js",

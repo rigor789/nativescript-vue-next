@@ -1827,12 +1827,19 @@
     "@vue/compiler-dom" "3.0.0-rc.11"
     "@vue/shared" "3.0.0-rc.11"
 
-"@vue/reactivity@3.0.0-rc.11", "@vue/reactivity@^3.0.0-rc.11":
+"@vue/reactivity@3.0.0-rc.11":
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-rc.11.tgz#e3a856f2e4e7ebbd7050b2ef71997c91e3a28a40"
   integrity sha512-dlnCZdv4rKm6z4szfaua0Hsd5LQeUeZi6BI5c9Y+CBRU1Dwo8wb9Sz3I42ZRKDrkxB2ii9WhprW4d4H50RCnCA==
   dependencies:
     "@vue/shared" "3.0.0-rc.11"
+
+"@vue/reactivity@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0.tgz#fd15632a608650ce2a969c721787e27e2c80aa6b"
+  integrity sha512-mEGkztGQrAPZRhV7C6PorrpT3+NtuA4dY2QjMzzrW31noKhssWTajRZTwpLF39NBRrF5UU6cp9+1I0FfavMgEQ==
+  dependencies:
+    "@vue/shared" "3.0.0"
 
 "@vue/runtime-core@^3.0.0-rc.11":
   version "3.0.0-rc.11"
@@ -1842,7 +1849,12 @@
     "@vue/reactivity" "3.0.0-rc.11"
     "@vue/shared" "3.0.0-rc.11"
 
-"@vue/shared@3.0.0-rc.11", "@vue/shared@^3.0.0-rc.11":
+"@vue/shared@3.0.0", "@vue/shared@^3.0.0-rc.11":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0.tgz#ec089236629ecc0f10346b92f101ff4339169f1a"
+  integrity sha512-4XWL/avABGxU2E2ZF1eZq3Tj7fvksCMssDZUHOykBIMmh5d+KcAnQMC5XHMhtnA0NAvktYsA2YpdsVwVmhWzvA==
+
+"@vue/shared@3.0.0-rc.11":
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.11.tgz#9fea645d316771c04874b0f4c493c77609c09aea"
   integrity sha512-ys6eRLHxkMM/uEqi/UfeA/AUOmjsJ9AX21WGO2OIAm0v5zDmztjZ+rgcqz8Pgrr+odHY0egOIqc9wOeNtfuMJA==

@@ -1385,10 +1385,10 @@
     glob "^7.1.0"
     mkdirp "^1.0.4"
 
-"@nativescript/ios@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@nativescript/ios/-/ios-7.0.0.tgz#4a7f5fcef9550c651427e5b577625acf7191cda1"
-  integrity sha512-6Tv4WG7plnuzVhnJ16E9XJ5flJOzqb5Wmmgx6Tn1NMNXTNZuT6c7rfDBGDR/xexz0gZ8Sx3PULyeBdUCKa/LIg==
+"@nativescript/ios@7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@nativescript/ios/-/ios-7.0.1.tgz#d269e355a0f594121385a49ccea57f9f524e8fad"
+  integrity sha512-mNqYhXAgcvhl28JYa2kba2uxS9eXZjswt7ZMZ2kVdQ6vkZp6i1hhH12Ogb2PyV7JoMuhRxACaKXxEz9mRVuGrA==
 
 "@nativescript/webpack@3.0.4", "@nativescript/webpack@^3.0.4":
   version "3.0.4"

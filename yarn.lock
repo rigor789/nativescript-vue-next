@@ -1367,10 +1367,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.19.tgz#2173ccb92469aaf62031fa9499d21b16d07f9b57"
   integrity sha512-IpgPxHrNxZiMNUSXqR1l/gePKPkfAmIKoDRP9hp7OwjU29ZR8WCJsOJ8iBKgw0Qk+pFwR+8Y1cy8ImLY6e9m4A==
 
-"@nativescript/core@7.0.3", "@nativescript/core@^7.0.0", "@nativescript/core@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.3.tgz#935fac1e15807fb4c9b3ce448a4ceeaea362ecbe"
-  integrity sha512-CBlcdhSAG4hkpW6pH23MZNWdhBuMX86DN3jaF7mZCKMVtSPNbBm5sbYqsdR3VHqWqSsXvdELAvb/4lb1lgIG0g==
+"@nativescript/core@7.0.11", "@nativescript/core@^7.0.11":
+  version "7.0.11"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.11.tgz#fbff933424ab9b30585a9e92f6f4ab101f5ec1e8"
+  integrity sha512-mp9DNW3vOVv5rYUiCTSlqyTo7exc3IOL3AnrajD3k7PreSN015SckESJnxsEqVbQUjb6Uionm7nkSu6yeOrIag==
   dependencies:
     "@nativescript/hook" "~2.0.0"
     css-tree "^1.0.0-alpha.39"

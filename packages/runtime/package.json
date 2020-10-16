@@ -34,7 +34,7 @@
     "@nativescript-vue/shared": "3.0.0-dev.4",
     "@nativescript/core": "^7.0.0",
     "@vue/reactivity": "^3.0.0-rc.11",
-    "@vue/runtime-core": "^3.0.0-rc.11",
+    "@vue/runtime-core": "^3.0.1",
     "@vue/shared": "^3.0.0-rc.11",
     "set-value": "^3.0.2",
     "unset-value": "^1.0.0"

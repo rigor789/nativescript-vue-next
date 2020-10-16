@@ -1818,25 +1818,30 @@
     "@vue/compiler-dom" "3.0.0-rc.11"
     "@vue/shared" "3.0.0-rc.11"
 
-"@vue/reactivity@3.0.0-rc.11", "@vue/reactivity@^3.0.0-rc.11":
-  version "3.0.0-rc.11"
-  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.0-rc.11.tgz#e3a856f2e4e7ebbd7050b2ef71997c91e3a28a40"
-  integrity sha512-dlnCZdv4rKm6z4szfaua0Hsd5LQeUeZi6BI5c9Y+CBRU1Dwo8wb9Sz3I42ZRKDrkxB2ii9WhprW4d4H50RCnCA==
+"@vue/reactivity@3.0.1", "@vue/reactivity@^3.0.0-rc.11":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.0.1.tgz#8bf6d88d0fe398e956dd8ea3df206c149ec6b92b"
+  integrity sha512-XWeqNTbvcAq8BmtR5M+XU6mfIhzi1NTcrQho7nI03I+Zf6QW1hHl/ri+iNfCNCasukQI/tzpkqJYPfyZxCRKyg==
   dependencies:
-    "@vue/shared" "3.0.0-rc.11"
+    "@vue/shared" "3.0.1"
 
-"@vue/runtime-core@^3.0.0-rc.11":
-  version "3.0.0-rc.11"
-  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.0-rc.11.tgz#6fade3a5d7ceed6a61683e375855bf452ce9d301"
-  integrity sha512-xsnvPoq7jPFuZ8Lo2jWpsPdZh3HyQjAmk5scBD7HycqtuP9m4sB/buGGll4ixBC+VnYyvQqTcCibUlNHFTgk7g==
+"@vue/runtime-core@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.0.1.tgz#75ae586515aaa89e7be790ea0f2c09d436511e4d"
+  integrity sha512-HporlL3cbD0/79U0a7mDIMEn5XoxstVXrOx0TDTi2O2CUv6yjteUQdxhmMOa8m7pnqU4DL/ZuVntBWFaf4ccaw==
   dependencies:
-    "@vue/reactivity" "3.0.0-rc.11"
-    "@vue/shared" "3.0.0-rc.11"
+    "@vue/reactivity" "3.0.1"
+    "@vue/shared" "3.0.1"
 
-"@vue/shared@3.0.0-rc.11", "@vue/shared@^3.0.0-rc.11":
+"@vue/shared@3.0.0-rc.11":
   version "3.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.0-rc.11.tgz#9fea645d316771c04874b0f4c493c77609c09aea"
   integrity sha512-ys6eRLHxkMM/uEqi/UfeA/AUOmjsJ9AX21WGO2OIAm0v5zDmztjZ+rgcqz8Pgrr+odHY0egOIqc9wOeNtfuMJA==
+
+"@vue/shared@3.0.1", "@vue/shared@^3.0.0-rc.11":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.1.tgz#48196c056726aa7466d0182698524c84f203006b"
+  integrity sha512-/X6AUbTFCyD2BcJnBoacUct8qcv1A5uk1+N+3tbzDVuhGPRmoYrTSnNUuF53C/GIsTkChrEiXaJh2kyo/0tRvw==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

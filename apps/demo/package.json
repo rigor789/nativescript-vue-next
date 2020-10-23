@@ -16,7 +16,7 @@
     "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
     "@nativescript-vue/compiler": "3.0.0-dev.4",
-    "@nativescript/ios": "7.0.0",
+    "@nativescript/ios": "7.0.4",
     "@nativescript/webpack": "3.0.4",
     "babel-loader": "8.1.0",
     "vue-loader": "16.0.0-beta.7"

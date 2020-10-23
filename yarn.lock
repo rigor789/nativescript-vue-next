@@ -1367,15 +1367,15 @@
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.19.tgz#2173ccb92469aaf62031fa9499d21b16d07f9b57"
   integrity sha512-IpgPxHrNxZiMNUSXqR1l/gePKPkfAmIKoDRP9hp7OwjU29ZR8WCJsOJ8iBKgw0Qk+pFwR+8Y1cy8ImLY6e9m4A==
 
-"@nativescript/core@7.0.3", "@nativescript/core@^7.0.0", "@nativescript/core@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.3.tgz#935fac1e15807fb4c9b3ce448a4ceeaea362ecbe"
-  integrity sha512-CBlcdhSAG4hkpW6pH23MZNWdhBuMX86DN3jaF7mZCKMVtSPNbBm5sbYqsdR3VHqWqSsXvdELAvb/4lb1lgIG0g==
+"@nativescript/core@7.0.12", "@nativescript/core@^7.0.12":
+  version "7.0.12"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-7.0.12.tgz#258dd10a630a11c269132b421750069a1db8a657"
+  integrity sha512-V71fq1TVJHf09JHs1Sf4eJgCykpMwTw6OMmaLDNuka++P2ON8FFB3+fC4o/j1uWAvkyckMuxLcpQTfIVWwLS8Q==
   dependencies:
     "@nativescript/hook" "~2.0.0"
     css-tree "^1.0.0-alpha.39"
     reduce-css-calc "^2.1.7"
-    tslib "2.0.0"
+    tslib "~2.0.0"
 
 "@nativescript/hook@~2.0.0":
   version "2.0.0"
@@ -9255,11 +9255,6 @@ tsd@^0.13.1:
     read-pkg-up "^7.0.0"
     update-notifier "^4.1.0"
 
-tslib@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.0.tgz#18d13fc2dce04051e20f074cc8387fd8089ce4f3"
-  integrity sha512-lTqkx847PI7xEDYJntxZH89L2/aXInsyF2luSafe/+0fHOMjlBNXdH6th7f70qxLDhul7KZK0zC8V5ZIyHl0/g==
-
 tslib@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
@@ -9269,6 +9264,11 @@ tslib@^1.9.0:
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.2.tgz#9c79d83272c9a7aaf166f73915c9667ecdde3cc9"
   integrity sha512-tTSkux6IGPnUGUd1XAZHcpu85MOkIl5zX49pO+jfsie3eP0B6pyhOlLXm3cAC6T7s+euSDDUUV+Acop5WmtkVg==
+
+tslib@~2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
 tty-browserify@0.0.0:
   version "0.0.0"

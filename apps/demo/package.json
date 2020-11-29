@@ -9,7 +9,7 @@
     ]
   },
   "dependencies": {
-    "@nativescript/core": "7.0.3",
+    "@nativescript/core": "7.0.13",
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {
@@ -17,8 +17,8 @@
     "@babel/preset-env": "7.11.5",
     "@nativescript-vue/compiler": "3.0.0-dev.4",
     "@nativescript/android": "7.0.1",
-    "@nativescript/ios": "7.0.0",
-    "@nativescript/webpack": "3.0.4",
+    "@nativescript/ios": "7.0.6",
+    "@nativescript/webpack": "3.0.8",
     "babel-loader": "8.1.0",
     "vue-loader": "16.0.0"
   }

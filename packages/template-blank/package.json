@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/template-blank#readme",
   "dependencies": {
-    "@nativescript/core": "^7.0.3",
+    "@nativescript/core": "^7.0.13",
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {

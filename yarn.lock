@@ -1817,7 +1817,7 @@
     "@vue/reactivity" "3.0.2"
     "@vue/shared" "3.0.2"
 
-"@vue/shared@3.0.2", "@vue/shared@^3.0.2":
+"@vue/shared@3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.2.tgz#419bd85a2ebdbd4f42963e98c5a1b103452176d9"
   integrity sha512-Zx869zlNoujFOclKIoYmkh8ES2RcS/+Jn546yOiPyZ+3+Ejivnr+fb8l+DdXUEFjo+iVDNR3KyLzg03aBFfZ4Q==
@@ -1826,6 +1826,11 @@
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.3.tgz#ef12ebff93a446df281e8a0fd765b5aea8e7745b"
   integrity sha512-yGgkF7u4W0Dmwri9XdeY50kOowN4UIX7aBQ///jbxx37itpzVjK7QzvD3ltQtPfWaJDGBfssGL0wpAgwX9OJpQ==
+
+"@vue/shared@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.4.tgz#6dc50f593bdfdeaa6183d1dbc15e2d45e7c6b8b3"
+  integrity sha512-Swfbz31AaMX48CpFl+YmIrqOH9MgJMTrltG9e26A4ZxYx9LjGuMV+41WnxFzS3Bc9nbrc6sDPM37G6nIT8NJSg==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

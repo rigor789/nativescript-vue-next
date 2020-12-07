@@ -35,6 +35,6 @@
     "@nativescript/webpack": "^3.0.8",
     "babel-loader": "^8.2.2",
     "sass": "^1.30.0",
-    "vue-loader": "^16.1.0"
+    "vue-loader": "^16.1.1"
   }
 }

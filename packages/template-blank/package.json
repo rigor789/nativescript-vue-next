@@ -34,7 +34,7 @@
     "@nativescript-vue/compiler": "3.0.0-dev.4",
     "@nativescript/webpack": "^3.0.8",
     "babel-loader": "^8.2.2",
-    "sass": "^1.29.0",
+    "sass": "^1.30.0",
     "vue-loader": "^16.1.0"
   }
 }

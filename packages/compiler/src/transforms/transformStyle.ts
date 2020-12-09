@@ -3,7 +3,8 @@ import {
   NodeTypes,
   createSimpleExpression,
   SimpleExpressionNode,
-  SourceLocation
+  SourceLocation,
+  ConstantTypes,
 } from '@vue/compiler-core'
 
 // Parse inline CSS strings for static style attributes into an object.
@@ -23,7 +24,7 @@ export const transformStyle: NodeTransform = (node, context) => {
           arg: createSimpleExpression(`style`, true, p.loc),
           exp: parseInlineCSS(p.value.content, p.loc),
           modifiers: [],
-          loc: p.loc
+          loc: p.loc,
         }
       }
     })
@@ -38,11 +39,16 @@ function parseInlineCSS(
   loc: SourceLocation
 ): SimpleExpressionNode {
   const res: Record<string, string> = {}
-  cssText.split(listDelimiterRE).forEach(item => {
+  cssText.split(listDelimiterRE).forEach((item) => {
     if (item) {
       const tmp = item.split(propertyDelimiterRE)
       tmp.length > 1 && (res[tmp[0].trim()] = tmp[1].trim())
     }
   })
-  return createSimpleExpression(JSON.stringify(res), false, loc, true)
+  return createSimpleExpression(
+    JSON.stringify(res),
+    false,
+    loc,
+    ConstantTypes.CAN_STRINGIFY
+  )
 }

@@ -20,6 +20,6 @@
     "@nativescript/ios": "7.0.6",
     "@nativescript/webpack": "3.0.8",
     "babel-loader": "8.2.2",
-    "vue-loader": "16.1.0"
+    "vue-loader": "16.1.2"
   }
 }

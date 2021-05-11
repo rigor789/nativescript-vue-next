@@ -9308,10 +9308,10 @@ ts-loader@^8.0.2:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
-tsd@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.13.1.tgz#d2a8baa80b8319dafea37fbeb29fef3cec86e92b"
-  integrity sha512-+UYM8LRG/M4H8ISTg2ow8SWi65PS7Os+4DUnyiQLbJysXBp2DEmws9SMgBH+m8zHcJZqUJQ+mtDWJXP1IAvB2A==
+tsd@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.15.1.tgz#d0c733c623d59de52f180ae7af66a1fde9e6c533"
+  integrity sha512-8ADO2rPntfNiJV4KiqJiiiitfkXLxCbKEFN672JgwNiaEIuiyurTc1+w3InZ+0DqBz73B6Z3UflZcNGw5xMaDA==
   dependencies:
     eslint-formatter-pretty "^4.0.0"
     globby "^11.0.1"

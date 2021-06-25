@@ -1,0 +1,57 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: "@vue/runtime-core"
+    versions:
+    - 3.0.10
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.9
+  - dependency-name: "@vue/reactivity"
+    versions:
+    - 3.0.10
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.9
+  - dependency-name: "@vue/shared"
+    versions:
+    - 3.0.10
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.9
+  - dependency-name: "@vue/compiler-sfc"
+    versions:
+    - 3.0.10
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.9
+  - dependency-name: "@vue/compiler-core"
+    versions:
+    - 3.0.10
+    - 3.0.5
+    - 3.0.6
+    - 3.0.7
+    - 3.0.9
+  - dependency-name: "@rollup/plugin-commonjs"
+    versions:
+    - 17.0.0
+    - 17.1.0
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
+  - dependency-name: vue-loader
+    versions:
+    - 16.1.2

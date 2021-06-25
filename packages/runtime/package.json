@@ -36,7 +36,7 @@
     "@vue/reactivity": "^3.0.2",
     "@vue/runtime-core": "^3.0.2",
     "@vue/shared": "^3.0.2",
-    "set-value": "^3.0.2",
+    "set-value": "^4.0.0",
     "unset-value": "^1.0.0"
   },
   "knownExternals": [

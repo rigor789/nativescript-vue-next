@@ -29,7 +29,7 @@
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.12.7",
     "@nativescript-vue/compiler": "3.0.0-dev.4",
     "@nativescript/webpack": "^3.0.8",

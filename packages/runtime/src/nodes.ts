@@ -98,8 +98,37 @@ export abstract class NSVNode implements INSVNode {
   parentNode: INSVElement | null = null
   childNodes: INSVNode[] = []
 
-  nextSibling: INSVNode | null = null
-  prevSibling: INSVNode | null = null
+  get nextSibling(): INSVNode | null {
+    if (!this.parentNode) {
+      return null
+    }
+
+    const selfIndex = this.parentNode.childNodes.findIndex(
+      (n) => n.nodeId === this.nodeId
+    )
+
+    if (selfIndex > -1 && selfIndex < this.parentNode.childNodes.length - 1) {
+      return this.parentNode.childNodes[selfIndex + 1]
+    }
+
+    return null
+  }
+
+  get prevSibling(): INSVNode | null {
+    if (!this.parentNode) {
+      return null
+    }
+
+    const selfIndex = this.parentNode.childNodes.findIndex(
+      (n) => n.nodeId === this.nodeId
+    )
+
+    if (selfIndex > 0) {
+      return this.parentNode.childNodes[selfIndex - 1]
+    }
+
+    return null
+  }
 
   get firstChild() {
     return this.childNodes.length ? this.childNodes[0] : null

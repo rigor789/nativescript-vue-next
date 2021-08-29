@@ -15,11 +15,9 @@ describe('NSVElement', () => {
 
   it('caches meta', () => {
     // mock getViewMeta
-    const getViewMeta = jest.fn(
-      (): NSVViewMeta => {
-        return { viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM }
-      }
-    )
+    const getViewMeta = jest.fn((): NSVViewMeta => {
+      return { viewFlags: NSVViewFlags.SKIP_ADD_TO_DOM }
+    })
     const orig = require('../src/registry').getViewMeta
     require('../src/registry').getViewMeta = getViewMeta
 
@@ -55,6 +53,46 @@ describe('NSVElement', () => {
 
     expect(elem.firstChild).toBe(child)
     expect(elem.lastChild).toBe(child2)
+  })
+
+  it('returns prevSibling/nextSibling', () => {
+    const elem = new NSVElement('StackLayout')
+    const child1 = new NSVElement('Label')
+    const child2 = new NSVElement('Label')
+    const child3 = new NSVElement('Label')
+
+    expect(child1.prevSibling).toBe(null)
+    expect(child1.nextSibling).toBe(null)
+
+    expect(child2.prevSibling).toBe(null)
+    expect(child2.nextSibling).toBe(null)
+
+    expect(child3.prevSibling).toBe(null)
+    expect(child3.nextSibling).toBe(null)
+
+    elem.appendChild(child1)
+    elem.appendChild(child2)
+    elem.appendChild(child3)
+
+    expect(child1.prevSibling).toBe(null)
+    expect(child1.nextSibling).toBe(child2)
+
+    expect(child2.prevSibling).toBe(child1)
+    expect(child2.nextSibling).toBe(child3)
+
+    expect(child3.prevSibling).toBe(child2)
+    expect(child3.nextSibling).toBe(null)
+
+    elem.removeChild(child2)
+
+    expect(child1.prevSibling).toBe(null)
+    expect(child1.nextSibling).toBe(child3)
+
+    expect(child2.prevSibling).toBe(null)
+    expect(child2.nextSibling).toBe(null)
+
+    expect(child3.prevSibling).toBe(child1)
+    expect(child3.nextSibling).toBe(null)
   })
 
   it('insertBefore falls back to appendChild if anchor not found', () => {

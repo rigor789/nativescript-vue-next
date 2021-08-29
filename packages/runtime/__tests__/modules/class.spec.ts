@@ -2,7 +2,7 @@ import { registerTestLayout } from '@nativescript-vue/test-utils'
 
 // https://github.com/vuejs/vue/blob/dev/test/unit/features/directives/class.spec.js
 
-import { h, render, defineComponent } from '../../src'
+import { h, render, defineComponent, DefineComponent } from '../../src'
 import { NSVElement } from '../../src/nodes'
 
 type ClassItem = {
@@ -108,21 +108,21 @@ describe('class', () => {
   })
 
   test('class merge between multiple nested components sharing same element', () => {
-    const component1 = defineComponent({
+    const component1: DefineComponent = defineComponent({
       props: {},
       render() {
         return this.$slots.default!()[0]
       },
     })
 
-    const component2 = defineComponent({
+    const component2: DefineComponent = defineComponent({
       props: {},
       render() {
         return this.$slots.default!()[0]
       },
     })
 
-    const component3 = defineComponent({
+    const component3: DefineComponent = defineComponent({
       props: {},
       render() {
         return h(

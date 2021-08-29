@@ -63,6 +63,7 @@ export function createElementWithCodegen(
       directives: undefined,
       isBlock: false,
       disableTracking: false,
+      isComponent: false,
       loc: locStub,
     },
   }

@@ -68,7 +68,7 @@ export const createApp = ((...args) => {
   }
 
   app.unmount = () => {
-    return unmount(root)
+    return unmount()
   }
 
   app.start = () => {

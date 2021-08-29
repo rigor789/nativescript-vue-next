@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/shared#readme",
   "dependencies": {
-    "@nativescript/core": "^7.0.13"
+    "@nativescript/core": "^8.0.8"
   },
   "knownExternals": [
     "@nativescript/core/trace"

@@ -107,9 +107,8 @@ function createConfig(format, output, plugins = []) {
   const entryFile =
     format === 'esm-bundler-runtime' ? `src/runtime.ts` : `src/index.ts`
 
-  const external = (isGlobalBuild || isRawESMBuild
-    ? []
-    : Object.keys(pkg.dependencies || [])
+  const external = (
+    isGlobalBuild || isRawESMBuild ? [] : Object.keys(pkg.dependencies || [])
   ).concat(pkg.knownExternals || [])
 
   return {
@@ -193,7 +192,14 @@ function createReplacePlugin(
       replacements[key] = process.env[key]
     }
   })
-  return replace(replacements)
+  return replace(
+    Object.assign(
+      {
+        preventAssignment: true,
+      },
+      replacements
+    )
+  )
 }
 
 function createProductionConfig(format) {

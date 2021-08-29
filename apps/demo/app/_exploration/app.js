@@ -20,7 +20,7 @@ import ListViewComp from './ListViewComp'
 import Test from './Test'
 
 // todo: figure out why isOn is undefined in Vue - causes a crash...
-global.isOn = (name) => name.startsWith('on')
+// global.isOn = (name) => name.startsWith('on')
 
 const withVModel = (node, arg, mods) =>
   withDirectives(node, [[vModel, arg, '', mods]])
@@ -54,18 +54,6 @@ const testComp = defineComponent({
 // trace.setCategories(trace.categories.Debug)
 Trace.setCategories('ListView')
 Trace.enable()
-
-function dumpViewTree(root) {
-  const mapNode = (node) => {
-    return {
-      id: node.nodeId,
-      type: node.tagName ? node.tagName : node.nodeType,
-      text: node.text,
-      children: node.childNodes.map(mapNode),
-    }
-  }
-  return root.childNodes.map(mapNode)
-}
 
 function useInterval(cb, ms) {
   const interval = setInterval(cb, ms)

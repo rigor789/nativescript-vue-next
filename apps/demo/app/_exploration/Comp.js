@@ -1,4 +1,4 @@
-import PageComp from '~/PageComp'
+import PageComp from '~/_exploration/PageComp'
 import { ref } from 'nativescript-vue'
 export default {
   template: `<ScrollView><StackLayout>

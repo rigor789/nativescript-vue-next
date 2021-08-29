@@ -1,25 +1,17 @@
 {
   "name": "@nativescript-vue/apps-demo",
   "version": "3.0.0-dev.4",
-  "main": "app.js",
+  "main": "app/main.js",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "**"
-    ]
-  },
   "dependencies": {
-    "@nativescript/core": "7.0.13",
+    "@nativescript/core": "8.0.8",
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {
-    "@babel/core": "7.12.9",
-    "@babel/preset-env": "7.12.7",
     "@nativescript-vue/compiler": "3.0.0-dev.4",
-    "@nativescript/android": "7.0.1",
-    "@nativescript/ios": "7.0.6",
-    "@nativescript/webpack": "3.0.8",
-    "babel-loader": "8.2.2",
-    "vue-loader": "16.1.0"
+    "@nativescript/android": "~8.0.0",
+    "@nativescript/ios": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-rc.6",
+    "vue-loader": "^16.5.0"
   }
 }

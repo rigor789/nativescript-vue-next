@@ -3,8 +3,9 @@
 exports[`compiler: transform v-on should work w/ prefixIdentifiers: true 1`] = `
 Object {
   "key": Object {
+    "constType": 3,
     "content": "onTap",
-    "isConstant": false,
+    "isHandlerKey": true,
     "isStatic": true,
     "loc": Object {
       "end": Object {
@@ -52,8 +53,8 @@ Object {
     "properties": Array [
       Object {
         "key": Object {
+          "constType": 3,
           "content": "handler",
-          "isConstant": false,
           "isStatic": true,
           "loc": Object {
             "end": Object {
@@ -85,8 +86,8 @@ Object {
         },
         "type": 16,
         "value": Object {
+          "constType": 0,
           "content": "_ctx.test",
-          "isConstant": false,
           "isStatic": false,
           "loc": Object {
             "end": Object {
@@ -106,8 +107,8 @@ Object {
       },
       Object {
         "key": Object {
+          "constType": 3,
           "content": "options",
-          "isConstant": false,
           "isStatic": true,
           "loc": Object {
             "end": Object {
@@ -155,8 +156,8 @@ Object {
           "properties": Array [
             Object {
               "key": Object {
+                "constType": 3,
                 "content": "once",
-                "isConstant": false,
                 "isStatic": true,
                 "loc": Object {
                   "end": Object {
@@ -188,8 +189,8 @@ Object {
               },
               "type": 16,
               "value": Object {
+                "constType": 0,
                 "content": "true",
-                "isConstant": false,
                 "isStatic": false,
                 "loc": Object {
                   "end": Object {

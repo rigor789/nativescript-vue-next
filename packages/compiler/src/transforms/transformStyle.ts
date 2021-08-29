@@ -49,6 +49,6 @@ function parseInlineCSS(
     JSON.stringify(res),
     false,
     loc,
-    ConstantTypes.CAN_HOIST
+    ConstantTypes.CAN_HOIST // maybe ConstantTypes.CAN_STRINGIFY?
   )
 }

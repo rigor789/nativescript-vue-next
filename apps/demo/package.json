@@ -11,7 +11,7 @@
     "@nativescript-vue/compiler": "3.0.0-dev.4",
     "@nativescript/android": "~8.0.0",
     "@nativescript/ios": "~8.0.0",
-    "@nativescript/webpack": "5.0.0-rc.6",
+    "@nativescript/webpack": "5.0.0-rc.7",
     "vue-loader": "^16.5.0"
   }
 }

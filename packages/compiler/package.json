@@ -24,7 +24,7 @@
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/compiler#readme",
   "dependencies": {
     "@vue/compiler-core": "^3.2.6",
-    "@vue/compiler-sfc": "^3.2.6",
+    "@vue/compiler-sfc": "^3.2.10",
     "@vue/shared": "^3.2.6"
   }
 }

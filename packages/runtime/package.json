@@ -32,11 +32,11 @@
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/runtime#readme",
   "dependencies": {
     "@nativescript-vue/shared": "3.0.0-dev.4",
-    "@nativescript/core": "^8.0.8",
-    "@vue/reactivity": "^3.2.6",
-    "@vue/runtime-core": "^3.2.6",
-    "@vue/shared": "^3.2.6",
-    "set-value": "^4.0.0",
+    "@nativescript/core": "^8.1.1",
+    "@vue/reactivity": "^3.2.11",
+    "@vue/runtime-core": "^3.2.11",
+    "@vue/shared": "^3.2.11",
+    "set-value": "^4.1.0",
     "unset-value": "^2.0.0"
   },
   "knownExternals": [

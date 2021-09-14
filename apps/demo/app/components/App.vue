@@ -1,46 +1,45 @@
 <template>
-    <Frame>
-        <Page>
-            <ActionBar title="My Vue3 App!" />
+  <Frame>
+    <Page>
+      <ActionBar title="My Vue3 App!" />
 
-            <StackLayout ref="stackLayout">
-                <Label>Hello World</Label>
-                <Button @tap="toggleThing">Tap Here</Button>
-                <HelloWorld v-if="showThing" />
-            </StackLayout>
-        </Page>
-    </Frame>
+      <StackLayout class="content" ref="stackLayout">
+        <Label class="label">Hello World</Label>
+        <Button @tap="toggleThing">Tap Here</Button>
+        <HelloWorld v-if="showThing" />
+      </StackLayout>
+    </Page>
+  </Frame>
 </template>
 
-<script>
-import { ref, defineComponent } from 'nativescript-vue'
-import HelloWorld from './HelloWorld.vue';
+<script setup>
+import { ref } from 'nativescript-vue'
+import HelloWorld from './HelloWorld.vue'
 
-export default defineComponent({
-    components: {
-        HelloWorld
-    },
-    setup() {
-        const stackLayout = ref(null)
+const stackLayout = ref(null)
+const showThing = ref(false)
 
-        const showThing = ref(false);
-        const toggleThing = () => {
-            showThing.value = !showThing.value
-        }
+function toggleThing() {
+  showThing.value = !showThing.value
 
-        return {
-            stackLayout,
-            showThing,
-            toggleThing,
-        };
-    },
-});
+  console.log(stackLayout.value.nativeView)
+}
 </script>
 
-<style>
-label {
-    font-size: 24;
-    color: #65adf1;
-    text-align: center;
+<style scoped>
+/* deep selector to affect Label from HelloWorld */
+.content >>> Label {
+  padding: 0 24;
+  color: #333;
+  font-size: 18;
+}
+
+/* non-deep selector to affect local Label */
+/* order is important because the deep-selector also targets the local Label */
+.content > Label {
+  font-size: 24;
+  color: #65adf1;
+  text-align: center;
+  margin-top: 20;
 }
 </style>

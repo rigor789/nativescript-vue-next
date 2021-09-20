@@ -1198,12 +1198,12 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/reactivity@3.2.11", "@vue/reactivity@^3.2.11":
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.11.tgz#ec04d33acaf2b92cca2960535bec81b26cc5772b"
-  integrity sha512-hEQstxPQbgGZq5qApzrvbDmRdK1KP96O/j4XrwT8fVkT1ytkFs4fH2xNEh9QKwXfybbQkLs77W7OfXCv5o6qbA==
+"@vue/reactivity@3.2.12", "@vue/reactivity@^3.2.11":
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.12.tgz#b482a737cbdc891f9b1ec3100f3c1804b56d080b"
+  integrity sha512-Lr5CTQjFm5mT/6DGnVNhptmba/Qg1DbD6eNWWmiHLMlpPt4q2ww9A2orEjVw0qNcdTJ04JLPEVAz5jhTZTCfIg==
   dependencies:
-    "@vue/shared" "3.2.11"
+    "@vue/shared" "3.2.12"
 
 "@vue/ref-transform@3.2.11":
   version "3.2.11"
@@ -1216,18 +1216,23 @@
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
 
-"@vue/runtime-core@^3.2.11":
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.2.11.tgz#0dbe801be4bd0bfde253226797e7d304c8fdda30"
-  integrity sha512-horlxjWwSvModC87WdsWswzzHE5IexmKkQA65S5vFgP5hLUBW+HRyScDeuB/RRcFmqnf+ozacNCfap0kqcpODw==
+"@vue/runtime-core@^3.2.12":
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.2.12.tgz#422662fd5b85f787222d2aea840264ba97e84a13"
+  integrity sha512-LO+ztgcmsomavYUaSq7BTteh8pmnUmvUnXUFVYdlcg3VCdYRS0ImlclpYsNHqjAk2gU+H09dr2PP0kL961xUfQ==
   dependencies:
-    "@vue/reactivity" "3.2.11"
-    "@vue/shared" "3.2.11"
+    "@vue/reactivity" "3.2.12"
+    "@vue/shared" "3.2.12"
 
-"@vue/shared@3.2.11", "@vue/shared@^3.2.11":
+"@vue/shared@3.2.11":
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.11.tgz#01899f54949caf1ac241de397bd17069632574de"
   integrity sha512-ovfXAsSsCvV9JVceWjkqC/7OF5HbgLOtCWjCIosmPGG8lxbPuavhIxRH1dTx4Dg9xLgRTNLvI3pVxG4ItQZekg==
+
+"@vue/shared@3.2.12", "@vue/shared@^3.2.11":
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.12.tgz#304064a4b56fc6c7b9169d80e9ee62ecb4bf0a1c"
+  integrity sha512-5CkaifUCJwcTuru7FDwKFacPJuEoGUTw0LKSa5bw40B23s0TS+MGlYR1285nbV/ju3QUGlA6d6PD+GJkWy7uFg==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"

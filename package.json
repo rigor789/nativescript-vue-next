@@ -53,7 +53,7 @@
     "enquirer": "^2.3.6",
     "execa": "^5.1.1",
     "fs-extra": "^10.0.0",
-    "jest": "^27.1.0",
+    "jest": "^27.2.1",
     "lint-staged": "^11.1.2",
     "make-coverage-badge": "^1.2.0",
     "minimist": "^1.2.5",

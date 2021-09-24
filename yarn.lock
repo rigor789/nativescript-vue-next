@@ -1198,12 +1198,19 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/reactivity@3.2.11", "@vue/reactivity@^3.2.11":
+"@vue/reactivity@3.2.11":
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.11.tgz#ec04d33acaf2b92cca2960535bec81b26cc5772b"
   integrity sha512-hEQstxPQbgGZq5qApzrvbDmRdK1KP96O/j4XrwT8fVkT1ytkFs4fH2xNEh9QKwXfybbQkLs77W7OfXCv5o6qbA==
   dependencies:
     "@vue/shared" "3.2.11"
+
+"@vue/reactivity@^3.2.16":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.16.tgz#0d4253443d580c906508b0b05b2cd136d46bf4a2"
+  integrity sha512-eOOpjakbRFg2roaGhVsGgBFnQWaXJcTw66wfc+ZMWl/cihAcgn792gFO1a6KeT68vQBp4JVpGZ5jkkdgZnwFfA==
+  dependencies:
+    "@vue/shared" "3.2.16"
 
 "@vue/ref-transform@3.2.11":
   version "3.2.11"
@@ -1224,10 +1231,15 @@
     "@vue/reactivity" "3.2.11"
     "@vue/shared" "3.2.11"
 
-"@vue/shared@3.2.11", "@vue/shared@^3.2.11":
+"@vue/shared@3.2.11":
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.11.tgz#01899f54949caf1ac241de397bd17069632574de"
   integrity sha512-ovfXAsSsCvV9JVceWjkqC/7OF5HbgLOtCWjCIosmPGG8lxbPuavhIxRH1dTx4Dg9xLgRTNLvI3pVxG4ItQZekg==
+
+"@vue/shared@3.2.16", "@vue/shared@^3.2.11":
+  version "3.2.16"
+  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.16.tgz#a7f5e37e07ac68d4b7ea8ebeba515b46d205c524"
+  integrity sha512-zpv8lxuatl3ruCJCsGzrO/F4+IlLug4jbu3vaIi/wJVZKQgnsW1R/xSRJMQS6K57cl4fT/2zkrYsWh1/6H7Esw==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"

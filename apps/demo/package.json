@@ -4,7 +4,7 @@
   "main": "app/main.js",
   "private": true,
   "dependencies": {
-    "@nativescript/core": "~8.1.0",
+    "@nativescript/core": "~8.1.4",
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {

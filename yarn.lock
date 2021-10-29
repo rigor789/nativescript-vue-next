@@ -734,10 +734,10 @@
   resolved "https://registry.yarnpkg.com/@nativescript/android/-/android-8.1.1.tgz#d38d729bcd01c18f9983b39911ddbe92caa4155d"
   integrity sha512-o7Y8x88XwCGdsjnB6oy8WqrG1KX4VVkcTlmeqN38IuUl7B8Hzj1q4RZNRFZqXPery6qS38imbehxZow0U3VDoA==
 
-"@nativescript/core@8.1.1", "@nativescript/core@^8.1.1", "@nativescript/core@~8.1.0":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-8.1.1.tgz#faf9af7ae40c3000e401c2e5840224b6fd9505a2"
-  integrity sha512-UtegtkX83y+T4dtMitgLyUxNDGQdfk4gcwvFCd9rDkuoPrS7I5jWpwxci9a0YTHQJWFBw6IkSvCT3ZIeFSF95A==
+"@nativescript/core@8.1.5", "@nativescript/core@^8.1.5", "@nativescript/core@~8.1.5":
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-8.1.5.tgz#8e8e30b6e689b1f979587b58de3907f8aa46041e"
+  integrity sha512-xnYH300bP8gZFWZR6Zwtgzreqdx6H7xzFmbAotTyM952u6VL9hb7UamlX3As/DPw4efQDE3lpUivp4sI9g7S4A==
   dependencies:
     "@nativescript/hook" "~2.0.0"
     css-tree "^1.1.2"

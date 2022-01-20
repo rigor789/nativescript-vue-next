@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, NSVElement } from 'nativescript-vue'
+import { ref } from 'nativescript-vue'
+import type { INSVElement } from 'nativescript-vue'
 import HelloWorld from './HelloWorld.vue'
 
-const stackLayout = ref<NSVElement>()
+const stackLayout = ref<INSVElement>()
 const showThing = ref(false)
 
 function toggleThing() {

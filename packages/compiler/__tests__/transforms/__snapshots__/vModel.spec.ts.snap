@@ -10,7 +10,7 @@ return function render(_ctx, _cache) {
     const _component_TextField = _resolveComponent(\\"TextField\\")
 
     return _withDirectives((_openBlock(), _createBlock(_component_TextField, {
-      \\"onUpdate:modelValue\\": $event => (model = $event)
+      \\"onUpdate:modelValue\\": $event => ((model) = $event)
     }, null, 8 /* PROPS */, [\\"onUpdate:modelValue\\"])), [
       [_vModel, model]
     ])

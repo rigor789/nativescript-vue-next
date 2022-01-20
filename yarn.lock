@@ -951,6 +951,24 @@
   resolved "https://registry.yarnpkg.com/@nativescript/ios/-/ios-8.1.0.tgz#5b34cf2d30b8d68713d76238fe0e50b6f80eb20c"
   integrity sha512-coBi409FQKO/Ia/3gBBe1QZAAfi5uwhT179o6sAeRrvsBV2ULDonmcpzKg2alrUcPTj5ESy7KpJ6+f4AkC7Lbg==
 
+"@nativescript/types-android@~8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@nativescript/types-android/-/types-android-8.1.0.tgz#c1c30fa0eb30c113c838f653b44df8daa0a118e2"
+  integrity sha512-YD7c6NEktw7KWqGp0uT5cE2SgUfNLJg7/xTV0TTbgOYzdhVi1gWG3qVu3tvFG5TjrLp+KTiLRJoMc06KR8Ymbg==
+
+"@nativescript/types-ios@~8.1.0":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@nativescript/types-ios/-/types-ios-8.1.1.tgz#d391fb546276284f10cd03be9f5012986820495d"
+  integrity sha512-+erSFu2Iw6wP2HH/MxEPL2XHJVQz015rkVS4GzMAFmQNN+WHp4ENOcO+12oL4pejCfS+rU50WVtzn8L0KwEIqw==
+
+"@nativescript/types@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@nativescript/types/-/types-8.1.1.tgz#b425c96f9541a4528b4dea61f4eb912cdd1812ea"
+  integrity sha512-eZuccU7/oy4pheN2t6bZYvrYkhVhMXOPbsS631Cz5Dpj1PQeAKzSLOHy0rchD/6+CYi2v4/8lP6bhXs1Rk9F7w==
+  dependencies:
+    "@nativescript/types-android" "~8.1.0"
+    "@nativescript/types-ios" "~8.1.0"
+
 "@nativescript/webpack@~5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@nativescript/webpack/-/webpack-5.0.4.tgz#98d4938b0739a469d97d3f0b8e8de628057569b4"

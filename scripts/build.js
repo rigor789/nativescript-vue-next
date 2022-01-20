@@ -30,7 +30,7 @@ const prodOnly = !devOnly && (args.prodOnly || args.p)
 const sourceMap = args.sourcemap || args.s
 const isRelease = args.release
 // todo: re-enable after api-extractor is updated for ts 4.x
-const buildTypes = false //args.t || args.types || isRelease
+const buildTypes = args.t || args.types || isRelease
 const buildAllMatching = args.all || args.a
 const lean = args.lean || args.l
 const commit = execa.sync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 7)
@@ -83,10 +83,10 @@ async function build(target) {
         buildTypes ? `TYPES:true` : ``,
         prodOnly ? `PROD_ONLY:true` : ``,
         lean ? `LEAN:true` : ``,
-        sourceMap ? `SOURCE_MAP:true` : ``,
+        sourceMap ? `SOURCE_MAP:true` : ``
       ]
         .filter(Boolean)
-        .join(','),
+        .join(',')
     ],
     { stdio: 'inherit' }
   )
@@ -101,11 +101,12 @@ async function build(target) {
     const { Extractor, ExtractorConfig } = require('@microsoft/api-extractor')
 
     const extractorConfigPath = path.resolve(pkgDir, `api-extractor.json`)
-    const extractorConfig =
-      ExtractorConfig.loadFileAndPrepare(extractorConfigPath)
+    const extractorConfig = ExtractorConfig.loadFileAndPrepare(
+      extractorConfigPath
+    )
     const extractorResult = Extractor.invoke(extractorConfig, {
       localBuild: true,
-      showVerboseMessages: true,
+      showVerboseMessages: true
     })
 
     if (extractorResult.succeeded) {
@@ -116,7 +117,7 @@ async function build(target) {
         const existing = await fs.readFile(dtsPath, 'utf-8')
         const typeFiles = await fs.readdir(typesDir)
         const toAdd = await Promise.all(
-          typeFiles.map((file) => {
+          typeFiles.map(file => {
             return fs.readFile(path.resolve(typesDir, file), 'utf-8')
           })
         )

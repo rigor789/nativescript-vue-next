@@ -1,7 +1,7 @@
 import {
   Frame as TNSFrame,
   Page as TNSPage,
-  ViewBase as TNSViewBase,
+  ViewBase as TNSViewBase
 } from '@nativescript/core'
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
@@ -30,7 +30,7 @@ export interface NSVElementDescriptor {
 }
 
 export let defaultViewMeta: NSVViewMeta = {
-  viewFlags: NSVViewFlags.NONE,
+  viewFlags: NSVViewFlags.NONE
 }
 
 let elementMap: Record<string, NSVElementDescriptor> = {}
@@ -86,7 +86,7 @@ export function registerElement(
 
   elementMap[normalizedName] = {
     meta: mergedMeta,
-    resolver,
+    resolver
   }
   // console.log(`->registerElement(${elementName})`)
 }
@@ -357,43 +357,6 @@ if (!__TEST__) {
         event: 'timeChange',
       },
     }
-  )
-
-  // Tabs & BottomNavigation
-  registerElement(
-    'InternalBottomNavigation',
-    () => require('@nativescript/core').BottomNavigation,
-    {
-      model: {
-        prop: 'selectedIndex',
-        event: 'selectedIndexChange'
-      }
-    }
-  )
-  registerElement(
-    'InternalTabs',
-    () => require('@nativescript/core').Tabs,
-    {
-      model: {
-        prop: 'selectedIndex',
-        event: 'selectedIndexChange'
-      }
-    }
-  )
-  registerElement(
-    'TabStrip',
-    () => require('@nativescript/core').TabStrip,
-    {}
-  )
-  registerElement(
-    'TabStripItem',
-    () => require('@nativescript/core').TabStripItem,
-    {}
-  )
-  registerElement(
-    'TabContentItem',
-    () => require('@nativescript/core').TabContentItem,
-    {}
   )
 }
 // todo: more

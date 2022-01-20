@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { ref, NSVElement } from 'nativescript-vue'
+import HelloWorld from './HelloWorld.vue'
+
+const stackLayout = ref<NSVElement>()
+const showThing = ref(false)
+
+function toggleThing() {
+  showThing.value = !showThing.value
+
+  console.log(stackLayout.value!.nativeView)
+}
+</script>
+
 <template>
   <Frame>
     <Page>
@@ -12,26 +26,14 @@
   </Frame>
 </template>
 
-<script setup>
-import { ref } from 'nativescript-vue'
-import HelloWorld from './HelloWorld.vue'
-
-const stackLayout = ref(null)
-const showThing = ref(false)
-
-function toggleThing() {
-  showThing.value = !showThing.value
-
-  console.log(stackLayout.value.nativeView)
-}
-</script>
-
 <style scoped>
 /* deep selector to affect Label from HelloWorld */
 .content >>> Label {
   padding: 0 24;
   color: #333;
+  font-weight: bold;
   font-size: 18;
+  text-transform: uppercase;
 }
 
 /* non-deep selector to affect local Label */
@@ -39,7 +41,9 @@ function toggleThing() {
 .content > Label {
   font-size: 24;
   color: #65adf1;
+  font-weight: normal;
   text-align: center;
   margin-top: 20;
+  text-transform: none;
 }
 </style>

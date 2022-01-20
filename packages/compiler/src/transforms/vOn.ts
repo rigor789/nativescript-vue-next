@@ -2,13 +2,14 @@ import {
   transformOn as baseTransform,
   DirectiveTransform,
   createObjectProperty,
-  createObjectExpression,
-  createSimpleExpression
+  createSimpleExpression,
+  createCompoundExpression,
+  isStaticExp
 } from '@vue/compiler-core'
-import { makeMap } from '@vue/shared'
+import { capitalize, makeMap } from '@vue/shared'
 
 // todo: simplify - we only support `once` - no need to use makeMap
-const isEventOptionModifier = /*#__PURE__*/ makeMap(`once`)
+const isEventOptionModifier = /*#__PURE__*/ makeMap(`once,capture`)
 
 // todo: remove - no need to loop through modifiers as only `once` is supported
 const generateOptionModifiers = (modifiers: string[]) => {
@@ -35,20 +36,10 @@ export const transformOn: DirectiveTransform = (dir, node, context) => {
     const eventOptionModifiers = generateOptionModifiers(modifiers)
 
     if (eventOptionModifiers.length) {
-      handlerExp = createObjectExpression([
-        createObjectProperty('handler', handlerExp),
-        createObjectProperty(
-          'options',
-          createObjectExpression(
-            eventOptionModifiers.map(modifier =>
-              createObjectProperty(
-                modifier,
-                createSimpleExpression('true', false)
-              )
-            )
-          )
-        )
-      ])
+      const modifierPostfix = eventOptionModifiers.map(capitalize).join('')
+      key = isStaticExp(key)
+        ? createSimpleExpression(`${key.content}${modifierPostfix}`, true)
+        : createCompoundExpression([`(`, key, `) + "${modifierPostfix}"`])
     }
 
     return {

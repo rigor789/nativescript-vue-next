@@ -2,7 +2,7 @@ import {
   getViewClass,
   getViewMeta,
   normalizeElementName,
-  NSVViewMeta,
+  NSVViewMeta
 } from './registry'
 import { ELEMENT_REF } from '@nativescript-vue/runtime'
 import { debug } from '@nativescript-vue/shared'
@@ -17,7 +17,7 @@ export const enum NSVNodeTypes {
   TEXT = 'text',
   ELEMENT = 'element',
   COMMENT = 'comment',
-  ROOT = 'root',
+  ROOT = 'root'
 }
 
 // View Flags indicate the kind of view the element is
@@ -29,7 +29,7 @@ export const enum NSVViewFlags {
   SKIP_ADD_TO_DOM = 1 << 0,
   CONTENT_VIEW = 1 << 1,
   LAYOUT_VIEW = 1 << 2,
-  NO_CHILDREN = 1 << 3,
+  NO_CHILDREN = 1 << 3
 }
 
 export interface INSVNode {
@@ -104,7 +104,7 @@ export abstract class NSVNode implements INSVNode {
     }
 
     const selfIndex = this.parentNode.childNodes.findIndex(
-      (n) => n.nodeId === this.nodeId
+      n => n.nodeId === this.nodeId
     )
 
     if (selfIndex > -1 && selfIndex < this.parentNode.childNodes.length - 1) {
@@ -120,7 +120,7 @@ export abstract class NSVNode implements INSVNode {
     }
 
     const selfIndex = this.parentNode.childNodes.findIndex(
-      (n) => n.nodeId === this.nodeId
+      n => n.nodeId === this.nodeId
     )
 
     if (selfIndex > 0) {
@@ -195,16 +195,13 @@ export class NSVElement extends NSVNode implements INSVElement {
     const { capture, once } = options
     if (capture) {
       debug('Bubble propagation is not supported')
-      return
     }
     if (once) {
       const oldHandler = handler
       const self = this
       handler = (...args: any) => {
-        const res = oldHandler.call(null, ...args)
-        if (res !== null) {
-          self.removeEventListener(event, handler)
-        }
+        oldHandler.call(null, ...args)
+        self.removeEventListener(event, handler)
       }
     }
     this.nativeView.addEventListener(event, handler)
@@ -243,7 +240,7 @@ export class NSVElement extends NSVNode implements INSVElement {
     }
 
     const refIndex = this.childNodes.findIndex(
-      (node) => node.nodeId === anchor.nodeId
+      node => node.nodeId === anchor.nodeId
     )
 
     if (refIndex === -1) {
@@ -262,8 +259,8 @@ export class NSVElement extends NSVNode implements INSVElement {
     // todo: potentially refactor based on my benchmark:
     // https://www.measurethat.net/Benchmarks/Show/7450/0/filter-findindex
     const trueIndex = this.childNodes
-      .filter((node) => node.nodeType === NSVNodeTypes.ELEMENT)
-      .findIndex((node) => node.nodeId === el.nodeId)
+      .filter(node => node.nodeType === NSVNodeTypes.ELEMENT)
+      .findIndex(node => node.nodeId === el.nodeId)
 
     this.addChild(el, trueIndex)
   }
@@ -276,7 +273,7 @@ export class NSVElement extends NSVNode implements INSVElement {
   }
 
   removeChild(el: INSVNode) {
-    const index = this.childNodes.findIndex((node) => node.nodeId === el.nodeId)
+    const index = this.childNodes.findIndex(node => node.nodeId === el.nodeId)
 
     if (index > -1) {
       this.childNodes.splice(index, 1)
@@ -302,7 +299,7 @@ export class NSVElement extends NSVNode implements INSVElement {
     this.setAttribute(
       'text',
       this.childNodes
-        .filter((node) => node.nodeType === NSVNodeTypes.TEXT)
+        .filter(node => node.nodeType === NSVNodeTypes.TEXT)
         .reduce((text: string, currentNode) => {
           return text + currentNode.text
         }, '')

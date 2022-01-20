@@ -9,10 +9,13 @@ export function patchProp(
   el: INSVElement,
   key: string,
   prevValue: any,
-  nextValue: any
+  nextValue: any,
+  isSVG = false,
+  prevChildren: any,
+  parentComponent: any,
+  parentSuspense: any,
+  unmountChildren: any
 ) {
-  // console.log('->patchProp')
-
   switch (key) {
     // special
     case 'class':
@@ -29,7 +32,7 @@ export function patchProp(
       break
     default:
       if (isOn(key)) {
-        patchEvent(el, key.slice(2), prevValue, nextValue)
+        patchEvent(el, key, prevValue, nextValue, parentComponent)
       } else {
         patchAttr(el, key, prevValue, nextValue)
       }

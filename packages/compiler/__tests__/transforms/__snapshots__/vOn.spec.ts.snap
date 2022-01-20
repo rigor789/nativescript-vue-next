@@ -4,20 +4,20 @@ exports[`compiler: transform v-on should work w/ prefixIdentifiers: true 1`] = `
 Object {
   "key": Object {
     "constType": 3,
-    "content": "onTap",
+    "content": "onTapOnce",
     "isHandlerKey": true,
     "isStatic": true,
     "loc": Object {
       "end": Object {
-        "column": 12,
+        "column": 1,
         "line": 1,
-        "offset": 11,
+        "offset": 0,
       },
-      "source": "tap",
+      "source": "",
       "start": Object {
-        "column": 9,
+        "column": 1,
         "line": 1,
-        "offset": 8,
+        "offset": 0,
       },
     },
     "type": 4,
@@ -37,183 +37,23 @@ Object {
   },
   "type": 16,
   "value": Object {
+    "constType": 0,
+    "content": "_ctx.test",
+    "isStatic": false,
     "loc": Object {
       "end": Object {
-        "column": 1,
+        "column": 23,
         "line": 1,
-        "offset": 0,
+        "offset": 22,
       },
-      "source": "",
+      "source": "test",
       "start": Object {
-        "column": 1,
+        "column": 19,
         "line": 1,
-        "offset": 0,
+        "offset": 18,
       },
     },
-    "properties": Array [
-      Object {
-        "key": Object {
-          "constType": 3,
-          "content": "handler",
-          "isStatic": true,
-          "loc": Object {
-            "end": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-            "source": "",
-            "start": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-          },
-          "type": 4,
-        },
-        "loc": Object {
-          "end": Object {
-            "column": 1,
-            "line": 1,
-            "offset": 0,
-          },
-          "source": "",
-          "start": Object {
-            "column": 1,
-            "line": 1,
-            "offset": 0,
-          },
-        },
-        "type": 16,
-        "value": Object {
-          "constType": 0,
-          "content": "_ctx.test",
-          "isStatic": false,
-          "loc": Object {
-            "end": Object {
-              "column": 23,
-              "line": 1,
-              "offset": 22,
-            },
-            "source": "test",
-            "start": Object {
-              "column": 19,
-              "line": 1,
-              "offset": 18,
-            },
-          },
-          "type": 4,
-        },
-      },
-      Object {
-        "key": Object {
-          "constType": 3,
-          "content": "options",
-          "isStatic": true,
-          "loc": Object {
-            "end": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-            "source": "",
-            "start": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-          },
-          "type": 4,
-        },
-        "loc": Object {
-          "end": Object {
-            "column": 1,
-            "line": 1,
-            "offset": 0,
-          },
-          "source": "",
-          "start": Object {
-            "column": 1,
-            "line": 1,
-            "offset": 0,
-          },
-        },
-        "type": 16,
-        "value": Object {
-          "loc": Object {
-            "end": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-            "source": "",
-            "start": Object {
-              "column": 1,
-              "line": 1,
-              "offset": 0,
-            },
-          },
-          "properties": Array [
-            Object {
-              "key": Object {
-                "constType": 3,
-                "content": "once",
-                "isStatic": true,
-                "loc": Object {
-                  "end": Object {
-                    "column": 1,
-                    "line": 1,
-                    "offset": 0,
-                  },
-                  "source": "",
-                  "start": Object {
-                    "column": 1,
-                    "line": 1,
-                    "offset": 0,
-                  },
-                },
-                "type": 4,
-              },
-              "loc": Object {
-                "end": Object {
-                  "column": 1,
-                  "line": 1,
-                  "offset": 0,
-                },
-                "source": "",
-                "start": Object {
-                  "column": 1,
-                  "line": 1,
-                  "offset": 0,
-                },
-              },
-              "type": 16,
-              "value": Object {
-                "constType": 0,
-                "content": "true",
-                "isStatic": false,
-                "loc": Object {
-                  "end": Object {
-                    "column": 1,
-                    "line": 1,
-                    "offset": 0,
-                  },
-                  "source": "",
-                  "start": Object {
-                    "column": 1,
-                    "line": 1,
-                    "offset": 0,
-                  },
-                },
-                "type": 4,
-              },
-            },
-          ],
-          "type": 15,
-        },
-      },
-    ],
-    "type": 15,
+    "type": 4,
   },
 }
 `;

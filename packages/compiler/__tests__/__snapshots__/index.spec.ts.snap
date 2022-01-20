@@ -40,6 +40,7 @@ return function render(_ctx, _cache) {
                     key: i,
                     onTap: onTap,
                     text: msg,
+                    ref_for: true,
                     ref: \\"test\\"
                   }, null, 8 /* PROPS */, [\\"onTap\\", \\"text\\"]))
                 }), 128 /* KEYED_FRAGMENT */)),

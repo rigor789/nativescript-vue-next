@@ -10,7 +10,7 @@ describe(`events`, () => {
     const el = new NSVElement('Button')
     const event = 'tap'
     const fn = jest.fn()
-    patchEvent(el, 'tap', null, fn)
+    patchEvent(el, 'onTap', null, fn)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -25,9 +25,9 @@ describe(`events`, () => {
     const event = 'tap'
     const prevFn = jest.fn()
     const nextFn = jest.fn()
-    patchEvent(el, 'tap', null, prevFn)
+    patchEvent(el, 'onTap', null, prevFn)
     el.dispatchEvent(event)
-    patchEvent(el, 'tap', prevFn, nextFn)
+    patchEvent(el, 'onTap', prevFn, nextFn)
     await nextTick()
     el.dispatchEvent(event)
     await nextTick()
@@ -42,7 +42,7 @@ describe(`events`, () => {
     const event = 'tap'
     const fn1 = jest.fn()
     const fn2 = jest.fn()
-    patchEvent(el, 'tap', null, [fn1, fn2])
+    patchEvent(el, 'onTap', null, [fn1, fn2])
     el.dispatchEvent(event)
     await nextTick()
     expect(fn1).toHaveBeenCalledTimes(1)
@@ -53,8 +53,8 @@ describe(`events`, () => {
     const el = new NSVElement('Button')
     const event = 'tap'
     const fn = jest.fn()
-    patchEvent(el, 'tap', null, fn)
-    patchEvent(el, 'tap', fn, null)
+    patchEvent(el, 'onTap', null, fn)
+    patchEvent(el, 'onTap', fn, null)
     el.dispatchEvent(event)
     await nextTick()
     expect(fn).not.toHaveBeenCalled()
@@ -64,13 +64,8 @@ describe(`events`, () => {
     const el = new NSVElement('Button')
     const event = 'tap'
     const fn = jest.fn()
-    const nextValue = {
-      handler: fn,
-      options: {
-        once: true,
-      },
-    }
-    patchEvent(el, 'tap', null, nextValue)
+    const nextValue = fn
+    patchEvent(el, 'onTapOnce', null, nextValue)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -83,14 +78,9 @@ describe(`events`, () => {
     const event = 'tap'
     const prevFn = jest.fn()
     const nextFn = jest.fn()
-    const nextValue = {
-      handler: nextFn,
-      options: {
-        once: true,
-      },
-    }
-    patchEvent(el, 'tap', null, prevFn)
-    patchEvent(el, 'tap', prevFn, nextValue)
+    const nextValue = nextFn
+    patchEvent(el, 'onTapOnce', null, prevFn)
+    patchEvent(el, 'onTapOnce', prevFn, nextValue)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)
@@ -103,14 +93,9 @@ describe(`events`, () => {
     const el = new NSVElement('Button')
     const event = 'tap'
     const fn = jest.fn()
-    const nextValue = {
-      handler: fn,
-      options: {
-        once: true,
-      },
-    }
-    patchEvent(el, 'tap', null, nextValue)
-    patchEvent(el, 'tap', nextValue, null)
+    const nextValue = fn
+    patchEvent(el, 'onTapOnce', null, nextValue)
+    patchEvent(el, 'onTapOnce', nextValue, null)
     el.dispatchEvent(event)
     await nextTick()
     el.dispatchEvent(event)

@@ -1,20 +1,15 @@
-import { EMPTY_OBJ } from '@vue/shared'
+import { hyphenate } from '@vue/shared'
 import { INSVElement } from '../nodes'
-import { callWithAsyncErrorHandling } from '@vue/runtime-core'
+import {
+  callWithAsyncErrorHandling,
+  ComponentInternalInstance
+} from '@vue/runtime-core'
 
 interface Invoker extends EventListener {
   value: EventValue
 }
 
-type EventValue = (Function | Function[]) & {
-  invoker?: Invoker | null
-}
-
-type EventValueWithOptions = {
-  handler: EventValue
-  options: AddEventListenerOptions
-  invoker?: Invoker | null
-}
+type EventValue = Function | Function[]
 
 export function addEventListener(
   el: INSVElement,
@@ -25,53 +20,65 @@ export function addEventListener(
   el.addEventListener(event, handler, options)
 }
 
-export function patchEvent(
+export function removeEventListener(
   el: INSVElement,
-  name: string,
-  prevValue: EventValueWithOptions | EventValue | null,
-  nextValue: EventValueWithOptions | EventValue | null
+  event: string,
+  handler: EventListener,
+  options: EventListenerOptions = {}
 ) {
-  const prevOptions = prevValue && 'options' in prevValue && prevValue.options
-  const nextOptions = nextValue && 'options' in nextValue && nextValue.options
-  const invoker = prevValue && prevValue.invoker
-  const value =
-    nextValue && 'handler' in nextValue ? nextValue.handler : nextValue
+  el.removeEventListener(event, handler)
+}
 
-  if (prevOptions || nextOptions) {
-    const prev = prevOptions || EMPTY_OBJ
-    const next = nextOptions || EMPTY_OBJ
-    if (prev.once !== next.once) {
-      if (invoker) {
-        el.removeEventListener(name, invoker)
-      }
-      if (nextValue && value) {
-        const invoker = createInvoker(value)
-        nextValue.invoker = invoker
-        addEventListener(el, name, invoker, next)
-      }
-      return
+export function patchEvent(
+  el: INSVElement & { _vei?: Record<string, Invoker | undefined> },
+  rawName: string,
+  prevValue: EventValue | null,
+  nextValue: EventValue | null,
+  instance: ComponentInternalInstance | null = null
+) {
+  // vei = vue event invokers
+  const invokers = el._vei || (el._vei = {})
+  const existingInvoker = invokers[rawName]
+  if (nextValue && existingInvoker) {
+    // patch
+    existingInvoker.value = nextValue
+  } else {
+    const [name, options] = parseName(rawName)
+    if (nextValue) {
+      // add
+      const invoker = (invokers[rawName] = createInvoker(nextValue, instance))
+      addEventListener(el, name, invoker, options)
+    } else if (existingInvoker) {
+      // remove
+      removeEventListener(el, name, existingInvoker, options)
+      invokers[rawName] = undefined
     }
-    return
-  }
-
-  if (nextValue && value) {
-    if (invoker) {
-      ;(prevValue as any).invoker = null
-      invoker.value = value
-      nextValue.invoker = invoker
-    } else {
-      addEventListener(el, name, createInvoker(value))
-    }
-  } else if (invoker) {
-    el.removeEventListener(name, invoker)
   }
 }
 
-function createInvoker(initialValue: EventValue) {
-  const invoker: Invoker = (e) => {
-    callWithAsyncErrorHandling(invoker.value, null, 5, [e])
+const optionsModifierRE = /(?:Once|Capture)$/
+
+function parseName(name: string): [string, EventListenerOptions | undefined] {
+  let options: EventListenerOptions | undefined
+  if (optionsModifierRE.test(name)) {
+    options = {}
+    let m
+    while ((m = name.match(optionsModifierRE))) {
+      name = name.slice(0, name.length - m[0].length)
+      ;(options as any)[m[0].toLowerCase()] = true
+      options
+    }
+  }
+  return [hyphenate(name.slice(2)), options]
+}
+
+function createInvoker(
+  initialValue: EventValue,
+  instance: ComponentInternalInstance | null
+) {
+  const invoker: Invoker = (e: Event) => {
+    callWithAsyncErrorHandling(invoker.value, instance, 5, [e])
   }
   invoker.value = initialValue
-  initialValue.invoker = invoker
   return invoker
 }

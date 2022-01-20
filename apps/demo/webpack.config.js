@@ -4,6 +4,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 module.exports = (env) => {
   webpack.init(env)
 
+  // todo: move into @nativescript/webpack base config once ready (should be b/w compatible!)
   webpack.chainWebpack((config) => {
     config.plugin('VueLoaderPlugin').use(VueLoaderPlugin)
 

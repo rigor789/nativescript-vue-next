@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/test-utils#readme",
   "dependencies": {
-    "@nativescript/core": "^8.1.1"
+    "@nativescript/core": "~8.1.5"
   }
 }

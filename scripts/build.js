@@ -16,7 +16,7 @@ yarn build core --formats cjs
 
 const fs = require('fs-extra')
 const path = require('path')
-const chalk = require('chalk')
+const c = require('ansi-colors')
 const execa = require('execa')
 const { gzipSync } = require('zlib')
 const { compress } = require('brotli')
@@ -94,16 +94,15 @@ async function build(target) {
   if (buildTypes && pkg.types) {
     console.log()
     console.log(
-      chalk.bold(chalk.yellow(`Rolling up type definitions for ${target}...`))
+      c.bold(c.yellow(`Rolling up type definitions for ${target}...`))
     )
 
     // build types
     const { Extractor, ExtractorConfig } = require('@microsoft/api-extractor')
 
     const extractorConfigPath = path.resolve(pkgDir, `api-extractor.json`)
-    const extractorConfig = ExtractorConfig.loadFileAndPrepare(
-      extractorConfigPath
-    )
+    const extractorConfig =
+      ExtractorConfig.loadFileAndPrepare(extractorConfigPath)
     const extractorResult = Extractor.invoke(extractorConfig, {
       localBuild: true,
       showVerboseMessages: true,
@@ -123,9 +122,7 @@ async function build(target) {
         )
         await fs.writeFile(dtsPath, existing + '\n' + toAdd.join('\n'))
       }
-      console.log(
-        chalk.bold(chalk.green(`API Extractor completed successfully.`))
-      )
+      console.log(c.bold(c.green(`API Extractor completed successfully.`)))
     } else {
       console.error(
         `API Extractor completed with ${extractorResult.errorCount} errors` +
@@ -160,8 +157,8 @@ function checkSize(target) {
     const compressed = compress(file)
     const compressedSize = (compressed.length / 1024).toFixed(2) + 'kb'
     console.log(
-      `${chalk.gray(
-        chalk.bold(target)
+      `${c.gray(
+        c.bold(target)
       )} min:${minSize} / gzip:${gzippedSize} / brotli:${compressedSize}`
     )
   }

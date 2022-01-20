@@ -10,7 +10,6 @@ export default {
     maxLogcatObjectSize: 10000,
   },
   cli: {
-    // todo: make the CLI use this
     packageManager: 'yarn',
   },
 } as NativeScriptConfig

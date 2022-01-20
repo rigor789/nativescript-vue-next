@@ -1,7 +1,7 @@
 const args = require('minimist')(process.argv.slice(2))
 const fs = require('fs')
 const path = require('path')
-const chalk = require('chalk')
+const c = require('ansi-colors')
 const semver = require('semver')
 const currentVersion = require('../package.json').version
 const { prompt } = require('enquirer')
@@ -35,11 +35,11 @@ const bin = (name) => path.resolve(__dirname, '../node_modules/.bin/' + name)
 const run = (bin, args, opts = {}) =>
   execa(bin, args, { stdio: 'inherit', ...opts })
 const dryRun = (bin, args, opts = {}) =>
-  console.log(chalk.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts)
+  console.log(c.blue(`[dryrun] ${bin} ${args.join(' ')}`), opts)
 const runIfNotDry = isDryRun ? dryRun : run
 const getPkgRoot = (pkg) => path.resolve(__dirname, '../packages/' + pkg)
 const getAppRoot = (app) => path.resolve(__dirname, '../apps/' + app)
-const step = (msg) => console.log(chalk.cyan(msg))
+const step = (msg) => console.log(c.cyan(msg))
 
 async function main() {
   let targetVersion = args._[0]
@@ -138,7 +138,7 @@ async function main() {
 
   if (skippedPackages.length) {
     console.log(
-      chalk.yellow(
+      c.yellow(
         `The following packages are skipped and NOT published:\n- ${skippedPackages.join(
           '\n- '
         )}`
@@ -176,9 +176,7 @@ function updateDeps(pkg, depType, version) {
       (dep.startsWith('@nativescript-vue') &&
         packages.includes(dep.replace(/^@nativescript-vue\//, '')))
     ) {
-      console.log(
-        chalk.yellow(`${pkg.name} -> ${depType} -> ${dep}@${version}`)
-      )
+      console.log(c.yellow(`${pkg.name} -> ${depType} -> ${dep}@${version}`))
       deps[dep] = version
     }
   })
@@ -219,10 +217,10 @@ async function publishPackage(pkgName, version, runIfNotDry) {
         stdio: 'pipe',
       }
     )
-    console.log(chalk.green(`Successfully published ${pkgName}@${version}`))
+    console.log(c.green(`Successfully published ${pkgName}@${version}`))
   } catch (e) {
     if (e.stderr.match(/previously published/)) {
-      console.log(chalk.red(`Skipping already published: ${pkgName}`))
+      console.log(c.red(`Skipping already published: ${pkgName}`))
     } else {
       throw e
     }

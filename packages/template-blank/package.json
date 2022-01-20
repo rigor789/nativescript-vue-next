@@ -25,14 +25,14 @@
   },
   "homepage": "https://github.com/nativescript-vue/nativescript-vue/tree/dev/packages/template-blank#readme",
   "dependencies": {
-    "@nativescript/core": "8.1.1",
+    "@nativescript/core": "~8.1.5",
     "nativescript-vue": "3.0.0-dev.4"
   },
   "devDependencies": {
     "@nativescript-vue/compiler": "3.0.0-dev.4",
     "@nativescript/android": "~8.1.1",
     "@nativescript/ios": "~8.1.0",
-    "@nativescript/webpack": "5.0.0",
+    "@nativescript/webpack": "~5.0.4",
     "vue-loader": "^16.5.0"
   }
 }

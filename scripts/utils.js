@@ -1,5 +1,5 @@
 const fs = require('fs')
-const chalk = require('chalk')
+const c = require('ansi-colors')
 
 const targets = (exports.targets = fs.readdirSync('packages').filter((f) => {
   if (!fs.statSync(`packages/${f}`).isDirectory()) {
@@ -33,8 +33,8 @@ exports.fuzzyMatchTarget = (partialTargets, includeAllMatching) => {
   } else {
     console.log()
     console.error(
-      `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(
-        `Target ${chalk.underline(partialTargets)} not found!`
+      `  ${c.bgRed.white(' ERROR ')} ${c.red(
+        `Target ${c.underline(partialTargets)} not found!`
       )}`
     )
     console.log()

@@ -9,4 +9,5 @@ export function debug(
   Trace.write(s, category as string, Trace.messageType.log)
 }
 
-export const isOn = (key: string) => key.startsWith('on')
+const onRE = /^on[^a-z]/
+export const isOn = (key: string) => onRE.test(key)

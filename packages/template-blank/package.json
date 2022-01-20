@@ -33,6 +33,6 @@
     "@nativescript/android": "~8.1.1",
     "@nativescript/ios": "~8.1.0",
     "@nativescript/webpack": "~5.0.4",
-    "vue-loader": "^16.5.0"
+    "vue-loader": "^17.0.0"
   }
 }

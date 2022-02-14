@@ -51,7 +51,7 @@
     "csstype": "^3.0.10",
     "del-cli": "^4.0.1",
     "enquirer": "^2.3.6",
-    "execa": "^5.0.0",
+    "execa": "^6.1.0",
     "fs-extra": "^10.0.0",
     "jest": "^27.4.7",
     "lint-staged": "^12.2.1",

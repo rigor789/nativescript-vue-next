@@ -5,6 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["dom", "esnext"],
+    "jsx": "preserve",
     "sourceMap": true,
     "noEmitHelpers": true,
     "importHelpers": true,

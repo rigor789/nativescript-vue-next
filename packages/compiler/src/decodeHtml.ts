@@ -45,7 +45,7 @@ export const decodeHtml: ParserOptions['decodeEntities'] = (
           )
         }
         for (let length = maxCRNameLength; !value && length > 0; --length) {
-          name = rawText.substr(1, length)
+          name = rawText.slice(1, 1 + length)
           value = (namedCharacterReferences as Record<string, string>)[name]
         }
         if (value) {
@@ -105,7 +105,7 @@ export const decodeHtml: ParserOptions['decodeEntities'] = (
 }
 
 // https://html.spec.whatwg.org/multipage/parsing.html#numeric-character-reference-end-state
-const CCR_REPLACEMENTS: { [key: number]: number | undefined } = {
+const CCR_REPLACEMENTS: Record<number, number | undefined> = {
   0x80: 0x20ac,
   0x82: 0x201a,
   0x83: 0x0192,
@@ -132,5 +132,5 @@ const CCR_REPLACEMENTS: { [key: number]: number | undefined } = {
   0x9b: 0x203a,
   0x9c: 0x0153,
   0x9e: 0x017e,
-  0x9f: 0x0178
+  0x9f: 0x0178,
 }

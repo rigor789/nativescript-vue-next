@@ -4,7 +4,7 @@ import {
   CreateAppFunction,
   createRenderer,
   Renderer,
-  RootRenderFunction
+  RootRenderFunction,
 } from '@vue/runtime-core'
 import { Application } from '@nativescript/core'
 import { debug } from '@nativescript-vue/shared'
@@ -25,7 +25,7 @@ type NSVRendererElement = INSVElement | NSVRoot
 
 const rendererOptions = {
   patchProp,
-  ...nodeOps
+  ...nodeOps,
 }
 
 let renderer: Renderer<NSVRendererElement>
@@ -44,11 +44,11 @@ function runApp(root: ComponentPublicInstance): ComponentPublicInstance {
         `Root Node: ${JSON.stringify({
           id: root.$el.nodeId,
           type: root.$el.nodeType,
-          tag: root.$el.tagName
+          tag: root.$el.tagName,
         })}`
       )
       return root.$el.nativeView
-    }
+    },
   })
 
   return root
@@ -89,8 +89,12 @@ export * from './registry'
 export { resolveComponent } from './resolveAssets'
 
 // Plugins
-export { $navigateTo, $navigateBack } from './plugins/navigation'
-export { $showModal } from './plugins/modals'
+export {
+  $navigateTo,
+  $navigateBack,
+  NavigationOptions,
+} from './plugins/navigation'
+export { $showModal, ModalOptions } from './plugins/modals'
 
 // runtime directive helpers
 export { vModel } from './directives/vModel'

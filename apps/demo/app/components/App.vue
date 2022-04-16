@@ -1,15 +1,17 @@
 <script setup lang="ts">
+// import type { INSVElement } from 'nativescript-vue'
 import { ref } from 'nativescript-vue'
-import type { INSVElement } from 'nativescript-vue'
+import { dumpViewTree } from '~/utils/dumpViewTree'
 import HelloWorld from './HelloWorld.vue'
 
-const stackLayout = ref<INSVElement>()
+const stackLayout = ref()
 const showThing = ref(false)
 
 function toggleThing() {
   showThing.value = !showThing.value
 
   console.log(stackLayout.value!.nativeView)
+  console.log(dumpViewTree(stackLayout.value!))
 }
 </script>
 

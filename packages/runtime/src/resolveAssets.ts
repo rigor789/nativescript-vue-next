@@ -1,8 +1,8 @@
 import {
   Component,
-  resolveComponent as _resolveComponent
+  resolveComponent as _resolveComponent,
 } from '@vue/runtime-core'
-import { ActionBar, isKnownView, Tabs } from '.'
+import { ActionBar, isKnownView, Tabs, ListView } from '.'
 
 export function resolveComponent(name: string): Component | string | undefined {
   // in the standalone compiler, everything is treated as a component because we don't
@@ -20,6 +20,9 @@ export function resolveComponent(name: string): Component | string | undefined {
   }
   if (name === 'Tabs') {
     return Tabs
+  }
+  if (name === 'ListView') {
+    return ListView
   }
 
   return _resolveComponent(name)

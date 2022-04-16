@@ -9,5 +9,6 @@ export function debug(
   Trace.write(s, category as string, Trace.messageType.log)
 }
 
-const onRE = /^on[^a-z]/
+// const onRE = /^on[^a-z]/
+const onRE = /^on.+/
 export const isOn = (key: string) => onRE.test(key)

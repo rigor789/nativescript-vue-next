@@ -13,6 +13,16 @@ function toggleThing() {
   console.log(stackLayout.value!.nativeView)
   console.log(dumpViewTree(stackLayout.value!))
 }
+
+function onItemTap(args: any) {
+  console.log('Item tapped', args.item)
+}
+
+function onTestTap(item: any, index: number, even: boolean, odd: boolean) {
+  console.log('Inner button tapped', item, index, even, odd)
+}
+
+const items = ['Foo', 'Bar', 'Baz']
 </script>
 
 <template>
@@ -24,6 +34,24 @@ function toggleThing() {
         <Label class="label">Hello World</Label>
         <Button @tap="toggleThing">Tap Here</Button>
         <HelloWorld v-if="showThing" />
+
+        <ListView
+          :items="items"
+          @itemTap="onItemTap"
+        >
+          <template v-slot:default="{ item, index, even, odd }">
+            <GridLayout columns="*, 80">
+              <Label textWrap="true"> {{ index }} - {{ item }} </Label>
+              <Button
+                col="1"
+                :text="'tap ' + index"
+                backgroundColor="#65adf1"
+                padding="8"
+                @tap="onTestTap(item, index, even, odd)"
+              />
+            </GridLayout>
+          </template>
+        </ListView>
       </StackLayout>
     </Page>
   </Frame>

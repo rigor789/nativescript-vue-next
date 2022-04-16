@@ -1,8 +1,8 @@
-import { hyphenate } from '@vue/shared'
+// import { hyphenate } from '@vue/shared'
 import { INSVElement } from '../nodes'
 import {
   callWithAsyncErrorHandling,
-  ComponentInternalInstance
+  ComponentInternalInstance,
 } from '@vue/runtime-core'
 
 interface Invoker extends EventListener {
@@ -69,7 +69,9 @@ function parseName(name: string): [string, EventListenerOptions | undefined] {
       options
     }
   }
-  return [hyphenate(name.slice(2)), options]
+  // return event name by removing on prefix. eg. onitemTap -> itemTap
+  return [name.slice(2), options]
+  // return [hyphenate(name.slice(2)), options]
 }
 
 function createInvoker(

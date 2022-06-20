@@ -1,7 +1,7 @@
 import {
   Frame as TNSFrame,
   Page as TNSPage,
-  ViewBase as TNSViewBase
+  ViewBase as TNSViewBase,
 } from '@nativescript/core'
 import { NSVElement, NSVViewFlags } from './nodes'
 import { actionBarNodeOps } from './components/ActionBar'
@@ -30,7 +30,7 @@ export interface NSVElementDescriptor {
 }
 
 export let defaultViewMeta: NSVViewMeta = {
-  viewFlags: NSVViewFlags.NONE
+  viewFlags: NSVViewFlags.NONE,
 }
 
 let elementMap: Record<string, NSVElementDescriptor> = {}
@@ -86,7 +86,7 @@ export function registerElement(
 
   elementMap[normalizedName] = {
     meta: mergedMeta,
-    resolver
+    resolver,
   }
   // console.log(`->registerElement(${elementName})`)
 }
@@ -99,6 +99,11 @@ export function isKnownView(elementName: string) {
 // prettier-ignore
 if (!__TEST__) {
   // layouts
+  registerElement(
+    'RootLayout',
+    () => require('@nativescript/core').RootLayout,
+    { viewFlags: NSVViewFlags.LAYOUT_VIEW }
+  )
   registerElement(
     'AbsoluteLayout',
     () => require('@nativescript/core').AbsoluteLayout,

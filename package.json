@@ -39,7 +39,7 @@
     "printWidth": 80
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.22.2",
+    "@microsoft/api-extractor": "^7.33.1",
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^4.0.0",
